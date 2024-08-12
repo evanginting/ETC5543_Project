@@ -1,0 +1,22 @@
+SAMPLE,Lab_sample,Client_Sample,BoreholeID,Seam,Fraction,Detailed_Composite_Makeup,Composite_Description,Target_Ash_pct,Depth_From_m,Depth_To_m,Thickness_m,Yield_pct,Ash_ad_pct
+IP21004994R573,IP21004994R573,24211-24227,WS3217C,VML,Coarse,"+16.0mm -  S1.70
+-16+2.0mm - S1.70
+-2.0+1.4mm - S1.70
+-1.4+1.0mm - S1.70",WS3217C VML Seam Rare Earths Coarse Comp Ash%=63.1,63.1,81.07,84.24,3.17,19.7,62.8
+IP21004994R574,IP21004994R574,24211-24227,WS3217C,VML,Fine,"-1.0+0.71mm - S1.55
+-0.71+0.25mm - S1.55
+-0.25mm - T1-T2",WS3217C VML Seam Rare Earths Fines Comp Ash%=81.6,81.6,81.07,84.24,3.17,28,78.8
+IP21004995R1124,IP21004995R1124,24255-24269,WS3218C ,VML,Coarse,"+16.0mm -  S1.70
+-16+2.0mm - S1.70
+-2.0+1.4mm - S1.70
+-1.4+1.0mm - S1.70",WS3218C VML Seam Rare Earths Coarse Comp Ash%=58.7,58.7,71.57,74.9,3.33,24.121,59.5
+IP21004995R1125,IP21004995R1125,24255-24269,WS3218C ,VML,Fine,"-1.0+0.71mm - S1.55
+-0.71+0.25mm - S1.55
+-0.25mm - T1-T2",WS3218C VML Seam Rare Earths Fines Comp Ash%=78.0,78,71.57,74.9,3.33,29.927,78
+IP21004996R401,IP21004996R401,24279-24351,WS3219C,VML,Coarse,"+16.0mm -  S1.70
+-16+2.0mm - S1.70
+-2.0+1.4mm - S1.70
+-1.4+1.0mm - S1.70",WS3219C VML Seam Rare Earths Coarse Ash%=64.1,64.1,43.59,48.77,5.18,25,63.9
+IP21004996R402,IP21004996R402,24279-24351,WS3219C,VML,Fine,"-1.0+0.71mm - S1.55
+-0.71+0.25mm - S1.55
+-0.25mm - T1-T2",WS3219C VML Seam Rare Earths Fines Comp Ash%=79.7,79.7,43.59,48.77,5.18,29.5,79.5

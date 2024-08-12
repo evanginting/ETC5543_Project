@@ -1,0 +1,180 @@
+---
+title: "01_Data_Wrangling"
+output: html_document
+date: "2024-07-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aim
+
+The aim of this exercise is to reformat all data into a common/standardized format; and to determine if results are above PAAS levels. 
+
+
+## Data sets
+
+There are seven sources of data (included in the ./data sub folder of this project). The data sources are explained following.
+
+* paas_lkp.csv (this contains the elemental concentrations of Post Archean Australian Shale (PAAS) which represent the background crustal abundance of elements. This is used to determine if elemental concentrations are above 'crustal abundance')
+
+* C29030 Appendix A.xlsx (this contains data from ACARP project C29030 (Hodgkinson and Grigorescu, 2021). Each tab of this spreadsheet contains data associated with various mine sites or plant locations, and the format of data is slightly different across each tab.
+
+* WS_REE_2023_2024.xlsx (this contains confidential data from a project area).
+
+* BR22046077.csv & BR22046077_sample_details.csv (this contains confidential data from a project area and associated additional details)
+
+* BR23093631.csv & BR23093631_sample_details.csv (this contains confidential data from a project area and associated additional details)
+
+## Reformating data
+
+The initial goal of this exercise is to reformat, standardise and merge all data sets. Further we will calculate the PAAS ratio for each sample.
+
+The Final Data Set Should have the following column headers
+
+"Project_Name","Sample_ID","Element_Symbol","Element_Value_ppm","Element_Description","PAAS_value_ppm","PAAS_normalised_value","Above_PASS_flag"
+
+
+### Reformat C29030 Appendix A Data - Example
+
+The following is an example of reformatting the first tab of the C29030 Appendix A.xlsx data set (named 'Collinsville'). 
+
+In this example we will:
+
+1. Load the data
+
+2. Reformat the data from 'wide' to long format and clean up data
+
+* In this step, set any 'nd' data values to -999
+
+3. Calculate total REE values including:
+
+  * Total_REE (Total Rare Earth Elements, which is the sum of elements La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu, excluding Y)
+  
+  * Total_REE_Y (Total Rare Earth Elements, which is the sum of elements La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu+Y)
+
+4. Join the PASS values to the data set and add additional column including:
+
+  * PAAS_ppm (the PAAS value for each element)
+
+  * PAAS_normalised_value (The analysed elemental value normalised to PASS)
+
+  * Above_PASS_flag (A flag indicating if the PAAS_normalised_value is greater than or less than the PAAS_ppm)
+
+5. Rename columns to a consistent format
+
+```{r}
+library(tidyverse)
+library(data.table)
+
+#1. Load the data (read in the "Collinsville" tab)
+d <- openxlsx::read.xlsx("./data/C29030 Appendix A.xlsx",sheet=c("Collinsville"), startRow =1,colNames=TRUE, cols=c(1:8), rows = 1:50)
+
+#2. Reformat the data from 'wide' to long format and clean up data
+m <-  d %>%  pivot_longer(cols = c(-Element,-Symbol), names_to="Sample", values_to="value") %>%
+  mutate(value = str_squish(value)) %>% #get rid of white space values
+  mutate(value =ifelse(value == "nd",-999,value)) %>% #set nd values to -999
+  mutate(value = round(as.numeric(value),4)) %>% # round values to 4 decimal places
+  na.omit() %>% #remove missing data
+  mutate(Project_Area = "Collinsville") #add project area name
+
+#3. Calculate REE values
+
+
+
+ree <-  dcast(setDT(m),Project_Area+Sample~Symbol, value.var = "value",fill=NA) #convert back to wide format for summation
+ree_calc <- ree %>% 
+  mutate(REE = La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu) %>% 
+  mutate(REEY = La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu+Y) %>% 
+  mutate(LREE = La+Ce+Pr+Nd+Sm) %>% # note Pm not tested
+  mutate(MREE = Eu+Gd+Tb+Dy+Y) %>% 
+  mutate(HREE = Ho+Er+Tm+Yb+Lu) 
+
+#convert back to long format so we can join PAAS values
+ree_long <- melt(ree_calc,id.vars = 1:2,variable.name = "Symbol")
+
+#4 join PASS data
+paas <- read_csv("./data/paas_lkp.csv") #read paas data
+ree_long <- ree_long %>% 
+  inner_join(paas, by="Symbol") %>% #join paas data
+  mutate(PAAS_normalised_value = value/PAAS_ppm) %>% #calculate paas normalised value 
+   mutate(Above_PASS_flag = ifelse(PAAS_normalised_value >1, "Enriched above background", "Below background")) #add a flag
+
+#5 rename columns to make consistent
+names(ree_long) <- c("Project_Name","Sample_ID","Element_Symbol","Element_Value_ppm","Element_Description","PAAS_value_ppm","PAAS_normalised_value","Above_PASS_flag")
+
+```
+
+
+## Task 1
+
+Using the above example (or your own derived version):
+
+1. Reformat all of the data from all tabs in the "./data/C29030 Appendix A.xlsx" sheet. Tip, you might need to download and look at th excel file to see the format of the data in each tab. Note, do not bring in the calculated columns (eg descriptive statistics or PAAS calculations. Only being in the 'sample' data)
+
+2. Merge all of the reformatted data into a single table and save the table to an .rds file in the results folder e.g: 
+
+saveRDS('./results/C29030_data_reformatted.rds')
+
+```{r}
+```
+
+## Task 2
+
+Using the knowledge gained in Task 1; load and reformat data from BR22046077.csv into the exact same format as Task 1. 
+
+  * For the project name use "Confidential"
+  
+  * After the data is reformatted, save the data as BR22046077_data_reformatted.rds in the results folder
+  
+    * Note that in this data set; instead of 'nd' for not detected, values will be listed as below detection with a less than sign (e.g <5). Make sure that you set any data that contains < to -999
+
+```{r}
+#here is a quick head start. the data starts on line 10 and we should use headings from line 8
+
+d <- read.csv("./data/BR22046077.csv",skip=9, col.names = names(read.csv("./data/BR22046077.csv",skip=8))) #read data (that starts on line 10) and use data from line 8 as the column names
+```
+
+
+## Task 3
+
+Load and reformat data from BR23093631.csv into the exact same format as Task 1.
+  
+  * For the project name use "Confidential"
+  
+  * After the data is reformatted, save the data as BR23093631_data_reformatted.rds in the results folder
+  
+  * Note that in this data set; instead of 'nd' for not detected, values will be listed as below detection with a less than sign (e.g <5). Make sure that you set any data that contains < to -999
+
+```{r}
+#here is a quick head start. the data starts on line 10 and we should use headings from line 8
+
+d <- read.csv("./data/BR23093631.csv",skip=9, col.names = names(read.csv("./data/BR23093631.csv",skip=8))) #read data (that starts on line 10) and use data from line 8 as the column names
+```
+
+## Task 4
+
+Load and reformat data from WS_REE_2023_2024.xlsx into the exact same format as Task 1.
+
+  * note that there are two instances of the element Sc (one analysed using the ME-MS81 method, and one using the ME_4ACD81 method. In this case use the Sc value from ME-MS81 and discard the other value)
+  
+  * For the project name use "Confidential"
+  
+  * After the data is reformatted, save the data as WS_REE_2023_2024.rds in the results folder
+  
+  * Note that in this data set; instead of 'nd' for not detected, values will be listed as below detection with a less than sign (e.g <5). Make sure that you set any data that contains < to -999
+  
+```{r}
+
+```
+
+## Task 5
+
+Load and merge all data sets from Task 1 to task 4 into a single object. Save the object as "all_data.rds" in the results folder
+
+```{r}
+
+```
+
+
