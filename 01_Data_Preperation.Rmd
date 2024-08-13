@@ -206,7 +206,21 @@ Using the knowledge gained in Task 1; load and reformat data from BR22046077.csv
 ```{r}
 #here is a quick head start. the data starts on line 10 and we should use headings from line 8
 
-d <- read.csv("./data/BR22046077.csv",skip=9, col.names = names(read.csv("./data/BR22046077.csv",skip=8))) #read data (that starts on line 10) and use data from line 8 as the column names
+BR22046077_raw <- read.csv("./data/BR22046077.csv",skip=9, col.names = names(read.csv("./data/BR22046077.csv",skip=8))) #read data (that starts on line 10) and use data from line 8 as the column names
+
+BR22046077_data_reformatted <- BR22046077_raw %>%
+  rename("Sample" = "SAMPLE") %>%
+  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>%
+  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>%
+  pivot_longer(cols = -"Sample", names_to = "Symbol", values_to = "value") %>%
+  na.omit() %>% #remove missing data
+  mutate(Project_Area = "Confidential") %>% #add project area name
+  left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>% #join Oaky Creek data to extract "Symbol"
+  mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium",
+                             Symbol == "W" ~ "Tungsten",
+                             Symbol == "As" ~ "Arsenic",
+                             TRUE ~ Element)) %>%
+  select(Element, Symbol, Sample, value, Project_Area)
 ```
 
 
