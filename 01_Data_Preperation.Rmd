@@ -106,18 +106,62 @@ names(ree_long) <- c("Project_Name","Sample_ID","Element_Symbol","Element_Value_
 
 ```
 
-
 ## Task 1
 
 Using the above example (or your own derived version):
 
-1. Reformat all of the data from all tabs in the "./data/C29030 Appendix A.xlsx" sheet. Tip, you might need to download and look at th excel file to see the format of the data in each tab. Note, do not bring in the calculated columns (eg descriptive statistics or PAAS calculations. Only being in the 'sample' data)
+1. Reformat all of the data from all tabs in the "./data/C29030 Appendix A.xlsx" sheet. Tip, you might need to download and look at the excel file to see the format of the data in each tab. Note, do not bring in the calculated columns (eg descriptive statistics or PAAS calculations. Only being in the 'sample' data)
 
 2. Merge all of the reformatted data into a single table and save the table to an .rds file in the results folder e.g: 
 
 saveRDS('./results/C29030_data_reformatted.rds')
 
 ```{r}
+library(openxlsx)
+library(stringr)
+
+# Load the workbook
+file_path <- "./data/C29030 Appendix A.xlsx"
+wb <- loadWorkbook(file_path)
+
+# Get all sheet names (excluding non-area, Oaky Creek, and Fort Cooper sheets)
+## Oaky Creek and Fort Cooper sheets has its own pattern, so separate loading process will be done
+sheet_names <- setdiff(getSheetNames(file_path), c("README", "Sample coordinates", "Oaky Creek", "Fort Cooper - CSIRO data"))
+
+# Initialize a list to store data from each sheet
+sheets_data <- list()
+
+# Loop over each sheet
+for(sheet in sheet_names) {
+  
+  # Read the data
+  sheet_data <- read.xlsx(file_path, sheet = sheet, startRow = 1, colNames = TRUE, rows = 1:50)
+  
+  # Getting Index of "Min" column
+  min_col_position <- which(names(sheet_data) == "Min")
+  
+  # Filter to column before "Min" column
+  sheet_data <- sheet_data[,1:(min_col_position-1)]
+  
+  # Store the data in the list
+  sheets_data[[sheet]] <- sheet_data
+}
+
+## Oaky Creek loading process
+oc_sheet_data <- read.xlsx(file_path, sheet = "Oaky Creek", startRow = 1, colNames = TRUE, cols=c(1:3), rows = 1:50)
+
+## Fort Cooper loading process
+fc_sheet_data_raw <- read.xlsx(file_path, sheet = "Fort Cooper - CSIRO data", startRow = 1, colNames = TRUE)
+
+fc_sheet_data <- fc_sheet_data_raw %>%
+  select(-c("Longitude", "Latitude")) %>%
+  rename("Sample" = "Sample/Element") %>%
+  mutate(across(everything(), str_squish)) %>% #get rid of white space values
+  mutate(across(everything(), ~ ifelse(. == "nd", -999, .))) %>% #set nd values to -999
+  mutate(across(where(is.numeric), ~ round(., 4))) %>% # round values to 4 decimal places
+  pivot_longer(cols = c(-"Sample"), names_to = "Element", values_to = "value") %>%
+  na.omit() %>% #remove missing data
+  mutate(Project_Area = "Fort Cooper") #add project area name
 ```
 
 ## Task 2
