@@ -125,43 +125,72 @@ file_path <- "./data/C29030 Appendix A.xlsx"
 wb <- loadWorkbook(file_path)
 
 # Get all sheet names (excluding non-area, Oaky Creek, and Fort Cooper sheets)
-## Oaky Creek and Fort Cooper sheets has its own pattern, so separate loading process will be done
 sheet_names <- setdiff(getSheetNames(file_path), c("README", "Sample coordinates", "Oaky Creek", "Fort Cooper - CSIRO data"))
+# nb: "Oaky Creek" and "Fort Cooper" sheets has its own pattern, so separate loading process will be done
 
-# Initialize a list to store data from each sheet
+## Initialize a list to store data from each sheet
 sheets_data <- list()
 
-# Loop over each sheet
+## Loop over each sheet
 for(sheet in sheet_names) {
   
-  # Read the data
+  ### Read the data
   sheet_data <- read.xlsx(file_path, sheet = sheet, startRow = 1, colNames = TRUE, rows = 1:50)
   
-  # Getting Index of "Min" column
+  ### Getting Index of "Min" column
   min_col_position <- which(names(sheet_data) == "Min")
   
-  # Filter to column before "Min" column
-  sheet_data <- sheet_data[,1:(min_col_position-1)]
+  ### Filter to column before "Min" column
+  sheet_data <- sheet_data[,1:(min_col_position-1)] %>%
+                pivot_longer(cols = c(-Element,-Symbol), names_to="Sample", values_to="value") %>%
+                mutate(value = str_squish(value)) %>% #get rid of white space values
+                mutate(value =ifelse(value == "nd",-999,value)) %>% #set nd values to -999
+                mutate(value = round(as.numeric(value),4)) %>% # round values to 4 decimal places
+                na.omit() %>% #remove missing data
+                mutate(Project_Area = sheet) #add project area name
   
-  # Store the data in the list
+  ### Store the data in the list
   sheets_data[[sheet]] <- sheet_data
 }
 
+
 ## Oaky Creek loading process
-oc_sheet_data <- read.xlsx(file_path, sheet = "Oaky Creek", startRow = 1, colNames = TRUE, cols=c(1:3), rows = 1:50)
+### Loading & Wrangling the Data 
+oc_sheet_data <- read.xlsx(file_path, sheet = "Oaky Creek", startRow = 1, colNames = TRUE, cols=c(1:3), rows = 1:50) %>%
+  pivot_longer(cols = c(-Element,-Symbol), names_to="Sample", values_to="value") %>%
+  mutate(value = str_squish(value)) %>% #get rid of white space values
+  mutate(value =ifelse(value == "nd",-999,value)) %>% #set nd values to -999
+  mutate(value = round(as.numeric(value),4)) %>% # round values to 4 decimal places
+  na.omit() %>% #remove missing data
+  mutate(Project_Area = "Oaky Creek") #add project area name
+
 
 ## Fort Cooper loading process
+### Data Loading
 fc_sheet_data_raw <- read.xlsx(file_path, sheet = "Fort Cooper - CSIRO data", startRow = 1, colNames = TRUE)
 
+### Data Wrangling
 fc_sheet_data <- fc_sheet_data_raw %>%
   select(-c("Longitude", "Latitude")) %>%
   rename("Sample" = "Sample/Element") %>%
   mutate(across(everything(), str_squish)) %>% #get rid of white space values
   mutate(across(everything(), ~ ifelse(. == "nd", -999, .))) %>% #set nd values to -999
-  mutate(across(where(is.numeric), ~ round(., 4))) %>% # round values to 4 decimal places
+  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>% # round values to 4 decimal places
   pivot_longer(cols = c(-"Sample"), names_to = "Element", values_to = "value") %>%
   na.omit() %>% #remove missing data
-  mutate(Project_Area = "Fort Cooper") #add project area name
+  mutate(Project_Area = "Fort Cooper") %>% #add project area name
+  left_join(select(oc_sheet_data, Element, Symbol), by="Element") %>% #join Oaky Creek data to extract "Symbol"
+  select(Element, Symbol, Sample, value, Project_Area)
+
+# Combine All sheets
+## Combine all sheets that use for loop process
+combined_df <- bind_rows(sheets_data, .id = "source") %>% select(-source)
+
+## Combine all sheets (final combination)
+C29030_data_reformatted <- bind_rows(combined_df, oc_sheet_data, fc_sheet_data)
+
+# Saving the data into .RDS format
+saveRDS(C29030_data_reformatted, './results/C29030_data_reformatted.rds')
 ```
 
 ## Task 2
