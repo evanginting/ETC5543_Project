@@ -180,7 +180,9 @@ fc_sheet_data <- fc_sheet_data_raw %>%
   na.omit() %>% #remove missing data
   mutate(Project_Area = "Fort Cooper") %>% #add project area name
   left_join(select(oc_sheet_data, Element, Symbol), by="Element") %>% #join Oaky Creek data to extract "Symbol"
-  select(Element, Symbol, Sample, value, Project_Area)
+  mutate(Symbol = case_when(Element == "Tungsten" ~ "W", # Adding element description
+                            TRUE ~ Symbol)) %>%
+  select(Element, Symbol, Sample, value, Project_Area) #reorder the column
 
 # Combine All sheets
 ## Combine all sheets that use for loop process
@@ -216,11 +218,14 @@ BR22046077_data_reformatted <- BR22046077_raw %>%
   na.omit() %>% #remove missing data
   mutate(Project_Area = "Confidential") %>% #add project area name
   left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>% #join Oaky Creek data to extract "Symbol"
-  mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium",
+  mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium", #adding element description
                              Symbol == "W" ~ "Tungsten",
                              Symbol == "As" ~ "Arsenic",
                              TRUE ~ Element)) %>%
-  select(Element, Symbol, Sample, value, Project_Area)
+  select(Element, Symbol, Sample, value, Project_Area) #reorder the column
+
+# Saving the data into .RDS format
+saveRDS(BR22046077_data_reformatted, './results/BR22046077_data_reformatted.rds')
 ```
 
 
@@ -257,7 +262,7 @@ ws_ree <- read.xlsx("./data/WS_REE_2023_2024.xlsx", startRow = 2, colNames = TRU
 
 ws_ree <- ws_ree[-1,-43]
   
-ws_ree_data <- ws_ree %>% 
+ws_ree_data_reformatted <- ws_ree %>% 
   rename("Sample" = "SAMPLE") %>%
   mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>%
   mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>%
@@ -265,12 +270,15 @@ ws_ree_data <- ws_ree %>%
   na.omit() %>% 
   mutate(Project_Area = "Confidential") %>% #add project area name
   left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>% #join Oaky Creek data to extract "Symbol"
-  mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium",
+  mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium", #adding element description
                              Symbol == "W" ~ "Tungsten",
                              Symbol == "As" ~ "Arsenic",
                              Symbol == "Ti" ~ "Titanium",
                              TRUE ~ Element)) %>%
-  select(Element, Symbol, Sample, value, Project_Area)
+  select(Element, Symbol, Sample, value, Project_Area) #reorder the column
+
+# Saving the data into .RDS format
+saveRDS(ws_ree_data_reformatted, './results/WS_REE_2023_2024.rds')
 ```
 
 ## Task 5
@@ -278,7 +286,31 @@ ws_ree_data <- ws_ree %>%
 Load and merge all data sets from Task 1 to task 4 into a single object. Save the object as "all_data.rds" in the results folder
 
 ```{r}
+all_data_bfr_paas <- bind_rows(C29030_data_reformatted, BR22046077_data_reformatted, ws_ree_data_reformatted)
 
+ree_all <-  dcast(setDT(all_data_bfr_paas),Project_Area+Sample~Symbol, value.var = "value",fill=NA) #convert back to wide format for summation
+ree_calc_all <- ree_all %>% 
+  mutate(REE = La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu) %>% 
+  mutate(REEY = La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu+Y) %>% 
+  mutate(LREE = La+Ce+Pr+Nd+Sm) %>% # note Pm not tested
+  mutate(MREE = Eu+Gd+Tb+Dy+Y) %>% 
+  mutate(HREE = Ho+Er+Tm+Yb+Lu) 
+
+#convert back to long format so we can join PAAS values
+ree_long_all <- melt(ree_calc_all,id.vars = 1:2,variable.name = "Symbol")
+
+#4 join PASS data
+paas <- read_csv("./data/paas_lkp.csv") #read paas data
+ree_long_all <- ree_long_all %>% 
+  inner_join(paas, by="Symbol") %>% #join paas data
+  mutate(PAAS_normalised_value = value/PAAS_ppm) %>% #calculate paas normalised value 
+  mutate(Above_PASS_flag = ifelse(PAAS_normalised_value >1, "Enriched above background", "Below background")) #add a flag
+
+#5 rename columns to make consistent
+names(ree_long_all) <- c("Project_Name","Sample_ID","Element_Symbol","Element_Value_ppm","Element_Description","PAAS_value_ppm","PAAS_normalised_value","Above_PASS_flag")
+
+# Saving the data into .RDS format
+saveRDS(ree_long_all, './results/all_data.rds')
 ```
 
 
