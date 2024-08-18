@@ -317,7 +317,7 @@ saveRDS(ws_ree_data_reformatted, './results/WS_REE_2023_2024.rds')
 Load and merge all data sets from Task 1 to task 4 into a single object. Save the object as "all_data.rds" in the results folder
 
 ```{r}
-all_data_bfr_paas <- bind_rows(C29030_data_reformatted, BR22046077_data_reformatted, ws_ree_data_reformatted)
+all_data_bfr_paas <- bind_rows(C29030_data_reformatted, BR22046077_data_reformatted, BR23093631_data_reformatted, ws_ree_data_reformatted)
 
 ree_all <-  dcast(setDT(all_data_bfr_paas),Project_Area+Sample~Symbol, value.var = "value",fill=NA) #convert back to wide format for summation
 ree_calc_all <- ree_all %>% 
