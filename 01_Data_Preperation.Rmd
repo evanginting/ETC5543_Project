@@ -240,9 +240,40 @@ Load and reformat data from BR23093631.csv into the exact same format as Task 1.
   * Note that in this data set; instead of 'nd' for not detected, values will be listed as below detection with a less than sign (e.g <5). Make sure that you set any data that contains < to -999
 
 ```{r}
-#here is a quick head start. the data starts on line 10 and we should use headings from line 8
+# 32 elements are having multiple concentration result (ME-MS81 & ME-MS61r). 
+# After thorough assessment, we decided that 10 elements are going to use result from ME-MS81, while the rest are going to use result from ME-MS61r. 
+# Those 10 elements are Ce, Cr, Ga, Rb, Sc, Th, Ti, U, V, and W. 
+# The decision was based on the concentration test, where the smaller concentration range is selected.
 
-d <- read.csv("./data/BR23093631.csv",skip=9, col.names = names(read.csv("./data/BR23093631.csv",skip=8))) #read data (that starts on line 10) and use data from line 8 as the column names
+# BR23093631_raw <- read.csv("./data/BR23093631.csv",skip=9, col.names = names(read.csv("./data/BR23093631.csv", skip=8))) 
+header1 <- read.csv("./data/BR23093631.csv", header = FALSE, nrows = 1, skip = 7)  # Read first header row
+header2 <- read.csv("./data/BR23093631.csv", header = FALSE, nrows = 1, skip = 8)  # Read second header row
+
+BR23093631_raw <- read.csv("./data/BR23093631.csv", header = TRUE, skip=9) 
+
+colnames(BR23093631_raw) <- paste(header1, header2, sep = "_")  # Combine the two headers with an underscore
+colnames(BR23093631_raw)[1] <- "Sample"  # Fix the first column name if necessary
+BR23093631_raw <- BR23093631_raw[, -2] # remove pulp.wt column
+
+# list of elements to be included
+for_filter <- read.csv("./data/Task3_Helper.csv", sep=';')
+
+# reformatting the table
+BR23093631_data_reformatted <- BR23093631_raw %>%
+  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>%
+  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>%
+  pivot_longer(cols = -"Sample", names_to = "sym_method", values_to = "value") %>%
+  mutate(Symbol = ifelse(grepl("_", str_sub(sym_method,start=-2)), str_sub(sym_method,start=-1), str_sub(sym_method,start=-2))) %>%
+  inner_join(select(for_filter, sym_method), by="sym_method") %>%
+  na.omit() %>% #remove missing data
+  mutate(Project_Area = "Confidential") %>% #add project area name
+  left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>%
+  mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium", #adding element description
+                             Symbol == "W" ~ "Tungsten",
+                             Symbol == "As" ~ "Arsenic",
+                             Symbol == "Ti" ~ "Titanium",
+                             TRUE ~ Element)) %>%
+  select(Element, Symbol, Sample, value, Project_Area) #reorder the column
 ```
 
 ## Task 4
