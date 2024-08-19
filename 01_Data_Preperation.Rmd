@@ -67,6 +67,8 @@ In this example we will:
 ```{r}
 library(tidyverse)
 library(data.table)
+library(openxlsx)
+library(stringr)
 
 #1. Load the data (read in the "Collinsville" tab)
 d <- openxlsx::read.xlsx("./data/C29030 Appendix A.xlsx",sheet=c("Collinsville"), startRow =1,colNames=TRUE, cols=c(1:8), rows = 1:50)
@@ -117,30 +119,24 @@ Using the above example (or your own derived version):
 saveRDS('./results/C29030_data_reformatted.rds')
 
 ```{r}
-library(openxlsx)
-library(stringr)
-
-# Load the workbook
-file_path <- "./data/C29030 Appendix A.xlsx"
-wb <- loadWorkbook(file_path)
 
 # Get all sheet names (excluding non-area, Oaky Creek, and Fort Cooper sheets)
-sheet_names <- setdiff(getSheetNames(file_path), c("README", "Sample coordinates", "Oaky Creek", "Fort Cooper - CSIRO data"))
+sheet_names <- setdiff(getSheetNames("./data/C29030 Appendix A.xlsx"), c("README", "Sample coordinates", "Oaky Creek", "Fort Cooper - CSIRO data"))
 # nb: "Oaky Creek" and "Fort Cooper" sheets has its own pattern, so separate loading process will be done
 
-## Initialize a list to store data from each sheet
+## Initialize a list to store data from applicable sheets
 sheets_data <- list()
 
 ## Loop over each sheet
 for(sheet in sheet_names) {
   
   ### Read the data
-  sheet_data <- read.xlsx(file_path, sheet = sheet, startRow = 1, colNames = TRUE, rows = 1:50)
+  sheet_data <- read.xlsx("./data/C29030 Appendix A.xlsx", sheet = sheet, startRow = 1, colNames = TRUE, rows = 1:50)
   
   ### Getting Index of "Min" column
   min_col_position <- which(names(sheet_data) == "Min")
   
-  ### Filter to column before "Min" column
+  ### Filter the column to include columns before "Min" column
   sheet_data <- sheet_data[,1:(min_col_position-1)] %>%
                 pivot_longer(cols = c(-Element,-Symbol), names_to="Sample", values_to="value") %>%
                 mutate(value = str_squish(value)) %>% #get rid of white space values
@@ -156,7 +152,7 @@ for(sheet in sheet_names) {
 
 ## Oaky Creek loading process
 ### Loading & Wrangling the Data 
-oc_sheet_data <- read.xlsx(file_path, sheet = "Oaky Creek", startRow = 1, colNames = TRUE, cols=c(1:3), rows = 1:50) %>%
+oc_sheet_data <- read.xlsx("./data/C29030 Appendix A.xlsx", sheet = "Oaky Creek", startRow = 1, colNames = TRUE, cols=c(1:3), rows = 1:50) %>%
   pivot_longer(cols = c(-Element,-Symbol), names_to="Sample", values_to="value") %>%
   mutate(value = str_squish(value)) %>% #get rid of white space values
   mutate(value =ifelse(value == "nd",-999,value)) %>% #set nd values to -999
@@ -167,7 +163,7 @@ oc_sheet_data <- read.xlsx(file_path, sheet = "Oaky Creek", startRow = 1, colNam
 
 ## Fort Cooper loading process
 ### Data Loading
-fc_sheet_data_raw <- read.xlsx(file_path, sheet = "Fort Cooper - CSIRO data", startRow = 1, colNames = TRUE)
+fc_sheet_data_raw <- read.xlsx("./data/C29030 Appendix A.xlsx", sheet = "Fort Cooper - CSIRO data", startRow = 1, colNames = TRUE)
 
 ### Data Wrangling
 fc_sheet_data <- fc_sheet_data_raw %>%
@@ -211,9 +207,10 @@ Using the knowledge gained in Task 1; load and reformat data from BR22046077.csv
 BR22046077_raw <- read.csv("./data/BR22046077.csv",skip=9, col.names = names(read.csv("./data/BR22046077.csv",skip=8))) #read data (that starts on line 10) and use data from line 8 as the column names
 
 BR22046077_data_reformatted <- BR22046077_raw %>%
-  rename("Sample" = "SAMPLE") %>%
-  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>%
-  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>%
+  rename("Sample" = "SAMPLE") %>% # rename for consistency
+  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>% #set any values that has "<" to -999
+  mutate(across(everything(), str_squish)) %>% #get rid of white space values
+  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>% # round values to 4 decimal places
   pivot_longer(cols = -"Sample", names_to = "Symbol", values_to = "value") %>%
   na.omit() %>% #remove missing data
   mutate(Project_Area = "Confidential") %>% #add project area name
@@ -240,19 +237,17 @@ Load and reformat data from BR23093631.csv into the exact same format as Task 1.
   * Note that in this data set; instead of 'nd' for not detected, values will be listed as below detection with a less than sign (e.g <5). Make sure that you set any data that contains < to -999
 
 ```{r}
-# 32 elements are having multiple concentration result (ME-MS81 & ME-MS61r). 
+# 32 elements are having multiple concentration result (based on method ME-MS81 and ME-MS61r). 
 # After thorough assessment, we decided that 10 elements are going to use result from ME-MS81, while the rest are going to use result from ME-MS61r. 
 # Those 10 elements are Ce, Cr, Ga, Rb, Sc, Th, Ti, U, V, and W. 
 # The decision was based on the concentration test, where the smaller concentration range is selected.
 
-# BR23093631_raw <- read.csv("./data/BR23093631.csv",skip=9, col.names = names(read.csv("./data/BR23093631.csv", skip=8))) 
+# Raw Data Preparation
 header1 <- read.csv("./data/BR23093631.csv", header = FALSE, nrows = 1, skip = 7)  # Read first header row
 header2 <- read.csv("./data/BR23093631.csv", header = FALSE, nrows = 1, skip = 8)  # Read second header row
-
-BR23093631_raw <- read.csv("./data/BR23093631.csv", header = TRUE, skip=9) 
-
+BR23093631_raw <- read.csv("./data/BR23093631.csv", header = TRUE, skip=9) # read data (that starts on line 10)
 colnames(BR23093631_raw) <- paste(header1, header2, sep = "_")  # Combine the two headers with an underscore
-colnames(BR23093631_raw)[1] <- "Sample"  # Fix the first column name if necessary
+colnames(BR23093631_raw)[1] <- "Sample"  # Fix the first column name for consistency
 BR23093631_raw <- BR23093631_raw[, -2] # remove pulp.wt column
 
 # list of elements to be included
@@ -260,11 +255,12 @@ for_filter <- read.csv("./data/Task3_Helper.csv", sep=';')
 
 # reformatting the table
 BR23093631_data_reformatted <- BR23093631_raw %>%
-  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>%
-  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>%
+  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>% #set any values that has "<" to -999
+  mutate(across(everything(), str_squish)) %>% #get rid of white space values
+  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>% # round values to 4 decimal places
   pivot_longer(cols = -"Sample", names_to = "sym_method", values_to = "value") %>%
-  mutate(Symbol = ifelse(grepl("_", str_sub(sym_method,start=-2)), str_sub(sym_method,start=-1), str_sub(sym_method,start=-2))) %>%
-  inner_join(select(for_filter, sym_method), by="sym_method") %>%
+  mutate(Symbol = ifelse(grepl("_", str_sub(sym_method,start=-2)), str_sub(sym_method,start=-1), str_sub(sym_method,start=-2))) %>% # extract string for symbol
+  inner_join(select(for_filter, sym_method), by="sym_method") %>% # join with helper data
   na.omit() %>% #remove missing data
   mutate(Project_Area = "Confidential") %>% #add project area name
   left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>%
@@ -289,18 +285,21 @@ Load and reformat data from WS_REE_2023_2024.xlsx into the exact same format as 
   * Note that in this data set; instead of 'nd' for not detected, values will be listed as below detection with a less than sign (e.g <5). Make sure that you set any data that contains < to -999
   
 ```{r}
+# load the raw data
 ws_ree <- read.xlsx("./data/WS_REE_2023_2024.xlsx", startRow = 2, colNames = TRUE, cols=c(13:57), rows = 3:119)
 
-ws_ree <- ws_ree[-1,-43]
+# remove first row (which only contain measurement unit) and remove column 43 (because we do not use Sc from ME-4ACD81 method) from raw data
+ws_ree <- ws_ree[-1,-43] 
   
+# Data Wrangling
 ws_ree_data_reformatted <- ws_ree %>% 
   rename("Sample" = "SAMPLE") %>%
-  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>%
-  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>%
+  mutate(across(everything(), ~ ifelse(grepl("<", .), -999, .))) %>% #set any values that has "<" to -999
+  mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>% # round values to 4 decimal places
   pivot_longer(cols = -"Sample", names_to = "Symbol", values_to = "value") %>%
-  na.omit() %>% 
-  mutate(Project_Area = "Confidential") %>% #add project area name
-  left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>% #join Oaky Creek data to extract "Symbol"
+  na.omit() %>% #remove missing data
+  mutate(Project_Area = "Confidential") %>% # add project area name
+  left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>% # join Oaky Creek data to extract "Symbol"
   mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium", #adding element description
                              Symbol == "W" ~ "Tungsten",
                              Symbol == "As" ~ "Arsenic",
@@ -317,8 +316,10 @@ saveRDS(ws_ree_data_reformatted, './results/WS_REE_2023_2024.rds')
 Load and merge all data sets from Task 1 to task 4 into a single object. Save the object as "all_data.rds" in the results folder
 
 ```{r}
+# combine all reformatted data (from task 1 to task 4)
 all_data_bfr_paas <- bind_rows(C29030_data_reformatted, BR22046077_data_reformatted, BR23093631_data_reformatted, ws_ree_data_reformatted)
 
+# Adding Rare Earth Element (REE) Calculations
 ree_all <-  dcast(setDT(all_data_bfr_paas),Project_Area+Sample~Symbol, value.var = "value",fill=NA) #convert back to wide format for summation
 ree_calc_all <- ree_all %>% 
   mutate(REE = La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu) %>% 
@@ -327,17 +328,17 @@ ree_calc_all <- ree_all %>%
   mutate(MREE = Eu+Gd+Tb+Dy+Y) %>% 
   mutate(HREE = Ho+Er+Tm+Yb+Lu) 
 
-#convert back to long format so we can join PAAS values
+# Convert back to long format so we can join PAAS values
 ree_long_all <- melt(ree_calc_all,id.vars = 1:2,variable.name = "Symbol")
 
-#4 join PASS data
+# Join PASS data
 paas <- read_csv("./data/paas_lkp.csv") #read paas data
 ree_long_all <- ree_long_all %>% 
   inner_join(paas, by="Symbol") %>% #join paas data
   mutate(PAAS_normalised_value = value/PAAS_ppm) %>% #calculate paas normalised value 
   mutate(Above_PASS_flag = ifelse(PAAS_normalised_value >1, "Enriched above background", "Below background")) #add a flag
 
-#5 rename columns to make consistent
+# Rename columns for consistency
 names(ree_long_all) <- c("Project_Name","Sample_ID","Element_Symbol","Element_Value_ppm","Element_Description","PAAS_value_ppm","PAAS_normalised_value","Above_PASS_flag")
 
 # Saving the data into .RDS format
