@@ -46,6 +46,28 @@ kable(desc_stats)
 
 # Correlation Analysis
 ```{r}
+
+```
+
+# Distribution of elements with reference to PASS levels
+```{r}
+alldata %>%
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
+  geom_point() +
+  theme_bw() +
+  scale_color_brewer(palette = "Set1")
+```
+
+```{r}
+alldata %>%
+  group_by(Project_Name, Above_PASS_flag) %>%
+  summarise(count = n()) %>%
+  ggplot(aes(x = Above_PASS_flag, y = count, fill = Above_PASS_flag)) +
+  geom_col() +
+  facet_wrap(~ Project_Name) +
+  theme_bw() +
+  theme(axis.text.x = element_blank()) +
+  scale_fill_brewer(palette = "Set1")
 ```
 
 
