@@ -1,0 +1,56 @@
+---
+title: "02_Exploratory_Data_Analysis"
+output: html_document
+date: "2024-08-22"
+---
+
+```{r}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(corrplot)
+```
+
+
+# Load the Data
+```{r}
+# Loading all data
+alldata <- readRDS('./results/all_data.rds')
+
+head(alldata, n = 10)
+
+str(alldata)
+```
+
+# Descriptive Statistics
+```{r}
+# Exclude -999.00 data
+alldata <- alldata[which(alldata$Element_Value_ppm != -999.00)]
+
+# Populate descriptive stats table
+desc_stats <- alldata %>%
+  group_by(Element_Symbol, Element_Description) %>%
+  summarise(min = min(Element_Value_ppm),
+         max = max(Element_Value_ppm),
+         mean = mean(Element_Value_ppm),
+         median = median(Element_Value_ppm),
+         range = max(Element_Value_ppm) - min(Element_Value_ppm),
+         q1 = quantile(Element_Value_ppm, 0.25),
+         q3 = quantile(Element_Value_ppm, 0.75),
+         iqr = IQR(Element_Value_ppm),
+         sd = sd(Element_Value_ppm),
+         var = var(Element_Value_ppm))
+
+kable(desc_stats)
+```
+
+# Correlation Analysis
+```{r}
+```
+
+
+# Distribution Analysis
+
+
+# Scatter Plot
+
