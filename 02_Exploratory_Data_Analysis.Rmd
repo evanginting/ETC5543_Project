@@ -9,6 +9,7 @@ library(dplyr)
 library(knitr)
 library(kableExtra)
 library(corrplot)
+library(ggcorrplot) 
 ```
 
 
@@ -25,7 +26,7 @@ str(alldata)
 # Descriptive Statistics
 ```{r}
 # Exclude -999.00 data
-alldata <- alldata[which(alldata$Element_Value_ppm != -999.00)]
+alldata <- alldata[alldata$Element_Value_ppm != -999.00, ]
 
 # Populate descriptive stats table
 desc_stats <- alldata %>%
@@ -54,6 +55,7 @@ kable(desc_stats)
 alldata %>%
   ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
   geom_point() +
+  geom_vline(xintercept = 1, linetype = 2) +
   theme_bw() +
   scale_color_brewer(palette = "Set1")
 ```
@@ -72,7 +74,45 @@ alldata %>%
 
 
 # Distribution Analysis
+```{r}
+alldata %>%
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol)) +
+  geom_boxplot() +
+  geom_vline(xintercept = 1, linetype = 2) +
+  theme_classic()
+```
+
+```{r}
+alldata %>%
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
+  geom_point() +
+  geom_vline(xintercept = 1, linetype = 2) +
+  scale_color_brewer(palette = "Set1") +
+  facet_wrap(~ Project_Name) +
+  theme_bw()
+```
 
 
 # Scatter Plot
+
+
+
+# Cor plot
+
+```{r}
+res_cor_cop <- alldata %>% 
+  select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm) %>% 
+  pivot_wider(names_from = Element_Symbol,values_from = c(Element_Value_ppm))
+
+corr_cop <- cor(res_cor_cop[,3:56])
+
+
+pg_cop <- ggcorrplot(corr_cop,type = "lower",
+     outline.col = "white", lab = TRUE, lab_size = 2)
+
+print(pg_cop)
+```
+
+
+
 

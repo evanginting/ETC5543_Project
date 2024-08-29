@@ -213,7 +213,7 @@ BR22046077_data_reformatted <- BR22046077_raw %>%
   mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>% # round values to 4 decimal places
   pivot_longer(cols = -"Sample", names_to = "Symbol", values_to = "value") %>%
   na.omit() %>% #remove missing data
-  mutate(Project_Area = "Confidential") %>% #add project area name
+  mutate(Project_Area = "Confidential_A") %>% #add project area name
   left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>% #join Oaky Creek data to extract "Symbol"
   mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium", #adding element description
                              Symbol == "W" ~ "Tungsten",
@@ -262,7 +262,7 @@ BR23093631_data_reformatted <- BR23093631_raw %>%
   mutate(Symbol = ifelse(grepl("_", str_sub(sym_method,start=-2)), str_sub(sym_method,start=-1), str_sub(sym_method,start=-2))) %>% # extract string for symbol
   inner_join(select(for_filter, sym_method), by="sym_method") %>% # join with helper data
   na.omit() %>% #remove missing data
-  mutate(Project_Area = "Confidential") %>% #add project area name
+  mutate(Project_Area = "Confidential_B") %>% #add project area name
   left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>%
   mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium", #adding element description
                              Symbol == "W" ~ "Tungsten",
@@ -270,6 +270,9 @@ BR23093631_data_reformatted <- BR23093631_raw %>%
                              Symbol == "Ti" ~ "Titanium",
                              TRUE ~ Element)) %>%
   select(Element, Symbol, Sample, value, Project_Area) #reorder the column
+
+# Saving the data into .RDS format
+saveRDS(BR23093631_data_reformatted, './results/BR23093631_data_reformatted.rds')
 ```
 
 ## Task 4
@@ -298,7 +301,7 @@ ws_ree_data_reformatted <- ws_ree %>%
   mutate(across(-Sample, ~ round(as.numeric(.), 4))) %>% # round values to 4 decimal places
   pivot_longer(cols = -"Sample", names_to = "Symbol", values_to = "value") %>%
   na.omit() %>% #remove missing data
-  mutate(Project_Area = "Confidential") %>% # add project area name
+  mutate(Project_Area = "Confidential_C") %>% # add project area name
   left_join(select(oc_sheet_data, Element, Symbol), by="Symbol") %>% # join Oaky Creek data to extract "Symbol"
   mutate(Element = case_when(Symbol == "Hf" ~ "Hafnium", #adding element description
                              Symbol == "W" ~ "Tungsten",
@@ -336,8 +339,9 @@ paas <- read_csv("./data/paas_lkp.csv") #read paas data
 ree_long_all <- ree_long_all %>% 
   inner_join(paas, by="Symbol") %>% #join paas data
   mutate(PAAS_normalised_value = value/PAAS_ppm) %>% #calculate paas normalised value 
-  mutate(Above_PASS_flag = ifelse(PAAS_normalised_value >1, "Enriched above background", "Below background")) #add a flag
-
+  mutate(Above_PASS_flag = ifelse(PAAS_normalised_value >1, "Enriched above background", "Below background")) %>% #add a flag
+  na.omit()
+  
 # Rename columns for consistency
 names(ree_long_all) <- c("Project_Name","Sample_ID","Element_Symbol","Element_Value_ppm","Element_Description","PAAS_value_ppm","PAAS_normalised_value","Above_PASS_flag")
 
