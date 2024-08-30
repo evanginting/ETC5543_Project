@@ -1,18 +1,21 @@
 ---
 title: "02_Exploratory_Data_Analysis"
-output: html_document
 date: '`r Sys.Date()`'
+output:
+  bookdown::html_document2: default
 ---
 
 ```{r library, echo = FALSE, include = FALSE}
 
 library(dplyr)
+library(tidyverse)
 library(ggplot2)
 library(knitr)
 library(kableExtra)
 library(corrplot)
 library(ggcorrplot) 
 library(gridExtra)
+library(bookdown)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 theme_set(theme_minimal())
 ```
@@ -26,24 +29,30 @@ This document presents an EDA of elements' concentration data (named as `all_dat
 # Loading all data
 alldata <- readRDS('./results/all_data.rds')
 
-str(alldata)
+# Exclude observations that element value below -800.00 data
+alldata_eda <- alldata[alldata$Element_Value_ppm >= -800.00, ]
 ```
-Our data comprises of **`r nrows(alldata)` observations** and **`r ncols(alldata)` variables**. Most of the variables are character type, except for variable `Element_Value_ppm`, `PAAS_value_ppm`, and `PAAS_normalised_value` that are numeric type. The \ref{tab:preview} provide a preview of the data from top of 10 observations.
+Our data comprises of **`r nrow(alldata_eda)` observations** and **`r ncol(alldata_eda)` variables**. Most of the variables are character type, except for variable `Element_Value_ppm`, `PAAS_value_ppm`, and `PAAS_normalised_value` that are numeric type.
 
-```{r preview, fig.cap = "Top 10 observations of the data.", out.width = "100%", fig.align = "center"}
-kable(head(alldata, n = 10))
+```{r}
+str(alldata_eda)
+```
+
+
+The table \@ref(tab:datpreview) provide a preview of the data from top of 10 observations.
+
+```{r datpreview, fig.cap = "Top 10 observations of the data", out.extra='width=0.8\\textwidth'}
+knitr::kable(head(alldata_eda, n = 10), align = "c") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
 ```
 
 
 ## Descriptive Statistics
 
-This section provides some generic statistics information about the data, such as min, max, mean, median, and others. The table \ref{tab:desc_stats} lay out the details about these informations for each element.
-```{r desc_stats, fig.cap = "Descriptive Statistics of Elements' Concentration", out.width = "100%", fig.align = "center"}
-# Exclude -999.00 data
-alldata <- alldata[alldata$Element_Value_ppm != -999.00, ]
-
+This section provides some generic statistics information about the data, such as min, max, mean, median, and others. The table \@ref(tab:desc-stats) lay out the details about these informations for each element.
+```{r desc-stats, out.width = "50%", fig.align = "center"}
 # Populate descriptive stats table
-desc_stats <- alldata %>%
+desc_stats <- alldata_eda %>%
   group_by(Element_Symbol, Element_Description) %>%
   summarise(min = min(Element_Value_ppm),
          max = max(Element_Value_ppm),
@@ -56,40 +65,89 @@ desc_stats <- alldata %>%
          sd = sd(Element_Value_ppm),
          var = var(Element_Value_ppm))
 
-kable(desc_stats)
+knitr::kable(desc_stats, booktabs = TRUE, align = "c", 
+             caption = "Descriptive Statistics of Elements' Concentration") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
 ```
+
+
+## Distribution Analysis
+```{r}
+alldata_eda %>%
+  ggplot(aes(x = PAAS_normalised_value, fill = Above_PASS_flag)) +
+  geom_density() +
+  xlim(-10, 10) +
+  scale_fill_brewer(palette = "Set1") +
+  xlab("PAAS Normalised Value") +
+  ylab("Density") +
+  theme(legend.position = "bottom") +
+  labs(fill = "Above Pass Flag")
+```
+
+
+```{r element-dist, fig.cap = "Distribution of Critical Elements", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center"}
+bp1 <- alldata_eda %>%
+  filter(Element_Symbol %in% c("Ag","Al","Au","Ba","Be","Bi","Cd","Ce","Co","Cr","Cs","Cu","Dy",
+                               "Er","Eu","Fe","Ga", "Gd","Ge","Ho","In","La","Li","Lu","Mn","Mo")) %>%
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol)) +
+  geom_vline(xintercept = 1, linetype = 2, color = "red") +
+  xlab("PASS Normalised Value") +
+  ylab("Element Symbol") +
+  geom_boxplot()
+
+bp2 <- alldata_eda %>%
+  filter(Element_Symbol %in% c("Nb","Nd","Ni","Pb","Pr","Rb","Re","Sc","Sm","Sn","Sr","Ta","Tb",
+                               "Th","Tl","Tm","U","V","Y","Yb","Zn","Zr","REE","REEY","LREE","MREE","HREE")) %>%
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol)) +
+  geom_vline(xintercept = 1, linetype = 2, color = "red") +
+  xlab("PASS Normalised Value") +
+  ylab("Element Symbol") +
+  geom_boxplot() +
+  xlim(0, 45)
+
+grid.arrange(bp1, bp2, ncol = 2)
+```
+
 
 
 ## Distribution of elements with reference to PASS levels
 
-In this analysis, we are trying to assess all critical elements towards the PAAS standard. To begin with, we start from a high-level distribution across the two main categories that we used to identify which elements that are above and below standard. The normalised value will be flagged as "Enriched above background" if it is above 1, while the rest will be flagged as "Below background". The figure \ref{fig:fig_overall} provide the details about this high-level distribution.
+In this analysis, we are trying to assess all critical elements towards the PAAS standard. To begin with, we start from a high-level distribution across the two main categories that we used to identify which elements that are above and below standard. The normalised value will be flagged as "Enriched above background" if it is above 1, while the rest will be flagged as "Below background". The figure \@ref(fig:fig-overall) provide the details about this high-level distribution.
 
-```{r fig_overall, fig.cap = "The Profile of PASS Categories", out.width = "100%", fig.align = "center"}
-alldata %>%
+```{r fig-overall, fig.cap = "The Profile of PASS Categories", out.width = "60%", fig.align = "center"}
+alldata_eda %>%
   group_by(Above_PASS_flag) %>%
   summarise(count = n()) %>%
   ungroup() %>%  # Ungroup to perform operations on the entire data frame
-  mutate(Above_PASS_flag = reorder(Above_PASS_flag, -count, sum)) %>%  # Reorder based on the sum of counts
+  mutate(Above_PASS_flag = reorder(Above_PASS_flag, count, sum)) %>%  # Reorder based on the sum of counts
   ggplot(aes(x = Above_PASS_flag, y = count, fill = Above_PASS_flag)) +
   geom_text(aes(label = count), size = 3, vjust = -0.5, color = "black", position = position_dodge(0.9)) +
   geom_col(position = "dodge") +
-  scale_fill_brewer(palette = "Set1")
+  xlab(NULL) +
+  ylab("Count") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(legend.position = "none") +
+  labs(fill = "Above Pass Flag")
 ```
 As depicted in the bar chart, the distribution appears fairly balanced between the two categories, with 5,724 instances classified as "Enriched Above Background" and 5,355 instances falling "Below Background". Such a balance highlights the importance of further detailed analysis to understand the factors contributing to this distribution, the significance of enrichment in the context of the dataset, and how these elements behave under different conditions.
 
-Moving on to the element's level, we will assess how each element's concentration level compares to the PAAS standard. For each elements below, the value shown is the normalised, meaning we have incorporated the standard value towards the element's original values (based on sample taken). Figure \ref{fig:fig_elementcons} shows the profile of each sample towards this standard and their respective flags. 
-```{r fig_elementcons, fig.cap = "Distribution of elements with reference to PASS levels' Concentration", out.width = "100%", fig.align = "center"}
-alldata %>%
+Moving on to the element's level, we will assess how each element's concentration level compares to the PAAS standard. For each elements below, the value shown is the normalised, meaning we have incorporated the standard value towards the element's original values (based on sample taken). Figure \@ref(fig:figelementcons) shows the profile of each sample towards this standard and their respective flags. 
+```{r figelementcons, fig.cap = "Distribution of elements with reference to PASS levels' Concentration", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center"}
+alldata_eda %>%
   ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
   geom_point() +
   geom_vline(xintercept = 1, linetype = 2) +
-  scale_color_brewer(palette = "Set1")
+  xlab("PAAS Normalised Value") +
+  ylab("Element Symbol") +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  labs(color = "Above Pass Flag")
 ```
 As can be seen, the majority of normalised value fall within 0 to 10, while the rest are can be counted as outliers. A highlight point from this plot is all of 'Ag' concentration values are above PAAS standard. This could indicate that coal waste are rich in 'Ag'.
 
-Additionally, we also analyse how the distribution of critical elements across various Project Area. The figure \ref{fig:fig_projectcons} shows how many elements that was recorded in each project area that fall into these two categories.
-```{r fig_projectcons, fig.cap = "The Profile of Project Area with reference to PASS levels' Concentration", out.width = "100%", fig.align = "center"}
-alldata %>%
+Additionally, we also analyse how the distribution of critical elements across various Project Area. The figure \@ref(fig:figprojectcons) shows how many elements that was recorded in each project area that fall into these two categories.
+```{r figprojectcons, fig.cap = "The Profile of Project Area with reference to PASS levels' Concentration", out.width = "80%", fig.width = 10, fig.height = 8, fig.align = "center"}
+alldata_eda %>%
   group_by(Project_Name, Above_PASS_flag) %>%
   summarise(count = n()) %>%
   ungroup() %>%  # Ungroup to perform operations on the entire data frame
@@ -99,7 +157,11 @@ alldata %>%
   geom_col(position = "dodge") +
   #facet_wrap(~ Project_Name) +
   theme(axis.text.x = element_blank()) +
-  scale_fill_brewer(palette = "Set1")
+  xlab("Count") +
+  ylab("Project Name") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(legend.position = "bottom") +
+  labs(fill = "Above Pass Flag")
 ```
 
 Some key observations:
@@ -110,44 +172,27 @@ Some key observations:
 - A few projects, including "Oaky Creek", and "Unnamed", contribute minimally to the overall dataset, with very few elements categorised in either categories.
 
 
-## Distribution Analysis
-```{r}
-alldata %>%
-  ggplot(aes(x = PAAS_normalised_value, fill = Above_PASS_flag)) +
-  geom_density() +
-  xlim(-10, 10) +
-  scale_fill_brewer(palette = "Set1")
-```
 
-
-```{r}
-alldata %>%
-  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol)) +
-  geom_boxplot() +
-  geom_vline(xintercept = 1, linetype = 2)
-```
-
-```{r}
-alldata %>%
+```{r element-pro-dist, fig.cap = "Distribution of Critical Elements by Each Project Area", out.width = "100%", fig.width = 10, fig.height = 14, fig.align = "center"}
+alldata_eda %>%
   ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
   geom_point() +
   geom_vline(xintercept = 1, linetype = 2) +
   scale_color_brewer(palette = "Set1") +
-  facet_wrap(~ Project_Name)
+  facet_wrap(~ Project_Name) +
+  theme(legend.position = "bottom") +
+  labs(color = "Above Pass Flag")
 ```
 
 
 ## Correlation Matrix plot
 
-```{r}
-res_cor_cop <- alldata %>% 
+```{r corplot, fig.cap = "Correlation Matrix Plot of Critical Elements", out.width = "60%", fig.width = 10, fig.height = 14, fig.align = "center"}
+res_cor_cop <- alldata_eda %>% 
   select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm) %>% 
   pivot_wider(names_from = Element_Symbol,values_from = c(Element_Value_ppm))
 
-
-
 corr_cop <- cor(res_cor_cop[,3:55])
-
 
 pg_cop <- ggcorrplot(corr_cop,type = "lower",
      outline.col = "white", lab = TRUE, lab_size = 2)
@@ -155,580 +200,593 @@ pg_cop <- ggcorrplot(corr_cop,type = "lower",
 print(pg_cop)
 ```
 
+The \@ref(fig:corplot) shows the relationships between various elements. Some key observations are:
+
+- Strongly positive correlations: There are numbers of elements that have very strong relationship (above 0.95), such as **Er**-**Dy**, **Gd**-**Eu**, **Ho**-**Dy**, **Ho**-**Er**, **Pr**-**Nd**, **Sm**-**Nd**, **Tb**-**Dy**, **Tb**-**Gd**, **Tb**-**Ho**, **Yb**-**Er**, and **Yb**-**Ho**. There are also many more elements that have correlation above 0.8.
+- Moderate correlations: Many elements fall between 0.6-0.8, which indicate fairly strong relationships.
+- Weaker Correlations: Elements such as **Ba** show weaker correlations with most other elements, indicating less consistent co-occurrence or independent behavior within the dataset.This also the case for **Sr**.
+
 ## Scatter Plot
 
-### Correlation of LREE
+### Correlation of Dy
 ```{r}
-# LREE
+# Dy
 res_cor_cop %>%
-  ggplot(aes(x = LREE, y = MREE)) +
-  geom_point() +
+  ggplot(aes(x = Dy, y = Ce)) +
+  geom_point(aes(color = Project_Name)) +
   geom_smooth(method = "lm")
 ```
 
-### Correlation of Yb
+### Correlation of Er
 ```{r}
-# Yb
-res_cor_cop %>%
-  ggplot(aes(x = Yb, y = Zr)) +
+# Er - Ce
+p1 <- res_cor_cop %>%
+  ggplot(aes(x = Er, y = Ce)) +
   geom_point() +
   geom_smooth(method = "lm")
+
+# Er - Dy
+p2 <- res_cor_cop %>%
+  ggplot(aes(x = Er, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p1, p2, ncol = 2)
 ```
 
-### Correlation of Tb
+### Correlation of Eu
 ```{r}
-# Tb
+# Eu - Ce
+p3 <- res_cor_cop %>%
+  ggplot(aes(x = Eu, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Eu - Dy
+p4 <- res_cor_cop %>%
+  ggplot(aes(x = Eu, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Eu - Er
+p5 <- res_cor_cop %>%
+  ggplot(aes(x = Eu, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p3, p4, p5, ncol = 3)
+```
+
+### Correlation of Ga
+```{r}
+# Ga - Ce
+p6 <- res_cor_cop %>%
+  ggplot(aes(x = Ga, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Ga - Eu
+p7 <- res_cor_cop %>%
+  ggplot(aes(x = Ga, y = Eu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p6, p7, ncol = 2)
+```
+
+### Correlation of Gd
+```{r}
+# Gd - Ce
+p8 <- res_cor_cop %>%
+  ggplot(aes(x = Gd, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Gd - Dy
+p9 <- res_cor_cop %>%
+  ggplot(aes(x = Gd, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Gd - Er
+p10 <- res_cor_cop %>%
+  ggplot(aes(x = Gd, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Gd - Eu
+p11 <- res_cor_cop %>%
+  ggplot(aes(x = Gd, y = Eu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Gd - Ga
+p12 <- res_cor_cop %>%
+  ggplot(aes(x = Gd, y = Ga)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p8, p9, p10, p11, p12, ncol = 3)
+```
+
+### Correlation of Ho
+```{r}
+# Ho - Ce
+p13 <- res_cor_cop %>%
+  ggplot(aes(x = Ho, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Ho - Dy
+p14 <- res_cor_cop %>%
+  ggplot(aes(x = Ho, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Ho - Er
+p15 <- res_cor_cop %>%
+  ggplot(aes(x = Ho, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Ho - Eu
+p16 <- res_cor_cop %>%
+  ggplot(aes(x = Ho, y = Eu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Ho - Gd
+p17 <- res_cor_cop %>%
+  ggplot(aes(x = Ho, y = Gd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p13, p14, p15, p16, p17, ncol = 3)
+```
+
+### Correlation of Nd
+```{r}
+# Nd - Ce
+p18 <- res_cor_cop %>%
+  ggplot(aes(x = Nd, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Nd - Dy
+p19 <- res_cor_cop %>%
+  ggplot(aes(x = Nd, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Nd - Er
+p20 <- res_cor_cop %>%
+  ggplot(aes(x = Nd, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Nd - Eu
+p21 <- res_cor_cop %>%
+  ggplot(aes(x = Nd, y = Eu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Nd - Ga
+p22 <- res_cor_cop %>%
+  ggplot(aes(x = Nd, y = Ga)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Nd - Gd
+p23 <- res_cor_cop %>%
+  ggplot(aes(x = Nd, y = Gd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Nd - Ho
+p24 <- res_cor_cop %>%
+  ggplot(aes(x = Nd, y = Ho)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p18, p19, p20, p21, p22, p23, p24, ncol = 4)
+```
+
+### Correlation of Pb
+```{r}
+# Pb - Ce
+p25 <- res_cor_cop %>%
+  ggplot(aes(x = Pb, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pb - Ga
+p26 <- res_cor_cop %>%
+  ggplot(aes(x = Pb, y = Ga)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pb - Nd
+p27 <- res_cor_cop %>%
+  ggplot(aes(x = Pb, y = Nd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p25, p26, p27, ncol = 3)
+```
+
+### Correlation of Pr
+```{r}
+# Pr - Ce
+p28 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Dy
+p29 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Er
+p30 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Eu
+p31 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Eu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Ga
+p32 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Ga)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Gd
+p33 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Gd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Ho
+p34 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Ho)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Nd
+p35 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Nd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Pr - Pb
+p36 <- res_cor_cop %>%
+  ggplot(aes(x = Pr, y = Pb)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p28, p29, p30, p31, p32, p33, p34, p35, p36, ncol = 3)
+```
+
+### Correlation of Rb
+```{r}
+# Rb - Ga
 res_cor_cop %>%
-  ggplot(aes(x = Tb, y = Yb)) +
+  ggplot(aes(x = Rb, y = Ga)) +
   geom_point() +
   geom_smooth(method = "lm")
 ```
 
 ### Correlation of Sm
 ```{r}
-# Sm & Tb
-p1 <- res_cor_cop %>%
-  ggplot(aes(x = Sm, y = Tb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Sm & Yb
-p2 <- res_cor_cop %>%
-  ggplot(aes(x = Sm, y = Yb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-  
-grid.arrange(p1, p2, ncol = 2)
-```
-
-### Correlation of Pr
-```{r}
-# Pr & Sm
-p3 <- res_cor_cop %>%
-  ggplot(aes(x = Pr, y = Sm)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Pr & Tb
-p4 <- res_cor_cop %>%
-  ggplot(aes(x = Pr, y = Tb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Pr & Th
-p5 <- res_cor_cop %>%
-  ggplot(aes(x = Pr, y = Th)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Pr & Yb
-p6 <- res_cor_cop %>%
-  ggplot(aes(x = Pr, y = Yb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Pr & Zr
-p7 <- res_cor_cop %>%
-  ggplot(aes(x = Pr, y = Zr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Pr & LREE
-p8 <- res_cor_cop %>%
-  ggplot(aes(x = Pr, y = LREE)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-  
-grid.arrange(p3, p4, p5, p6, p7, p8, ncol = 3)
-
-```
-
-### Correlation of Pb
-```{r}
-# Pb & Pr
-p9 <- res_cor_cop %>%
-  ggplot(aes(x = Pb, y = Pr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Pb & Sm
-p10 <- res_cor_cop %>%
-  ggplot(aes(x = Pb, y = Sm)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Pb & Th
-p11 <- res_cor_cop %>%
-  ggplot(aes(x = Pb, y = Th)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-  
-grid.arrange(p9, p10, p11, ncol = 3)
-```
-
-### Correlation of Nd
-```{r}
-# Nd & Pb
-p12 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = Pb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Nd & Pr
-p13 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = Pr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Nd & Sm
-p14 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = Sm)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Nd & Tb
-p15 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = Tb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Nd & Th
-p16 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = Th)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Nd & Yb
-p17 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = Yb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Nd & Zr
-p18 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = Zr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Nd & LREE
-p19 <- res_cor_cop %>%
-  ggplot(aes(x = Nd, y = LREE)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-  
-grid.arrange(p12, p13, p14, p15, p16, p17, p18, p19, ncol = 4)
-```
-
-### Correlation of Ho
-```{r}
-# Ho & Nd
-p20 <- res_cor_cop %>%
-  ggplot(aes(x = Ho, y = Nd)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ho & Pr
-p21 <- res_cor_cop %>%
-  ggplot(aes(x = Ho, y = Pr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ho & Sm
-p22 <- res_cor_cop %>%
-  ggplot(aes(x = Ho, y = Sm)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ho & Tb
-p23 <- res_cor_cop %>%
-  ggplot(aes(x = Ho, y = Tb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ho & Yb
-p24 <- res_cor_cop %>%
-  ggplot(aes(x = Ho, y = Yb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ho & Zr
-p25 <- res_cor_cop %>%
-  ggplot(aes(x = Ho, y = Zr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-grid.arrange(p20, p21, p22, p23, p24, p25, ncol = 3)
-```
-
-### Correlation of Gd
-```{r}
-# Gd & Ho
-p26 <- res_cor_cop %>%
-  ggplot(aes(x = Gd, y = Ho)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Gd & Nd
-p27 <- res_cor_cop %>%
-  ggplot(aes(x = Gd, y = Nd)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Gd & Pr
-p28 <- res_cor_cop %>%
-  ggplot(aes(x = Gd, y = Pr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Gd & Sm
-p29 <- res_cor_cop %>%
-  ggplot(aes(x = Gd, y = Sm)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Gd & Tb
-p30 <- res_cor_cop %>%
-  ggplot(aes(x = Gd, y = Tb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Gd & Yb
-p31 <- res_cor_cop %>%
-  ggplot(aes(x = Gd, y = Yb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Gd & Zr
-p32 <- res_cor_cop %>%
-  ggplot(aes(x = Gd, y = Zr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-grid.arrange(p26, p27, p28, p29, p30, p31, p32, ncol = 4)
-```
-
-### Correlation of Ga
-```{r}
-# Ga & Nd
-p33 <- res_cor_cop %>%
-  ggplot(aes(x = Ga, y = Nd)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ga & Pb
-p34 <- res_cor_cop %>%
-  ggplot(aes(x = Ga, y = Pb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ga & Pr
-p35 <- res_cor_cop %>%
-  ggplot(aes(x = Ga, y = Pr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ga & Rb
-p36 <- res_cor_cop %>%
-  ggplot(aes(x = Ga, y = Rb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ga & Sm
+# Sm - Ce
 p37 <- res_cor_cop %>%
-  ggplot(aes(x = Ga, y = Sm)) +
+  ggplot(aes(x = Sm, y = Ce)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Ga & Th
+# Sm - Dy
 p38 <- res_cor_cop %>%
-  ggplot(aes(x = Ga, y = Th)) +
+  ggplot(aes(x = Sm, y = Dy)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Ga & Zr
+# Sm - Er
 p39 <- res_cor_cop %>%
-  ggplot(aes(x = Ga, y = Zr)) +
+  ggplot(aes(x = Sm, y = Er)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-grid.arrange(p33, p34, p35, p36, p37, p38, p39, ncol = 4)
-```
-
-### Correlation of Eu
-```{r}
-# Eu & Ga
+# Sm - Eu
 p40 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Ga)) +
+  ggplot(aes(x = Sm, y = Eu)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+# Sm - Ga
 p41 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Gd)) +
+  ggplot(aes(x = Sm, y = Ga)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+# Sm - Gd
 p42 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Ho)) +
+  ggplot(aes(x = Sm, y = Gd)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+# Sm - Ho
 p43 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Nd)) +
+  ggplot(aes(x = Sm, y = Ho)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+# Sm - Nd
 p44 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Pr)) +
+  ggplot(aes(x = Sm, y = Nd)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+# Sm - Pb
 p45 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Sm)) +
+  ggplot(aes(x = Sm, y = Pb)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+# Sm - Pr
 p46 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Tb)) +
+  ggplot(aes(x = Sm, y = Pr)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+grid.arrange(p37, p38, p39, p40, p41, p42, p43, p44, p45, p46, ncol = 5)
+```
+
+### Correlation of Tb
+```{r}
+# Tb - Ce
 p47 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Yb)) +
+  ggplot(aes(x = Tb, y = Ce)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Eu & Ga
+# Tb - Dy
 p48 <- res_cor_cop %>%
-  ggplot(aes(x = Eu, y = Zr)) +
+  ggplot(aes(x = Tb, y = Dy)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-grid.arrange(p40, p41, p42, p43, p44, p45, p46, p47, p48, ncol = 3)
-```
+# Tb - Er
+p49 <- res_cor_cop %>%
+  ggplot(aes(x = Tb, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
 
-### Correlation of Er
-```{r}
-# Er & Ga
+# Tb - Eu
 p50 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Eu)) +
+  ggplot(aes(x = Tb, y = Eu)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Ga
+# Tb - Gd
 p51 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Gd)) +
+  ggplot(aes(x = Tb, y = Gd)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Ga
+# Tb - Ho
 p52 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Ho)) +
+  ggplot(aes(x = Tb, y = Ho)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Ga
+# Tb - Nd
 p53 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Nd)) +
+  ggplot(aes(x = Tb, y = Nd)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Ga
+# Tb - Pr
 p54 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Pr)) +
+  ggplot(aes(x = Tb, y = Pr)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Ga
+# Tb - Sm
 p55 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Sm)) +
+  ggplot(aes(x = Tb, y = Sm)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Ga
+grid.arrange(p47, p48, p49, p50, p51, p52, p53, p54, p55, ncol = 3)
+```
+
+### Correlation of Th
+```{r}
+# Th - Ce
 p56 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Tb)) +
+  ggplot(aes(x = Th, y = Ce)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Ga
+# Th - Ga
 p57 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Yb)) +
+  ggplot(aes(x = Th, y = Ga)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Er & Zr
+# Th - Nd
 p58 <- res_cor_cop %>%
-  ggplot(aes(x = Er, y = Zr)) +
+  ggplot(aes(x = Th, y = Nd)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-grid.arrange(p50, p51, p52, p53, p54, p55, p56, p57, p58, ncol = 3)
-```
+# Th - Pb
+p59 <- res_cor_cop %>%
+  ggplot(aes(x = Th, y = Pb)) +
+  geom_point() +
+  geom_smooth(method = "lm")
 
-### Correlation of Dy
-```{r}
-# Dy & Er
+# Th - Pr
 p60 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Er)) +
+  ggplot(aes(x = Th, y = Pr)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Dy & Eu
+# Th - Sm
 p61 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Eu)) +
+  ggplot(aes(x = Th, y = Sm)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Dy & Gd
-p62 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Gd)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Dy & Ho
-p63 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Ho)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Dy & Nd
-p64 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Nd)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Dy & Pr
-p65 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Pr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Dy & Sm
-p66 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Sm)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Dy & Tb
-p67 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Tb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Dy & Yb
-p68 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Yb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Dy & Zr
-p69 <- res_cor_cop %>%
-  ggplot(aes(x = Dy, y = Zr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-grid.arrange(p60, p61, p62, p63, p64, p65, p66, p67, p68, p69, ncol = 5)
+grid.arrange(p56, p57, p58, p59, p60, p61, ncol = 3)
 ```
 
-### Correlation of Ce
+### Correlation of Yb
 ```{r}
-# Ce & Dy
+# Yb - Ce
+p62 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Dy
+p63 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Er
+p64 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Eu
+p65 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Eu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Gd
+p66 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Gd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Ho
+p67 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Ho)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Nd
+p68 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Nd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Pr
+p69 <- res_cor_cop %>%
+  ggplot(aes(x = Yb, y = Pr)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Yb - Sm
 p70 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Dy)) +
+  ggplot(aes(x = Yb, y = Sm)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Ce & Er
+# Yb - Tb
 p71 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Er)) +
+  ggplot(aes(x = Yb, y = Tb)) +
   geom_point() +
   geom_smooth(method = "lm")
 
-# Ce & Eu
-p72 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Eu)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Ga
-p73 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Ga)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Gd
-p74 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Gd)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Ho
-p75 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Ho)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Nd
-p76 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Nd)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Pb
-p77 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Pb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Pr
-p78 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Pr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Sm
-p79 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Sm)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Tb
-p80 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Tb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Th
-p81 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Th)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Yb
-p82 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Yb)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & Zr
-p83 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = Zr)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-# Ce & LREE
-p84 <- res_cor_cop %>%
-  ggplot(aes(x = Ce, y = LREE)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-
-grid.arrange(p70, p71, p72, p73, p74, p75, p76, p77, p78, p79, p80, p81, p82, p83, p84, ncol = 5)
+grid.arrange(p62, p63, p64, p65, p66, p67, p68, p69, p70, p71, ncol = 5)
 ```
+
+### Correlation of Zr
+```{r}
+# Zr - Ce
+p72 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Ce)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Dy
+p73 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Dy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Er
+p74 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Er)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Eu
+p75 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Eu)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Ga
+p76 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Ga)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Gd
+p77 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Gd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Ho
+p78 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Ho)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Nd
+p79 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Nd)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Pr
+p80 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Pr)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Sm
+p81 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Sm)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Tb
+p82 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Tb)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Zr - Yb
+p83 <- res_cor_cop %>%
+  ggplot(aes(x = Zr, y = Yb)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+grid.arrange(p72, p73, p74, p75, p76, p77, p78, p79, p80, p81, p82, p83, ncol = 4)
+```
+
 
