@@ -1,10 +1,11 @@
 ---
 title: "02_Exploratory_Data_Analysis"
 output: html_document
-date: "2024-08-22"
+date: '`r Sys.Date()`'
 ---
 
-```{r}
+```{r library, echo = FALSE, include = FALSE}
+
 library(dplyr)
 library(ggplot2)
 library(knitr)
@@ -12,22 +13,32 @@ library(kableExtra)
 library(corrplot)
 library(ggcorrplot) 
 library(gridExtra)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 theme_set(theme_minimal())
 ```
 
+# Exploratory Data Analysis (EDA)
 
-# Load the Data
+This document presents an EDA of elements' concentration data (named as `all_data.rds`), which provide information about the concentration of critical mineral across different areas in Australia that has been normalised using PAAS (Post-Archean Australian Shale) standard. The primary objective of this analysis is to gain a deeper understanding of the data's structure and key characteristics, which will inform subsequent modeling and decision-making processes. Through this analysis, we aim to identify significant trends, correlations, and outliers that may influence the outcomes of the study.
+
+## Load the Data
 ```{r}
 # Loading all data
 alldata <- readRDS('./results/all_data.rds')
 
-head(alldata, n = 10)
-
 str(alldata)
 ```
+Our data comprises of **`r nrows(alldata)` observations** and **`r ncols(alldata)` variables**. Most of the variables are character type, except for variable `Element_Value_ppm`, `PAAS_value_ppm`, and `PAAS_normalised_value` that are numeric type. The \ref{tab:preview} provide a preview of the data from top of 10 observations.
 
-# Descriptive Statistics
-```{r}
+```{r preview, fig.cap = "Top 10 observations of the data.", out.width = "100%", fig.align = "center"}
+kable(head(alldata, n = 10))
+```
+
+
+## Descriptive Statistics
+
+This section provides some generic statistics information about the data, such as min, max, mean, median, and others. The table \ref{tab:desc_stats} lay out the details about these informations for each element.
+```{r desc_stats, fig.cap = "Descriptive Statistics of Elements' Concentration", out.width = "100%", fig.align = "center"}
 # Exclude -999.00 data
 alldata <- alldata[alldata$Element_Value_ppm != -999.00, ]
 
@@ -49,16 +60,35 @@ kable(desc_stats)
 ```
 
 
-# Distribution of elements with reference to PASS levels
-```{r}
+## Distribution of elements with reference to PASS levels
+
+In this analysis, we are trying to assess all critical elements towards the PAAS standard. To begin with, we start from a high-level distribution across the two main categories that we used to identify which elements that are above and below standard. The normalised value will be flagged as "Enriched above background" if it is above 1, while the rest will be flagged as "Below background". The figure \ref{fig:fig_overall} provide the details about this high-level distribution.
+
+```{r fig_overall, fig.cap = "The Profile of PASS Categories", out.width = "100%", fig.align = "center"}
+alldata %>%
+  group_by(Above_PASS_flag) %>%
+  summarise(count = n()) %>%
+  ungroup() %>%  # Ungroup to perform operations on the entire data frame
+  mutate(Above_PASS_flag = reorder(Above_PASS_flag, -count, sum)) %>%  # Reorder based on the sum of counts
+  ggplot(aes(x = Above_PASS_flag, y = count, fill = Above_PASS_flag)) +
+  geom_text(aes(label = count), size = 3, vjust = -0.5, color = "black", position = position_dodge(0.9)) +
+  geom_col(position = "dodge") +
+  scale_fill_brewer(palette = "Set1")
+```
+As depicted in the bar chart, the distribution appears fairly balanced between the two categories, with 5,724 instances classified as "Enriched Above Background" and 5,355 instances falling "Below Background". Such a balance highlights the importance of further detailed analysis to understand the factors contributing to this distribution, the significance of enrichment in the context of the dataset, and how these elements behave under different conditions.
+
+Moving on to the element's level, we will assess how each element's concentration level compares to the PAAS standard. For each elements below, the value shown is the normalised, meaning we have incorporated the standard value towards the element's original values (based on sample taken). Figure \ref{fig:fig_elementcons} shows the profile of each sample towards this standard and their respective flags. 
+```{r fig_elementcons, fig.cap = "Distribution of elements with reference to PASS levels' Concentration", out.width = "100%", fig.align = "center"}
 alldata %>%
   ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
   geom_point() +
   geom_vline(xintercept = 1, linetype = 2) +
   scale_color_brewer(palette = "Set1")
 ```
+As can be seen, the majority of normalised value fall within 0 to 10, while the rest are can be counted as outliers. A highlight point from this plot is all of 'Ag' concentration values are above PAAS standard. This could indicate that coal waste are rich in 'Ag'.
 
-```{r}
+Additionally, we also analyse how the distribution of critical elements across various Project Area. The figure \ref{fig:fig_projectcons} shows how many elements that was recorded in each project area that fall into these two categories.
+```{r fig_projectcons, fig.cap = "The Profile of Project Area with reference to PASS levels' Concentration", out.width = "100%", fig.align = "center"}
 alldata %>%
   group_by(Project_Name, Above_PASS_flag) %>%
   summarise(count = n()) %>%
@@ -72,8 +102,15 @@ alldata %>%
   scale_fill_brewer(palette = "Set1")
 ```
 
+Some key observations:
 
-# Distribution Analysis
+- The "Confidential_C" project stands out with a substantial number of elements (3,358) categorised as "Enriched Above Background", significantly outnumbering the "Below Background" category count (1,192). This suggests a considerable concentration of elements that exceed PAAS standard in this project.
+- Project such as "Fort Cooper", "Confidential_B" and "Confidential_A" display a more balanced distribution between two categories, indicating a near-equal mix of elements that either meet or fall short of the enrichment criteria.
+- In contrast, several projects, such as "Wandoan", "Copabella", "Lake Vermont", "Collinsville", "Moorvalle", "Newlands", "Metropolitan", "Rolleston" exhibit a higher count of elements classified as "Below Background". This implies that these projects have a significant proportion of elements that do not reach the enrichment threshold.
+- A few projects, including "Oaky Creek", and "Unnamed", contribute minimally to the overall dataset, with very few elements categorised in either categories.
+
+
+## Distribution Analysis
 ```{r}
 alldata %>%
   ggplot(aes(x = PAAS_normalised_value, fill = Above_PASS_flag)) +
@@ -100,9 +137,7 @@ alldata %>%
 ```
 
 
-
-
-# Correlation Matrix plot
+## Correlation Matrix plot
 
 ```{r}
 res_cor_cop <- alldata %>% 
@@ -120,9 +155,9 @@ pg_cop <- ggcorrplot(corr_cop,type = "lower",
 print(pg_cop)
 ```
 
-# Scatter Plot
+## Scatter Plot
 
-## Correlation of LREE
+### Correlation of LREE
 ```{r}
 # LREE
 res_cor_cop %>%
@@ -131,7 +166,7 @@ res_cor_cop %>%
   geom_smooth(method = "lm")
 ```
 
-## Correlation of Yb
+### Correlation of Yb
 ```{r}
 # Yb
 res_cor_cop %>%
@@ -140,7 +175,7 @@ res_cor_cop %>%
   geom_smooth(method = "lm")
 ```
 
-## Correlation of Tb
+### Correlation of Tb
 ```{r}
 # Tb
 res_cor_cop %>%
@@ -149,7 +184,7 @@ res_cor_cop %>%
   geom_smooth(method = "lm")
 ```
 
-## Correlation of Sm
+### Correlation of Sm
 ```{r}
 # Sm & Tb
 p1 <- res_cor_cop %>%
@@ -166,7 +201,7 @@ p2 <- res_cor_cop %>%
 grid.arrange(p1, p2, ncol = 2)
 ```
 
-## Correlation of Pr
+### Correlation of Pr
 ```{r}
 # Pr & Sm
 p3 <- res_cor_cop %>%
@@ -208,7 +243,7 @@ grid.arrange(p3, p4, p5, p6, p7, p8, ncol = 3)
 
 ```
 
-## Correlation of Pb
+### Correlation of Pb
 ```{r}
 # Pb & Pr
 p9 <- res_cor_cop %>%
@@ -231,7 +266,7 @@ p11 <- res_cor_cop %>%
 grid.arrange(p9, p10, p11, ncol = 3)
 ```
 
-## Correlation of Nd
+### Correlation of Nd
 ```{r}
 # Nd & Pb
 p12 <- res_cor_cop %>%
@@ -284,7 +319,7 @@ p19 <- res_cor_cop %>%
 grid.arrange(p12, p13, p14, p15, p16, p17, p18, p19, ncol = 4)
 ```
 
-## Correlation of Ho
+### Correlation of Ho
 ```{r}
 # Ho & Nd
 p20 <- res_cor_cop %>%
@@ -325,7 +360,7 @@ p25 <- res_cor_cop %>%
 grid.arrange(p20, p21, p22, p23, p24, p25, ncol = 3)
 ```
 
-## Correlation of Gd
+### Correlation of Gd
 ```{r}
 # Gd & Ho
 p26 <- res_cor_cop %>%
@@ -372,7 +407,7 @@ p32 <- res_cor_cop %>%
 grid.arrange(p26, p27, p28, p29, p30, p31, p32, ncol = 4)
 ```
 
-## Correlation of Ga
+### Correlation of Ga
 ```{r}
 # Ga & Nd
 p33 <- res_cor_cop %>%
@@ -419,7 +454,7 @@ p39 <- res_cor_cop %>%
 grid.arrange(p33, p34, p35, p36, p37, p38, p39, ncol = 4)
 ```
 
-## Correlation of Eu
+### Correlation of Eu
 ```{r}
 # Eu & Ga
 p40 <- res_cor_cop %>%
@@ -478,7 +513,7 @@ p48 <- res_cor_cop %>%
 grid.arrange(p40, p41, p42, p43, p44, p45, p46, p47, p48, ncol = 3)
 ```
 
-## Correlation of Er
+### Correlation of Er
 ```{r}
 # Er & Ga
 p50 <- res_cor_cop %>%
@@ -537,7 +572,7 @@ p58 <- res_cor_cop %>%
 grid.arrange(p50, p51, p52, p53, p54, p55, p56, p57, p58, ncol = 3)
 ```
 
-## Correlation of Dy
+### Correlation of Dy
 ```{r}
 # Dy & Er
 p60 <- res_cor_cop %>%
@@ -602,7 +637,7 @@ p69 <- res_cor_cop %>%
 grid.arrange(p60, p61, p62, p63, p64, p65, p66, p67, p68, p69, ncol = 5)
 ```
 
-## Correlation of Ce
+### Correlation of Ce
 ```{r}
 # Ce & Dy
 p70 <- res_cor_cop %>%
