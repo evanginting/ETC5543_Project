@@ -24,11 +24,11 @@ theme_set(theme_minimal())
 
 # Exploratory Data Analysis (EDA)
 
-This document presents an EDA of elements' concentration data (named as `all_data.rds`), which provide information about the concentration of critical mineral across different areas in Australia that has been normalised using PAAS (Post-Archean Australian Shale) standard. The primary objective of this analysis is to gain a deeper understanding of the data's structure and key characteristics, which will inform subsequent modeling and decision-making processes. Through this analysis, we aim to identify significant trends, correlations, and outliers that may influence the outcomes of the study.
+This document presents an exploratory data analysis of critical elements concentration data, which provide information about the concentration of critical mineral across different areas in Australia that has been normalised using PAAS (Post-Archean Australian Shale) standard. The primary objective of this analysis is to gain a deeper understanding of the data's structure and key characteristics. Through this, we aim to identify significant trends, correlations, and outliers that may influence the outcomes of the study.
 
 <br />
 
-## Load the Data
+## Data General Characteristics
 ```{r}
 # Loading all data
 alldata <- readRDS('./results/all_data.rds')
@@ -43,13 +43,13 @@ str(alldata)
 ```
 
 
-The table \@ref(tab:dat-preview) provide a preview of the data from first ten observations.
+The **Table \@ref(tab:dat-preview)** provide a preview of the data from the first ten observations.
 
 ```{r dat-preview, fig.cap = "First ten observations of the data"}
 kable(head(alldata, n = 10),
       col.names = gsub("[_]", " ", names(alldata)),
       align = "llcccccl",
-      caption = "First five observations of the data",
+      caption = "The first ten observations of the data",
       format = "html") %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
                             full_width = F,
@@ -61,7 +61,7 @@ kable(head(alldata, n = 10),
 
 ## Descriptive Statistics
 
-This section provides some generic statistics information about the data, such as min, max, mean, median, and others. The table \@ref(tab:desc-stats) lay out the details about these informations for each element.
+In this section, we will provide some generic statistics information about the data, such as min, max, mean, median, and others. The **Table \@ref(tab:desc-stats)** lay out the details about these informations for each critical element that is included in the data.
 ```{r desc-stats, out.width = "50%", fig.align = "center"}
 # Populate descriptive stats table
 desc_stats <- alldata %>%
@@ -100,7 +100,7 @@ knitr::kable(desc_stats,
 
 ## Distribution Analysis
 
-We are going to analyse the distribution of each critical elements based on their PAAS normalised values. The figure \@ref(fig:element-dist) provide insights into the spread, central tendency, and potential outliers for each element.
+Next, we are going to analyse the distribution of each critical elements based on their PAAS normalised values. The **Figure \@ref(fig:element-dist)** provides insights regarding the spread, central tendency, and potential outliers for each critical element.
 
 ```{r element-dist, fig.cap = "Distribution of Critical Elements (Box-Plot)", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center"}
 bp1 <- alldata %>%
@@ -125,21 +125,22 @@ bp2 <- alldata %>%
 grid.arrange(bp1, bp2, ncol = 2)
 ```
 
-As depicted, there are some key points that we would like to raise, which are:
+As depicted above, there are some key points that we would like to raise, which are:
 
 - **Medians**: Most of the elements have their medians close to 0, indicating that the majority of the values are low or concentrated around a lower range. Considering that the threshold to define whether a sample is below/above background is 1, some elements that have median above the threshold are: 
-```{r}
+```{r med-above-one, fig.align = "left"}
 med_above_one <- alldata %>% 
   group_by(Element_Symbol) %>% 
   summarise(median = median(PAAS_normalised_value)) %>% 
-  filter(median > 1)
+  filter(median > 1) %>%
+  arrange(-median)
 
 knitr::kable(med_above_one, 
              col.names = gsub("[_]", " ", names(med_above_one)),
              digits = 3, 
              format.args = list(big.mark = ",", scientific = FALSE),
              format = "html", 
-             align = "l") %>%
+             align = "c") %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
                             full_width = F,
                             font_size = 14,
@@ -148,10 +149,10 @@ knitr::kable(med_above_one,
              extra_css = "border: none; box-shadow: none; padding: 5px; ")
 ```
 
-- **Spread and Variability**: The elements exhibit varying degrees of spread. For example, Ge shows a wide range with its box stretching from a low value near 0 to a higher value around 10, indicating a large variability. On the opposite side, elements like **Mn**, **Fe**, **Cr**, **Co**, **Rb**, **Ni**, **HREE** have very narrow IQR, indicating less variability.
+- **Spread and Variability**: The elements exhibit varying degrees of spread. For example, **Ge** shows a wide range with its box stretching from a low value near 0 to a higher value around 10, indicating a large variability. On the opposite side, elements like **Mn**, **Fe**, **Cr**, **Co**, **Rb**, **Ni**, **HREE** have very narrow IQR, indicating less variability.
 - **Outliers**: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, **Ge**, **Bi**, **Mn**, and **Ba** show notable outliers far from the main data range. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
 - **Symmetry and Skewness**: Some elements like **Ge**, **Bi**, and **Ag** appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like **Ga** and **Sm** show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
-- **Comparison Accross Elements**: **Ge** stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (REE, REEY, MREE, LREE, HREE) have relatively low medians and a small spread, indicating that their normalized values are generally low and clustered.
+- **Comparison Accross Elements**: **Ge** stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (**REE**, **REEY**, **MREE**, **LREE**, **HREE**) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
 ```{r element-dist2, fig.cap = "Distribution of Critical Elements (Histogram)", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center", include = FALSE, eval = FALSE}
 
@@ -178,18 +179,20 @@ hist2 <- alldata %>%
 grid.arrange(hist1, hist2, ncol = 1)
 ```
 
+<br />
+
 ## Distribution of elements with reference to PASS levels
 
-In this analysis, we are trying to assess all critical elements towards the PAAS standard. To begin with, we start from a high-level distribution across the two main categories that we used to identify which elements that are above and below standard. The normalised value will be flagged as "Enriched above background" if it is above 1, while the rest will be flagged as "Below background". The figure \@ref(fig:fig-overall) provide the details about this high-level distribution.
+In this analysis, we are trying to assess all critical elements towards the PAAS standard. To begin with, we start from a high-level distribution across the two main categories that we use in identifying which elements that fall under above/below standard categories. The normalised value will be flagged as "Enriched above background" if it is above 1, while the rest will be flagged as "Below background". The **Figure \@ref(fig:fig-overall)** provide the details about this high-level distribution.
 
-```{r fig-overall, fig.cap = "The Profile of PASS Categories", out.width = "60%", fig.align = "center"}
+```{r fig-overall, fig.cap = "The Profile of PASS Categories", out.width = "60%", fig.align = "center", fig.height = 4}
 alldata %>%
   group_by(Above_PASS_flag) %>%
   summarise(count = n()) %>%
   ungroup() %>%  # Ungroup to perform operations on the entire data frame
   mutate(Above_PASS_flag = reorder(Above_PASS_flag, count, sum)) %>%  # Reorder based on the sum of counts
   ggplot(aes(x = Above_PASS_flag, y = count, fill = Above_PASS_flag)) +
-  geom_text(aes(label = count), size = 3, vjust = -0.5, color = "black", position = position_dodge(0.9)) +
+  geom_text(aes(label = count), size = 4, vjust = -0.5, color = "black", position = position_dodge(0.9)) +
   geom_col(position = "dodge") +
   xlab(NULL) +
   ylab("Count") +
@@ -197,9 +200,10 @@ alldata %>%
   theme(legend.position = "none") +
   labs(fill = "Above Pass Flag")
 ```
-As depicted in the bar chart, the distribution appears fairly balanced between the two categories, with 5,724 instances classified as "Enriched Above Background" and 5,355 instances falling "Below Background". Such a balance highlights the importance of further detailed analysis to understand the factors contributing to this distribution, the significance of enrichment in the context of the dataset, and how these elements behave under different conditions.
+As depicted in the bar chart, the distribution appears fairly balanced between the two categories, with **5,724 instances classified as "Enriched Above Background"** and **5,355 instances classified as "Below Background"**. Such a balance highlights the importance of further detailed analysis to understand the factors contributing to this distribution, the significance of enrichment in the context of the dataset, and how these elements behave under different conditions.
 
-Moving on to the element's level, we will assess how each element's concentration level compares to the PAAS standard. For each elements below, the value shown is the normalised, meaning we have incorporated the standard value towards the element's original values (based on sample taken). Figure \@ref(fig:figelementcons) shows the profile of each sample towards this standard and their respective flags. 
+Moving on to the element's level, we will assess how each critical element's PAAS level, whether they are above/below background value. The Figure \@ref(fig:figelementcons) shows the profile of each sample towards this standard and their respective flags. 
+
 ```{r figelementcons, fig.cap = "Distribution of elements with reference to PASS levels' Concentration", out.width = "100%", fig.width = 10, fig.height = 8, fig.align = "center"}
 alldata %>%
   ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
@@ -211,14 +215,14 @@ alldata %>%
   theme(legend.position = "bottom") +
   labs(color = "Above Pass Flag")
 ```
-As can be seen, the majority of normalised value fall within 0 to 10, while the rest are can be counted as outliers. Some highlight points from this plot are:
+As can be seen, the majority of normalised value fall within 0 to 10. Some highlight points from this plot are:
 
-- **Ag** does not have any normalised PAAS values below background, indicating that coal waste is rich in 'Ag'. 
-- **Re**, **Ge** have significant concentration difference, which make their samples fall in both categories.
-- **HREE** concentration is always below background value.
-- All samples that categorised as "below background" are actually just fall close to the threshold (between 0 and 1).
+- **Ag** does not have any normalised PAAS values below background, indicating that coal waste is rich in **Ag**. 
+- **HREE** concentrations are always below background value.
+- The significant differences in PAAS normalised value for some elements like **Ge** and **Re** needs further investigation as to why for a particular element that was sourced from coal and coal byproducts, such big gap could happen. In the later analysis, we will reveal if they are sampled from the same project area or they are actually sampled from different project area. 
+- All "below background" samples are actually just fall close to the threshold (between 0 and 1), indicating that coal and coal byproducts are highly potential as sources of these critical elements.
 
-Furthermore, we also analyse how the distribution of the PAAS levels across various Project Area. The figure \@ref(fig:figprojectcons) shows how many elements that was recorded in each project area that fall into these two categories.
+Furthermore, we also analyse how the distribution of the PAAS levels across various Project Area. The **Figure \@ref(fig:figprojectcons)** shows how many elements that was recorded in each project area fall into two categories.
 ```{r figprojectcons, fig.cap = "The Profile of Project Area with reference to PASS levels' Concentration", out.width = "80%", fig.width = 10, fig.height = 8, fig.align = "center"}
 alldata %>%
   group_by(Project_Name, Above_PASS_flag) %>%
@@ -237,20 +241,22 @@ alldata %>%
   labs(fill = "Above Pass Flag")
 ```
 
-Some key observations:
+Some key observations from the plot are:
 
 - The **"Confidential_C"** project stands out with a substantial number of elements (3,358) categorised as **"Enriched Above Background"**, significantly outnumbering the **"Below Background"** category count (1,192). This suggests a considerable concentration of elements that exceeded PAAS standard in this project.
 - Project such as **"Fort Cooper"**, **"Confidential_B"** and **"Confidential_A"** display a more balanced distribution between two categories, indicating a near-equal mix of elements that either meet or fall short of the enrichment criteria.
 - In contrast, several projects, such as **"Wandoan"**, **"Copabella"**, **"Lake Vermont"**, **"Collinsville"**, **"Moorvalle"**, **"Newlands"**, **"Metropolitan"**, **"Rolleston"** exhibit a higher count of elements classified as **"Below Background"**. This implies that these projects have a significant proportion of elements that do not reach the enrichment threshold.
 - A few projects, including **"Oaky Creek"**, and **"Unnamed"**, contribute minimally to the overall dataset, with very few elements categorised in either categories.
 
-Lastly, let's see how is the distribution of each critical element on every project area. The figure \@ref(fig:element-pro-dist) below provide this information. As the continuation of the previous analysis, in this part we will focus more on the concentration of each element in each project area. For instance, such insights that we are going to look for are elements that has wide range of concentrations in one project, elements that have above/below background in the same project area.
+Lastly, let's see how is the distribution of each critical element on every project area. The **Figure \@ref(fig:element-pro-dist)** below provide this information. As the continuation of the previous analysis, in this part we will focus more on the concentration of each element in each project area. For instance, such insights that we are going to look for are elements that have wide range of concentrations in one project, elements that have above/below background in the same project area.
 
 ```{r element-pro-dist, fig.cap = "Distribution of Critical Elements by Each Project Area", out.width = "100%", fig.width = 10, fig.height = 25, fig.align = "center"}
 alldata %>%
   ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
   geom_point() +
   geom_vline(xintercept = 1, linetype = 2) +
+  xlab("PAAS Normalised Value") +
+  ylab("Element Symbol") +
   scale_color_brewer(palette = "Set1") +
   facet_wrap(~ Project_Name) +
   theme(legend.position = "bottom") +
@@ -258,23 +264,23 @@ alldata %>%
 ```
 As shown by above graphs, some significant insights are:
 
-- **Collinsville**: **Co** has wide range of concentration, which make some samples fall below background, while there is one sample that has high concentration, indicating that in one project area the same element can be significantly different. - **Confidential_A**: the outlier of **Tl** that was seen in figure \@ref(fig:element-dist) and figure \@ref(fig:figelementcons) is found here, suggesting high concentration of this element in this project area. 
-- **Confidential_B**: Outliers of multiple elements (**Mo**, **Li**, **Cr**, **Ba**) that were reported in figure \@ref(fig:element-dist) are spotted in this project area. This fact is relevant with the figure \@ref(figprojectcons) where this project area has many samples taken from. Additionally, we can spot a wide range of **Ba** concentration, where one of the sample is categorised as "below background", while there are two samples that categorised as "above background" with very high normalised value (above 10).
+- **Collinsville**: **Co** has wide range of concentration, which make some samples fall below background, while there is one sample that has high concentration, indicating that in one project area the same element can be significantly different. - **Confidential_A**: the outlier of **Tl** that was seen in **figure \@ref(fig:element-dist)** and figure \@ref(fig:figelementcons) is found here, suggesting high concentration of this element in this project area. 
+- **Confidential_B**: Outliers of multiple elements (**Mo**, **Li**, **Cr**, **Ba**) that were reported in **figure \@ref(fig:element-dist)** are spotted in this project area. This fact is relevant with the **figure \@ref(fig:figprojectcons)** where this project area was the source of many samples in our data. Additionally, we can spot a wide range of **Ba** concentration, in which one of the sample is categorised as "below background", while there are two samples that categorised as "above background" with very high normalised value (above 10).
 - **Confidential_C**: The same conditions as previous project area can be found in this project as well, where many outliers are found here considering many samples were taken in this project. Again, **Ba** also has a wide range of concentration, a substantial difference is spotted here, where one sample has high concentration value (above 10), while the rest are clustered together between 0 & 5. 
 - **Fort Cooper**: Majority of the elements' concentration are between 0 & 10. However, we can see some elements which value are beyond 10, such as **Mn**, **Ge**, **Bi**, and **Ag**. 
 - **Lake Vermont**: **Ba** records significant concentration differences, where most of its sample are below background but one of them is very high (almost 18). 
-- **Wandoan**: It seems **Ge** are highly concentrated in this project area, because all of its samples taken from here have concentration beyond 10. This is also revealing where all of those outliers of **Ge** are located from, as reported in figure \@ref(fig:element-dist). 
+- **Wandoan**: It seems **Ge** are highly concentrated in this project area, because all of its samples taken from here have concentration beyond 10. This is also revealing where all of those outliers of **Ge** are located from, as reported in **figure \@ref(fig:element-dist)**. 
 
 <br />
 
 ## Correlation Matrix plot
 
-```{r corplot, fig.cap = "Correlation Matrix Plot of Critical Elements", out.width = "90%", fig.width = 6, fig.height = 6, fig.align = "center"}
+```{r corplot, fig.cap = "Correlation Matrix Plot of Critical Elements", out.width = "60%", fig.width = 5, fig.height = 5, fig.align = "center"}
 res_cor_cop <- alldata %>% 
   select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm) %>% 
   pivot_wider(names_from = Element_Symbol,values_from = c(Element_Value_ppm))
 
-corr_cop <- cor(res_cor_cop[,3:55])
+corr_cop <- cor(res_cor_cop[,3:50]) # excluding REE, MREE, LREE, REEY in the corrplot
 
 pg_cop <- ggcorrplot(corr_cop,type = "lower",
      outline.col = "white", lab = TRUE, lab_size = 2)
@@ -288,15 +294,15 @@ The figure \@ref(fig:corplot) shows the relationships between various elements. 
 - Moderate correlations: Many elements fall between 0.6-0.8, which indicate fairly strong relationships.
 - Weaker Correlations: Elements such as **Ba** show weaker correlations with most other elements, indicating less consistent co-occurrence or independent behavior within the dataset.This also the case for **Sr**.
 
-In the next section, we are going to dig deeper into those correlated elements with value above 0.95. But before, those elements are known as lanthanides series. Lanthanides are a group of the first 15 f-block elements with atomic numbers from 57 to 71. In addition to yttrium, which share many similar chemical properties with the lanthanides, these elements comprise the rare earth elements (REEs) (Mattocks et al., 2021). 
-
-Seredin (2012) suggest that the first suggestions for recovering lanthanides and yttrium (REY) as by-products from coal deposits can be traced back to 20 years ago, following the discovery of coal beds in a Russian Far East (RFE) basin that had high REY content (0.2% - 0.3%). Additional coal seams with comparable or even higher REY concentrations (up to 1.0% in ash) were identified in six coal-bearing basins across the same region. Since then, REY-rich coal has also been discovered in coal basins in various other countries. Thus, the lanthanides are found in coal and coal by-products could be possible because of their association with the materials that make up coal. 
-
 <br />
 
 ## Scatter Plot
 
-### Correlated element (Above 0.95)
+In this last section, we are going to dig deeper into critical elements that have correlation value above 0.95 (as mentioned in the previous points). For context, **Er**, **Dy**, **Gd**, **Eu**, **Ho**, **Pr**, **Nd**, **Sm**, **Tb**, and **Yb** are known as **lanthanides series**. Lanthanides are a group of the first 15 f-block elements with atomic numbers from 57 to 71. In addition to yttrium, which share many similar chemical properties with the lanthanides, these elements comprise the rare earth elements (REEs) (Mattocks et al., 2021). Their high correlation values are most likely affected due to this fact.
+
+Furthermore, Seredin (2012) suggest that the first suggestions for recovering lanthanides and yttrium (REY) as by-products from coal deposits can be traced back to 20 years ago, following the discovery of coal beds in a Russian Far East (RFE) basin that had high REY content (0.2% - 0.3%). Additional coal seams with comparable or even higher REY concentrations (up to 1.0% in ash) were identified in six coal-bearing basins across the same region. Since then, REY-rich coal has also been discovered in coal basins in various other countries. Thus, the lanthanides are found in coal and coal by-products could be possible because of their association with the materials that make up coal. 
+
+**Correlated element (Above 0.95)**
 ```{r corelement, fig.cap = "Strongly Correlated Critical Elements", out.width = "100%", fig.width = 10, fig.height = 15, fig.align = "center"}
 # Setting up colour palette for scatter plot legend
 project_name <- c(
@@ -518,6 +524,8 @@ combined_plots <- arrangeGrob(arrangeGrob(p1, p2, p3, p4, p5, p6, p7, p8, p9, p1
 
 grid.arrange(combined_plots, legend, ncol = 1, heights = c(10, 1))
 ```
+
+The **Figure \@ref(fig:corelement)** above depicted show correlations between these elements, additional colour dimension was added to differentiate the project areas. In summary, there are many correlations that closely align to each other, as shown by the **tight spread of the dot points around the straight line**, which are exhibited by **Pr & Nd, Gd & Eu, Ho & Er, Tb & Dy, Yb & Er, Sm & Nd, and Sm & Pr plots**. In some of the plots, there are a few data points that **deviate from the majority of the points**. These could be potential outliers or cases where the relationship slightly diverges, which are exhibited by **Er & Dy, Ho & Dy, Yb & Dy, Yb & Ho, Tb & Ho, Tb & Gd plots**.  
 
 # Reference
 
