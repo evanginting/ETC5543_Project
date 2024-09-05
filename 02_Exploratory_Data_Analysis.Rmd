@@ -43,10 +43,10 @@ str(alldata)
 ```
 
 
-The table \@ref(tab:dat-preview) provide a preview of the data from first five observations.
+The table \@ref(tab:dat-preview) provide a preview of the data from first ten observations.
 
-```{r dat-preview, fig.cap = "First five observations of the data"}
-kable(head(alldata, n = 5),
+```{r dat-preview, fig.cap = "First ten observations of the data"}
+kable(head(alldata, n = 10),
       col.names = gsub("[_]", " ", names(alldata)),
       align = "llcccccl",
       caption = "First five observations of the data",
@@ -66,18 +66,18 @@ This section provides some generic statistics information about the data, such a
 # Populate descriptive stats table
 desc_stats <- alldata %>%
   group_by(Element_Symbol, Element_Description) %>%
-  summarise(min = min(Element_Value_ppm),
-         max = max(Element_Value_ppm),
-         mean = mean(Element_Value_ppm),
-         median = median(Element_Value_ppm),
-         range = max(Element_Value_ppm) - min(Element_Value_ppm),
-         q1 = quantile(Element_Value_ppm, 0.25),
-         q3 = quantile(Element_Value_ppm, 0.75),
-         iqr = IQR(Element_Value_ppm),
-         sd = sd(Element_Value_ppm),
-         var = var(Element_Value_ppm),
-         skewness = moments::skewness(Element_Value_ppm),
-         kurtosis = moments::kurtosis(Element_Value_ppm))
+  summarise(min = min(PAAS_normalised_value),
+         max = max(PAAS_normalised_value),
+         mean = mean(PAAS_normalised_value),
+         median = median(PAAS_normalised_value),
+         range = max(PAAS_normalised_value) - min(PAAS_normalised_value),
+         q1 = quantile(PAAS_normalised_value, 0.25),
+         q3 = quantile(PAAS_normalised_value, 0.75),
+         iqr = IQR(PAAS_normalised_value),
+         sd = sd(PAAS_normalised_value),
+         var = var(PAAS_normalised_value),
+         skewness = moments::skewness(PAAS_normalised_value),
+         kurtosis = moments::kurtosis(PAAS_normalised_value))
 
 knitr::kable(desc_stats, 
              col.names = gsub("[_]", " ", names(desc_stats)),
@@ -85,7 +85,7 @@ knitr::kable(desc_stats,
              format.args = list(big.mark = ",", scientific = FALSE),
              format = "html", 
              align = "c", 
-             caption = "Descriptive Statistics of Elements' Concentration") %>%
+             caption = "Descriptive Statistics of Elements' Normalised Value") %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
                             full_width = F,
                             font_size = 14,
@@ -99,16 +99,6 @@ knitr::kable(desc_stats,
 <br />
 
 ## Distribution Analysis
-```{r}
-alldata %>%
-  ggplot(aes(x = PAAS_normalised_value, fill = Above_PASS_flag)) +
-  geom_density() +
-  scale_fill_brewer(palette = "Set1") +
-  xlab("PAAS Normalised Value") +
-  ylab("Density") +
-  theme(legend.position = "bottom") +
-  labs(fill = "Above Pass Flag")
-```
 
 We are going to analyse the distribution of each critical elements based on their PAAS normalised values. The figure \@ref(fig:element-dist) provide insights into the spread, central tendency, and potential outliers for each element.
 
@@ -137,7 +127,7 @@ grid.arrange(bp1, bp2, ncol = 2)
 
 As depicted, there are some key points that we would like to raise, which are:
 
-- **Medians**: Most of the elements have their medians close to 0, indicating that the majority of the values are low or concentrated around a lower range. Considering that the threshold to define whether a sample is below/above background is 1, some elements that have median above the threshold are 
+- **Medians**: Most of the elements have their medians close to 0, indicating that the majority of the values are low or concentrated around a lower range. Considering that the threshold to define whether a sample is below/above background is 1, some elements that have median above the threshold are: 
 ```{r}
 med_above_one <- alldata %>% 
   group_by(Element_Symbol) %>% 
@@ -149,7 +139,7 @@ knitr::kable(med_above_one,
              digits = 3, 
              format.args = list(big.mark = ",", scientific = FALSE),
              format = "html", 
-             align = "c") %>%
+             align = "l") %>%
   kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
                             full_width = F,
                             font_size = 14,
@@ -210,7 +200,7 @@ alldata %>%
 As depicted in the bar chart, the distribution appears fairly balanced between the two categories, with 5,724 instances classified as "Enriched Above Background" and 5,355 instances falling "Below Background". Such a balance highlights the importance of further detailed analysis to understand the factors contributing to this distribution, the significance of enrichment in the context of the dataset, and how these elements behave under different conditions.
 
 Moving on to the element's level, we will assess how each element's concentration level compares to the PAAS standard. For each elements below, the value shown is the normalised, meaning we have incorporated the standard value towards the element's original values (based on sample taken). Figure \@ref(fig:figelementcons) shows the profile of each sample towards this standard and their respective flags. 
-```{r figelementcons, fig.cap = "Distribution of elements with reference to PASS levels' Concentration", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center"}
+```{r figelementcons, fig.cap = "Distribution of elements with reference to PASS levels' Concentration", out.width = "100%", fig.width = 10, fig.height = 8, fig.align = "center"}
 alldata %>%
   ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
   geom_point() +
@@ -221,9 +211,14 @@ alldata %>%
   theme(legend.position = "bottom") +
   labs(color = "Above Pass Flag")
 ```
-As can be seen, the majority of normalised value fall within 0 to 10, while the rest are can be counted as outliers. A highlight point from this plot is 'Ag' does not have any normalised PAAS values below standard, indicating that coal waste is rich in 'Ag'. 
+As can be seen, the majority of normalised value fall within 0 to 10, while the rest are can be counted as outliers. Some highlight points from this plot are:
 
-Additionally, we also analyse how the distribution of critical elements across various Project Area. The figure \@ref(fig:figprojectcons) shows how many elements that was recorded in each project area that fall into these two categories.
+- **Ag** does not have any normalised PAAS values below background, indicating that coal waste is rich in 'Ag'. 
+- **Re**, **Ge** have significant concentration difference, which make their samples fall in both categories.
+- **HREE** concentration is always below background value.
+- All samples that categorised as "below background" are actually just fall close to the threshold (between 0 and 1).
+
+Furthermore, we also analyse how the distribution of the PAAS levels across various Project Area. The figure \@ref(fig:figprojectcons) shows how many elements that was recorded in each project area that fall into these two categories.
 ```{r figprojectcons, fig.cap = "The Profile of Project Area with reference to PASS levels' Concentration", out.width = "80%", fig.width = 10, fig.height = 8, fig.align = "center"}
 alldata %>%
   group_by(Project_Name, Above_PASS_flag) %>%
@@ -249,6 +244,7 @@ Some key observations:
 - In contrast, several projects, such as **"Wandoan"**, **"Copabella"**, **"Lake Vermont"**, **"Collinsville"**, **"Moorvalle"**, **"Newlands"**, **"Metropolitan"**, **"Rolleston"** exhibit a higher count of elements classified as **"Below Background"**. This implies that these projects have a significant proportion of elements that do not reach the enrichment threshold.
 - A few projects, including **"Oaky Creek"**, and **"Unnamed"**, contribute minimally to the overall dataset, with very few elements categorised in either categories.
 
+Lastly, let's see how is the distribution of each critical element on every project area. The figure \@ref(fig:element-pro-dist) below provide this information. As the continuation of the previous analysis, in this part we will focus more on the concentration of each element in each project area. For instance, such insights that we are going to look for are elements that has wide range of concentrations in one project, elements that have above/below background in the same project area.
 
 ```{r element-pro-dist, fig.cap = "Distribution of Critical Elements by Each Project Area", out.width = "100%", fig.width = 10, fig.height = 25, fig.align = "center"}
 alldata %>%
@@ -260,6 +256,14 @@ alldata %>%
   theme(legend.position = "bottom") +
   labs(color = "Above Pass Flag")
 ```
+As shown by above graphs, some significant insights are:
+
+- **Collinsville**: **Co** has wide range of concentration, which make some samples fall below background, while there is one sample that has high concentration, indicating that in one project area the same element can be significantly different. - **Confidential_A**: the outlier of **Tl** that was seen in figure \@ref(fig:element-dist) and figure \@ref(fig:figelementcons) is found here, suggesting high concentration of this element in this project area. 
+- **Confidential_B**: Outliers of multiple elements (**Mo**, **Li**, **Cr**, **Ba**) that were reported in figure \@ref(fig:element-dist) are spotted in this project area. This fact is relevant with the figure \@ref(figprojectcons) where this project area has many samples taken from. Additionally, we can spot a wide range of **Ba** concentration, where one of the sample is categorised as "below background", while there are two samples that categorised as "above background" with very high normalised value (above 10).
+- **Confidential_C**: The same conditions as previous project area can be found in this project as well, where many outliers are found here considering many samples were taken in this project. Again, **Ba** also has a wide range of concentration, a substantial difference is spotted here, where one sample has high concentration value (above 10), while the rest are clustered together between 0 & 5. 
+- **Fort Cooper**: Majority of the elements' concentration are between 0 & 10. However, we can see some elements which value are beyond 10, such as **Mn**, **Ge**, **Bi**, and **Ag**. 
+- **Lake Vermont**: **Ba** records significant concentration differences, where most of its sample are below background but one of them is very high (almost 18). 
+- **Wandoan**: It seems **Ge** are highly concentrated in this project area, because all of its samples taken from here have concentration beyond 10. This is also revealing where all of those outliers of **Ge** are located from, as reported in figure \@ref(fig:element-dist). 
 
 <br />
 
@@ -284,9 +288,9 @@ The figure \@ref(fig:corplot) shows the relationships between various elements. 
 - Moderate correlations: Many elements fall between 0.6-0.8, which indicate fairly strong relationships.
 - Weaker Correlations: Elements such as **Ba** show weaker correlations with most other elements, indicating less consistent co-occurrence or independent behavior within the dataset.This also the case for **Sr**.
 
-We are going to dig deeper into those correlated elements with value above 0.95 in the next section. But before, those elements are known as lanthanides series. Lanthanides are a group of the first 15 f-block elements with atomic numbers from 57 to 71. In addition to yttrium, which share many similar chemical properties with the lanthanides, these elements comprise the rare earth elements (REEs) (...). 
+In the next section, we are going to dig deeper into those correlated elements with value above 0.95. But before, those elements are known as lanthanides series. Lanthanides are a group of the first 15 f-block elements with atomic numbers from 57 to 71. In addition to yttrium, which share many similar chemical properties with the lanthanides, these elements comprise the rare earth elements (REEs) (Mattocks et al., 2021). 
 
-... suggest that the first suggestions for recovering lanthanides and yttrium (REY) as by-products from coal deposits can be traced back to 20 years ago, following the discovery of coal beds in a Russian Far East (RFE) basin that had high REY content (0.2% - 0.3%). Additional coal seams with comparable or even higher REY concentrations (up to 1.0% in ash) were identified in six coal-bearing basins across the same region. Since then, REY-rich coal has also been discovered in coal basins in various other countries. Thus, the lanthanides are found in coal and coal by-products could be possible because of their association with the materials that make up coal. 
+Seredin (2012) suggest that the first suggestions for recovering lanthanides and yttrium (REY) as by-products from coal deposits can be traced back to 20 years ago, following the discovery of coal beds in a Russian Far East (RFE) basin that had high REY content (0.2% - 0.3%). Additional coal seams with comparable or even higher REY concentrations (up to 1.0% in ash) were identified in six coal-bearing basins across the same region. Since then, REY-rich coal has also been discovered in coal basins in various other countries. Thus, the lanthanides are found in coal and coal by-products could be possible because of their association with the materials that make up coal. 
 
 <br />
 
@@ -512,7 +516,39 @@ combined_plots <- arrangeGrob(arrangeGrob(p1, p2, p3, p4, p5, p6, p7, p8, p9, p1
 
 # grid.arrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, legend, ncol = 4)
 
-grid.arrange(combined_plots, legend, ncol = 2, heights = c(10, 1))
+grid.arrange(combined_plots, legend, ncol = 1, heights = c(10, 1))
 ```
+
+# Reference
+
+- Mattocks, J. A., Tirsch, J. L., & Cotruvo, J. A., Jr (2021). Determination of affinities of lanthanide-binding proteins     using chelator-buffered titrations. Methods in enzymology, 651, 23–61. https://doi.org/10.1016/bs.mie.2021.01.044
+- Seredin, V. V., & Dai, S. F. (2012). Coal Deposits as Potential Alternative Sources for Lanthanides and Yttrium.            International Journal of Coal Geology, 94, 67-93. https://doi.org/10.1016/j.coal.2011.11.001
+- Wickham H, François R, Henry L, Müller K, Vaughan D (2023). _dplyr: A Grammar of Data Manipulation_. R package
+  version 1.1.4, https://github.com/tidyverse/dplyr, <https://dplyr.tidyverse.org>.
+- Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn
+  M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D,
+  Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.” _Journal of Open Source Software_, *4*(43), 1686.
+  doi:10.21105/joss.01686 <https://doi.org/10.21105/joss.01686>.
+- H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York, 2016.
+- Xie Y (2024). _knitr: A General-Purpose Package for Dynamic Report Generation in R_. R package version 1.48,
+  <https://yihui.org/knitr/>.
+- Yihui Xie (2015) Dynamic Documents with R and knitr. 2nd edition. Chapman and Hall/CRC. ISBN 978-1498716963.
+- Yihui Xie (2014) knitr: A Comprehensive Tool for Reproducible Research in R. In Victoria Stodden, Friedrich
+  Leisch and Roger D. Peng, editors, Implementing Reproducible Computational Research. Chapman and Hall/CRC. ISBN
+  978-1466561595.
+- Zhu H (2024). _kableExtra: Construct Complex Table with 'kable' and Pipe Syntax_. R package version 1.4.0,
+  https://github.com/haozhu233/kableExtra, <http://haozhu233.github.io/kableExtra/>.
+- Taiyun Wei and Viliam Simko (2024). R package 'corrplot': Visualization of a Correlation Matrix (Version 0.94).
+  Available from https://github.com/taiyun/corrplot
+- Kassambara A (2023). _ggcorrplot: Visualization of a Correlation Matrix using 'ggplot2'_. R package version
+  0.1.4.1, <http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2>.
+- Auguie B (2017). _gridExtra: Miscellaneous Functions for "Grid" Graphics_. R package version 2.3.
+- Xie Y (2024). _bookdown: Authoring Books and Technical Documents with R Markdown_. R package version 0.40,
+  <https://github.com/rstudio/bookdown>.
+- Xie Y (2016). _bookdown: Authoring Books and Technical Documents with R Markdown_. Chapman and Hall/CRC, Boca
+  Raton, Florida. ISBN 978-1138700109, <https://bookdown.org/yihui/bookdown>.
+- Komsta L, Novomestky F (2022). _moments: Moments, Cumulants, Skewness, Kurtosis and Related Tests_. R package
+  version 0.14.1, http://www.komsta.net/, <https://www.r-project.org>.
+
 
 :::
