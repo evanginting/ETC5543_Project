@@ -96,6 +96,8 @@ knitr::kable(desc_stats,
              extra_css = "border: none; box-shadow: none; padding: 5px; ")
 ```
 
+The most important statistics from this table is kurtosis. Kurtosis measures the combined weight of the tails of a distribution relative to its centre. In this way, we can use kurtosis as an indicator of the presence of outliers. A high kurtosis values is indicative of outliers. Validating the outliers will be easier with data visualisation, which will be presented in the next section.
+
 <br />
 
 ## Distribution Analysis
@@ -150,7 +152,7 @@ knitr::kable(med_above_one,
 ```
 
 - **Spread and Variability**: The elements exhibit varying degrees of spread. For example, **Ge** shows a wide range with its box stretching from a low value near 0 to a higher value around 10, indicating a large variability. On the opposite side, elements like **Mn**, **Fe**, **Cr**, **Co**, **Rb**, **Ni**, **HREE** have very narrow IQR, indicating less variability.
-- **Outliers**: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, **Ge**, **Bi**, **Mn**, and **Ba** show notable outliers far from the main data range. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
+- **Outliers**: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, **Ge**, **Bi**, **Mn**, and **Ba** show notable outliers far from the main data range. Additionally, some elements that was reported from **table \@ref(tab:desc-stats)**, which have high kurtosis are **Al**, **Ba**, **Bi**, **Ce**, **Co**, **Cr**, **Cs**, **Cu**, **Fe**, **Mn**, **Nb**, and **Ni**. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
 - **Symmetry and Skewness**: Some elements like **Ge**, **Bi**, and **Ag** appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like **Ga** and **Sm** show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
 - **Comparison Accross Elements**: **Ge** stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (**REE**, **REEY**, **MREE**, **LREE**, **HREE**) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
@@ -525,7 +527,7 @@ combined_plots <- arrangeGrob(arrangeGrob(p1, p2, p3, p4, p5, p6, p7, p8, p9, p1
 grid.arrange(combined_plots, legend, ncol = 1, heights = c(10, 1))
 ```
 
-The **Figure \@ref(fig:corelement)** above depicted show correlations between these elements, additional colour dimension was added to differentiate the project areas. In summary, there are many correlations that closely align to each other, as shown by the **tight spread of the dot points around the straight line**, which are exhibited by **Pr & Nd, Gd & Eu, Ho & Er, Tb & Dy, Yb & Er, Sm & Nd, and Sm & Pr plots**. In some of the plots, there are a few data points that **deviate from the majority of the points**. These could be potential outliers or cases where the relationship slightly diverges, which are exhibited by **Er & Dy, Ho & Dy, Yb & Dy, Yb & Ho, Tb & Ho, Tb & Gd plots**.  
+The **Figure \@ref(fig:corelement)** above depicted show correlations between these elements, additional colour dimension was added to differentiate the project areas. In summary, there are many correlations that closely align to each other, as shown by the **tight spread of the dot points around the straight line**, which are exhibited by **Pr & Nd, Gd & Eu, Ho & Er, Tb & Dy, Yb & Er, Sm & Nd, and Sm & Pr plots**. In some of the plots, there are a few data points that **deviate from the majority of the points**. These could be potential outliers or cases where the relationship slightly diverges, which are exhibited by **Er & Dy, Ho & Dy, Yb & Dy, Yb & Ho, Tb & Ho, Tb & Gd plots**. Nonetheless, they are still represent the highest correlated elements.  
 
 # Reference
 
