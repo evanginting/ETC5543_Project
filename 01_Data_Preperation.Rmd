@@ -328,11 +328,11 @@ all_data_bfr_paas_cleaned <- all_data_bfr_paas[all_data_bfr_paas$value >= -990.0
 # Adding Rare Earth Element (REE) Calculations
 ree_all <-  dcast(setDT(all_data_bfr_paas_cleaned),Project_Area+Sample~Symbol, value.var = "value",fill=NA) #convert back to wide format for summation
 ree_calc_all <- ree_all %>% 
-  mutate(REE = rowSums(select(., La, Ce, Pr, Nd, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu), na.rm = TRUE)) %>% 
-  mutate(REEY = rowSums(select(., La, Ce, Pr, Nd, Sm, Eu, Gd, Tb, Dy, Ho, Er, Tm, Yb, Lu, Y), na.rm = TRUE)) %>% 
-  mutate(LREE = rowSums(select(., La, Ce, Pr, Nd, Sm), na.rm = TRUE)) %>%  # note Pm not tested
-  mutate(MREE = rowSums(select(., Eu, Gd, Tb, Dy, Y), na.rm = TRUE)) %>% 
-  mutate(HREE = rowSums(select(., Ho, Er, Tm, Yb, Lu), na.rm = TRUE)) 
+  mutate(REE = La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu) %>% 
+  mutate(REEY = La+Ce+Pr+Nd+Sm+Eu+Gd+Tb+Dy+Ho+Er+Tm+Yb+Lu+Y) %>% 
+  mutate(LREE = La+Ce+Pr+Nd+Sm) %>% # note Pm not tested
+  mutate(MREE = Eu+Gd+Tb+Dy+Y) %>% 
+  mutate(HREE = Ho+Er+Tm+Yb+Lu) 
 
 # Convert back to long format so we can join PAAS values
 ree_long_all <- melt(ree_calc_all,id.vars = 1:2,variable.name = "Symbol")
