@@ -1,0 +1,49 @@
+---
+title: "Critical Elements in Coal Mine Waste"
+author:
+- familyname: Long
+  othernames: Yuhao
+  address: Monash University
+  qualifications: Master of Business Analytics\newline 33412448\newline ylon0012@student.monash.edu
+- familyname: Ginting
+  othernames: Evan
+  address: Monash University
+  qualifications: Master of Business Analytics\newline 33477558 \newline egin0003@student.monash.edu
+email: BusExo-Econometrics@monash.edu
+phone: (03) 9905 2478
+organization: ETC5543 
+department: Department of\newline Econometrics &\newline Business Statistics
+bibliography: references.bib
+biblio-style: authoryear-comp
+linestretch: 1.5
+output:
+  monash::report:
+    fig_caption: yes
+    fig_height: 5
+    fig_width: 8
+    includes:
+      in_header: preamble.tex
+    keep_tex: yes
+    number_sections: yes
+    citation_package: biblatex
+    toc: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
+library(ggplot2)
+```
+
+
+# Introduction
+
+In a famous paper, @BC64 introduced a family of transformations \dots
+
+```{r histogram, fig.cap="Nice histogram", message=FALSE, warning=FALSE}
+qplot(exp(rnorm(200)))
+```
+
+Consider the logNormal data plotted in Figure \ref{fig:histogram}.
+
+$$s^2 = \sum_{i=1}^n (x_i-\bar{x})^2$$
+
