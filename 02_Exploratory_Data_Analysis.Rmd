@@ -580,6 +580,7 @@ grid.arrange(pg_cop_wndn, p14, p15, ncol = 3)
 
 As can be seen in the correlation matrix of **figure \@ref(fig:corelement-wndn)**, in Wandoan, the correlation between **Sm** and **Nd** is 0.95, just right at the minimum threshold that we chose. However, **Sm** and **Pr** correlation is below 0.95, which contributes to the fact that the points deviate away from the linear line. Considering their correlation value is below our threshold, it's most likely that **Sm** and **Pr** correlation from this project is excluded for the predictive modelling part.
 
+
 # Reference
 
 - Mattocks, J. A., Tirsch, J. L., & Cotruvo, J. A., Jr (2021). Determination of affinities of lanthanide-binding proteins using chelator-buffered titrations. Methods in enzymology, 651, 23–61. https://doi.org/10.1016/bs.mie.2021.01.044
