@@ -528,9 +528,10 @@ combined_plots <- arrangeGrob(arrangeGrob(p1, p2, p3, p4, p5, p6, p7, p8, p9, p1
 grid.arrange(combined_plots, legend, ncol = 1, heights = c(10, 1))
 ```
 
-The **Figure \@ref(fig:corelement)** above depicted show correlations between these elements, additional colour dimension was added to differentiate the project areas. In summary, there are many correlations that closely align to each other, as shown by the **tight spread of the dot points around the straight line**, which are exhibited by **Pr & Nd, Gd & Eu, Ho & Er, Tb & Dy, Yb & Er, Sm & Nd, and Sm & Pr plots**. In some of the plots, there are a few data points that **deviate from the majority of the points**. These could be potential outliers or cases where the relationship slightly diverges, which are exhibited by **Er & Dy, Ho & Dy, Yb & Dy, Yb & Ho, Tb & Ho, Tb & Gd plots**. For **Sm & Nd, and Sm & Pr plots** even though they are belong to the previous group, when we look closely from the project area point of view, we can see that the grey dots (which represents 'Wandoan'). Nonetheless, they are still represent the highest correlated elements.  
+The **Figure \@ref(fig:corelement)** above depicted show correlations between these elements, additional colour dimension was added to differentiate the project areas. In summary, there are many correlations that closely align to each other, as shown by the **tight spread of the dot points around the straight line**, which are exhibited by **Pr & Nd, Gd & Eu, Ho & Er, Tb & Dy, Yb & Er, Sm & Nd, and Sm & Pr plots**. In some of the plots, there are a few data points that **deviate from the majority of the points**. These could be potential outliers or cases where the relationship slightly diverges, which are exhibited by **Er & Dy, Ho & Dy, Yb & Dy, Yb & Ho, Tb & Ho, Tb & Gd plots**. For **Sm & Nd, and Sm & Pr plots** even though they are belong to the previous group, but when we look closely from the project area point of view, we can see that the grey dots (which represents 'Wandoan') are deviating away from the linear line. This indicates the correlation between them are not strong. Let's dig deeper into these elements by utilising plots below.  
 
-```{r}
+```{r corelement-wndn, fig.cap = "Correlated Critical Elements (Sm, Pr, Nd) in Wandoan", out.width = "100%", fig.width = 6, fig.height = 2, fig.align = "center"}
+
 res_cor_cop_wndn <- alldata %>% 
   select(Project_Name,Sample_ID,Element_Symbol,PAAS_normalised_value) %>% 
   filter(Project_Name == "Wandoan",
@@ -540,19 +541,20 @@ res_cor_cop_wndn <- alldata %>%
 corr_cop_wndn <- cor(res_cor_cop_wndn[,3:5]) # excluding REE, MREE, LREE, REEY in the corrplot
 
 pg_cop_wndn <- ggcorrplot(corr_cop_wndn,type = "lower",
-     outline.col = "white", lab = TRUE, lab_size = 2)
+     outline.col = "white", lab = TRUE, lab_size = 2) +
+     labs(title = "Correlation Matrix for Wandoan Sample") +
+     theme(plot.title = element_text(size = 7, face = "bold", vjust = 10),
+           legend.text = element_text(size = 6),         
+           legend.key.size = unit(0.3, 'cm'))
 
-```
-
-```{r}
 # Sm - Nd (Wandoan Only)
 p14 <- res_cor_cop %>%
   #filter(Project_Name == "Wandoan") %>%
   ggplot(aes(x = Sm, y = Nd)) +
-  geom_point(aes(color = Project_Name)) +
+  geom_point(aes(color = Project_Name, alpha = ifelse(Project_Name == "Wandoan", 1, 0.05))) +
   geom_smooth(method = "lm") +
   labs(title = "Sm & Nd Correlation ") +
-  theme(plot.title = element_text(color="black", hjust = 0.5, size=10, face="bold"),
+  theme(plot.title = element_text(color="black", hjust = 0.5, size=7, face="bold"),
         legend.position = "none") +
   scale_color_manual(
     breaks = names(project_name),
@@ -563,10 +565,10 @@ p14 <- res_cor_cop %>%
 p15 <- res_cor_cop %>%
   #filter(Project_Name == "Wandoan") %>%
   ggplot(aes(x = Sm, y = Pr)) +
-  geom_point(aes(color = Project_Name)) +
+  geom_point(aes(color = Project_Name, alpha = ifelse(Project_Name == "Wandoan", 1, 0.05))) +
   geom_smooth(method = "lm") +
   labs(title = "Sm & Pr Correlation ") +
-  theme(plot.title = element_text(color="black", hjust = 0.5, size=10, face="bold"),
+  theme(plot.title = element_text(color="black", hjust = 0.5, size=7, face="bold"),
         legend.position = "none") +
   scale_color_manual(
     breaks = names(project_name),
@@ -576,7 +578,7 @@ p15 <- res_cor_cop %>%
 grid.arrange(pg_cop_wndn, p14, p15, ncol = 3)
 ```
 
-As can be seen, in Wandoan, correlation between **Sm** and **Pr** is below 0.95, which make the point deviate away from the linear line. 
+As can be seen in the correlation matrix of **figure \@ref(fig:corelement-wndn)**, in Wandoan, the correlation between **Sm** and **Nd** is 0.95, just right at the minimum threshold that we chose. However, **Sm** and **Pr** correlation is below 0.95, which contributes to the fact that the points deviate away from the linear line. Considering their correlation value is below our threshold, it's most likely that **Sm** and **Pr** correlation from this project is excluded for the predictive modelling part.
 
 # Reference
 
