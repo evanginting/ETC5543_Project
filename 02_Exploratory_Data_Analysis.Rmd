@@ -542,7 +542,6 @@ corr_cop_wndn <- cor(res_cor_cop_wndn[,3:5]) # excluding REE, MREE, LREE, REEY i
 pg_cop_wndn <- ggcorrplot(corr_cop_wndn,type = "lower",
      outline.col = "white", lab = TRUE, lab_size = 2)
 
-print(pg_cop_wndn)
 ```
 
 ```{r}
@@ -574,9 +573,10 @@ p15 <- res_cor_cop %>%
     values = project_name
   )
 
-grid.arrange(p14, p15, ncol = 2)
+grid.arrange(pg_cop_wndn, p14, p15, ncol = 3)
 ```
 
+As can be seen, in Wandoan, correlation between **Sm** and **Pr** is below 0.95, which make the point deviate away from the linear line. 
 
 # Reference
 
