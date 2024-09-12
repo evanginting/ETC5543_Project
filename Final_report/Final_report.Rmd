@@ -1,15 +1,15 @@
 ---
-title: "Critical Elements in Coal Mine Waste"
+title: "Predicting Critical Elements in Coal Mine Waste: A Machine Learning and Spatial Statistics Approach for a Low-Emission Future"
 author:
 - familyname: Long
   othernames: Yuhao
   address: Monash University
-  qualifications: Master of Business Analytics\newline 33412448\newline ylon0012@student.monash.edu
+  qualifications: Master of Business Analytics\newline 33412448 \newline ylon0012@student.monash.edu
 - familyname: Ginting
   othernames: Evan
   address: Monash University
   qualifications: Master of Business Analytics\newline 33477558 \newline egin0003@student.monash.edu
-email: BusExo-Econometrics@monash.edu
+email: BusEco-Econometrics@monash.edu
 phone: (03) 9905 2478
 organization: ETC5543 
 department: Department of\newline Econometrics &\newline Business Statistics
@@ -26,24 +26,39 @@ output:
     keep_tex: yes
     number_sections: yes
     citation_package: biblatex
-    toc: false
+    toc: true
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
 library(ggplot2)
 ```
 
+\newpage
+# Abstract
 
-# Introduction
 
-In a famous paper, @BC64 introduced a family of transformations \dots
+# Background and Motivation
 
-```{r histogram, fig.cap="Nice histogram", message=FALSE, warning=FALSE}
-qplot(exp(rnorm(200)))
-```
 
-Consider the logNormal data plotted in Figure \ref{fig:histogram}.
+# Objectives and Significance
 
-$$s^2 = \sum_{i=1}^n (x_i-\bar{x})^2$$
+
+# Exploratory Data Analysis
+
+
+# Methodology
+
+
+# Results 
+
+
+# Discussions
+
+
+# Conclusion
+
+
+# Appendix
 
