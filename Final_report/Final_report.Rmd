@@ -43,6 +43,7 @@ library(ggplot2)
 
 ## Critical Elements Overview
 
+## Critical Elements in Coals
 
 # Objectives and Significance
 
