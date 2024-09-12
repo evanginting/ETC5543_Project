@@ -41,6 +41,8 @@ library(ggplot2)
 
 # Background and Motivation
 
+## Critical Elements Overview
+
 
 # Objectives and Significance
 
