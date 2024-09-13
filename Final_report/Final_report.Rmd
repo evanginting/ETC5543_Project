@@ -45,6 +45,50 @@ library(ggplot2)
 
 ## Critical Elements in Coals
 
+## Economic Concentrations
+Before the recent surge in demand, extracting critical elements (including REE) from coal was considered costly, however, methods have been developed that reduce the cost and also enviromentally friendly. Coal and coal byproducts are substantially enhanced with trace metals and have been proposed as a potential source [@Eterigho2021]. A report by US Department of Energy suggests that extracting REEs from coal material already mined for other purposes, either as a dual product or by-product, could be more cost-effective than dedicated REE mining. Despite the challenge of processing large volumes to obtain economic concentrations, cost may be reduced due to the pre-processed (mined, crushed, and washed) state of the materials and transported to areas with existing infrastructure [@usde2017; @Hodgkinson2021]. Based on research, the elements and metals in coal that are considered to have the best chance for economic recovery are: REE, Ag, Au, PGEs, Be, Se, V, Ga, Sb, Sc, Mo, W, Re, Ge, U, Y, Nb, Zr, Al [@DAI2018155].
+
+Efficient extraction of critical elements from coal or coal ash, and finding coal sources with highly elevated concentrations of these elements, are essential prerequisites. The value of the element in any coal sources largely determined by their concentration, which varies based on geological and geochemical conditions. Therefore, to economically recovering critical elements from coal is by identifying sources with the highest critical elements levels and accessibility first before proceeding to extraction and recovery stages [@Eterigho2021]. @Reid2018 in his report suggests that critical elements average level in coal is typically just 35 ppm, which is insufficient for economic extraction. While @Seredin2012 in their reports suggests that a cutoff grade for Rare Earth Oxides (ROE) for coal seam has been suggested as 800-900 ppm. Table \ref{tab:cutoff_grade} provide suggested cut-off grade for 18 critical elements. Additionally, @TALAN2022107897 reports that coal sources are often relatively enriched in the heavy rare earths (HREEs, Ho, Er, Tm, Yb, Lu) and critical rare earths (CREEs, Y, Nd, Dy, Eu, Tb) compared to traditional mineral deposits. A cut-off grade of 115–130 ppm rare earth element on a whole mass basis may be considered economical. However, the U.S. Department of Energy set a criterion in their work assessing raw coal with total rare earth element content greater than 300 ppm on a whole dry coal basis. 
+
+```{r cutoff_grade, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width = '100%'}
+
+CE_cutoff <- data.frame(
+  `Critical elements` = c("U", "Ge", "V", "Se", "Ga", "REE", "Y", "Sc", "Nb", "Zr", "Mo", "Re", "Wi", "Au + Pt + Pd", "Ag", "Be", "Sb", "Cs"),
+  `Suggested cut-off grade` = c(1000, 300, 1000, "500–800", "100 (50)", 1000, 300, 100, 300, 2000, 1000, 1, 1000, 2, 10, 300, 1000, 150)
+)
+
+kable(CE_cutoff, 
+      booktabs = T,
+      format = "latex",
+      align = "c",
+      caption = "\\textbf{Selected critical elements with their suggested cut-off grade (ppm)}",
+      col.names = c("Critical elements", "Suggested cut-off grade")) %>%
+  kable_styling(latex_options = c("striped", "hover", "hold_position")) %>%
+  column_spec(1, bold = TRUE, width = "10cm") %>%
+  row_spec(0, bold = TRUE) %>%
+  footnote(general = "Adapted from Dai and Finkelman, 2018",
+           general_title = "Source: ",
+           footnote_as_chunk = T)
+```
+
+## Existing Economic Deposits
+
+Currently, there are no coal mines or coal basins extracting critical elements (including REE) at a commercial states. Most sources found conclude that we are still in the research and development process [@Hodgkinson2020, @DAI2018155, @Eterigho2021, @osti_1808639, @TALAN2022107897]. A report by @Eterigho2021 suggests that the research and development are primarily at the laboratory and pilot scale stages. For example, scholars like Honaker and coworkers who have significant experience in this subject, have constructed a 0.23 t/h solid feed pilot plant for testing different coal-based feedstocks [@osti_1808639]. However, commercial-scale extraction processes have not yet been widely implemented. @TALAN2022107897 report support this finding as well. They propose a potential approach for commercial-scale extraction of critical elements, indicating ongoing effort to bridge the gap between laboratory research and commercial application. Additionally, they note that further validation and techno-economic analysis are required before these processes can be scaled up commercially. Additionally, scholars who focusing their research on China's coal resources also suggest further research is needed to scale up the extraction process [@Qin2015, @Qin2015b, @Liu2024, @Zhao2019, @ZOU2023105245]. Given that China is the leader in critical elements production, this fact indicates that their production of critical elements does not primarily come from coal and its byproducts. 
+
+We can conclude that significant research and development efforts have been made towards commercial extraction of critical elements from coal and coal byproducts. However, it is still long way from actual large-scale implementation. Most scholars indicate the necessity of considering sustainability factors. Effective waste management and treatment, along with the evaluation of extraction costs and technical feasibility, are important. At the end of the day, these elements are going to be utilised in green technology initiatives, such as renewable energy systems and electric vehicles, which demand high-purity materials. Ensuring that their extraction processes are environmentally and economically sustainable is crucial to align with the goals of these green technologies initiatives. Furthermore, ongoing research is vital to bridge existing technology gaps and develop robust, scalable methods that can transition from pilot projects to commercial operations. 
+
+## Extraction of Critical Elements
+
+There are several stages required for critical elements can be extracted from coal and coal byproducts. Coal and coal byproducts is first prepared by crushing and milling to release the organic from inorganic elements to generate fine concentrates. These concentrates are then undergo further separation techniques such as physical (froth flotation, electrostatic, magnetic, gravity) and chemical (leaching). Later, it will further processed into purification to extract the REE into pure oxide form (e.g. REO). REO can be standalone products, however, market demand dictates their conversion into metals. Thus, in the refining stage, using an electrolysis or a metallothermic reduction process, REOs will be converted into high-purity rare earth metals. These metals may then be alloyed with other elements to make them harder and stronger for the end-use market [@Eterigho2021; @usde2017; @TALAN2022107897]. The figure \ref{fig:ree_vc} visualise this process.
+
+```{r ree_vc, echo=FALSE, fig.align = "center", out.width = '85%', fig.cap="REE Value Chain (Source: US Department of Energy, 2017)"}
+knitr::include_graphics("/cloud/project/Final_report/Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png")
+```
+
+Recently, **water-leaching** is a prevailing  approach since it mitigate the flaw from traditional techniques. Water leaching can be considered as  less environmentally detrimental compared to strong acid/alkaline leaching, as well as cost effective for solvent selection. The  crucial stages on this preparation workflow  are **low temperature activation** and **water leaching**.  During the stage of low temperature activation, the chemical reaction within coal fly ash(CFA) will be facilitated by complexation agents(ammonium salts or weak acids) in covered alumina crucibles, which  help liberate critical elements from the matrix of the CFA. After the activation and cool down to ambient temperature, the tablets are placed in water for the leaching and dissolve process. Water acts as the leaching solvent, extracting these soluble elements into the leachate.The configuration in temperature and mass ratio of solvent will be the vital determinant for optimized recovery. Take Lithium  example, it can achieve a stable leaching efficiency of 90% through ammonium fluoride leaching at 150°C with a $SiO_2/NH_4F$ mass ratio of 1:1.35 @Xu2021. 
+
+Another innovation is Hydrophobic-Hydrophilic Separation (HHS), designed to leverages the disparity  of affinity( water-repellent &water-friendly) properties of substances to achieve separation.It can treat as a complemetary application for small particle delamination without size limit, providing flexible and extensible purpose in the segregation of ultrafine coal @Hodgkinson2021.
+
 # Objectives and Significance
 
 
