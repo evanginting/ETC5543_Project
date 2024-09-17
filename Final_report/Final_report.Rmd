@@ -32,7 +32,10 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
-library(ggplot2)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(tinytex)
 ```
 
 \newpage
@@ -42,8 +45,78 @@ library(ggplot2)
 # Background and Motivation
 
 ## Critical Elements Overview
+As the burgeoning ideology of environmental sustainability and geopolitical tension, The concept of critical elements received paramount attentions in the contemporary global landscape. Critical elements, or also referred as critical minerals, is vital  metallic or non-metallic element that underpin the functionality and advancement of core technologies, economic frameworks, and national security but may be susceptible for exogenous risk in supply chain.  
+
+
+Critical elements can be defined by two main criteria: first, elements that are essential for manufacturing modern technologies, supporting economic frameworks, and ensuring national security; and second, elements with vulnerable supply chains, which can be affected by political issues, geographic concentration of extraction or production, and natural disasters [@Lian2024; @Fortier2018; @DISR2023].
+
+
+According to [Critical Minerals Strategy 2023–2030](https://www.industry.gov.au/publications/critical-minerals-strategy-2023-2030) [@geoscience2023],  Geoscience Australia has identified 15 elements as highly vulnerable to future supply chain disruptions and an additional 15 elements as having moderate risk in Table \ref{tab:celist}([@Coyne2023]; [@Skirrow2013]; [@IEA2024b]; [@Fortier2018]; [@Austrade2024]). Among these critical elements, Rare-earth elements takes a significant subset in critical element, comprise of 15 element in lanthanoid series and 2 extra elements with similar chemical properties--Scandium(Sc) and Yttrium(Y). Unlike name implication, albeit their overall natural abundance(NA) in earth crust is not extremely rare (average 180-200 ppm) their distribution in earth is quite scattered and strong propensity to coexist in pairs or group within ore deposits in terms of geochemical properties[@Zhou2017]. 
+
+Critical elements (including REE) are crucial for many high-tech industries, including electronics, renewable energy, and defense [@Huang2018]. **Global initiatives** to reduce carbon emissions by transitioning to clean energy have significantly impelled the demand for critical elements, which are essential for achieving this goal [@IEA2021; @Wang2022]. According to @IEA2024 research, demand for these elements is projected to double, triple, or even quadruple, depending on the scenario, relative to current production levels. Among these elements, lithium is experiencing the most rapid growth due to rising demand for electric vehicle (EV) batteries, while copper leads in terms of production volume. Graphite demand is expected to almost quadruple, and the demand for nickel, cobalt, and rare earth elements (REEs) is projected to double. Furthermore, @Fortier2018 indicates that the growing reliance on critical elements is also driven by their applications across various key sectors, including energy, defense, communications, healthcare, transportation, and agriculture. These dynamics have intensified competition to discover new sources and establish stable, long-term supply chains for these vital resources [@Emsbo2021]. The prominent usage of each element and its projected demand are detailed in Table \ref{tab:celist}.
+
+
+
+```{r celist}
+ CE_list<-tibble("Critical element"=c("Aluminum & derivative (Al)","Cobalt (Co)","Gallium (Ga)","Germanium (Ge)",
+                            "Lithium(Li)","Magnesium(Mg)","Manganese(Mn)", "Nickel(Ni)","Rare-earth elements (REE)", "Silicon (Si)", "Tantalum (Ta)", "Titanium (Ti)","Tungsten (W)","Vanadium (V)","Zirconium (Zr)", "Antimony (Sb)", "Arsenic (As)",  "Beryllium (Be)", "Bismuth (Bi)", "Chromium (Cr)","Fluorine (F)","Graphite (Gr)", "Hafnium (Hf)", "Indium (In)", "Molybdenum (Mo)","Niobium (Nb)", "Platinum-group elements (PGE)", "Rhenium (Re)", "Selenium(Se)","Tellurium (Te)"),
+ "Production(Kt)"=c(20,5.9,"-","-",61,2.6,3.3,150,18,0.05,0.057,0.85,"-","-",0.5,4,"-","-","-", 66.1,"-","-","-","-","-","-","<0.01","-","-","-"),
+ "% of Global production" =c("14%","3%","-","-","47%","10%","17%","4.5%","6%","1%","3%","8.4%","-","-","36%","4%",
+                             "-","-","-","0.3%","-","-","-","-","-","-","<0.01%","-","-","-"),
+ "Projected demand(Kt)"=c("-",243.03,0.25,0.03,615.55,30.95,855,2792.68,61.96,2025,0.44,22.69, 0.17,35.23,11.14,"-","0.55","-","-",823.7,"-",8406.7,0.02,0.17,104.44,1.97,0.03,"-",0.26,1.55),
+ 
+ Usage=c("Aerospace alloys, Coating in Li-ion batteries","Li-ion battery
+cathodes,stainless steels, superalloys","Radar,light-emitting diodes (LEDs), photovoltaics
+films","Fiber/infared optics,Polymerization Catalysts, semiconductors","Li-ion batteries, aerospace alloys,  ceramics","Pyrotechnics, nanocomposites in automotive/aerospace",
+"Steel,Agricultral fertiliser, lightweight alloys","Cathodes of Li-ion batteries, Non-ferrous
+alloys","Catalysts, magnets, guidance,lasers","Solar PVs,Silicon wafers in electronic & photovoltaic cells",
+"Micro-capacitors, superalloys", "Aerospace and marine alloys, pigment"," Lightning,Cutting and drilling tools,  catalysts","Steel or aerospace alloys"," Cladding fuel rods, nuclear reactors","Flames retardant, lead-acid batteries","Microwave communications, pesticides, semiconductors", " Satellite communications, lightweight alloys","Pharmaceuticals, lead-free solders, cosmetics","Steel or aerospace alloys, leather tanning","Refrigerants, dental care, nuclear processing","Rechargeable batteries, semiconductors& sensors, water filtration","Nuclear reactors, aereospace alloys","Flat-panel displays, low-Melting Alloys, semiconductors","Improving strength and corrosion resistance in steel alloys","High-Strength Low-Alloy (HSLA) Steel, superalloys, superconductors, welding", "Catalysts, jewelry, thermocouples","Superalloys,catalysts, electrical Contacts, filaments","Alloying agents, solar cells, glass production","Cooper or steel alloys, semiconductors, solar cells, thermoelectric Materials"),
+ "Level" = c(rep("High",15),rep("Moderate",15))
+ )
+
+colnames(CE_list)[2]<-paste(colnames(CE_list)[2], footnote_marker_number(1))
+
+colnames(CE_list)[4]<-paste(colnames(CE_list)[4], footnote_marker_number(2))
+
+colnames(CE_list)[5]<-paste(colnames(CE_list)[5], footnote_marker_number(3))
+
+CE_list[9,1]<-paste0("Rare-earth elements (REE)",footnote_marker_alphabet(2))
+
+CE_list[27,1]<-paste0("Platinum-group elements (PGE)",footnote_marker_alphabet(3))
+
+CE_list[8,2]<-paste0(CE_list[8,2],footnote_marker_alphabet(1))
+
+CE_list<-CE_list|>
+  mutate(Level = cell_spec(Level, background = ifelse(Level == "High","#F7D7DC", "#FDA")))
+CE_list|>kbl( align = "c",
+              escape=FALSE,
+               booktabs = T,
+              caption = "Summary of Critical Elements: Production, Global Share, Projected Demand, and Usage")|>
+  kable_classic(full_width = F, html_font = "Cambria")|> 
+footnote(number  = c(" Skirrow et al., 2013 & Coyne and Campbell, 2023", "IEA, 2024b","Fortier et. al., 2018; Austrade, 2024"),
+         number_title = "Source:",
+         footnote_as_chunk = T)|>
+footnote(alphabet = c("Data collected in 2012.", "17 elements, including lanthanoid,Scandium(Sc) and Yttrium(Y).","6 elements,including all transition metals in the d-block."))
+
+```
+
+
+
+
+As one of the promising top global producers of these critical elements, Australia, with its abundant deposit and technological expertise, plays a pivotal role in the sustainable energy transition and supply chain stability. Australia is the largest producer of lithium, the third largest producer of cobalt, and the fourth largest producer of rare earths. It also produces significant amounts of aluminium, nickel, and copper, which are essential for low-emission technologies like electric vehicles, solar panels, and wind turbines [@DISR2023]. Australia's Government strategy to ensure the fulfillment of this potential has been proactive and multifaceted, especially in the past 5 years. The strategy include a range of incentives, finance facilities, grants and other support for the critical elements sector. Some of the important initiatives as reported in @DISR2023, are:
+
+- The Australian Government’s Critical Minerals Facility, with AUD 4 billion budget, supports projects that are aligned with the nation’s Critical Minerals Strategy and serve the national interest.
+- The Northern Australia Infrastructure Facility (NAIF) allocates up to AUD 500 million of the AUD 5 billion to help finance projects in the Northern Territory, Queensland, and Western Australia.
+- The Junior Minerals Exploration Incentive (JMEI) promotes investment in small minerals-exploration firms that focus on greenfield exploration.
+- Australian federal, state and territory government authorities are collaborating on the AUD 10 million Critical Minerals National Productivity Initiative to develop pre-feasibility studies of common-user infrastructure for the critical elements sector.
+- The Major Projects Facilitation Agency (MPFA) supports developers of projects over AUD 20 million by providing information on Australian Government regulations and approvals, mapping out critical approval processes, and communicating with regulators to address issues. 
+- The Critical Minerals Production Tax Incentive offers a production incentive worth 10 percent of relevant processing and refining costs for Australia’s 31 critical elements. This incentive is available for up to 10 years per project for production between 2027–28 and 2039–40, provided the projects reach final investment decisions by 2030.
+
+
+
 
 ## Critical Elements in Coals
+
 
 ## Economic Concentrations
 Before the recent surge in demand, extracting critical elements (including REE) from coal was considered costly, however, methods have been developed that reduce the cost and also enviromentally friendly. Coal and coal byproducts are substantially enhanced with trace metals and have been proposed as a potential source [@Eterigho2021]. A report by US Department of Energy suggests that extracting REEs from coal material already mined for other purposes, either as a dual product or by-product, could be more cost-effective than dedicated REE mining. Despite the challenge of processing large volumes to obtain economic concentrations, cost may be reduced due to the pre-processed (mined, crushed, and washed) state of the materials and transported to areas with existing infrastructure [@usde2017; @Hodgkinson2021]. Based on research, the elements and metals in coal that are considered to have the best chance for economic recovery are: REE, Ag, Au, PGEs, Be, Se, V, Ga, Sb, Sc, Mo, W, Re, Ge, U, Y, Nb, Zr, Al [@DAI2018155].
