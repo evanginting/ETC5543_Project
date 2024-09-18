@@ -91,8 +91,8 @@ CE_list<-CE_list|>
 CE_list|>kbl( align = "c",
               escape=FALSE,
                booktabs = T,
-              caption = "Summary of Critical Elements: Production, Global Share, Projected Demand, and Usage")|>
-  kable_classic(full_width = F, html_font = "Cambria")|> 
+              caption = "<b>Summary of Critical Elements: Production, Global Share, Projected Demand, and Usage</b>")|>
+  kable_classic_2(full_width = F)|> 
 footnote(number  = c(" Skirrow et al., 2013 & Coyne and Campbell, 2023", "IEA, 2024b","Fortier et. al., 2018; Austrade, 2024"),
          number_title = "Source:",
          footnote_as_chunk = T)|>
@@ -116,7 +116,70 @@ As one of the promising top global producers of these critical elements, Austral
 
 
 ## Critical Elements in Coals
+The global push towards green technology and decarbonization has spurred significant growth in the clean energy and technology markets. Consequently, the demand for critical elements is projected to rise substantially [@usde2017]. Currently, a scarce number of powerhouses, most notably China dominates the global production and trade of critical element e.g. REEs, Graphiteand high-purity alumina, controlling a substantial portion of the international value chain [@us2024mineral;@Coyne2023]. However, With the escalation of trade frictions, recent export restrictions imposed by China HAVE disrupted the global supply chain [@MANCHERI2015262]. In response, there is an increasing focus on identifying alternative sources of critical elements, with coal being explored as a potential new source of critical elements [@Hodgkinson2021].
 
+In @Hodgkinson2020 element mapping  project on Bowen basin Table \ref{tab:concentration},the largest coal reserves in Australia, the concentration of element  composition is subjective to sample's lithology rather than the depth grading:
+
+1). In coal and its derivatives, although the majority of element concentrations fall below the benchmark when compared to Post-Archaean Australian Shales (PAAS) standard [@McLennan2011], a widely used geochemical reference material in the  average composition of shales, local samples exhibit enrichment in Heavy Rare Earth Elements (HREEs) and scandium(Sc). Additionally, concentrations of the critical element bismuth (Bi) are abnormally elevated, showing levels 4-6 times higher than the crustal average.
+
+2). Siltstone and mudstone yield unremarkable findings in terms of elemental enrichment, with most element concentrations failing to meet significant thresholds. However, the concentration of cobalt compounds approaches the crustal average, suggesting potential economic value that warrants further investigation.
+
+3). Tuffaceous rock, formed from volcanic ash, is rich in pumice and lithic fragments. Samples reveal elevated concentrations of strategic elements, including Rare Earth Elements (REEs), gallium (Ga), and bismuth (Bi). Moreover, a potential lithium-rich borehole has been identified, with lithium concentrations approximately five times higher than the crustal average.
+
+
+```{r concentration}
+table2_c<-tibble("Critical element"=c("Lithium","REE","Cobalt","Nickel","Tantalum","Vanadium","Zirconium","Gallium","Bismuth","Chromium","Niobium","Molybdenum"),
+       "PAAS standard"=c(21,184,17,47,1,97, 193,17,0.2,92,12,1),
+       "Average concentration(ppm)"= c(13.7,115.8,16.9,11.2,0.33,85.6,102.1,12.3,0.59,14.33,7.9,1.33),
+       "Higest concentration(ppm)"=c(25,205,30,40,1,140,160,25,1,51,32,3),
+                                     
+       "% of above crustal average"=c(2/9,1/9,4/9,0,1/3,2/9,0,4/9,2/3,0,1/9,7/9)
+       )
+
+
+
+table2_sm<-tibble(
+  "Critical element"=c("Lithium","REE","Cobalt","Nickel","Tantalum","Vanadium","Zirconium","Gallium","Bismuth","Chromium","Niobium","Molybdenum"),
+       "PAAS standard"=c(21,184,17,47,1,97,193, 17,0.2,92,12,1),
+  "Average concentration(ppm)"= c(17.2,138.8,39.3,25.8,0.2,102,116.8,15,0.18,51.33,4.67,0.67),
+       "Higest concentration(ppm)"=c(28,189,134,73,1,225,243,22,0.4,266,8,1),
+                                     
+       "% of above crustal average"=c(1/3,1/6,2/3,1/3,1/6,1/3,1/6,1/3,2/3,1/6,0,2/3)
+)
+
+
+table2_tf<-tibble(
+  "Critical element"=c("Lithium","REE","Cobalt","Nickel","Tantalum","Vanadium","Zirconium","Gallium","Bismuth","Chromium","Niobium","Molybdenum"),
+       "PAAS standard"=c(21,184,17,47,1,97,193, 17,0.2,92,12,1),
+  "Average concentration(ppm)"= c(21.5,244,9.25,3.75,1.1,27.9,153.75,32.25,0.71,0,9.63,1),
+       "Higest concentration(ppm)"=c(105,441,19,30,2,70,282,37,1.2,0,18,5),
+                                     
+       "% of above crustal average"=c(1/8,7/8,1/8,0,1,0,1/4,1,1,0,1/4,1/2)
+)
+
+table2_bind<-rbind(table2_c,table2_sm,table2_tf)
+
+table2_bind<-table2_bind|>
+  mutate(`Average concentration(ppm)` = cell_spec(`Average concentration(ppm)`, 
+                                                  "html",
+                                                  bold = ifelse(`Average concentration(ppm)` > `PAAS standard`, TRUE, FALSE)),
+  `Higest concentration(ppm)`= cell_spec(`Higest concentration(ppm)`, 
+                                                  "html",
+                                                  bold = ifelse(`Higest concentration(ppm)` > `PAAS standard`, TRUE, FALSE)),
+  `% of above crustal average`=paste0(round(`% of above crustal average`*100),"%"))
+table2_bind|>kbl( align = "c",
+              escape=FALSE,
+               booktabs = T,
+              caption = "<b>Summary of Hodginkson's research on critical element mapping in coal mines</b>")|>
+
+  kable_classic_2(full_width = F)|> 
+  pack_rows("Coal seam& associate",1,12)|>
+pack_rows("Siltstone & mudstone",13,24) |>
+  pack_rows("Tuffaceous rocks",25,36) |>
+  footnote( general = " Hodginkson et al., 2020",
+            general_title= "Source:",
+            footnote_as_chunk = T)
+```
 
 ## Economic Concentrations
 Before the recent surge in demand, extracting critical elements (including REE) from coal was considered costly, however, methods have been developed that reduce the cost and also enviromentally friendly. Coal and coal byproducts are substantially enhanced with trace metals and have been proposed as a potential source [@Eterigho2021]. A report by US Department of Energy suggests that extracting REEs from coal material already mined for other purposes, either as a dual product or by-product, could be more cost-effective than dedicated REE mining. Despite the challenge of processing large volumes to obtain economic concentrations, cost may be reduced due to the pre-processed (mined, crushed, and washed) state of the materials and transported to areas with existing infrastructure [@usde2017; @Hodgkinson2021]. Based on research, the elements and metals in coal that are considered to have the best chance for economic recovery are: REE, Ag, Au, PGEs, Be, Se, V, Ga, Sb, Sc, Mo, W, Re, Ge, U, Y, Nb, Zr, Al [@DAI2018155].
@@ -161,6 +224,16 @@ knitr::include_graphics("/cloud/project/Final_report/Final_report_files/figure-l
 Recently, **water-leaching** is a prevailing  approach since it mitigate the flaw from traditional techniques. Water leaching can be considered as  less environmentally detrimental compared to strong acid/alkaline leaching, as well as cost effective for solvent selection. The  crucial stages on this preparation workflow  are **low temperature activation** and **water leaching**.  During the stage of low temperature activation, the chemical reaction within coal fly ash(CFA) will be facilitated by complexation agents(ammonium salts or weak acids) in covered alumina crucibles, which  help liberate critical elements from the matrix of the CFA. After the activation and cool down to ambient temperature, the tablets are placed in water for the leaching and dissolve process. Water acts as the leaching solvent, extracting these soluble elements into the leachate.The configuration in temperature and mass ratio of solvent will be the vital determinant for optimized recovery. Take Lithium  example, it can achieve a stable leaching efficiency of 90% through ammonium fluoride leaching at 150°C with a $SiO_2/NH_4F$ mass ratio of 1:1.35 @Xu2021. 
 
 Another innovation is Hydrophobic-Hydrophilic Separation (HHS), designed to leverages the disparity  of affinity( water-repellent &water-friendly) properties of substances to achieve separation.It can treat as a complemetary application for small particle delamination without size limit, providing flexible and extensible purpose in the segregation of ultrafine coal @Hodgkinson2021.
+
+
+In precious @Hodgkinson2020 element mapping  project on Bowen basin,the largest coal reserves in Australia, the concentration of element  composition is subjective to sample's lithology rather than the depth grading:
+
+
+1). In coal and derivative,  albeit majority of element concentrations is inferior of the benchmark against earth crust average, local  samples exhibit  enrichment in HREE and Scandium in respect to @McLennan2011 Post-Archaean Australian Shales (PAAS) standard , while abnormal 4-6 times higher than crustal average in moderate  critical element, Bismuth(Bi) .
+
+2). Siltstone and mudstone has a lackluster finding to classify enrichment for majority of elements concentration,except for  the concentration of Cobalt compound barely meet crustal average,  whose ubiquitous economic value may warrant further examination.
+
+3).  As the sediment from volcanic ash, tuffaceous rock is rich in pumice and lithic fragments. The sample display a series of  elevated concentrations of  strategic elements including REE, Ga and Bi. Besides, a potential Lithium-rich borehole is found, with approximate 5 times higher than crustal average.
 
 # Objectives and Significance
 
