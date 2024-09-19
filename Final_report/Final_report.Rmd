@@ -110,11 +110,12 @@ kable(CE_list,
       align = "c",
       escape = FALSE,
       booktabs = TRUE,
+      longtable = TRUE,
       caption = "\\textbf{Summary of Critical Elements: Production, Global Share, Projected Demand, and Usage}") %>%
-  kable_classic_2(full_width = TRUE) %>%
-  kable_styling(latex_options = "hold_position") %>%  
-  column_spec(5, width = "8cm") %>% 
-  footnote(number = c("Skirrow et al., 2013 & Coyne and Campbell, 2023", "IEA, 2024b", "Fortier et. al., 2018; Austrade, 2024"),
+  kable_styling(latex_options = c("hold_position", "repeat_header"),
+                full_width = TRUE) %>%  
+  column_spec(5, width = "5cm") %>% 
+  footnote(number = c("Skirrow et al., 2013 & Coyne and Campbell, 2023;", "IEA, 2024b;", "Fortier et. al., 2018; Austrade, 2024"),
            number_title = "Source:",
            footnote_as_chunk = TRUE) %>% 
   footnote(alphabet = c("Data collected in 2012.", "17 elements, including lanthanoid, Scandium (Sc), and Yttrium (Y).", 
@@ -200,8 +201,7 @@ kable(table2_bind,
       caption = "\\textbf{Summary of Hodginkson's research on critical element mapping in coal mines}",
       linesep = '',
       longtable = TRUE) %>%
-    kable_classic_2(full_width = TRUE) %>%
-    kable_styling(latex_options = "repeat_header") %>%
+    kable_styling(latex_options = c("repeat_header"), full_width = TRUE) %>%
     pack_rows("Coal Seam & Associate", 1, 12) %>%
     pack_rows("Siltstone & Mudstone", 13, 24) %>%
     pack_rows("Tuffaceous Rocks", 25, 36) %>%

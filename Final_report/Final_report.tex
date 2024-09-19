@@ -329,14 +329,25 @@ According to \href{https://www.industry.gov.au/publications/critical-minerals-st
 
 Critical elements (including REE) are crucial for many high-tech industries, including electronics, renewable energy, and defense \autocite{Huang2018}. Global initiatives to reduce carbon emissions by transitioning to clean energy have significantly impelled the demand for critical elements, which are essential for achieving this goal \autocite{IEA2021,Wang2022}. According to \textcite{IEA2024} research, demand for these elements is projected to double, triple, or even quadruple, depending on the scenario, relative to current production levels. Among these elements, lithium is experiencing the most rapid growth due to rising demand for electric vehicle (EV) batteries, while copper leads in terms of production volume. Graphite demand is expected to almost quadruple, and the demand for nickel, cobalt, and rare earth elements (REEs) is projected to double. Furthermore, \textcite{Fortier2018} indicates that the growing reliance on critical elements is also driven by their applications across various key sectors, including energy, defense, communications, healthcare, transportation, and agriculture. These dynamics have intensified competition to discover new sources and establish stable, long-term supply chains for these vital resources \autocite{Emsbo2021}. The prominent usage of each element and its projected demand are detailed in Table \ref{tab:celist}.
 
-\begin{table}[!h]
-\centering\centering
-\caption{\label{tab:celist}\textbf{Summary of Critical Elements: Production, Global Share, Projected Demand, and Usage}}
-\centering
-\begin{tabu} to \linewidth {>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering\arraybackslash}p{8cm}>{\centering}X}
+\begin{longtabu} to \linewidth {>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering\arraybackslash}p{5cm}>{\centering}X}
+\caption{\label{tab:celist}\textbf{Summary of Critical Elements: Production, Global Share, Projected Demand, and Usage}}\\
 \toprule
 Critical Element & Production (Kilotonnes) \textsuperscript{1} & Global Production (Percentage) & Projected Demand (Kilotonnes) \textsuperscript{2} & Usage \textsuperscript{3} & Level\\
 \midrule
+\endfirsthead
+\caption[]{\label{tab:celist}\textbf{Summary of Critical Elements: Production, Global Share, Projected Demand, and Usage} \textit{(continued)}}\\
+\toprule
+Critical Element & Production (Kilotonnes) \textsuperscript{1} & Global Production (Percentage) & Projected Demand (Kilotonnes) \textsuperscript{2} & Usage \textsuperscript{3} & Level\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Data collected in 2012.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} 17 elements, including lanthanoid, Scandium (Sc), and Yttrium (Y).}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{c} 6 elements, including all transition metals in the d-block.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Source:} \textsuperscript{1} Skirrow et al., 2013 \& Coyne and Campbell, 2023; \textsuperscript{2} IEA, 2024b; \textsuperscript{3} Fortier et. al., 2018; Austrade, 2024}\\
+\endlastfoot
 Aluminum and derivative (Al) & 20 & 14 & - & Aerospace alloys, Coating in Li-ion batteries & \cellcolor[HTML]{F7D7DC}{High}\\
 Cobalt (Co) & 5.9 & 3 & 243.03 & Li-ion battery cathodes, stainless steels, superalloys & \cellcolor[HTML]{F7D7DC}{High}\\
 Gallium (Ga) & - & - & 0.25 & Radar, light-emitting diodes (LEDs), photovoltaics films & \cellcolor[HTML]{F7D7DC}{High}\\
@@ -377,14 +388,8 @@ Platinum-group elements (PGE)\textsuperscript{c} & <0.01 & <0.01 & 0.03 & Cataly
 Rhenium (Re) & - & - & - & Superalloys, catalysts, electrical Contacts, filaments & \cellcolor[HTML]{FDA}{Moderate}\\
 Selenium(Se) & - & - & 0.26 & Alloying agents, solar cells, 
           glass production & \cellcolor[HTML]{FDA}{Moderate}\\
-Tellurium (Te) & - & - & 1.55 & Copper or steel alloys, semiconductors, solar cells, thermoelectric Materials & \cellcolor[HTML]{FDA}{Moderate}\\
-\bottomrule
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{a} Data collected in 2012.}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{b} 17 elements, including lanthanoid, Scandium (Sc), and Yttrium (Y).}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textsuperscript{c} 6 elements, including all transition metals in the d-block.}\\
-\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Source:} \textsuperscript{1} Skirrow et al., 2013 \& Coyne and Campbell, 2023 \textsuperscript{2} IEA, 2024b \textsuperscript{3} Fortier et. al., 2018; Austrade, 2024}\\
-\end{tabu}
-\end{table}
+Tellurium (Te) & - & - & 1.55 & Copper or steel alloys, semiconductors, solar cells, thermoelectric Materials & \cellcolor[HTML]{FDA}{Moderate}\\*
+\end{longtabu}
 
 As one of the promising top global producers of these critical elements, Australia, with its abundant deposit and technological expertise, plays a pivotal role in the sustainable energy transition and supply chain stability. Australia is the largest producer of lithium, the third largest producer of cobalt, and the fourth largest producer of rare earths. It also produces significant amounts of aluminium, nickel, and copper, which are essential for low-emission technologies like electric vehicles, solar panels, and wind turbines \autocite{DISR2023}. Australia's Government strategy to ensure the fulfillment of this potential has been proactive and multifaceted, especially in the past 5 years. The strategy include a range of incentives, finance facilities, grants and other support for the critical elements sector. Some of the important initiatives as reported in \textcite{DISR2023}, are:
 
@@ -418,6 +423,17 @@ In \textcite{Hodgkinson2020} element mapping project on Bowen basin Table \ref{t
 \toprule
 Critical Element & PAAS Standard & Average Concentration (ppm) & Highest Concentration (ppm) & Above Crustal Average (Percentage)\\
 \midrule
+\endfirsthead
+\caption[]{\label{tab:concentration}\textbf{Summary of Hodginkson's research on critical element mapping in coal mines} \textit{(continued)}}\\
+\toprule
+Critical Element & PAAS Standard & Average Concentration (ppm) & Highest Concentration (ppm) & Above Crustal Average (Percentage)\\
+\midrule
+\endhead
+
+\endfoot
+\bottomrule
+\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Source: } Adapted from Hodginkson et al., 2020}\\
+\endlastfoot
 \addlinespace[0.3em]
 \multicolumn{5}{l}{\textbf{Coal Seam \& Associate}}\\
 \hspace{1em}Lithium & 21.0 & 13.7 & \textbf{25} & 22\\
@@ -459,9 +475,7 @@ Critical Element & PAAS Standard & Average Concentration (ppm) & Highest Concent
 \hspace{1em}Bismuth & 0.2 & \textbf{0.71} & \textbf{1.2} & 100\\
 \hspace{1em}Chromium & 92.0 & 0 & 0 & 0\\
 \hspace{1em}Niobium & 12.0 & 9.63 & \textbf{18} & 25\\
-\hspace{1em}Molybdenum & 1.0 & 1 & \textbf{5} & 50\\
-\bottomrule
-\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Source: } Adapted from Hodginkson et al., 2020}\\
+\hspace{1em}Molybdenum & 1.0 & 1 & \textbf{5} & 50\\*
 \end{longtabu}
 
 \hypertarget{economic-concentrations}{%

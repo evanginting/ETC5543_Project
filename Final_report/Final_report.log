@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  19 SEP 2024 06:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  19 SEP 2024 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -944,7 +944,17 @@ Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 )
 \@quotelevel=\count431
 \@quotereset=\count432
-(./Final_report.aux)
+(./Final_report.aux
+
+LaTeX Warning: Label `tab:celist' multiply defined.
+
+
+LaTeX Warning: Label `tab:celist' multiply defined.
+
+
+LaTeX Warning: Label `tab:concentration' multiply defined.
+
+)
 \openout1 = `Final_report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 306.
@@ -1429,311 +1439,123 @@ Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 322.
 
 [3]
-LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 334.
-LaTeX Font Info:    Font shape `T1/mdbch/b/it' will be
-(Font)              scaled to size 10.51207pt on input line 334.
-
-Overfull \hbox (0.91779pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Critical 
- []
-
-
-Overfull \hbox (18.11824pt too wide) in paragraph at lines 386--386
+Overfull \hbox (1.04659pt too wide) in paragraph at lines 392--392
  []\T1/mdbch/m/n/10.95 (-20) Production 
  []
 
 
-Overfull \hbox (2.1742pt too wide) in paragraph at lines 386--386
- \T1/mdbch/m/n/10.95 (-20) tonnes) 
+Overfull \hbox (74.46725pt too wide) in alignment at lines 392--392
+ [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (10.82457pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Projected 
+Overfull \hbox (1.04659pt too wide) in paragraph at lines 392--392
+ []\T1/mdbch/m/n/10.95 (-20) Production 
  []
 
 
-Overfull \hbox (2.1742pt too wide) in paragraph at lines 386--386
- \T1/mdbch/m/n/10.95 (-20) tonnes) 
+Overfull \hbox (74.46725pt too wide) in alignment at lines 392--392
+ [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (15.8555pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Aluminum 
+Overfull \hbox (74.46725pt too wide) in alignment at lines 392--392
+ [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (4.12105pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Gallium 
+Overfull \hbox (74.46725pt too wide) in alignment at lines 392--392
+ [] [] [] [] [] [] 
  []
 
 
-Overfull \hbox (21.84021pt too wide) in paragraph at lines 386--386
+Overfull \hbox (4.76855pt too wide) in paragraph at lines 392--392
  []\T1/mdbch/m/n/10.95 (-20) Germanium 
  []
 
 
-Overfull \hbox (20.63193pt too wide) in paragraph at lines 386--386
+Overfull \hbox (3.56027pt too wide) in paragraph at lines 392--392
  []\T1/mdbch/m/n/10.95 (-20) Lithium(Li)| 
  []
 
 
-Overfull \hbox (43.76979pt too wide) in paragraph at lines 386--386
+Overfull \hbox (26.69814pt too wide) in paragraph at lines 392--392
  []\T1/mdbch/m/n/10.95 (-20) Magnesium(Mg)| 
  []
 
 
-Overfull \hbox (42.9353pt too wide) in paragraph at lines 386--386
+Overfull \hbox (25.86365pt too wide) in paragraph at lines 392--392
  []\T1/mdbch/m/n/10.95 (-20) Manganese(Mn)| 
  []
 
 
-Overfull \hbox (15.81067pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Nickel(Ni)| 
- []
-
-
-Overfull \hbox (5.81195pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) 2792.68| 
- []
-
-
-Overfull \hbox (10.88025pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Tantalum 
- []
-
-
-Overfull \hbox (9.3411pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Titanium 
- []
-
-
-Overfull \hbox (9.1157pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Tungsten 
- []
-
-
-Overfull \hbox (13.29803pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Vanadium 
- []
-
-
-Overfull \hbox (15.16167pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Zirconium 
- []
-
-
-Overfull \hbox (12.22395pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Antimony 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (1.56685pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Arsenic 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (12.4317pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Beryllium 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (5.90034pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Bismuth 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (16.4633pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Chromium 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (6.45662pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Fluorine 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (7.68547pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Graphite 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (8.29036pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Hafnium 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (1.31602pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Indium 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (28.18314pt too wide) in paragraph at lines 386--386
+Overfull \hbox (11.11148pt too wide) in paragraph at lines 392--392
  []\T1/mdbch/m/n/10.95 (-20) Molybdenum 
  []
 
 
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (7.64134pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Niobium 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (11.0899pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Platinum- 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (9.6811pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Rhenium 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (30.28471pt too wide) in paragraph at lines 386--386
+Overfull \hbox (13.21306pt too wide) in paragraph at lines 392--392
  []\T1/mdbch/m/n/10.95 (-20) Selenium(Se)| 
  []
 
 
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
+Overfull \hbox (74.46725pt too wide) in alignment at lines 392--392
+ [] [] [] [] [] [] 
  []
 
-
-Overfull \hbox (11.78687pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Tellurium 
- []
-
-
-Overfull \hbox (11.88565pt too wide) in paragraph at lines 386--386
- []\T1/mdbch/m/n/10.95 (-20) Moderate| 
- []
-
-
-Overfull \hbox (67.76056pt too wide) in paragraph at lines 336--387
- [][] 
- []
-
-
-LaTeX Warning: Float too large for page by 326.10493pt on input line 387.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[4] [5] [6] [7]
+[4] [5] [6] [7] [8] [9] [10] [11]
 <Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png, id
-=202, 644.4075pt x 362.85562pt>
+=224, 644.4075pt x 362.85562pt>
 File: Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.pn
 g Graphic file (type png)
 <use Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png
 >
 Package pdftex.def Info: Final_report_files/figure-latex/Critical_Mineral_Extra
-ction_Process_v2.png  used on input line 522.
+ction_Process_v2.png  used on input line 536.
 (pdftex.def)             Requested size: 455.24408pt x 256.35031pt.
 LaTeX Font Info:    Trying to load font information for TS1+mdbch on input line
- 529.
+ 543.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ts1mdbch.fd
 File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 529.
-[8] [9 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v
-2.png>] [10]
+(Font)              scaled to size 10.51207pt on input line 543.
+[12 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.p
+ng>] [13] [14]
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.24173pt on input line 564.
+(Font)              scaled to size 9.24173pt on input line 578.
 
-Underfull \hbox (badness 1127) in paragraph at lines 564--564
+Underfull \hbox (badness 1127) in paragraph at lines 578--578
 [][]\T1/mdbch/m/n/10.95 (+20) DISR (2023). \T1/mdbch/m/it/10.95 (+20) Crit-i-ca
 l Min-er-als Strat-egy 2023^^U2030\T1/mdbch/m/n/10.95 (+20) . [][]$\T1/fvm/m/n/
 10.95 https : / / www . industry . gov . au /
  []
 
-[11] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 566.
-[13] [14] [15]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 566.
+[15] [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 580.
+[17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 580.
 (./Final_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 566.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 566.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 580.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 580.
 Package rerunfilecheck Info: File `Final_report.out' has not changed.
-(rerunfilecheck)             Checksum: C3AA7325982AF709CCCB632F9774B7E5;2075.
+(rerunfilecheck)             Checksum: F7950FF86E02B45C38E81F2D35FA1969;2067.
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package logreq Info: Writing requests to 'Final_report.run.xml'.
 \openout1 = `Final_report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 566.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 580.
  ) 
 Here is how much of TeX's memory you used:
- 27144 strings out of 481239
- 441740 string characters out of 5920377
- 1160791 words of memory out of 5000000
- 41645 multiletter control sequences out of 15000+600000
+ 27151 strings out of 481239
+ 441786 string characters out of 5920377
+ 1140883 words of memory out of 5000000
+ 41650 multiletter control sequences out of 15000+600000
  647409 words of font info for 308 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,19n,113p,2441b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,16n,113p,2441b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texliv
 e/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}{/usr/share/texlive/texmf-dist/fo
 nts/enc/dvips/fontawesome/fontawesometwo.enc}</usr/share/texlive/texmf-dist/fon
@@ -1746,10 +1568,10 @@ r/bchri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb
 texlive/texmf-dist/fonts/type1/public/bera/fvsr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
-Output written on Final_report.pdf (15 pages, 591438 bytes).
+Output written on Final_report.pdf (17 pages, 594226 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 67 named destinations out of 1000 (max. 500000)
+ 334 PDF objects out of 1000 (max. 8388607)
+ 292 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
  32911 words of extra memory for PDF output out of 35830 (max. 10000000)
 
