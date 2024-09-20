@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  20 SEP 2024 05:03
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  20 SEP 2024 02:50
+>>>>>>> 64f26fd3ab3ade0a8a6bfca046a26f30d2fe3584
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1435,6 +1439,7 @@ This may cause the page layout to be inconsistent, however.
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
 (hyperref)                be the same. Added a new anchor on input line 322.
 
+<<<<<<< HEAD
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 8.64006pt on input line 330.
 
@@ -1458,6 +1463,74 @@ Overfull \hbox (2.27718pt too wide) in paragraph at lines 392--392
  []
 
 [3] [4] [5] [6] [7] [8] [9] [10]
+=======
+
+Overfull \hbox (1.04659pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Production 
+ []
+
+
+Overfull \hbox (74.46725pt too wide) in alignment at lines 390--390
+ [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (1.04659pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Production 
+ []
+
+
+Overfull \hbox (74.46725pt too wide) in alignment at lines 390--390
+ [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (74.46725pt too wide) in alignment at lines 390--390
+ [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (74.46725pt too wide) in alignment at lines 390--390
+ [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (4.76855pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Germanium 
+ []
+
+
+Overfull \hbox (3.56027pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Lithium(Li)| 
+ []
+
+
+Overfull \hbox (26.69814pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Magnesium(Mg)| 
+ []
+
+
+Overfull \hbox (25.86365pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Manganese(Mn)| 
+ []
+
+
+Overfull \hbox (11.11148pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Molybdenum 
+ []
+
+
+Overfull \hbox (13.21306pt too wide) in paragraph at lines 390--390
+ []\T1/mdbch/m/n/10.95 (-20) Selenium(Se)| 
+ []
+
+
+Overfull \hbox (74.46725pt too wide) in alignment at lines 390--390
+ [] [] [] [] [] [] 
+ []
+
+[3] [4] [5] [6] [7] [8] [9] [10] [11]
+>>>>>>> 64f26fd3ab3ade0a8a6bfca046a26f30d2fe3584
 <Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png, id
 =222, 644.4075pt x 362.85562pt>
 File: Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.pn
@@ -1465,14 +1538,22 @@ g Graphic file (type png)
 <use Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png
 >
 Package pdftex.def Info: Final_report_files/figure-latex/Critical_Mineral_Extra
+<<<<<<< HEAD
 ction_Process_v2.png  used on input line 540.
 (pdftex.def)             Requested size: 455.24408pt x 256.35031pt.
 LaTeX Font Info:    Trying to load font information for TS1+mdbch on input line
  547.
+=======
+ction_Process_v2.png  used on input line 534.
+(pdftex.def)             Requested size: 455.24408pt x 256.35031pt.
+LaTeX Font Info:    Trying to load font information for TS1+mdbch on input line
+ 541.
+>>>>>>> 64f26fd3ab3ade0a8a6bfca046a26f30d2fe3584
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ts1mdbch.fd
 File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
+<<<<<<< HEAD
 (Font)              scaled to size 10.51207pt on input line 547.
 [11 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.p
 ng>] [12]
@@ -1480,11 +1561,21 @@ LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
 (Font)              scaled to size 9.24173pt on input line 582.
 
 Underfull \hbox (badness 1127) in paragraph at lines 582--582
+=======
+(Font)              scaled to size 10.51207pt on input line 541.
+[12 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.p
+ng>] [13]
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 9.24173pt on input line 576.
+
+Underfull \hbox (badness 1127) in paragraph at lines 576--576
+>>>>>>> 64f26fd3ab3ade0a8a6bfca046a26f30d2fe3584
 [][]\T1/mdbch/m/n/10.95 (+20) DISR (2023). \T1/mdbch/m/it/10.95 (+20) Crit-i-ca
 l Min-er-als Strat-egy 2023^^U2030\T1/mdbch/m/n/10.95 (+20) . [][]$\T1/fvm/m/n/
 10.95 https : / / www . industry . gov . au /
  []
 
+<<<<<<< HEAD
 [13] [14]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 584.
 [15]
@@ -1492,6 +1583,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 584.
 (./Final_report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 584.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 584.
+=======
+[14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 578.
+[15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 578.
+(./Final_report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 578.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 578.
+>>>>>>> 64f26fd3ab3ade0a8a6bfca046a26f30d2fe3584
 Package rerunfilecheck Info: File `Final_report.out' has not changed.
 (rerunfilecheck)             Checksum: F7950FF86E02B45C38E81F2D35FA1969;2067.
 
@@ -1500,6 +1600,7 @@ LaTeX Warning: There were multiply-defined labels.
 Package logreq Info: Writing requests to 'Final_report.run.xml'.
 \openout1 = `Final_report.run.xml'.
 
+<<<<<<< HEAD
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 584.
  ) 
 Here is how much of TeX's memory you used:
@@ -1508,6 +1609,16 @@ Here is how much of TeX's memory you used:
  1142863 words of memory out of 5000000
  41683 multiletter control sequences out of 15000+600000
  664827 words of font info for 366 fonts, out of 8000000 for 9000
+=======
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 578.
+ ) 
+Here is how much of TeX's memory you used:
+ 27149 strings out of 481239
+ 441701 string characters out of 5920377
+ 1143831 words of memory out of 5000000
+ 41647 multiletter control sequences out of 15000+600000
+ 647644 words of font info for 311 fonts, out of 8000000 for 9000
+>>>>>>> 64f26fd3ab3ade0a8a6bfca046a26f30d2fe3584
  1141 hyphenation exceptions out of 8191
  62i,16n,113p,2441b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texliv
@@ -1522,10 +1633,19 @@ r/bchri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb
 texlive/texmf-dist/fonts/type1/public/bera/fvsr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
+<<<<<<< HEAD
 Output written on Final_report.pdf (15 pages, 592366 bytes).
 PDF statistics:
  327 PDF objects out of 1000 (max. 8388607)
  287 compressed objects within 3 object streams
  67 named destinations out of 1000 (max. 500000)
  47247 words of extra memory for PDF output out of 51595 (max. 10000000)
+=======
+Output written on Final_report.pdf (15 pages, 592492 bytes).
+PDF statistics:
+ 324 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
+ 66 named destinations out of 1000 (max. 500000)
+ 32911 words of extra memory for PDF output out of 35830 (max. 10000000)
+>>>>>>> 64f26fd3ab3ade0a8a6bfca046a26f30d2fe3584
 
