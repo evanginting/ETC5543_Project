@@ -1,0 +1,29 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Abstract}{3}{Doc-Start}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Background and Motivation}{3}{Doc-Start}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Critical Elements Overview}{3}{section*.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Critical Elements in Coals}{6}{table.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Economic Concentrations}{8}{table.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Existing Economic Deposits}{9}{table.caption.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Extraction of Critical Elements}{10}{table.caption.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Objectives and Significance}{12}{figure.caption.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Exploratory Data Analysis}{12}{figure.caption.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Methodology}{12}{figure.caption.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Results}{12}{figure.caption.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Discussions}{12}{figure.caption.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Conclusion}{12}{figure.caption.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Appendix}{12}{figure.caption.3}%
