@@ -294,8 +294,11 @@ This study is significant because it addresses a critical gap in understanding t
 # Data
 
 ## Data source and description
+As the escalating research into this burgeoning market, the largest national scientific research institution, CSIRO (Commonwealth Scientific and Industrial Research Organisation) in Australia Federation has initiated the early-stage research into the potential of element extraction in coal mines. Launched in 2001, The C29030 project in Australian Coal Industry's Research Program (ACARP) @Hodgkinson2021 has gauged the first comprehensive map of element concentration in Australian coal and provided the open dataset for testing result.This element mapping targets on 50 elements that has rarely studied from nearly 90 samples in Queensland and New South Wales, which are carefully selected in 13 coal mines and power plants to represent 6 basins, covering a range of coal measures and seams of varying ages. The dataset is a wide format excel spreadsheet, with the information of detected element name and their corresponding concentration in ppm for each labelled sample(e.g.2648CR01), as well as the sample's coordinate in a separate record.
 
-## Data cleaning
+Simultaneously, private-sector analyses are also promptly emerging, utilizing a variety of advanced analytic techniques , including four-acid digestion with ICP-AES and fusion-based acid digestion with ICP-MS. Although the report format is not standardized (long or wide format), but all of them cover rudimentary information for element name and concentration as well as additional borehole composite index in ppm, which is sufficient for further deep-dive investigation 
+
+## Initial Data Analysis and wrangling process
 
 ```{r}
 # Loading all data
