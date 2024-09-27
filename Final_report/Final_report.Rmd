@@ -44,6 +44,12 @@ library(tidyverse)
 library(knitr)
 library(kableExtra)
 library(tinytex)
+library(corrplot)
+library(ggcorrplot) 
+library(gridExtra)
+library(moments)
+library(condformat)
+theme_set(theme_minimal())
 ```
 
 \newpage
@@ -52,7 +58,7 @@ library(tinytex)
 
 # Background and Motivation
 
-## Critical Elements Overview
+## Critical elements overview
 
 In this technology advancement era where mineral-based technologies are relied by many industrial sectors, critical elements become highly-sought elements in the world [@Emsbo2021]. Critical elements can be defined by two main criteria: first, elements that are essential for manufacturing modern technologies, supporting economic frameworks, and ensuring national security; and second, elements with vulnerable supply chains, which can be affected by political issues, geographic concentration of extraction or production, and natural disasters [@Lian2024; @Fortier2018; @DISR2023].
 
@@ -149,7 +155,7 @@ As one of the promising top global producers of these critical elements, Austral
 6). The Critical Minerals Production Tax Incentive offers a production incentive worth 10 percent of relevant processing and refining costs for Australia’s 31 critical elements. This incentive is available for up to 10 years per project for production between 2027–28 and 2039–40, provided the projects reach final investment decisions by 2030.
 
 
-## Critical Elements in Coals
+## Critical elements in coals
 The green technology initiatives and commitments by countries worldwide for decarbonization have led to a growing market of clean energy and technology. As a result, critical elements, including REE, are projected to be in high demand in the future [@usde2017]. Currently, China leads the world in REE production, dominating the international trade and global value chain of rare earths [@us2024mineral]. However, their recent export restrictions on REE have led to a disruption in the global supply chain [@MANCHERI2015262]. In response, there is an increasing focus on identifying alternative sources of critical elements, with coal being explored as a potential new source of critical elements [@Hodgkinson2021].  
 
 In @Hodgkinson2020 element mapping project on Bowen basin Table \ref{tab:concentration}, the largest coal reserves in Australia, the concentration of element  composition is subjective to sample's lithology rather than the depth grading:
@@ -222,7 +228,7 @@ kable(table2_bind,
 ```
 
 
-## Economic Concentrations
+## Economic concentrations
 Before the recent surge in demand, extracting critical elements (including REE) from coal was considered costly, however, methods have been developed that reduce the cost and also enviromentally friendly. Coal and coal byproducts are substantially enhanced with trace metals and have been proposed as a potential source [@Eterigho2021]. A report by US Department of Energy suggests that extracting REEs from coal material already mined for other purposes, either as a dual product or byproduct, could be more cost-effective than a dedicated REE mining. Despite the challenge of processing large volumes to obtain economic concentrations, cost may be reduced due to the pre-processed (mined, crushed, and washed) state of the materials and transported to areas with existing infrastructure [@usde2017; @Hodgkinson2021]. Based on research, the elements and metals in coal that are considered to have the best chance for economic recovery are: REE, Ag, Au, PGEs, Be, Se, V, Ga, Sb, Sc, Mo, W, Re, Ge, U, Y, Nb, Zr, Al [@DAI2018155].
 
 Efficient extraction of critical elements from coal or coal ash, and finding coal sources with highly elevated concentrations of these elements, are essential prerequisites. The value of the element in any coal sources largely determined by their concentration, which varies based on geological and geochemical conditions. Therefore, to economically recovering critical elements from coal is by identifying sources with the highest critical elements levels and accessibility first before proceeding to extraction and recovery stages [@Eterigho2021]. @Reid2018 in his report suggests that critical elements average level in coal is typically just 35 ppm, which is insufficient for economic extraction. While @Seredin2012 in their reports suggests that a cutoff grade for Rare Earth Oxides (ROE) for coal seam has been suggested as 800-900 ppm. Table \ref{tab:cutoff-grade} provide suggested cut-off grade for 18 critical elements. Additionally, @TALAN2022107897 reports that coal sources are often relatively enriched in the heavy rare earths (HREEs, Ho, Er, Tm, Yb, Lu) and critical rare earths (CREEs, Y, Nd, Dy, Eu, Tb) compared to traditional mineral deposits. A cut-off grade of 115–130 ppm rare earth element on a whole mass basis may be considered economical. However, the U.S. Department of Energy set a criterion in their work assessing raw coal with total rare earth element content greater than 300 ppm on a whole dry coal basis. 
@@ -248,13 +254,13 @@ kable(CE_cutoff,
 ```
 
 
-## Existing Economic Deposits
+## Existing economic deposits
 Currently, there are no coal mines or coal basins extracting critical elements (including REE) at a commercial states. Most sources found conclude that we are still in the research and development process [@Hodgkinson2020; @DAI2018155; @Eterigho2021; @osti_1808639; @TALAN2022107897]. A report by @Eterigho2021 suggests that the research and development are primarily at the laboratory and pilot scale stages. For example, scholars like Honaker and coworkers who have significant experience in this subject, have constructed a 0.23 t/h solid feed pilot plant for testing different coal-based feedstocks [@osti_1808639]. However, commercial-scale extraction processes have not yet been widely implemented. @TALAN2022107897 report support this finding as well. They propose a potential approach for commercial-scale extraction of critical elements, indicating ongoing effort to bridge the gap between laboratory research and commercial application. Additionally, they note that further validation and techno-economic analysis are required before these processes can be scaled up commercially. Furthermore, scholars who focusing their research on China's coal resources also suggest further research is needed to scale up the extraction process [@Qin2015; @Qin2015b; @Liu2024; @Zhao2019; @ZOU2023105245]. Given that China is the leader in critical elements production, this fact indicates that their production of critical elements does not primarily come from coal and its byproducts. 
 
 We can conclude that significant research and development efforts have been made towards commercial extraction of critical elements from coal and coal byproducts. However, it is still long way from actual large-scale implementation. Most scholars indicate the necessity of considering sustainability factors. Effective waste management and treatment, along with the evaluation of extraction costs and technical feasibility, are important. At the end of the day, these elements are going to be utilised in green technology initiatives, such as renewable energy systems and electric vehicles, which demand high-purity materials. Ensuring that their extraction processes are environmentally and economically sustainable is crucial to align with the goals of these green technologies initiatives. Furthermore, ongoing research is vital to bridge existing technology gaps and develop robust, scalable methods that can transition from pilot projects to commercial operations. 
 
 
-## Extraction of Critical Elements
+## Extraction of critical elements
 There are several stages required for critical elements can be extracted from coal and coal byproducts. Coal and coal byproducts is first prepared by crushing and milling to release the organic from inorganic elements to generate fine concentrates. These concentrates are then undergo further separation techniques such as physical (froth flotation, electrostatic, magnetic, gravity) and chemical (leaching). Later, it will further processed into purification to extract the REE into pure oxide form (e.g. REO). REO can be standalone products, however, market demand dictates their conversion into metals. Thus, in the refining stage, using an electrolysis or a metallothermic reduction process, REOs will be converted into high-purity rare earth metals. These metals may then be alloyed with other elements to make them harder and stronger for the end-use market [@Eterigho2021; @usde2017; @TALAN2022107897]. The figure \ref{fig:ree-vc} visualise this process.
 
 ```{r ree-vc, fig.align = "center", out.width = '100%', fig.cap="REE Value Chain (Source: US Department of Energy, 2017)"}
@@ -285,8 +291,86 @@ The study utilises multiple datasets, some of which are publicly available while
 
 This study is significant because it addresses a critical gap in understanding the presence and potential recovery of valuable minerals from coal mine waste. By employing advanced machine learning and spatial statistics techniques, the project has the potential to revolutionise how the mining industry views coal waste—transforming it from an environmental challenge into a resource opportunity. The findings could contribute to more sustainable mining practices, reduce waste, and support the global transition to low-emission technologies by securing a local supply of critical minerals. Furthermore, this research could pave the way for further exploration of coal mine waste as a valuable resource in other regions, creating economic and environmental benefits on a broader scale.
 
+# Data
+
+## Data source and description
+
+## Data cleaning
+
+```{r}
+# Loading all data
+alldata <- readRDS('/cloud/project//results/all_data.rds')
+```
+
 # Exploratory Data Analysis
 
+The Exploratory Data Analysis (EDA) was carried out on critical elements concentration data, which provide information about the concentration of critical mineral across different areas in Australia that has been normalised using PAAS (Post-Archean Australian Shale) standard. The primary objective of this analysis is to gain a deeper understanding of the data's structure and key characteristics. Through this, we aim to identify significant trends, correlations, and outliers that may influence the outcomes of the study. 
+
+The EDA for critical elements concentration data starts with a descriptive statistics for every critical elements included in the data. These summary statistics can be found in the Table \ref{tab:desc-stats}. The descriptive statistics features include the minimum value of the critical elements, maximum value, the mean, the median, the standard deviation, and the kurtosis of the variable.
+
+```{r desc-stats, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE}
+
+# Populate descriptive stats table
+desc_stats <- alldata %>%
+  group_by(Element_Symbol, Element_Description) %>%
+  summarise(min = min(PAAS_normalised_value),
+         max = max(PAAS_normalised_value),
+         mean = mean(PAAS_normalised_value),
+         median = median(PAAS_normalised_value),
+         sd = sd(PAAS_normalised_value),
+         kurtosis = moments::kurtosis(PAAS_normalised_value))
+
+kable(desc_stats,
+      format = "latex", 
+      align = "c", 
+      escape = TRUE,
+      booktabs = TRUE,
+      col.names = gsub("[_]", " ", names(desc_stats)),
+      digits = 3, 
+      format.args = list(big.mark = ",", scientific = FALSE),
+      longtable = TRUE,
+      caption = "\\textbf{Descriptive Statistics of Elements' Normalised Value}") %>%
+  kable_styling(latex_options = c("repeat_header"), 
+                full_width = TRUE,
+                font_size=9) %>%
+  column_spec(2, extra_css = "max-width: 15px; word-wrap: break-word; overflow-wrap: break-word;")
+```
+
+The most important statistics from this table is kurtosis. Kurtosis measures the combined weight of the tails of a distribution relative to its centre. In this way, we can use kurtosis as an indicator of the presence of outliers. A high kurtosis values is indicative of outliers. The summary statistics suggest that Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni are having many outliers due to high kurtosis value. Validating the outliers will be easier with data visualisation, which will be presented in the next step.
+
+The next step was analysing the distribution of each element's normalised value. By utilising boxplots, it will help identifying the outliers of each critical elements, while also identifying which element's has median value above the PAAS standard. Obtaining these information will help to understand whether certain element is naturally abundance in the nature, thus it is most likely economically efficient to extract. The figure \ref{fig:element-dist} provide these informations.
+```{r element-dist, fig.cap = "Distribution of Critical Elements (Box-Plot)", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center"}
+bp1 <- alldata %>%
+  filter(Element_Symbol %in% c("Ag","Al","Au","Ba","Be","Bi","Cd","Ce","Co","Cr","Cs","Cu","Dy",
+                               "Er","Eu","Fe","Ga", "Gd","Ge","Ho","In","La","Li","Lu","Mn","Mo")) %>%
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol)) +
+  geom_vline(xintercept = 1, linetype = 2, color = "red") +
+  xlab("PASS Normalised Value") +
+  ylab("Element Symbol") +
+  geom_boxplot() +
+  theme_minimal()
+
+bp2 <- alldata %>%
+  filter(Element_Symbol %in% c("Nb","Nd","Ni","Pb","Pr","Rb","Re","Sc","Sm","Sn","Sr","Ta","Tb",
+                               "Th","Tl","Tm","U","V","Y","Yb","Zn","Zr","REE","REEY","LREE","MREE","HREE")) %>%
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol)) +
+  geom_vline(xintercept = 1, linetype = 2, color = "red") +
+  xlab("PASS Normalised Value") +
+  ylab("Element Symbol") +
+  geom_boxplot() +
+  xlim(0, 45) +
+  theme_minimal()
+
+grid.arrange(bp1, bp2, ncol = 2)
+```
+
+The boxplots shows some critical points that can be summarised as follow:
+
+- Medians: Most of the elements have their medians close to 0, indicating that the majority of the values are low or concentrated around a lower range. Considering that the threshold to define whether a sample is below/above background is 1 (vertical red dashed line), some elements that have median above the threshold are Re, Ag, Au, Mo, Bi, Li, Cu, Eu, Dy, Gd, Sm, Lu, Yb, Tm, Tb, MREE, Er, Ho, U, Ga, Y, Pb, Nd, Sc, REEY, REE, Th, V, Pr, LREE
+- Spread and Variability: The elements exhibit varying degrees of spread. For example, Ge shows a wide range with its box stretching from a low value near 0 to a higher value around 10, indicating a large variability. On the opposite side, elements like Mn, Fe, Cr, Co, Rb, Ni, HREE have very narrow IQR, indicating less variability.
+- Outliers: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, Ge, Bi, Mn, and Ba show notable outliers far from the main data range. Additionally, some elements that was reported from table \ref{tab:desc-stats}, which have high kurtosis are Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
+- Symmetry and Skewness: Some elements like Ge, Bi, and Ag appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like Ga and Sm show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
+- Comparison Accross Elements: Ge stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (REE, REEY, MREE, LREE, HREE) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
 # Methodology
 

@@ -4,26 +4,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{Background and Motivation}{3}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Critical Elements Overview}{3}{section*.1}%
+\contentsline {subsection}{Critical elements overview}{3}{section*.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Critical Elements in Coals}{6}{table.1}%
+\contentsline {subsection}{Critical elements in coals}{6}{table.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Economic Concentrations}{8}{table.2}%
+\contentsline {subsection}{Economic concentrations}{8}{table.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Existing Economic Deposits}{9}{table.caption.2}%
+\contentsline {subsection}{Existing economic deposits}{9}{table.caption.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Extraction of Critical Elements}{10}{table.caption.2}%
+\contentsline {subsection}{Extraction of critical elements}{10}{table.caption.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{Objectives and Significance}{12}{figure.caption.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Exploratory Data Analysis}{12}{figure.caption.3}%
+\contentsline {section}{Data}{13}{figure.caption.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Methodology}{12}{figure.caption.3}%
+\contentsline {subsection}{Data source and description}{13}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Results}{12}{figure.caption.3}%
+\contentsline {subsection}{Data cleaning}{13}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Discussions}{12}{figure.caption.3}%
+\contentsline {section}{Exploratory Data Analysis}{13}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Conclusion}{12}{figure.caption.3}%
+\contentsline {section}{Methodology}{17}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Appendix}{12}{figure.caption.3}%
+\contentsline {section}{Results}{17}{figure.caption.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Discussions}{17}{figure.caption.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Conclusion}{17}{figure.caption.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Appendix}{17}{figure.caption.5}%

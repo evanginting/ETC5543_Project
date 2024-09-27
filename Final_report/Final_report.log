@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  20 SEP 2024 08:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  27 SEP 2024 03:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -951,6 +951,12 @@ LaTeX Warning: Label `tab:celist' multiply defined.
 
 LaTeX Warning: Label `tab:concentration' multiply defined.
 
+
+LaTeX Warning: Label `tab:desc-stats' multiply defined.
+
+
+LaTeX Warning: Label `tab:desc-stats' multiply defined.
+
 )
 \openout1 = `Final_report.aux'.
 
@@ -1104,27 +1110,27 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 )) ABD: EveryShipout initializing macros
-<AACSB.png, id=52, 1204.5pt x 406.51875pt>
+<AACSB.png, id=63, 1204.5pt x 406.51875pt>
 File: AACSB.png Graphic file (type png)
 <use AACSB.png>
 Package pdftex.def Info: AACSB.png  used on input line 307.
 (pdftex.def)             Requested size: 50.57945pt x 17.07182pt.
-<EQUIS.png, id=53, 619.56468pt x 380.92313pt>
+<EQUIS.png, id=64, 619.56468pt x 380.92313pt>
 File: EQUIS.png Graphic file (type png)
 <use EQUIS.png>
 Package pdftex.def Info: EQUIS.png  used on input line 307.
 (pdftex.def)             Requested size: 27.76575pt x 17.07182pt.
-<AMBA.png, id=54, 276.03125pt x 83.31125pt>
+<AMBA.png, id=65, 276.03125pt x 83.31125pt>
 File: AMBA.png Graphic file (type png)
 <use AMBA.png>
 Package pdftex.def Info: AMBA.png  used on input line 307.
 (pdftex.def)             Requested size: 56.5615pt x 17.07182pt.
-<monash2.png, id=56, 2730.2pt x 791.95876pt>
+<monash2.png, id=67, 2730.2pt x 791.95876pt>
 File: monash2.png Graphic file (type png)
 <use monash2.png>
 Package pdftex.def Info: monash2.png  used on input line 307.
 (pdftex.def)             Requested size: 170.71652pt x 49.50938pt.
-<MBSportrait.jpg, id=57, 621.32124pt x 503.8825pt>
+<MBSportrait.jpg, id=68, 621.32124pt x 503.8825pt>
 File: MBSportrait.jpg Graphic file (type jpg)
 <use MBSportrait.jpg>
 Package pdftex.def Info: MBSportrait.jpg  used on input line 307.
@@ -1433,80 +1439,1744 @@ This may cause the page layout to be inconsistent, however.
 [2]
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 322.
+(hyperref)                be the same. Added a new anchor on input line 319.
 
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 8.64006pt on input line 330.
+(Font)              scaled to size 8.64006pt on input line 327.
 
-Overfull \hbox (13.3608pt too wide) in paragraph at lines 392--392
+Overfull \hbox (13.3608pt too wide) in paragraph at lines 389--389
  []\T1/mdbch/m/n/9 (-20) Magnesium(Mg)| 
  []
 
 
-Overfull \hbox (12.67499pt too wide) in paragraph at lines 392--392
+Overfull \hbox (12.67499pt too wide) in paragraph at lines 389--389
  []\T1/mdbch/m/n/9 (-20) Manganese(Mn)| 
  []
 
 
-Overfull \hbox (0.54988pt too wide) in paragraph at lines 392--392
+Overfull \hbox (0.54988pt too wide) in paragraph at lines 389--389
  []\T1/mdbch/m/n/9 (-20) Molybdenum 
  []
 
 
-Overfull \hbox (2.27718pt too wide) in paragraph at lines 392--392
+Overfull \hbox (2.27718pt too wide) in paragraph at lines 389--389
  []\T1/mdbch/m/n/9 (-20) Selenium(Se)| 
  []
 
 [3] [4] [5] [6] [7] [8] [9] [10]
 <Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png, id
-=220, 644.4075pt x 362.85562pt>
+=227, 644.4075pt x 362.85562pt>
 File: Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.pn
 g Graphic file (type png)
 <use Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png
 >
 Package pdftex.def Info: Final_report_files/figure-latex/Critical_Mineral_Extra
-ction_Process_v2.png  used on input line 540.
+ction_Process_v2.png  used on input line 533.
 (pdftex.def)             Requested size: 455.24408pt x 256.35031pt.
 LaTeX Font Info:    Trying to load font information for TS1+mdbch on input line
- 547.
+ 540.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ts1mdbch.fd
 File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 547.
+(Font)              scaled to size 10.51207pt on input line 540.
 [11 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.p
 ng>] [12]
-LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.24173pt on input line 582.
 
-Underfull \hbox (badness 1127) in paragraph at lines 582--582
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 562.
+
+
+Overfull \hbox (12.46533pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) Element 
+ []
+
+
+Overfull \hbox (2.65472pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) mean| 
+ []
+
+
+Overfull \hbox (9.80954pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) median| 
+ []
+
+
+Overfull \hbox (11.22351pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) kurtosis| 
+ []
+
+
+Overfull \hbox (12.46533pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) Element 
+ []
+
+
+Overfull \hbox (2.65472pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) mean| 
+ []
+
+
+Overfull \hbox (9.80954pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) median| 
+ []
+
+
+Overfull \hbox (11.22351pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) kurtosis| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.000| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 13.200| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.142| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.600| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.389| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.783| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.000| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 8.500| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.845| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.438| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.982| 
+ []
+
+
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 34.192| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.556| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 12.222| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.521| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.333| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.064| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.764| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.013| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 18.182| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.108| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.750| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.027| 
+ []
+
+
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 43.446| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.033| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.000| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.126| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.667| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.134| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.156| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.787| 
+ []
+
+
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 25.197| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.685| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.402| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.302| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 17.818| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.102| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.347| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.271| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.918| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.115| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 9.839| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.056| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.938| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.956| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.985| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.595| 
+ []
+
+
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 21.060| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.118| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.882| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.906| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.588| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.133| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 17.661| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.012| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 10.807| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.441| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.205| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.048| 
+ []
+
+
+Overfull \hbox (8.1499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 54.642| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.024| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.870| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.068| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.923| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.910| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 12.858| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.040| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 10.200| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.681| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.880| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.160| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 13.140| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.114| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.286| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.522| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.517| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.847| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.566| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.087| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.957| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.401| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.320| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.815| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.383| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.114| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.773| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.676| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.648| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.969| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 8.535| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.000| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 9.689| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.474| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.180| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.066| 
+ []
+
+
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 45.053| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.076| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.076| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.293| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.291| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.684| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.148| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.132| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.605| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.589| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.513| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.901| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.420| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.088| 
+ []
+
+
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 43.750| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.481| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.344| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 13.031| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.653| 
+ []
+
+
+Overfull \hbox (3.73004pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) HREE| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.036| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.995| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.282| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.267| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.157| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.712| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.125| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.750| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.352| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.306| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.767| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.962| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.400| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.200| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.434| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.000| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.117| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 9.581| 
+ []
+
+
+Overfull \hbox (1.88419pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) LREE| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.089| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.214| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.020| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.064| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.540| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.992| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.100| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.540| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.871| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.930| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.480| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.566| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.250| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 14.250| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.386| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.000| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.974| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 9.533| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.000| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.250| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.540| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.438| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.919| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.067| 
+ []
+
+
+Overfull \hbox (4.81386pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) MREE| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.088| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.384| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.361| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.344| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.756| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.952| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.002| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 18.717| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.594| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.109| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.884| 
+ []
+
+
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 66.528| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.067| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 13.733| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.971| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.667| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.195| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 10.237| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.042| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.567| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.622| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.647| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.402| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 16.601| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.065| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.423| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.145| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.221| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.645| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.693| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.023| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 8.182| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.386| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.159| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.869| 
+ []
+
+
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 44.099| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.052| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.909| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.276| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.235| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.856| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.139| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.056| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.704| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.033| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.092| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.596| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.452| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.134| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.174| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.089| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.130| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.539| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.574| 
+ []
+
+
+Overfull \hbox (2.44302pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) REEY| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.138| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.641| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.120| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.151| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.528| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.600| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.001| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.670| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.472| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.441| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.396| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.920| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.000| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.500| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.286| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.000| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.134| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.792| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.162| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.985| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.137| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.191| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.610| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 8.482| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.089| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.689| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.421| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.460| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.785| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.173| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.182| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 2.364| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.726| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.655| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.350| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.862| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.006| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.571| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.955| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.916| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.608| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.965| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.133| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.000| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.865| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.920| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.482| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 14.453| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.156| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.578| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.378| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.359| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.760| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.576| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.044| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.329| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.172| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.107| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.853| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.382| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.030| 
+ []
+
+
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 10.000| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.942| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.715| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.123| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.782| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.303| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.455| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.453| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.364| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.816| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 7.679| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.054| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.286| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.289| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.304| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.805| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 3.219| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.019| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.299| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.038| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.103| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.666| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.959| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.045| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.568| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.278| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.250| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.764| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.443| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.091| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 5.409| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.462| 
+ []
+
+
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 1.400| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.854| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 6.361| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.014| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.324| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.921| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.930| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.699| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.134| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.021| 
+ []
+
+
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 4.821| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.923| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.979| 
+ []
+
+
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 0.592| 
+ []
+
+
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+ []\T1/mdbch/m/n/9 (-20) 9.671| 
+ []
+
+[13] [14]
+<Final_report_files/figure-latex/element-dist-1.pdf, id=255, 716.6775pt x 424.5
+8624pt>
+File: Final_report_files/figure-latex/element-dist-1.pdf Graphic file (type pdf
+)
+<use Final_report_files/figure-latex/element-dist-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/element-dist-1.pdf  us
+ed on input line 661.
+(pdftex.def)             Requested size: 455.24408pt x 269.70645pt.
+[15] [16 <./Final_report_files/figure-latex/element-dist-1.pdf>] [17]
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 9.24173pt on input line 696.
+
+Underfull \hbox (badness 1127) in paragraph at lines 696--696
 [][]\T1/mdbch/m/n/10.95 (+20) DISR (2023). \T1/mdbch/m/it/10.95 (+20) Crit-i-ca
 l Min-er-als Strat-egy 2023^^U2030\T1/mdbch/m/n/10.95 (+20) . [][]$\T1/fvm/m/n/
 10.95 https : / / www . industry . gov . au /
  []
 
-[13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 584.
-[14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 584.
+[18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 698.
+[19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 698.
 (./Final_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 584.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 584.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 698.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 698.
 Package rerunfilecheck Info: File `Final_report.out' has not changed.
-(rerunfilecheck)             Checksum: F7950FF86E02B45C38E81F2D35FA1969;2067.
+(rerunfilecheck)             Checksum: D3F1060102AEA0B3BC1D3314B84A0520;2463.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'Final_report.run.xml'.
 \openout1 = `Final_report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 584.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 698.
  ) 
 Here is how much of TeX's memory you used:
- 27245 strings out of 481239
- 442994 string characters out of 5920377
- 1142809 words of memory out of 5000000
- 41679 multiletter control sequences out of 15000+600000
+ 27281 strings out of 481239
+ 443548 string characters out of 5920377
+ 1176183 words of memory out of 5000000
+ 41720 multiletter control sequences out of 15000+600000
  665062 words of font info for 369 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,16n,113p,2441b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1522,10 +3192,10 @@ r/bchri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb
 texlive/texmf-dist/fonts/type1/public/bera/fvsr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
-Output written on Final_report.pdf (14 pages, 591286 bytes).
+Output written on Final_report.pdf (19 pages, 628537 bytes).
 PDF statistics:
- 320 PDF objects out of 1000 (max. 8388607)
- 281 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 47247 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 353 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 47276 words of extra memory for PDF output out of 51595 (max. 10000000)
 
