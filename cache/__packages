@@ -14,3 +14,8 @@ knitr
 kableExtra
 tinytex
 condformat
+corrplot
+ggcorrplot
+gridExtra
+moments
+visdat
