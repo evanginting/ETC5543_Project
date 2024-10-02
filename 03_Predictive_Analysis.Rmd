@@ -1,0 +1,261 @@
+---
+title: "03_Predictive_Analysis"
+output: html_document
+date: "2024-10-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(tidymodels)
+library(ranger)
+library(randomForestSRC)
+library(randomForest)
+library(data.table)
+library(xgboost)
+```
+
+
+## Prepare data for modelling
+
+Note this is where you would remove outliers from your data set (if you have good reason to remove)
+
+```{r}
+#Load data
+alldata <- readRDS('./results/all_data.rds')
+
+DT <- setDT(alldata)
+
+#reformat data into wide forma
+DT <- dcast(DT,Project_Name+Sample_ID~Element_Symbol, value.var = c("Element_Value_ppm"), fun=mean, fill=NA)
+
+```
+
+## Split data into train and test data sets
+
+Note this is a very simple split across all data sets - you may need to split by project as well to improve model performance
+
+```{r}
+set.seed(2022)
+
+DT_initial <- initial_split(DT, prop = 0.75)
+DT_train <- training(DT_initial)
+DT_test <- testing(DT_initial)
+
+```
+
+
+## Very basic predictive modelling
+
+Predict REE element concentration from some of the elements in the ME-4ACD81 test (this is the cheaper test). Elements in this test include Ag, As, Cd, Co, Cu, Li, Mo, Ni, Pb, Sc, Tl, Zn. 
+
+Tl is not well represented, lets try and use Li, Mo and Cu (take alook at your pearsons correlation diagrams - there may be some associations)
+
+### First Try
+```{r}
+
+#make sure that no NA result exist amongst the data set
+rf_train <- DT_train[,c("REE","Li","Mo","Cu")]
+rf_test <- DT_test[,c("REE","Li","Mo","Cu")]
+
+
+
+#tune the model on training data
+
+rf_tune <- rfsrc(REE~.,data=rf_train,ntreeTry = 500)
+
+
+#fit the optimised model to the training data:
+
+rf_fit <- rfsrc(REE~.,data=rf_train, mtry = rf_tune$optimal[2], nodesize = rf_tune$optimal[1], ntree = 500)
+
+#predict on test data:
+rf_pred <- predict(rf_fit, rf_test)
+
+
+```
+
+
+### Alternative
+#### Build the model
+```{r}
+
+#make sure that no NA result exist amongst the data set
+DT_train_fltr_alt <- DT_train[,c("REE","Li","Mo","Cu")] %>% na.omit()
+DT_test_fltr_alt <- DT_test[,c("REE","Li","Mo","Cu")] %>% na.omit()
+DT_fltr_folds <- vfold_cv(DT_train_fltr_alt, v = 5, repeats = 2)
+
+# Build RF Model
+rf_spec <- rand_forest(mode = "regression") %>%
+  set_engine("randomForest")
+
+rf_fit <- rf_spec %>%
+  fit(REE ~ ., data = DT_train_fltr_alt)
+
+rf_fit
+```
+
+```{r}
+# Build RF Tuned Model
+rf_tuned_spec <- rand_forest(mode = "regression",
+                       mtry = tune(),
+                       min_n = tune(),
+                       trees = tune()) %>%
+                 set_engine("randomForest")
+
+rf_tuned_workflow <- workflow() %>%
+  add_variables(outcomes = REE, predictors = everything()) %>%
+  add_model(rf_tuned_spec)
+
+
+set.seed(2022)
+manual_tune <- rf_tuned_workflow %>% 
+  tune_grid(resamples = DT_fltr_folds, 
+            grid = expand.grid(mtry = c(1,2,3), 
+                               min_n = c(1,2),
+                               trees = c(500, 1000, 2000)))
+
+
+collect_metrics(manual_tune)
+
+show_best(manual_tune, n = 3)
+
+rf_manual_tuned_final <- finalize_workflow(rf_tuned_workflow, select_best(manual_tune)) %>%
+    fit(DT_train_fltr_alt)
+```
+
+
+```{r}
+# Build LM Model
+lm_spec <- linear_reg() %>%
+  set_engine("lm")
+
+lm_fit <- lm_spec %>%
+  fit(REE ~ ., data = DT_train_fltr_alt)
+
+lm_fit
+```
+
+```{r}
+# Build XGBoost Tuned Model
+xgb_tuned_spec <- boost_tree(mode = "regression",
+                             trees = 1000,
+                             tree_depth = tune(),
+                             learn_rate = tune(),
+                             loss_reduction = tune(),
+                             min_n = tune()) %>%
+                 set_engine("xgboost")
+
+# xgb tune workflow
+xgb_tuned_workflow <- workflow() %>%
+  add_model(xgb_tuned_spec) %>%
+  add_formula(REE ~ .)
+
+
+# grid specification
+xgboost_params <- parameters(
+    tree_depth(),
+    learn_rate(),
+    loss_reduction(),
+    min_n()
+  )
+
+xgboost_grid <- 
+  dials::grid_space_filling(
+    xgboost_params, 
+    size = 10
+  )
+
+head(xgboost_grid)
+
+
+# Tune the model
+set.seed(2022)
+xgb_tune <- xgb_tuned_workflow %>% 
+  tune_grid(resamples = DT_fltr_folds, 
+            grid = xgboost_grid)
+
+show_best(xgb_tune, n = 3)
+
+xgb_tuned_fit <- finalize_workflow(xgb_tuned_workflow, select_best(xgb_tune)) %>%
+    fit(DT_train_fltr_alt)
+```
+
+#### Evaluate the model
+```{r}
+
+# RF Results
+results_train_rf <- rf_fit %>%
+  predict(new_data = DT_train_fltr_alt) %>%
+  mutate(truth = DT_train_fltr_alt$REE,
+         model = "RF")
+
+results_test_rf <- rf_fit %>%
+  predict(new_data = DT_test_fltr_alt) %>%
+  mutate(truth = DT_test_fltr_alt$REE,
+         model = "RF")
+
+# RF Tuned Results
+results_train_rf_mnl_tuned <- rf_manual_tuned_final %>%
+  predict(new_data = DT_train_fltr_alt) %>%
+  mutate(truth = DT_train_fltr_alt$REE,
+         model = "RF_Mnl_Tuned")
+
+results_test_rf_mnl_tuned <- rf_manual_tuned_final %>%
+  predict(new_data = DT_test_fltr_alt) %>%
+  mutate(truth = DT_test_fltr_alt$REE,
+         model = "RF_Mnl_Tuned")
+
+# LM Results
+results_train_lm <- lm_fit %>%
+  predict(new_data = DT_train_fltr_alt) %>%
+  mutate(truth = DT_train_fltr_alt$REE,
+         model = "LM")
+
+results_test_lm <- lm_fit %>%
+  predict(new_data = DT_test_fltr_alt) %>%
+  mutate(truth = DT_test_fltr_alt$REE,
+         model = "LM")
+
+# XGB Tuned Results
+results_train_xgb_tuned <- xgb_tuned_fit %>%
+  predict(new_data = DT_train_fltr_alt) %>%
+  mutate(truth = DT_train_fltr_alt$REE,
+         model = "XGB_Tuned")
+
+results_test_xgb_tuned <- xgb_tuned_fit %>%
+  predict(new_data = DT_test_fltr_alt) %>%
+  mutate(truth = DT_test_fltr_alt$REE,
+         model = "XGB_Tuned")
+
+# Merge the results
+results_train <- bind_rows(results_train_rf, results_train_rf_mnl_tuned, results_train_lm, results_train_xgb_tuned)
+
+results_test <- bind_rows(results_test_rf, results_test_rf_mnl_tuned, results_test_lm, results_test_xgb_tuned)
+```
+
+
+```{r}
+results_train %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+
+results_test %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+```
+
+```{r}
+results_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(truth, .pred, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+

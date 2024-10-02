@@ -32,6 +32,15 @@
 \usepackage{longtable,booktabs}
 % Fix footnotes in tables (requires footnote package)
 \IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
 }{% else
@@ -561,7 +570,20 @@ This study is significant because it addresses a critical gap in understanding t
 
 \subsection{Data source and description}\label{data-source-and-description}
 
-\subsection{Data cleaning}\label{data-cleaning}
+As the escalating research into this burgeoning market, the largest national scientific research institution, CSIRO (Commonwealth Scientific and Industrial Research Organisation) in Australia Federation has initiated the early-stage research into the potential of element extraction in coal mines. Launched in 2001, The C29030 project in Australian Coal Industry's Research Program (ACARP) \autocite{Hodgkinson2021} has gauged the first comprehensive map of element concentration in Australian coal and provided the open dataset for testing result.This element mapping targets on 50 elements that has rarely studied from nearly 90 samples in Queensland and New South Wales, which are carefully selected in 13 coal mines and power plants to represent 6 basins, covering a range of coal measures and seams of varying ages. The dataset is a wide format excel spreadsheet, with the information of detected element name and their corresponding concentration in ppm for each labelled sample(e.g.2648CR01), as well as the sample's coordinate in a separate record.
+
+Simultaneously, private-sector analyses are also promptly emerging, utilizing a variety of advanced analytic techniques , including four-acid digestion with ICP-AES and fusion-based acid digestion with ICP-MS. Although the report format is not standardized (long or wide format), but all of them cover rudimentary information for element name and concentration as well as additional borehole composite index in ppm, which is sufficient for further deep-dive investigation.
+
+Eventually, PAAS file attached to \autocite{McLennan2011} Post-Archean Australian Shale normalized score, representing the average composition of shale formed after the Archean eon, which is a geochemical reference baseline in the comparison of element enrichment in this report.
+
+\subsection{Initial Data Analysis and wrangling process}\label{initial-data-analysis-and-wrangling-process}
+
+To prepare for exploratory data analysis and predictive modeling, different data formats must be collated into a standardized structure, which involves converting the data into a long format and trimming the trivial variables to ensure consistency and readiness for further analysis. The cleaning data will include \texttt{element\ symbol}, \texttt{elment\ value\ in\ ppm} and \texttt{project\ region} only, but other specific cleaning requirements still need to be addressed. First and foremost, The private projects are unable to disclose the location in detail, therefore; they will be replaced to Confidential A, B and C respectively. Furthermore, partial element values are recorded as character due to their undetected status(nd) and subtle presence(\texttt{\textless{}} sign). a value of \texttt{-999.00} will be assigned to represent their negative relationship without compromising data integrity. Another significant issue in data wrangling is the sample duplication, mainly because cross detection methods are applied in their analysis. To resolve this, we will remain the element concentration value for the most precise observation range.
+
+After the preliminary tidying, the data is organized and concise but some information is still lacking in subsequent study. Since the analytic technique will only detect single element, the critical element groups like REE and it's subcategories are absent in calculation. the element list need to be expanded by the concentration values of their relevant symbols. Additionally, the data must be joined with PAAS file and normalized value should be derived by using formula \(\text{Normalized value}= \frac{\text{Element value(ppm)}}{\text{PAAS score(ppm)}}\), along with Boolean flag for enrichment(above background, \textgreater=1). The final step is excluding the rows with any missing value.
+
+In a nutshell, The final cleaning data include total 8 variables and 11032 observations. Figure \ref{fig:visdat} shows the correct data type for all variables, with no missing value left.
+\includegraphics{Final_report_files/figure-latex/visdat-1.pdf}
 
 \section{Exploratory Data Analysis}\label{exploratory-data-analysis}
 

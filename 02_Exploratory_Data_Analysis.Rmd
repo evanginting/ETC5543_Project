@@ -283,10 +283,14 @@ res_cor_cop <- alldata %>%
   select(Project_Name,Sample_ID,Element_Symbol,PAAS_normalised_value) %>% 
   pivot_wider(names_from = Element_Symbol,values_from = c(PAAS_normalised_value))
 
-corr_cop <- cor(res_cor_cop[,3:50]) # excluding REE, MREE, LREE, REEY in the corrplot
+corr_cop <- cor(res_cor_cop[,3:55])
 
-pg_cop <- ggcorrplot(corr_cop,type = "lower",
-     outline.col = "white", lab = TRUE, lab_size = 2)
+pg_cop <- ggcorrplot(corr_cop, 
+                     method = "square", 
+                     type = "lower",
+                     outline.col = "white", 
+                     lab = TRUE, 
+                     lab_size = 2)
 
 print(pg_cop)
 ```

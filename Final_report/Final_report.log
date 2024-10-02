@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  27 SEP 2024 03:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  2 OCT 2024 05:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -553,6 +553,26 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box51
 \fn@width=\dimen171
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen172
+\Gin@req@width=\dimen173
+) (/usr/share/texlive/texmf-dist/tex/latex/grffile/grffile.sty
+Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
+y)
+Package grffile Info: This package is an empty stub for compatibility on input 
+line 40.
 ) (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2020-01-22 v2.0d non-zero parskip adjustments
 ) (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
@@ -560,13 +580,13 @@ Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen172
-\captionmargin@=\dimen173
-\captionwidth=\dimen174
-\caption@tempdima=\dimen175
-\caption@indent=\dimen176
-\caption@parindent=\dimen177
-\caption@hangindent=\dimen178
+\captionmargin=\dimen174
+\captionmargin@=\dimen175
+\captionwidth=\dimen176
+\caption@tempdima=\dimen177
+\caption@indent=\dimen178
+\caption@parindent=\dimen179
+\caption@hangindent=\dimen180
 Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count403
@@ -724,21 +744,6 @@ Package: bm 2019/07/24 v1.2d Bold Symbol Support (DPC/FMi)
 \symboldlargesymbols=\mathgroup14
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 209.
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 105.
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen179
-\Gin@req@width=\dimen180
 ) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2019/10/16 v2.13 Sectioning titles
 \ttl@box=\box52
@@ -766,11 +771,11 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 151.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 151.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 151.
+Package hyperref Info: Option `breaklinks' set `true' on input line 160.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 160.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 160.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 151.
+Package hyperref Info: Option `colorlinks' set `true' on input line 160.
 (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2020/01/17 v1.23 mathematical typesetting tools
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
@@ -954,52 +959,49 @@ LaTeX Warning: Label `tab:concentration' multiply defined.
 
 LaTeX Warning: Label `tab:desc-stats' multiply defined.
 
-
-LaTeX Warning: Label `tab:desc-stats' multiply defined.
-
 )
 \openout1 = `Final_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 306.
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for MDA/cmr/m/n on input line 306.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 315.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for MDA/cmr/m/n on input line 315.
 LaTeX Font Info:    Trying to load font information for MDA+cmr on input line 3
-06.
+15.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdacmr.fd
 File: mdacmr.fd 
 )
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Font Info:    Checking defaults for MDB/cmr/m/n on input line 306.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Font Info:    Checking defaults for MDB/cmr/m/n on input line 315.
 LaTeX Font Info:    Trying to load font information for MDB+cmr on input line 3
-06.
+15.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbcmr.fd
 File: mdbcmr.fd 
 )
-LaTeX Font Info:    ... okay on input line 306.
-LaTeX Info: Redefining \microtypecontext on input line 306.
+LaTeX Font Info:    ... okay on input line 315.
+LaTeX Info: Redefining \microtypecontext on input line 315.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 306.
+LaTeX Info: Redefining \showhyphens on input line 315.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1008,7 +1010,7 @@ File: mt-bch.cfg 2007/03/03 v1.5 microtype config. file: Bitstream Charter (RS)
 
 )
 \AtBeginShipoutBox=\box70
-Package hyperref Info: Link coloring ON on input line 306.
+Package hyperref Info: Link coloring ON on input line 315.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1018,9 +1020,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count433
 )
-LaTeX Info: Redefining \ref on input line 306.
-LaTeX Info: Redefining \pageref on input line 306.
-LaTeX Info: Redefining \nameref on input line 306.
+LaTeX Info: Redefining \ref on input line 315.
+LaTeX Info: Redefining \pageref on input line 315.
+LaTeX Info: Redefining \nameref on input line 315.
 (./Final_report.out) (./Final_report.out)
 \@outlinefile=\write4
 \openout4 = `Final_report.out'.
@@ -1074,21 +1076,8 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Final_report.bbl' found.
 (./Final_report.bbl)
-Package biblatex Info: Reference section=0 on input line 306.
-Package biblatex Info: Reference segment=0 on input line 306.
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
-Package caption Info: threeparttable package is loaded.
-Package caption Info: wrapfig package is loaded.
-Package caption Info: End \AtBeginDocument code.
-
-Package mathdesign/mdbch Warning: Package 'amssymb' shouldn't be used in conjon
-ction with package mdbch, on input line 306.
-
-
-Package mathdesign/mdbch Warning: Package 'amsfonts' shouldn't be used in conjo
-nction with package mdbch, on input line 306.
-
+Package biblatex Info: Reference section=0 on input line 315.
+Package biblatex Info: Reference segment=0 on input line 315.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count434
@@ -1109,106 +1098,120 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
-)) ABD: EveryShipout initializing macros
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: threeparttable package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+Package mathdesign/mdbch Warning: Package 'amssymb' shouldn't be used in conjon
+ction with package mdbch, on input line 315.
+
+
+Package mathdesign/mdbch Warning: Package 'amsfonts' shouldn't be used in conjo
+nction with package mdbch, on input line 315.
+
+ABD: EveryShipout initializing macros
 <AACSB.png, id=63, 1204.5pt x 406.51875pt>
 File: AACSB.png Graphic file (type png)
 <use AACSB.png>
-Package pdftex.def Info: AACSB.png  used on input line 307.
-(pdftex.def)             Requested size: 50.57945pt x 17.07182pt.
+Package pdftex.def Info: AACSB.png  used on input line 316.
+(pdftex.def)             Requested size: 50.57945pt x 17.07056pt.
 <EQUIS.png, id=64, 619.56468pt x 380.92313pt>
 File: EQUIS.png Graphic file (type png)
 <use EQUIS.png>
-Package pdftex.def Info: EQUIS.png  used on input line 307.
-(pdftex.def)             Requested size: 27.76575pt x 17.07182pt.
+Package pdftex.def Info: EQUIS.png  used on input line 316.
+(pdftex.def)             Requested size: 27.76575pt x 17.07104pt.
 <AMBA.png, id=65, 276.03125pt x 83.31125pt>
 File: AMBA.png Graphic file (type png)
 <use AMBA.png>
-Package pdftex.def Info: AMBA.png  used on input line 307.
-(pdftex.def)             Requested size: 56.5615pt x 17.07182pt.
+Package pdftex.def Info: AMBA.png  used on input line 316.
+(pdftex.def)             Requested size: 56.5615pt x 17.07127pt.
 <monash2.png, id=67, 2730.2pt x 791.95876pt>
 File: monash2.png Graphic file (type png)
 <use monash2.png>
-Package pdftex.def Info: monash2.png  used on input line 307.
-(pdftex.def)             Requested size: 170.71652pt x 49.50938pt.
+Package pdftex.def Info: monash2.png  used on input line 316.
+(pdftex.def)             Requested size: 170.67874pt x 49.50938pt.
 <MBSportrait.jpg, id=68, 621.32124pt x 503.8825pt>
 File: MBSportrait.jpg Graphic file (type jpg)
 <use MBSportrait.jpg>
-Package pdftex.def Info: MBSportrait.jpg  used on input line 307.
-(pdftex.def)             Requested size: 99.58464pt x 80.76123pt.
+Package pdftex.def Info: MBSportrait.jpg  used on input line 316.
+(pdftex.def)             Requested size: 99.58408pt x 80.76123pt.
 LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 9.24173pt on input line 307.
+(Font)              scaled to size 9.24173pt on input line 316.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `fvs' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 10.12793pt on input line 307.
+(Font)              scaled to size 10.12793pt on input line 316.
 LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
-(Font)              scaled to size 10.12793pt on input line 307.
+(Font)              scaled to size 10.12793pt on input line 316.
 LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 8.43994pt on input line 307.
+(Font)              scaled to size 8.43994pt on input line 316.
 LaTeX Font Info:    Trying to load font information for OT1+mdbch on input line
- 307.
+ 316.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ot1mdbch.fd
 File: ot1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OT1/mdbch.
 )
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Trying to load font information for OML+mdbch on input line
- 307.
+ 316.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/omlmdbch.fd
 File: omlmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OML/mdbch.
 )
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OML/mdbch/m/it/10'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Trying to load font information for OMS+mdbch on input line
- 307.
+ 316.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/omsmdbch.fd
 File: omsmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OMS/mdbch.
 )
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OMS/mdbch/m/n/10'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Trying to load font information for OMX+mdbch on input line
- 307.
+ 316.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/omxmdbch.fd
 File: omxmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for OMX/mdbch.
 )
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 307
+(Font)              scaled to size 4.80003pt on input line 316.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 316
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 307
+LaTeX Font Info:    Trying to load font information for U+msb on input line 316
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1216,204 +1219,204 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OML/mdbch/m/n/10'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Trying to load font information for MDA+mdbch on input line
- 307.
+ 316.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/mdamdbch.fd
 File: mdamdbch.fd 2013/08/29 Fontinst v1.933 font definitions for MDA/mdbch.
 )
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Trying to load font information for MDB+mdbch on input line
- 307.
+ 316.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/mdbmdbch.fd
 File: mdbmdbch.fd 2013/08/29 Fontinst v1.933 font definitions for MDB/mdbch.
 )
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
-(Font)              scaled to size 9.60007pt on input line 307.
+(Font)              scaled to size 9.60007pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
-(Font)              scaled to size 6.72005pt on input line 307.
+(Font)              scaled to size 6.72005pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
-(Font)              scaled to size 4.80003pt on input line 307.
+(Font)              scaled to size 4.80003pt on input line 316.
 LaTeX Font Info:    Trying to load font information for U+fontawesometwo on inp
-ut line 307.
+ut line 316.
 (/usr/share/texlive/texmf-dist/tex/latex/fontawesome/ufontawesometwo.fd
 File: ufontawesometwo.fd 2016/05/22 Font definitions for U/fontawesometwo.
 )
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OML/mdbch/m/it/10.95'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OMS/mdbch/m/n/10.95'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OML/mdbch/m/n/10.95'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
-(Font)              scaled to size 10.51207pt on input line 307.
+(Font)              scaled to size 10.51207pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
-(Font)              scaled to size 7.68005pt on input line 307.
+(Font)              scaled to size 7.68005pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
-(Font)              scaled to size 5.76004pt on input line 307.
+(Font)              scaled to size 5.76004pt on input line 316.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 23.88496pt on input line 307.
+(Font)              scaled to size 23.88496pt on input line 316.
 LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 20.99857pt on input line 307.
+(Font)              scaled to size 20.99857pt on input line 316.
 LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
-(Font)              scaled to size 20.99857pt on input line 307.
+(Font)              scaled to size 20.99857pt on input line 316.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 12.1535pt on input line 307.
+(Font)              scaled to size 12.1535pt on input line 316.
 LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
-(Font)              scaled to size 12.1535pt on input line 307.
+(Font)              scaled to size 12.1535pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/it' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OML/mdbch/m/it/12'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OMS/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OMS/mdbch/m/n/12'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `OMX/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 
 Package microtype Warning: I cannot find a protrusion list for font
 (microtype)                `OML/mdbch/m/n/12'. Switching off
-(microtype)                protrusion for this font on input line 307.
+(microtype)                protrusion for this font on input line 316.
 
 LaTeX Font Info:    Font shape `MDA/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `MDB/mdbch/m/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `OT1/mdbch/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `OML/mdbch/b/it' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `OMS/mdbch/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 LaTeX Font Info:    Font shape `OMX/mdbch/b/n' will be
-(Font)              scaled to size 11.52008pt on input line 307.
+(Font)              scaled to size 11.52008pt on input line 316.
 
-Overfull \hbox (172.68228pt too wide) detected at line 307
+Overfull \hbox (172.68228pt too wide) detected at line 316
 [] 
  []
 
 
-Overfull \hbox (56.23262pt too wide) detected at line 307
+Overfull \hbox (56.23262pt too wide) detected at line 316
  [] |  [] []
  []
 
@@ -1422,7 +1425,7 @@ Overfull \hbox (56.23262pt too wide) detected at line 307
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./monash2.png> <./MBSportr
 ait.jpg> <./AACSB.png> <./EQUIS.png> <./AMBA.png>]
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 13.82408pt on input line 311.
+(Font)              scaled to size 13.82408pt on input line 320.
 (./Final_report.toc
 LaTeX Font Info:    Font shape `T1/mdbch/b/n' will be
 (Font)              scaled to size 10.51207pt on input line 3.
@@ -1439,27 +1442,27 @@ This may cause the page layout to be inconsistent, however.
 [2]
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 319.
+(hyperref)                be the same. Added a new anchor on input line 328.
 
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 8.64006pt on input line 327.
+(Font)              scaled to size 8.64006pt on input line 336.
 
-Overfull \hbox (13.3608pt too wide) in paragraph at lines 389--389
+Overfull \hbox (13.3608pt too wide) in paragraph at lines 398--398
  []\T1/mdbch/m/n/9 (-20) Magnesium(Mg)| 
  []
 
 
-Overfull \hbox (12.67499pt too wide) in paragraph at lines 389--389
+Overfull \hbox (12.67499pt too wide) in paragraph at lines 398--398
  []\T1/mdbch/m/n/9 (-20) Manganese(Mn)| 
  []
 
 
-Overfull \hbox (0.54988pt too wide) in paragraph at lines 389--389
+Overfull \hbox (0.54988pt too wide) in paragraph at lines 398--398
  []\T1/mdbch/m/n/9 (-20) Molybdenum 
  []
 
 
-Overfull \hbox (2.27718pt too wide) in paragraph at lines 389--389
+Overfull \hbox (2.27718pt too wide) in paragraph at lines 398--398
  []\T1/mdbch/m/n/9 (-20) Selenium(Se)| 
  []
 
@@ -1471,1713 +1474,1733 @@ g Graphic file (type png)
 <use Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png
 >
 Package pdftex.def Info: Final_report_files/figure-latex/Critical_Mineral_Extra
-ction_Process_v2.png  used on input line 533.
-(pdftex.def)             Requested size: 455.24408pt x 256.35031pt.
+ction_Process_v2.png  used on input line 542.
+(pdftex.def)             Requested size: 455.26114pt x 256.35031pt.
 LaTeX Font Info:    Trying to load font information for TS1+mdbch on input line
- 540.
+ 549.
 (/usr/share/texlive/texmf-dist/tex/latex/mathdesign/mdbch/ts1mdbch.fd
 File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
-(Font)              scaled to size 10.51207pt on input line 540.
+(Font)              scaled to size 10.51207pt on input line 549.
 [11 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.p
 ng>] [12]
 
 Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 562.
+(hyperref)                be the same. Added a new anchor on input line 571.
 
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 9.24173pt on input line 581.
+[13]
+LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
+(Font)              scaled to size 7.68005pt on input line 583.
 
-Overfull \hbox (12.46533pt too wide) in paragraph at lines 652--652
+LaTeX Warning: Reference `fig:visdat' on page 14 undefined on input line 585.
+
+<Final_report_files/figure-latex/visdat-1.pdf, id=250, 562.1pt x 334.24875pt>
+File: Final_report_files/figure-latex/visdat-1.pdf Graphic file (type pdf)
+<use Final_report_files/figure-latex/visdat-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/visdat-1.pdf  used on 
+input line 586.
+(pdftex.def)             Requested size: 455.24706pt x 270.7094pt.
+
+Underfull \hbox (badness 5696) in paragraph at lines 585--587
+[]\T1/mdbch/m/n/10.95 (+20) In a nut-shell, The fi-nal clean-ing data in-clude 
+to-tal 8 vari-ables and 11032 ob-ser-va-
+ []
+
+[14 <./Final_report_files/figure-latex/visdat-1.pdf>]
+Overfull \hbox (12.46533pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) Element 
  []
 
 
-Overfull \hbox (2.65472pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.65472pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) mean| 
  []
 
 
-Overfull \hbox (9.80954pt too wide) in paragraph at lines 652--652
+Overfull \hbox (9.80954pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) median| 
  []
 
 
-Overfull \hbox (11.22351pt too wide) in paragraph at lines 652--652
+Overfull \hbox (11.22351pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) kurtosis| 
  []
 
 
-Overfull \hbox (12.46533pt too wide) in paragraph at lines 652--652
+Overfull \hbox (12.46533pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) Element 
  []
 
 
-Overfull \hbox (2.65472pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.65472pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) mean| 
  []
 
 
-Overfull \hbox (9.80954pt too wide) in paragraph at lines 652--652
+Overfull \hbox (9.80954pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) median| 
  []
 
 
-Overfull \hbox (11.22351pt too wide) in paragraph at lines 652--652
+Overfull \hbox (11.22351pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) kurtosis| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.000| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 13.200| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.142| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.600| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.389| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.783| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.000| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 8.500| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.845| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.438| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.982| 
  []
 
 
-Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 34.192| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.556| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 12.222| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.521| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.333| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.064| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.764| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.013| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 18.182| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.108| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.750| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.027| 
  []
 
 
-Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 43.446| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.033| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.000| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.126| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.667| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.134| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.156| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.787| 
  []
 
 
-Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 25.197| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.685| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.402| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.302| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 17.818| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.102| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.347| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.271| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.918| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.115| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 9.839| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.056| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.938| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.956| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.985| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.595| 
  []
 
 
-Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 21.060| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.118| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.882| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.906| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.588| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.133| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 17.661| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.012| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 10.807| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.441| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.205| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.048| 
  []
 
 
-Overfull \hbox (8.1499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (8.1499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 54.642| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.024| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.870| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.068| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.923| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.910| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 12.858| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.040| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 10.200| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.681| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.880| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.160| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 13.140| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.114| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.286| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.522| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.517| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.847| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.566| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.087| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.957| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.401| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.320| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.815| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.383| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.114| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.773| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.676| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.648| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.969| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 8.535| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.000| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 9.689| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.474| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.180| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.066| 
  []
 
 
-Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 45.053| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.076| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.076| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.293| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.291| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.684| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.148| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.132| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.605| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.589| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.513| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.901| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.420| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.088| 
  []
 
 
-Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 43.750| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.481| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.344| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 13.031| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.653| 
  []
 
 
-Overfull \hbox (3.73004pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.73004pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) HREE| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.036| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.995| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.282| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.267| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.157| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.712| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.125| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.750| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.352| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.306| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.767| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.962| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.400| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.200| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.434| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.000| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.117| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 9.581| 
  []
 
 
-Overfull \hbox (1.88419pt too wide) in paragraph at lines 652--652
+Overfull \hbox (1.88419pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) LREE| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.089| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.214| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.020| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.064| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.540| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.992| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.100| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.540| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.871| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.930| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.480| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.566| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.250| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 14.250| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.386| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.000| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.974| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 9.533| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.000| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.250| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.540| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.438| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.919| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.067| 
  []
 
 
-Overfull \hbox (4.81386pt too wide) in paragraph at lines 652--652
+Overfull \hbox (4.81386pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) MREE| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.088| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.384| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.361| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.344| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.756| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.952| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.002| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 18.717| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.594| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.109| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.884| 
  []
 
 
-Overfull \hbox (7.90797pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.90797pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 66.528| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.067| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 13.733| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.971| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.667| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.195| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 10.237| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.042| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.567| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.622| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.647| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.402| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 16.601| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.065| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.423| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.145| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.221| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.645| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.693| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.023| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 8.182| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.386| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.159| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.869| 
  []
 
 
-Overfull \hbox (7.66606pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.66606pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 44.099| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.052| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.909| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.276| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.235| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.856| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.139| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.056| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.704| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.033| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.092| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.596| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.452| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.134| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.174| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.089| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.130| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.539| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.574| 
  []
 
 
-Overfull \hbox (2.44302pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.44302pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) REEY| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.138| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.641| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.120| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.151| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.528| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.600| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.001| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.670| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.472| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.441| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.396| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.920| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.000| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.500| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.286| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.000| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.134| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.792| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.162| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.985| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.137| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.191| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.610| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 8.482| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.089| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.689| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.421| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.460| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.785| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.173| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.182| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 2.364| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.726| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.655| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.350| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.862| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.006| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.571| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.955| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.916| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.608| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.965| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.133| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.000| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.865| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.920| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.482| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 14.453| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.156| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.578| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.378| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.359| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.760| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.576| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.044| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.329| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.172| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.107| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.853| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.382| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.030| 
  []
 
 
-Overfull \hbox (7.43277pt too wide) in paragraph at lines 652--652
+Overfull \hbox (7.43277pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 10.000| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.942| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.715| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.123| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.782| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.303| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.455| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.453| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.364| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.816| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 7.679| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.054| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.286| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.289| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.304| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.805| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 3.219| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.019| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.299| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.038| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.103| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.666| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.959| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.045| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.568| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.278| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.250| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.764| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.443| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.091| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 5.409| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.462| 
  []
 
 
-Overfull \hbox (2.72499pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.72499pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 1.400| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.854| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 6.361| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.014| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.324| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.921| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.930| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.699| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.134| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.021| 
  []
 
 
-Overfull \hbox (2.95828pt too wide) in paragraph at lines 652--652
+Overfull \hbox (2.95828pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 4.821| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.923| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.979| 
  []
 
 
-Overfull \hbox (3.44212pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.44212pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 0.592| 
  []
 
 
-Overfull \hbox (3.2002pt too wide) in paragraph at lines 652--652
+Overfull \hbox (3.2002pt too wide) in paragraph at lines 674--674
  []\T1/mdbch/m/n/9 (-20) 9.671| 
  []
 
-[13] [14]
-<Final_report_files/figure-latex/element-dist-1.pdf, id=255, 716.6775pt x 424.5
+[15] [16]
+<Final_report_files/figure-latex/element-dist-1.pdf, id=276, 716.6775pt x 424.5
 8624pt>
 File: Final_report_files/figure-latex/element-dist-1.pdf Graphic file (type pdf
 )
 <use Final_report_files/figure-latex/element-dist-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/element-dist-1.pdf  us
-ed on input line 661.
-(pdftex.def)             Requested size: 455.24408pt x 269.70645pt.
-[15] [16 <./Final_report_files/figure-latex/element-dist-1.pdf>] [17]
-LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 9.24173pt on input line 696.
-
-Underfull \hbox (badness 1127) in paragraph at lines 696--696
+ed on input line 683.
+(pdftex.def)             Requested size: 455.2492pt x 269.70645pt.
+[17 <./Final_report_files/figure-latex/element-dist-1.pdf>] [18]
+Underfull \hbox (badness 1127) in paragraph at lines 718--718
 [][]\T1/mdbch/m/n/10.95 (+20) DISR (2023). \T1/mdbch/m/it/10.95 (+20) Crit-i-ca
 l Min-er-als Strat-egy 2023^^U2030\T1/mdbch/m/n/10.95 (+20) . [][]$\T1/fvm/m/n/
 10.95 https : / / www . industry . gov . au /
  []
 
-[18]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 698.
 [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 698.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 720.
+[20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 720.
 (./Final_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 698.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 698.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 720.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 720.
 Package rerunfilecheck Info: File `Final_report.out' has not changed.
-(rerunfilecheck)             Checksum: D3F1060102AEA0B3BC1D3314B84A0520;2463.
+(rerunfilecheck)             Checksum: 42839C58886FE358577AF8F6213AEE2E;2625.
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'Final_report.run.xml'.
 \openout1 = `Final_report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 698.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 720.
  ) 
 Here is how much of TeX's memory you used:
- 27281 strings out of 481239
- 443548 string characters out of 5920377
- 1176183 words of memory out of 5000000
- 41720 multiletter control sequences out of 15000+600000
- 665062 words of font info for 369 fonts, out of 8000000 for 9000
+ 27317 strings out of 481239
+ 444326 string characters out of 5920377
+ 1174360 words of memory out of 5000000
+ 41736 multiletter control sequences out of 15000+600000
+ 668032 words of font info for 380 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,16n,113p,2441b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texliv
@@ -3190,12 +3213,13 @@ a/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/bitstrea/charte
 r/bchri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvsb8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/public/bera/fvsr8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
-Output written on Final_report.pdf (19 pages, 628537 bytes).
+-dist/fonts/type1/public/mathdesign/mdbch/md-chr7t.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
+Output written on Final_report.pdf (20 pages, 640212 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 305 compressed objects within 4 object streams
- 59 named destinations out of 1000 (max. 500000)
- 47276 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 372 PDF objects out of 1000 (max. 8388607)
+ 318 compressed objects within 4 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 49329 words of extra memory for PDF output out of 51595 (max. 10000000)
 

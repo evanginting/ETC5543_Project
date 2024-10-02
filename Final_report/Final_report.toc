@@ -20,16 +20,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Data source and description}{13}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Data cleaning}{13}{section*.4}%
+\contentsline {subsection}{Initial Data Analysis and wrangling process}{14}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Exploratory Data Analysis}{13}{section*.4}%
+\contentsline {section}{Exploratory Data Analysis}{15}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Methodology}{17}{figure.caption.5}%
+\contentsline {section}{Methodology}{18}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Results}{17}{figure.caption.5}%
+\contentsline {section}{Results}{18}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Discussions}{17}{figure.caption.5}%
+\contentsline {section}{Discussions}{18}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Conclusion}{17}{figure.caption.5}%
+\contentsline {section}{Conclusion}{18}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Appendix}{17}{figure.caption.5}%
+\contentsline {section}{Appendix}{18}{figure.caption.5}%
