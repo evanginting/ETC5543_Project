@@ -29,10 +29,35 @@ alldata <- readRDS('./results/all_data.rds')
 
 DT <- setDT(alldata)
 
-#reformat data into wide forma
+#reformat data into wide format
 DT <- dcast(DT,Project_Name+Sample_ID~Element_Symbol, value.var = c("Element_Value_ppm"), fun=mean, fill=NA)
 
 ```
+
+Split the train test data evenly among projects (stratify by project). Then balance the training sample data using over/oversampling so that each project area has the same number of samples. 
+
+
+```{r}
+library(scutr)
+
+scut_DT <- DT[,c("Project_Name", "REE","Li","Mo","Cu")]
+scut_DT <- na.omit(scut_DT)
+
+set.seed(4)
+#split the data into test and train stratified by project (to make sure all projects are represented in the train/test data set)
+scut_DT_intital <- initial_split(scut_DT, prop = 0.75, strata = "Project_Name") 
+# Create data frames for the two sets:
+scut_DT_train <- training(scut_DT_intital)
+scut_DT_test  <- testing(scut_DT_intital)
+
+#now apply over/undersampling on the training data to make sure each project has the same number of samples to avoid sampling bias
+scut_DT_train  <- SCUT(scut_DT_train , "Project_Name", oversample = resample_random, undersample = resample_random)
+
+scut_DT_train [, .(count = .N), by = Project_Name] #here you can see that each project has been randomly over/undersampled so that there are 13 samples in each project - this removes class imbalance
+
+
+```
+
 
 ## Split data into train and test data sets
 
@@ -80,7 +105,9 @@ rf_pred <- predict(rf_fit, rf_test)
 
 
 ### Alternative
-#### Build the model
+#### Build the model: Option 1 (Li, Mo, Cu)
+
+Combination of Li, Mo, Cu in predicting REE
 ```{r}
 
 #make sure that no NA result exist amongst the data set
@@ -259,3 +286,247 @@ results_test %>%
   facet_wrap(~train)
 ```
 
+#### Build the model: Option 2 (Pb, Sc, Zn)
+Combination of Pb, Sc, Zn in predicting REE. These three elements have quiet high correlation with REE where their correlation coeff. are around 0.5 above.
+
+```{r}
+
+#make sure that no NA result exist amongst the data set
+DT_train_fltr_alt_2 <- DT_train[,c("REE","Pb","Sc")] %>% na.omit()
+DT_test_fltr_alt_2 <- DT_test[,c("REE","Pb","Sc")] %>% na.omit()
+DT_fltr_folds_2 <- vfold_cv(DT_train_fltr_alt_2, v = 5, repeats = 2)
+
+```
+
+```{r}
+# Build RF Tuned Model
+rf_tuned_workflow <- workflow() %>%
+  add_variables(outcomes = REE, predictors = everything()) %>%
+  add_model(rf_tuned_spec)
+
+
+set.seed(2022)
+manual_tune_2 <- rf_tuned_workflow %>% 
+  tune_grid(resamples = DT_fltr_folds_2, 
+            grid = expand.grid(mtry = c(1,2), 
+                               min_n = c(1,2),
+                               trees = c(500, 1000, 2000)))
+
+
+show_best(manual_tune_2, n = 3)
+
+rf_manual_tuned_final_2 <- finalize_workflow(rf_tuned_workflow_2, select_best(manual_tune_2)) %>%
+    fit(DT_train_fltr_alt_2)
+```
+
+#### Evaluate the model and compare to another combination
+```{r}
+# RF Tuned Results 2
+results_train_rf_mnl_tuned_2 <- rf_manual_tuned_final_2 %>%
+  predict(new_data = DT_train_fltr_alt_2) %>%
+  mutate(truth = DT_train_fltr_alt_2$REE,
+         model = "RF_Mnl_Tuned_2")
+
+results_test_rf_mnl_tuned_2 <- rf_manual_tuned_final_2 %>%
+  predict(new_data = DT_test_fltr_alt_2) %>%
+  mutate(truth = DT_test_fltr_alt_2$REE,
+         model = "RF_Mnl_Tuned_2")
+
+# Merge the results
+results_train <- bind_rows(results_train, results_train_rf_mnl_tuned_2)
+
+results_test <- bind_rows(results_test, results_test_rf_mnl_tuned_2)
+```
+
+```{r}
+results_train %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+
+results_test %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+```
+
+```{r}
+results_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(truth, .pred, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+
+#### Build the model: Option 3 (All elements from ME-4ACD81 except As)
+Combination of All elements from ME-4ACD81 except As in predicting REE.
+
+```{r}
+
+#make sure that no NA result exist amongst the data set
+DT_train_fltr_alt_3 <- DT_train[,c("REE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")] %>% na.omit()
+DT_test_fltr_alt_3 <- DT_test[,c("REE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")] %>% na.omit()
+DT_fltr_folds_3 <- vfold_cv(DT_train_fltr_alt_3, v = 5, repeats = 2)
+
+```
+
+```{r}
+# No need to re-build the RF Tuned model
+set.seed(2022)
+manual_tune_3 <- rf_tuned_workflow %>% 
+  tune_grid(resamples = DT_fltr_folds_3, 
+            grid = expand.grid(mtry = c(1,2,3), 
+                               min_n = c(1,2),
+                               trees = c(500, 1000, 2000)))
+
+
+show_best(manual_tune_3, n = 3)
+
+rf_manual_tuned_final_3 <- finalize_workflow(rf_tuned_workflow, select_best(manual_tune_3)) %>%
+    fit(DT_train_fltr_alt_3)
+```
+
+#### Evaluate the model and compare to another combination
+```{r}
+# RF Tuned Results 2
+results_train_rf_mnl_tuned_3 <- rf_manual_tuned_final_3 %>%
+  predict(new_data = DT_train_fltr_alt_3) %>%
+  mutate(truth = DT_train_fltr_alt_3$REE,
+         model = "RF_Mnl_Tuned_3")
+
+results_test_rf_mnl_tuned_3 <- rf_manual_tuned_final_3 %>%
+  predict(new_data = DT_test_fltr_alt_3) %>%
+  mutate(truth = DT_test_fltr_alt_3$REE,
+         model = "RF_Mnl_Tuned_3")
+
+# Merge the results
+results_train <- bind_rows(results_train, results_train_rf_mnl_tuned_3)
+
+results_test <- bind_rows(results_test, results_test_rf_mnl_tuned_3)
+```
+
+```{r}
+results_train %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+
+results_test %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+```
+
+```{r}
+results_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(truth, .pred, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+
+
+```{r}
+library(scutr)
+
+scut_DT_2 <- DT[,c("Project_Name", "REE","Pb","Sc")]
+scut_DT_2 <- na.omit(scut_DT_2)
+
+set.seed(4)
+#split the data into test and train stratified by project (to make sure all projects are represented in the train/test data set)
+scut_DT_initial_2 <- initial_split(scut_DT_2, prop = 0.75, strata = "Project_Name") 
+# Create data frames for the two sets:
+scut_DT_train_2 <- training(scut_DT_initial_2)
+scut_DT_test_2  <- testing(scut_DT_initial_2)
+
+#now apply over/undersampling on the training data to make sure each project has the same number of samples to avoid sampling bias
+scut_DT_train_2  <- SCUT(scut_DT_train_2, "Project_Name", oversample = resample_random, undersample = resample_random)
+
+scut_DT_train_2 [, .(count = .N), by = Project_Name] #here you can see that each project has been randomly over/undersampled so that there are 12 samples in each project - this removes class imbalance
+
+
+scut_DT_train_2_folds <- vfold_cv(scut_DT_train_2, v = 5, repeats = 2)
+```
+
+```{r}
+
+# Build RF Tuned Model
+## rf_tuned_spec <- rand_forest(mode = "regression",
+##                        mtry = tune(),
+##                        min_n = tune(),
+##                        trees = tune()) %>%
+##                  set_engine("randomForest")
+## 
+## rf_tuned_workflow <- workflow() %>%
+##   add_variables(outcomes = REE, predictors = everything()) %>%
+##   add_model(rf_tuned_spec)
+
+rf_tuned_recipe <- recipe(REE ~ Project_Name + Pb + Sc, data = scut_DT_train_2) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>% # One-hot encoding for Project_Name
+  step_normalize(all_predictors())
+
+rf_tuned_workflow_2 <- workflow() %>%
+  add_recipe(rf_tuned_recipe) %>%
+  add_model(rf_tuned_spec)
+
+
+set.seed(2022)
+scut_manual_tune_2 <- rf_tuned_workflow_2 %>% 
+  tune_grid(resamples = scut_DT_train_2_folds, 
+            grid = expand.grid(mtry = c(1,2), 
+                               min_n = c(1,2),
+                               trees = c(500, 1000, 2000)))
+
+
+show_best(scut_manual_tune_2, n = 3)
+
+scut_rf_manual_tuned_final_2 <- finalize_workflow(rf_tuned_workflow_2, select_best(scut_manual_tune_2)) %>%
+    fit(scut_DT_train_2)
+```
+
+
+#### Evaluate the model and compare to another combination (For each project)
+```{r}
+# RF Tuned Results 2 (Project)
+scut_results_train_rf_mnl_tuned_2 <- scut_rf_manual_tuned_final_2 %>%
+  predict(new_data = scut_DT_train_2) %>%
+  mutate(Project_Name = scut_DT_train_2$Project_Name,
+         truth = scut_DT_train_2$REE,
+         model = "Proj_RF_Mnl_Tuned_2")
+
+scut_results_test_rf_mnl_tuned_2 <- scut_rf_manual_tuned_final_2 %>%
+  predict(new_data = scut_DT_test_2) %>%
+  mutate(Project_Name = scut_DT_test_2$Project_Name,
+         truth = scut_DT_test_2$REE,
+         model = "Proj_RF_Mnl_Tuned_2")
+
+# Merge the results
+results_train_proj <- scut_results_train_rf_mnl_tuned_2
+
+results_test_proj <- scut_results_test_rf_mnl_tuned_2
+```
+
+```{r}
+results_train_proj %>%
+  group_by(Project_Name) %>%
+  metrics(truth = truth, estimate = .pred)
+
+results_test_proj %>%
+  group_by(Project_Name) %>%
+  metrics(truth = truth, estimate = .pred)
+```
+
+```{r}
+results_test_proj %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train_proj %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(truth, .pred, color = Project_Name)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
