@@ -278,12 +278,12 @@ As shown by above graphs, some significant insights are:
 
 ## Correlation Matrix plot
 
-```{r corplot, fig.cap = "Correlation Matrix Plot of Critical Elements", out.width = "60%", fig.width = 5, fig.height = 5, fig.align = "center"}
+```{r corplot, fig.cap = "Correlation Matrix Plot of Critical Elements", out.width = "100%", fig.width = 12, fig.height = 12, fig.align = "center"}
 res_cor_cop <- alldata %>% 
   select(Project_Name,Sample_ID,Element_Symbol,PAAS_normalised_value) %>% 
   pivot_wider(names_from = Element_Symbol,values_from = c(PAAS_normalised_value))
 
-corr_cop <- cor(res_cor_cop[,3:55])
+corr_cop <- cor(res_cor_cop[,3:55], use="pairwise.complete.obs")
 
 pg_cop <- ggcorrplot(corr_cop, 
                      method = "square", 
@@ -300,6 +300,11 @@ The figure \@ref(fig:corplot) shows the relationships between various elements. 
 - Strongly positive correlations: There are numbers of elements that have very strong relationship (above 0.95), such as **Er**-**Dy**, **Gd**-**Eu**, **Ho**-**Dy**, **Ho**-**Er**, **Pr**-**Nd**, **Sm**-**Nd**, **Tb**-**Dy**, **Tb**-**Gd**, **Tb**-**Ho**, **Yb**-**Er**, and **Yb**-**Ho**. There are also many more elements that have correlation above 0.8.
 - Moderate correlations: Many elements fall between 0.6-0.8, which indicate fairly strong relationships.
 - Weaker Correlations: Elements such as **Ba** show weaker correlations with most other elements, indicating less consistent co-occurrence or independent behavior within the dataset.This also the case for **Sr**.
+
+
+```{r}
+corr_cop_cheaper <- data.frame(corr_cop[c("REE", "HREE", "LREE"), c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")])
+```
 
 <br />
 
