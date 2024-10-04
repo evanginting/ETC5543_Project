@@ -16,6 +16,7 @@ library(randomForestSRC)
 library(randomForest)
 library(data.table)
 library(xgboost)
+library(vip)
 ```
 
 
@@ -133,24 +134,31 @@ rf_tuned_spec <- rand_forest(mode = "regression",
                        trees = tune()) %>%
                  set_engine("randomForest")
 
+# Create a recipe for preprocessing
+rf_recipe <- recipe(REE ~ Li + Mo + Cu, data = DT_train_fltr_alt) %>%
+  step_normalize(all_predictors())
+
 rf_tuned_workflow <- workflow() %>%
-  add_variables(outcomes = REE, predictors = everything()) %>%
+  add_recipe(rf_recipe) %>%
   add_model(rf_tuned_spec)
 
+rf_tuned_grid <- grid_regular(
+  mtry(range = c(1,3)),
+  min_n(range = c(5,15)),
+  trees(range = c(500,1000)),
+  levels = 5)
 
 set.seed(2022)
-manual_tune <- rf_tuned_workflow %>% 
-  tune_grid(resamples = DT_fltr_folds, 
-            grid = expand.grid(mtry = c(1,2,3), 
-                               min_n = c(1,2),
-                               trees = c(500, 1000, 2000)))
+rf_random_tune <- tune_grid(
+  rf_tuned_workflow,
+  resamples = DT_fltr_folds,
+  grid = rf_tuned_grid,
+  metrics = metric_set(rmse, rsq, mae)
+)
 
+show_best(rf_random_tune, n = 3)
 
-collect_metrics(manual_tune)
-
-show_best(manual_tune, n = 3)
-
-rf_manual_tuned_final <- finalize_workflow(rf_tuned_workflow, select_best(manual_tune)) %>%
+rf_random_tuned_fit <- finalize_workflow(rf_tuned_workflow, select_best(rf_random_tune)) %>%
     fit(DT_train_fltr_alt)
 ```
 
@@ -226,15 +234,15 @@ results_test_rf <- rf_fit %>%
          model = "RF")
 
 # RF Tuned Results
-results_train_rf_mnl_tuned <- rf_manual_tuned_final %>%
+results_train_rf_rdm_tuned <- rf_random_tuned_fit %>%
   predict(new_data = DT_train_fltr_alt) %>%
   mutate(truth = DT_train_fltr_alt$REE,
-         model = "RF_Mnl_Tuned")
+         model = "RF_Rdm_Tuned")
 
-results_test_rf_mnl_tuned <- rf_manual_tuned_final %>%
+results_test_rf_rdm_tuned <- rf_random_tuned_fit %>%
   predict(new_data = DT_test_fltr_alt) %>%
   mutate(truth = DT_test_fltr_alt$REE,
-         model = "RF_Mnl_Tuned")
+         model = "RF_Rdm_Tuned")
 
 # LM Results
 results_train_lm <- lm_fit %>%
@@ -259,9 +267,9 @@ results_test_xgb_tuned <- xgb_tuned_fit %>%
          model = "XGB_Tuned")
 
 # Merge the results
-results_train <- bind_rows(results_train_rf, results_train_rf_mnl_tuned, results_train_lm, results_train_xgb_tuned)
+results_train <- bind_rows(results_train_rf, results_train_rf_rdm_tuned, results_train_lm, results_train_xgb_tuned)
 
-results_test <- bind_rows(results_test_rf, results_test_rf_mnl_tuned, results_test_lm, results_test_xgb_tuned)
+results_test <- bind_rows(results_test_rf, results_test_rf_rdm_tuned, results_test_lm, results_test_xgb_tuned)
 ```
 
 
@@ -287,7 +295,7 @@ results_test %>%
 ```
 
 #### Build the model: Option 2 (Pb, Sc, Zn)
-Combination of Pb, Sc, Zn in predicting REE. These three elements have quiet high correlation with REE where their correlation coeff. are around 0.5 above.
+Combination of Pb, Sc, Zn in predicting REE. These three elements have quiet high correlation with REE where their correlation coeff. are above 0,5.
 
 ```{r}
 
@@ -299,43 +307,53 @@ DT_fltr_folds_2 <- vfold_cv(DT_train_fltr_alt_2, v = 5, repeats = 2)
 ```
 
 ```{r}
-# Build RF Tuned Model
-rf_tuned_workflow <- workflow() %>%
-  add_variables(outcomes = REE, predictors = everything()) %>%
+
+
+# Create a recipe for preprocessing
+rf_recipe_2 <- recipe(REE ~ ., data = DT_train_fltr_alt_2) %>%
+  step_normalize(all_predictors())
+
+rf_tuned_workflow_2 <- workflow() %>%
+  add_recipe(rf_recipe_2) %>%
   add_model(rf_tuned_spec)
 
+rf_tuned_grid_2 <- grid_regular(
+  mtry(range = c(1,2)),
+  min_n(range = c(1,15)),
+  trees(range = c(500,2000)),
+  levels = 5)
 
 set.seed(2022)
-manual_tune_2 <- rf_tuned_workflow %>% 
-  tune_grid(resamples = DT_fltr_folds_2, 
-            grid = expand.grid(mtry = c(1,2), 
-                               min_n = c(1,2),
-                               trees = c(500, 1000, 2000)))
+rf_random_tune_2 <- tune_grid(
+  rf_tuned_workflow_2,
+  resamples = DT_fltr_folds_2,
+  grid = rf_tuned_grid_2,
+  metrics = metric_set(rmse, rsq, mae)
+)
 
+show_best(rf_random_tune_2, n = 3)
 
-show_best(manual_tune_2, n = 3)
-
-rf_manual_tuned_final_2 <- finalize_workflow(rf_tuned_workflow_2, select_best(manual_tune_2)) %>%
+rf_random_tuned_fit_2 <- finalize_workflow(rf_tuned_workflow_2, select_best(rf_random_tune_2)) %>%
     fit(DT_train_fltr_alt_2)
 ```
 
 #### Evaluate the model and compare to another combination
 ```{r}
 # RF Tuned Results 2
-results_train_rf_mnl_tuned_2 <- rf_manual_tuned_final_2 %>%
+results_train_rf_rdm_tuned_2 <- rf_random_tuned_fit_2 %>%
   predict(new_data = DT_train_fltr_alt_2) %>%
   mutate(truth = DT_train_fltr_alt_2$REE,
-         model = "RF_Mnl_Tuned_2")
+         model = "RF_Rdm_Tuned_2")
 
-results_test_rf_mnl_tuned_2 <- rf_manual_tuned_final_2 %>%
+results_test_rf_rdm_tuned_2 <- rf_random_tuned_fit_2 %>%
   predict(new_data = DT_test_fltr_alt_2) %>%
   mutate(truth = DT_test_fltr_alt_2$REE,
-         model = "RF_Mnl_Tuned_2")
+         model = "RF_Rdm_Tuned_2")
 
 # Merge the results
-results_train <- bind_rows(results_train, results_train_rf_mnl_tuned_2)
+results_train <- bind_rows(results_train, results_train_rf_rdm_tuned_2)
 
-results_test <- bind_rows(results_test, results_test_rf_mnl_tuned_2)
+results_test <- bind_rows(results_test, results_test_rf_rdm_tuned_2)
 ```
 
 ```{r}
@@ -373,38 +391,144 @@ DT_fltr_folds_3 <- vfold_cv(DT_train_fltr_alt_3, v = 5, repeats = 2)
 ```
 
 ```{r}
-# No need to re-build the RF Tuned model
+# Create a recipe for preprocessing
+rf_recipe_3 <- recipe(REE ~ ., data = DT_train_fltr_alt_3) %>%
+  step_normalize(all_predictors())
+
+rf_tuned_workflow_3 <- workflow() %>%
+  add_recipe(rf_recipe_3) %>%
+  add_model(rf_tuned_spec)
+
+rf_tuned_grid_3 <- grid_regular(
+  mtry(range = c(1,11)),
+  min_n(range = c(1,12)),
+  trees(range = c(500,1000)),
+  levels = 5)
+
 set.seed(2022)
-manual_tune_3 <- rf_tuned_workflow %>% 
-  tune_grid(resamples = DT_fltr_folds_3, 
-            grid = expand.grid(mtry = c(1,2,3), 
-                               min_n = c(1,2),
-                               trees = c(500, 1000, 2000)))
+rf_random_tune_3 <- tune_grid(
+  rf_tuned_workflow_3,
+  resamples = DT_fltr_folds_3,
+  grid = rf_tuned_grid_3,
+  metrics = metric_set(rmse, rsq, mae)
+)
 
 
-show_best(manual_tune_3, n = 3)
+show_best(rf_random_tune_3, n = 3)
 
-rf_manual_tuned_final_3 <- finalize_workflow(rf_tuned_workflow, select_best(manual_tune_3)) %>%
+rf_random_tuned_fit_3 <- finalize_workflow(rf_tuned_workflow_3, select_best(rf_random_tune_3)) %>%
     fit(DT_train_fltr_alt_3)
+```
+
+```{r}
+# Plot variable importance (optional)
+rf_random_tuned_fit_3 %>%
+  extract_fit_parsnip() %>%
+  vip::vip()
+```
+
+
+#### Evaluate the model and compare to another combination
+```{r}
+# RF Tuned Results 2
+results_train_rf_rdm_tuned_3 <- rf_random_tuned_fit_3 %>%
+  predict(new_data = DT_train_fltr_alt_3) %>%
+  mutate(truth = DT_train_fltr_alt_3$REE,
+         model = "RF_Rdm_Tuned_3")
+
+results_test_rf_rdm_tuned_3 <- rf_random_tuned_fit_3 %>%
+  predict(new_data = DT_test_fltr_alt_3) %>%
+  mutate(truth = DT_test_fltr_alt_3$REE,
+         model = "RF_Rdm_Tuned_3")
+
+# Merge the results
+results_train <- bind_rows(results_train, results_train_rf_rdm_tuned_3)
+
+results_test <- bind_rows(results_test, results_test_rf_rdm_tuned_3)
+```
+
+```{r}
+results_train %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+
+results_test %>%
+  group_by(model) %>%
+  metrics(truth = truth, estimate = .pred)
+```
+
+
+```{r}
+results_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(truth, .pred, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+#### Build the model: Option 4 (Sc, Cd, Pb, Tl)
+Combination of Sc, Cd, Pb, Tl in predicting REE. These four elements have high variable importance when creating the model with all elements included.
+
+```{r}
+
+#make sure that no NA result exist amongst the data set
+DT_train_fltr_alt_4 <- DT_train[,c("REE","Sc","Cd","Pb", "Tl")] %>% na.omit()
+DT_test_fltr_alt_4 <- DT_test[,c("REE","Sc","Cd","Pb", "Tl")] %>% na.omit()
+DT_fltr_folds_4 <- vfold_cv(DT_train_fltr_alt_4, v = 5, repeats = 2)
+
+```
+
+```{r}
+
+
+# Create a recipe for preprocessing
+rf_recipe_4 <- recipe(REE ~ ., data = DT_train_fltr_alt_4) %>%
+  step_normalize(all_predictors())
+
+rf_tuned_workflow_4 <- workflow() %>%
+  add_recipe(rf_recipe_4) %>%
+  add_model(rf_tuned_spec)
+
+rf_tuned_grid_4 <- grid_regular(
+  mtry(range = c(1,4)),
+  min_n(range = c(1,15)),
+  trees(range = c(500,2000)),
+  levels = 5)
+
+set.seed(2022)
+rf_random_tune_4 <- tune_grid(
+  rf_tuned_workflow_4,
+  resamples = DT_fltr_folds_4,
+  grid = rf_tuned_grid_4,
+  metrics = metric_set(rmse, rsq, mae)
+)
+
+show_best(rf_random_tune_4, n = 3)
+
+rf_random_tuned_fit_4 <- finalize_workflow(rf_tuned_workflow_4, select_best(rf_random_tune_4)) %>%
+    fit(DT_train_fltr_alt_4)
 ```
 
 #### Evaluate the model and compare to another combination
 ```{r}
 # RF Tuned Results 2
-results_train_rf_mnl_tuned_3 <- rf_manual_tuned_final_3 %>%
-  predict(new_data = DT_train_fltr_alt_3) %>%
-  mutate(truth = DT_train_fltr_alt_3$REE,
-         model = "RF_Mnl_Tuned_3")
+results_train_rf_rdm_tuned_4 <- rf_random_tuned_fit_4 %>%
+  predict(new_data = DT_train_fltr_alt_4) %>%
+  mutate(truth = DT_train_fltr_alt_4$REE,
+         model = "RF_Rdm_Tuned_4")
 
-results_test_rf_mnl_tuned_3 <- rf_manual_tuned_final_3 %>%
-  predict(new_data = DT_test_fltr_alt_3) %>%
-  mutate(truth = DT_test_fltr_alt_3$REE,
-         model = "RF_Mnl_Tuned_3")
+results_test_rf_rdm_tuned_4 <- rf_random_tuned_fit_4 %>%
+  predict(new_data = DT_test_fltr_alt_4) %>%
+  mutate(truth = DT_test_fltr_alt_4$REE,
+         model = "RF_Rdm_Tuned_4")
 
 # Merge the results
-results_train <- bind_rows(results_train, results_train_rf_mnl_tuned_3)
+results_train <- bind_rows(results_train, results_train_rf_rdm_tuned_4)
 
-results_test <- bind_rows(results_test, results_test_rf_mnl_tuned_3)
+results_test <- bind_rows(results_test, results_test_rf_rdm_tuned_4)
 ```
 
 ```{r}
@@ -429,6 +553,21 @@ results_test %>%
 ```
 
 
+```{r}
+results_train %>%
+  group_by(model) %>%
+  filter(model %in% c("RF_Rdm_Tuned_2","RF_Rdm_Tuned_4")) %>%
+  metrics(truth = truth, estimate = .pred)
+
+results_test %>%
+  group_by(model) %>%
+  filter(model %in% c("RF_Rdm_Tuned_2","RF_Rdm_Tuned_4")) %>%
+  metrics(truth = truth, estimate = .pred)
+```
+
+
+
+------------INCLUDING PROJECT NAME---------------------------
 
 ```{r}
 library(scutr)
@@ -465,26 +604,34 @@ scut_DT_train_2_folds <- vfold_cv(scut_DT_train_2, v = 5, repeats = 2)
 ##   add_variables(outcomes = REE, predictors = everything()) %>%
 ##   add_model(rf_tuned_spec)
 
-rf_tuned_recipe <- recipe(REE ~ Project_Name + Pb + Sc, data = scut_DT_train_2) %>%
+rf_tuned_recipe_5 <- recipe(REE ~ Project_Name + Pb + Sc, data = scut_DT_train_2) %>%
+  step_novel(Project_Name) %>%            # Handle new/unseen categories in Project_Name
   step_dummy(all_nominal(), -all_outcomes()) %>% # One-hot encoding for Project_Name
   step_normalize(all_predictors())
 
-rf_tuned_workflow_2 <- workflow() %>%
-  add_recipe(rf_tuned_recipe) %>%
+rf_tuned_workflow_5 <- workflow() %>%
+  add_recipe(rf_tuned_recipe_5) %>%
   add_model(rf_tuned_spec)
+
+rf_tuned_grid_5 <- grid_regular(
+  mtry(range = c(1,2)),
+  min_n(range = c(1,15)),
+  trees(range = c(500,2000)),
+  levels = 5)
 
 
 set.seed(2022)
-scut_manual_tune_2 <- rf_tuned_workflow_2 %>% 
-  tune_grid(resamples = scut_DT_train_2_folds, 
-            grid = expand.grid(mtry = c(1,2), 
-                               min_n = c(1,2),
-                               trees = c(500, 1000, 2000)))
+rf_random_tune_5 <- tune_grid(
+  rf_tuned_workflow_5,
+  resamples = scut_DT_train_2_folds,
+  grid = rf_tuned_grid_5,
+  metrics = metric_set(rmse, rsq, mae)
+)
 
 
-show_best(scut_manual_tune_2, n = 3)
+show_best(rf_random_tune_5, n = 3)
 
-scut_rf_manual_tuned_final_2 <- finalize_workflow(rf_tuned_workflow_2, select_best(scut_manual_tune_2)) %>%
+rf_random_tuned_fit_5 <- finalize_workflow(rf_tuned_workflow_5, select_best(rf_random_tune_5)) %>%
     fit(scut_DT_train_2)
 ```
 
@@ -492,22 +639,22 @@ scut_rf_manual_tuned_final_2 <- finalize_workflow(rf_tuned_workflow_2, select_be
 #### Evaluate the model and compare to another combination (For each project)
 ```{r}
 # RF Tuned Results 2 (Project)
-scut_results_train_rf_mnl_tuned_2 <- scut_rf_manual_tuned_final_2 %>%
+results_train_rf_rdm_tuned_5 <- rf_random_tuned_fit_5 %>%
   predict(new_data = scut_DT_train_2) %>%
   mutate(Project_Name = scut_DT_train_2$Project_Name,
          truth = scut_DT_train_2$REE,
          model = "Proj_RF_Mnl_Tuned_2")
 
-scut_results_test_rf_mnl_tuned_2 <- scut_rf_manual_tuned_final_2 %>%
+results_test_rf_rdm_tuned_5 <- rf_random_tuned_fit_5 %>%
   predict(new_data = scut_DT_test_2) %>%
   mutate(Project_Name = scut_DT_test_2$Project_Name,
          truth = scut_DT_test_2$REE,
          model = "Proj_RF_Mnl_Tuned_2")
 
 # Merge the results
-results_train_proj <- scut_results_train_rf_mnl_tuned_2
+results_train_proj <- results_train_rf_rdm_tuned_5
 
-results_test_proj <- scut_results_test_rf_mnl_tuned_2
+results_test_proj <- results_test_rf_rdm_tuned_5
 ```
 
 ```{r}
