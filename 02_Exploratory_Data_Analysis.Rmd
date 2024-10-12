@@ -66,18 +66,18 @@ In this section, we will provide some generic statistics information about the d
 # Populate descriptive stats table
 desc_stats <- alldata %>%
   group_by(Element_Symbol, Element_Description) %>%
-  summarise(min = min(PAAS_normalised_value),
-         max = max(PAAS_normalised_value),
-         mean = mean(PAAS_normalised_value),
-         median = median(PAAS_normalised_value),
-         range = max(PAAS_normalised_value) - min(PAAS_normalised_value),
-         q1 = quantile(PAAS_normalised_value, 0.25),
-         q3 = quantile(PAAS_normalised_value, 0.75),
-         iqr = IQR(PAAS_normalised_value),
-         sd = sd(PAAS_normalised_value),
-         var = var(PAAS_normalised_value),
-         skewness = moments::skewness(PAAS_normalised_value),
-         kurtosis = moments::kurtosis(PAAS_normalised_value))
+  summarise(min = min(Element_Value_ppm),
+         max = max(Element_Value_ppm),
+         mean = mean(Element_Value_ppm),
+         median = median(Element_Value_ppm),
+         range = max(Element_Value_ppm) - min(Element_Value_ppm),
+         q1 = quantile(Element_Value_ppm, 0.25),
+         q3 = quantile(Element_Value_ppm, 0.75),
+         iqr = IQR(Element_Value_ppm),
+         sd = sd(Element_Value_ppm),
+         var = var(Element_Value_ppm),
+         skewness = moments::skewness(Element_Value_ppm),
+         kurtosis = moments::kurtosis(Element_Value_ppm))
 
 knitr::kable(desc_stats, 
              col.names = gsub("[_]", " ", names(desc_stats)),
@@ -97,6 +97,15 @@ knitr::kable(desc_stats,
 ```
 
 The most important statistics from this table is kurtosis. Kurtosis measures the combined weight of the tails of a distribution relative to its centre. In this way, we can use kurtosis as an indicator of the presence of outliers. A high kurtosis values is indicative of outliers. Validating the outliers will be easier with data visualisation, which will be presented in the next section.
+
+
+```{r}
+alldata_wide <- dcast(alldata,Project_Name+Sample_ID~Element_Symbol, value.var = c("Element_Value_ppm"), fun=mean, fill=NA)
+
+sum(is.na(alldata_wide$Zn))
+
+print(desc_stats_2)
+```
 
 <br />
 
@@ -155,6 +164,27 @@ knitr::kable(med_above_one,
 - **Outliers**: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, **Ge**, **Bi**, **Mn**, and **Ba** show notable outliers far from the main data range. Additionally, some elements that was reported from **table \@ref(tab:desc-stats)**, which have high kurtosis are **Al**, **Ba**, **Bi**, **Ce**, **Co**, **Cr**, **Cs**, **Cu**, **Fe**, **Mn**, **Nb**, and **Ni**. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
 - **Symmetry and Skewness**: Some elements like **Ge**, **Bi**, and **Ag** appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like **Ga** and **Sm** show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
 - **Comparison Accross Elements**: **Ge** stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (**REE**, **REEY**, **MREE**, **LREE**, **HREE**) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
+
+```{r element-dist2, fig.cap = "Distribution of Selected Critical Elements (Box-Plot)", out.width = "100%", fig.width = 8, fig.height = 10, fig.align = "center"}
+bp_alt <- alldata %>%
+  filter(Element_Symbol %in% c("REE", "HREE", "LREE", "Ag", "Cd", "Co", "Cu", 
+                               "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")) %>%
+  mutate(Element_Symbol = factor(Element_Symbol, levels = rev(c("REE", "HREE", "LREE", 
+                                                            "Ag", "Cd", "Co", "Cu", 
+                                                            "Li", "Mo", "Ni", "Pb", 
+                                                            "Sc", "Tl", "Zn")))) %>%
+  ggplot(aes(x = Element_Value_ppm, y = Element_Symbol)) +
+  geom_vline(xintercept = 1, linetype = 2, color = "red") +
+  xlab("Element Value (ppm)") +
+  ylab("Element Symbol") +
+  geom_boxplot() +
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 14))
+
+
+print(bp_alt)
+```
+
 
 ```{r element-dist2, fig.cap = "Distribution of Critical Elements (Histogram)", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center", include = FALSE, eval = FALSE}
 
@@ -302,9 +332,32 @@ The figure \@ref(fig:corplot) shows the relationships between various elements. 
 - Weaker Correlations: Elements such as **Ba** show weaker correlations with most other elements, indicating less consistent co-occurrence or independent behavior within the dataset.This also the case for **Sr**.
 
 
-```{r}
-corr_cop_cheaper <- data.frame(corr_cop[c("REE", "HREE", "LREE"), c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")])
+```{r corplot2, fig.cap = "Correlation Matrix Plot of Selected Critical Elements", out.width = "100%", fig.width = 8, fig.height = 8, fig.align = "center"}
+
+corr_cop_cheaper <- cor(res_cor_cop[,c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn", "REE", "HREE", "LREE")],
+                        use="pairwise.complete.obs")
+
+# corr_cop_cheaper <- data.frame(corr_cop[c("REE", "HREE", "LREE"), c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")])
+
+pg_cop_cheaper <- ggcorrplot(corr_cop_cheaper, 
+                     method = "square", 
+                     type = "lower",
+                     outline.col = "white", 
+                     lab = TRUE, 
+                     lab_size = 3)
+
+print(pg_cop_cheaper)
 ```
+
+```{r}
+corr_cop_cheaper_df <- data.frame(corr_cop_cheaper) %>%
+  select(REE, HREE, LREE) %>%
+  filter(!row_number() %in% c(12, 13, 14)) %>%
+  mutate_if(is.numeric, round, 2) %>%
+  arrange(-REE)
+  
+```
+
 
 <br />
 
