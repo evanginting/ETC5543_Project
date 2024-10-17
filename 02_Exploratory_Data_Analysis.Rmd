@@ -102,7 +102,7 @@ The most important statistics from this table is kurtosis. Kurtosis measures the
 ```{r}
 alldata_wide <- dcast(alldata,Project_Name+Sample_ID~Element_Symbol, value.var = c("Element_Value_ppm"), fun=mean, fill=NA)
 
-sum(is.na(alldata_wide$Zn))
+sum(is.na(alldata_wide$Co))
 
 print(desc_stats_2)
 ```
@@ -174,12 +174,14 @@ bp_alt <- alldata %>%
                                                             "Li", "Mo", "Ni", "Pb", 
                                                             "Sc", "Tl", "Zn")))) %>%
   ggplot(aes(x = Element_Value_ppm, y = Element_Symbol)) +
-  geom_vline(xintercept = 1, linetype = 2, color = "red") +
+  # geom_vline(xintercept = 1, linetype = 2, color = "red") +
   xlab("Element Value (ppm)") +
   ylab("Element Symbol") +
   geom_boxplot() +
   theme_minimal() +
-  theme(axis.text.y = element_text(size = 14))
+  theme(axis.text.y = element_text(size = 18),
+        axis.title.x = element_text(size = 18),
+        axis.title.y = element_text(size = 18))
 
 
 print(bp_alt)
