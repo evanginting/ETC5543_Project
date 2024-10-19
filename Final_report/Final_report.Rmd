@@ -49,6 +49,7 @@ library(ggcorrplot)
 library(gridExtra)
 library(moments)
 library(visdat)
+library(patchwork)
 theme_set(theme_minimal())
 ```
 
@@ -305,7 +306,7 @@ Eventually, PAAS file attached to [@McLennan2011] Post-Archean Australian Shale 
 
 To prepare for exploratory data analysis and predictive modeling, different data formats must be collated into a standardised structure, which involves converting the data into a long format and trimming the trivial variables to ensure consistency and readiness for further analysis. The cleaning data will include `element symbol`, `elment value in ppm` and `project region` only, but other specific cleaning requirements still need to be addressed. First and foremost, The private projects are unable to disclose the location in detail, therefore; they will be replaced to Confidential A, B and C respectively. Furthermore, partial element values are recorded as character due to their undetected status(nd) and subtle presence(`<` sign). a value of `-999.00` will be assigned to represent their negative relationship without compromising data integrity. Another significant issue in data wrangling is the sample duplication, mainly because cross detection methods are applied in their analysis. To resolve this, we will remain the element concentration value for the most precise observation range.
 
-After the preliminary tidying, the data is organised and concise but some information is still lacking in subsequent study. Since the analytic technique will only detect single element, the critical element groups like REE and it's subcategories are absent in calculation. the element list need to be expanded by the concentration values of their relevant symbols.  Additionally, the data must be joined with PAAS file and normalised value should be derived by using formula $\text{Normalized value}= \frac{\text{Element value(ppm)}}{\text{PAAS score(ppm)}}$, along with Boolean flag for enrichment (above background, >=1). The final step is excluding the rows with any missing value.
+After the preliminary tidying, the data is organised and concise but some information is still lacking in subsequent study. Since the analytic technique will only detect single element, the critical element groups like REE and it's subcategories are absent in calculation. the element list need to be expanded by the aggregation of the concentration values from their corresponding symbols.  Additionally, the data must be joined with PAAS file and normalised value should be derived by using formula $\text{Normalized value}= \frac{\text{Element value(ppm)}}{\text{PAAS score(ppm)}}$, along with Boolean flag for enrichment (above background, >=1). The final step is replacing outliers and missing values by the median value within their respective project. If no project-specific values are available the global median of the element will be applied. The median replacement is a mild imputation  to ensure the robustness and consistency of data structure and in turn, maintain data integrity without distorting the subsequent modelling.
 
 ```{r}
 # Loading all data
@@ -388,10 +389,201 @@ The boxplots shows some critical points that can be summarised as follow:
 - Comparison Accross Elements: Ge stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (REE, REEY, MREE, LREE, HREE) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
 # Methodology
+The framework of modelling methodology in this project fully adheres on Tidymodels R-package [@tidymodels]:
+
+```{r modelbuilding,fig.cap = "The mindset of model build-up in predivtive analysis"}
+knitr::include_graphics("Img/model_structure.png")
+```
 
 
+
+
+## Stratified sampling and Initial split
+
+Unlike simple random sampling, stratified sapling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have  limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect NA in correlation calculation and all element in the list.[@Menon2020]
+
+Figure \ref{fig:globalmat} shows the global correlation matrix of element in full project. Most of the pairwise element tend to display weak positive relationship, represented by light red grids in the heatmap.
+```{r globalmat, fig.width=10, fig.height=10, fig.cap="Correlation heatmap of element in full project"}
+all_data_wide<-all_data  |>
+  select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |> 
+  filter(Element_Value_ppm!=-999.00 ) |>
+  pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
+
+
+## Replace outlier
+
+replace_outliers_and_log <- function(data, project_var, target_vars) {
+  # Create an empty data frame to track replaced values
+  outlier_log <- data.frame(Project_Name = character(),
+                            Element = character(),
+                            Original_Value = numeric(),
+                            Replaced_Value = numeric(),
+                            stringsAsFactors = FALSE)
+
+  # Loop through each target variable and apply the replacement logic
+  for (target_var in target_vars) {
+    # Calculate the median of the target variable for each Project_Name
+    medians <- data %>%
+      group_by({{ project_var }}) %>%
+      summarize(project_median = median(.data[[target_var]], na.rm = TRUE)) %>%
+      ungroup()
+    
+    # Join the median values back to the original data
+    data <- data %>%
+      left_join(medians, by = rlang::as_name(enquo(project_var))) %>%
+      rename(!!paste0("median_", target_var) := project_median)  # Rename to unique median column for each variable
+    
+    # Calculate IQR and identify outliers for the target variable globally
+    Q1 <- quantile(data[[target_var]], 0.25, na.rm = TRUE)
+    Q3 <- quantile(data[[target_var]], 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    lower_bound <- Q1 - 1.5 * IQR
+    upper_bound <- Q3 + 1.5 * IQR
+    
+    # Replace outliers directly in the target variable and log replaced values
+    data <- data %>%
+      mutate(
+        # Replace outliers with the median value specific to the Project_Name
+        replaced_value = ifelse(.data[[target_var]] < lower_bound | .data[[target_var]] > upper_bound, .data[[paste0("median_", target_var)]], NA),
+        # Log the original value and the replaced value in the log dataframe
+        outlier_flag = !is.na(replaced_value)
+      )
+    
+    # Create a log of replaced values
+    temp_log <- data %>%
+      filter(outlier_flag) %>%
+      transmute(
+        Project_Name = .data[[rlang::as_name(enquo(project_var))]],
+        Element = target_var,
+        Original_Value = .data[[target_var]],
+        Replaced_Value = replaced_value
+      )
+    
+    # Combine with the main log dataset
+    outlier_log <- bind_rows(outlier_log, temp_log)
+    
+    # Replace the actual outliers in the original data
+    data <- data %>%
+      mutate(!!target_var := ifelse(outlier_flag, replaced_value, .data[[target_var]])) %>%
+      # Remove temporary columns
+      select(-paste0("median_", target_var), -replaced_value, -outlier_flag)
+  }
+  
+  return(list(cleaned_data = data, outlier_log = outlier_log))
+}
+# Extract the cleaned data and the log of replaced values
+all_data_wide <- result$cleaned_data|> 
+mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .)))
+outlier_log <- result$outlier_log
+col_names<- colnames(all_data_wide[, which(names(all_data_wide) == "Ag"):which(names(all_data_wide) == "HREE")])
+
+result <- replace_outliers_and_log(all_data_wide, Project_Name, col_names)
+
+cor_all_data<- all_data_wide |> 
+  select(-Project_Name, -Sample_ID )|>
+    cor( use="pairwise.complete.obs" )
+cor_all_data |> ggcorrplot(method ="square", type ="lower",
+                              outline.color ="white",
+                               ggtheme = ggplot2::theme_dark(),
+                                colors = c("#6D9EC1", "white", "#E46726")
+)+ggtitle("Correlation heatmap of element in full project")
+
+```
+The project  can be fitted into 4 different types:
+
+
+
+```{r}
+
+
+## call unique sample
+regions <- unique(all_data$Project_Name)
+
+## Remove Oaky Creek with only 1 sample
+regions<-regions[-14]
+
+corr_plots <- list()
+
+for(i in seq_along(regions)){
+cor_matrix_all<-all_data_wide |>
+  filter( Project_Name == regions[i]) |>
+  select( -Project_Name, -Sample_ID)|>
+  cor( use="pairwise.complete.obs" )
+
+corr_p2<-cor_matrix_all |> ggcorrplot( method ="square", type ="lower",
+                              outline.color ="white",
+                               ggtheme = ggplot2::theme_dark(),
+                                colors = c("#6D9EC1", "white", "#E46726")
+)+ggtitle(paste( regions[i]))+ 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1,size=8),
+        axis.text.y = element_text(size=8))
+## Adjust the text label position in x axis
+
+corr_plots[[i]] <- corr_p2
+}
+
+
+
+```
+1). Neighbor matrix has a stronger positive relationship than global correlation matrix, including the regions in `Collinsville`,`Newlands` and `Coppabella`.
+
+
+```{r fig.width=12, fig.height=12, fig.cap="The example of project correlation matrix  with  stronger positive relationship"}
+wrap_plots(corr_plots[c(9,10,13)], nrow=2)
+```
+2). Neighbor matrix has a stronger negative relationship than global correlation matrix, which is a pervasive scenario including the regions in  `Moorvale`,`Wandoan`, `Confidential_C`, `Confidential_A` etc. 9 regions.
+```{r fig.width=12, fig.height=12, fig.cap="The example of project correlation matrix  with  stronger negative relationship"}
+wrap_plots(corr_plots[c(12,15,2,16)], nrow=2)
+```
+
+3). Grid-like distribution format are observed in `Rolleston`, `Collingwood Park` and `Unamed` because these projects only detected  a smaller category of element's sample. Therefore, the matrix structure will structured as a stronger, discrete blocks of correlation. The Oaky Creek project only obtained single sample will also be classified in this type.
+
+```{r fig.width=12, fig.height=12, fig.cap="The example of project correlation matrix  with  grid format"}
+wrap_plots(corr_plots[c(1,14,8)], nrow=2)
+```
+4). Located in one of Australia's most significant coal-producing regions, The matrix format in Fort Cooper mine reserve closely resembles the global matrix without distinct differentiation in correlation distribution.
+```{r fig.width=10, fig.height=10, fig.cap="The example of project correlation matrix  in Fort Cooper region"}
+corr_plots[4][[1]]
+```
+Based on this strata division, the raw data will be split to training and testing set with 75%-25% proportion.
+
+## Machine learning methods
+Two main machine learning method are primarily focused on this project:
+
+The first target is **random forest**(RF). As an enable learning method, it constructs multiple decision trees  through the subsets of the training data by bootstrapping resampling with replacement. In regression method,the final output is processed by a bagging stage, which combines the result from individual tree from all these individual trees by averaging the predictions from each tree. It can remarkably improve predictive accuracy and reduce overfitting comparing with single decision tree.[@ISLR] The engine setting in Tidymodels will be `Ranger` and `randomForest`.
+
+Another target is **gradient boosting tree**(GBT),Also known as stagewise ensemble method. The process begins by initializing the model with a simple estimator in decision tree, sequentially fit the weak learner to new-added tree. Each subsequent model  focuses on the mistakes made by the earlier trees and tries to correct the residuals of the previous model, until a satisfactory level of performance is reached. GBT particularly works well in REE,HREE and LREE prediction because it learns iteratively, allowing it to capture intricate patterns and nonlinear relationships within the data, especially when subtle patterns are important. The engine setting in Tidymodels will be `xgboost`.[@ISLR]
+
+However, both of two methods are vulnerable for overfitting problem in model training. In model fitting practice, except for the regular approaches to use all elements in ME-4ACD81, additional variable sub-setting and observation trimming techniques are introduced in the comparison with origin method to evaluate the optimal performance, including the conditions of:
+
+1).Predictors with high coefficient to target variable (>0.5) 
+
+2).Top variable importance in model contribution
+
+3).Removing outliers or low-quality data points that may skew the model's performance. 
+
+
+## Hyperparameter tuning
+
+Hyperparameter tuning is a critical step in optimizing machine learning models, where the goal is to find the best combination of parameter setting that maximizes predictive performance. In this study, hyperparameters were carefully adjusted under the Tidymodels framework in R. Three key hyperparameters were the top prioritized in tuning:
+
+1). **mtry** (Number of Predictors to Sample): Controls the number of predictors considered at each split in a decision tree. A smaller mtry introduces more variability among trees, while a larger mtry can lead to more accurate splits but risks in overfitting problem.
+
+2). **min_n**(Minimal terminal node size):  Determines the minimum number of observations in the ending node. Smaller values allow trees to grow deeper, capturing more details in training data, while larger values lead to simpler models that may generalize better.
+
+3).**trees**(Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+
+To determine the best combination of these hyperparameters in the grid, k-fold cross-validation was employed. The cross validation can help to evaluate a model's performance by splitting the training data into multiple subsets. In each iteration, the model is trained on all but one fold and validated on the remaining fold, repeating this process across all folds.  By averaging the performance metrics across these iterations, cross-validation provides a reliable estimate of how well the model generalizes to new, unseen data.
+
+## Metrics evaluation
+
+There are two type of regression metrics are utilized in performance evaluation. The first principal metrics is R-squared, which is use to mesausre the proportion of model variance can be explained by independent variables and error-related metrics between predicted and actual value like, RMSE, MAE and MAPE. In general comparison, higher r-squared with lower error variability tend to indicate a better-fitting model.
 # Results 
 
+
+## LREE
+
+## HREE
 
 # Discussions
 
