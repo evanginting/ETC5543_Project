@@ -50,6 +50,7 @@ library(gridExtra)
 library(moments)
 library(visdat)
 library(patchwork)
+library(MLmetrics)
 theme_set(theme_minimal())
 ```
 
@@ -581,9 +582,328 @@ There are two type of regression metrics are utilized in performance evaluation.
 # Results 
 
 
+## HREE
+```{r}
+
+all_data |>
+select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |>
+filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% element_lree)|>
+  ggplot() +geom_density( aes(x=Element_Value_ppm))+facet_wrap(.~Element_Symbol,  scales = "free_y")
+```
+```{r}
+all_data_wide<-all_data  |>
+  select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |> 
+  filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% HREE) |>
+  pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
+
+# Function to replace outliers directly and create a log of replaced values
+replace_outliers_and_log <- function(data, project_var, target_vars) {
+  # Create an empty data frame to track replaced values
+  outlier_log <- data.frame(Project_Name = character(),
+                            Element = character(),
+                            Original_Value = numeric(),
+                            Replaced_Value = numeric(),
+                            stringsAsFactors = FALSE)
+
+  # Loop through each target variable and apply the replacement logic
+  for (target_var in target_vars) {
+    # Calculate the median of the target variable for each Project_Name
+    medians <- data %>%
+      group_by({{ project_var }}) %>%
+      summarize(project_median = median(.data[[target_var]], na.rm = TRUE)) %>%
+      ungroup()
+    
+    # Join the median values back to the original data
+    data <- data %>%
+      left_join(medians, by = rlang::as_name(enquo(project_var))) %>%
+      rename(!!paste0("median_", target_var) := project_median)  # Rename to unique median column for each variable
+    
+    # Calculate IQR and identify outliers for the target variable globally
+    Q1 <- quantile(data[[target_var]], 0.25, na.rm = TRUE)
+    Q3 <- quantile(data[[target_var]], 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    lower_bound <- Q1 - 1.5 * IQR
+    upper_bound <- Q3 + 1.5 * IQR
+    
+    # Replace outliers directly in the target variable and log replaced values
+    data <- data %>%
+      mutate(
+        # Replace outliers with the median value specific to the Project_Name
+        replaced_value = ifelse(.data[[target_var]] < lower_bound | .data[[target_var]] > upper_bound, .data[[paste0("median_", target_var)]], NA),
+        # Log the original value and the replaced value in the log dataframe
+        outlier_flag = !is.na(replaced_value)
+      )
+    
+    # Create a log of replaced values
+    temp_log <- data %>%
+      filter(outlier_flag) %>%
+      transmute(
+        Project_Name = .data[[rlang::as_name(enquo(project_var))]],
+        Element = target_var,
+        Original_Value = .data[[target_var]],
+        Replaced_Value = replaced_value
+      )
+    
+    # Combine with the main log dataset
+    outlier_log <- bind_rows(outlier_log, temp_log)
+    
+    # Replace the actual outliers in the original data
+    data <- data %>%
+      mutate(!!target_var := ifelse(outlier_flag, replaced_value, .data[[target_var]])) %>%
+      # Remove temporary columns
+      select(-paste0("median_", target_var), -replaced_value, -outlier_flag)
+  }
+  
+  return(list(cleaned_data = data, outlier_log = outlier_log))
+}
+
+# Example usage for multiple elements (e.g., Pb, Ag, Au) with Project_Name as the reference grouping variable
+result <- replace_outliers_and_log(all_data_wide, Project_Name, c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn","HREE"))
+
+# Extract the cleaned data and the log of replaced values
+all_data_wide <- result$cleaned_data
+outlier_log <- result$outlier_log
+
+
+all_data_trim_hree<- all_data_wide |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250& HREE<=30)
+all_data_model_trim_hree<-all_data_trim_hree|> 
+  mutate(
+    Corr_type = case_when(
+    Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
+    Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
+    Project_Name == "Fort Cooper" ~ "Type C",
+    TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
+  ))
+       
+set.seed(123)
+
+trees_split_trim_hree <- initial_split(all_data_model_trim_hree, strata = Corr_type)
+trees_train_trim_hree <- training(trees_split_trim_hree)
+trees_test_trim_hree <- testing(trees_split_trim_hree)
+
+
+all_data_trim_hree<- all_data_wide |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250& HREE<=30)
+all_data_model_trim_hree<-all_data_trim_hree|> 
+mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .)))|> 
+  mutate(
+    Corr_type = case_when(
+    Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
+    Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
+    Project_Name == "Fort Cooper" ~ "Type C",
+    TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
+  ))
+       
+set.seed(123)
+
+trees_split_trim_hree <- initial_split(all_data_model_trim_hree, strata = Corr_type)
+trees_train_trim_hree <- training(trees_split_trim_hree)
+trees_test_trim_hree <- testing(trees_split_trim_hree)
+
+
+selected_train_trim_hree <- trees_train_trim_hree |>
+  select( Ag:HREE)
+
+
+selected_test_trim_hree <- trees_test_trim_hree |>
+  select( Ag:HREE)
+```
+
+
+
+
+```{r}
+set.seed(12345)
+fb_fit_rf_trim_hree <- rf_spec |>
+fit(HREE ~ ., data = selected_train_trim_hree)
+fb_fit_rf
+
+
+
+
+rf_pred_trim_hree<- selected_test_trim_hree|>
+mutate(pHREE= predict(fb_fit_rf_trim_hree$fit,
+selected_test_trim_hree ))
+
+
+rf_pred_trim_hree |> yardstick::metrics(truth = HREE, estimate = pHREE)
+```
+
+```{r}
+ rf_pred_trim_hree |> summarise(MAE=MAE(y_pred=pHREE, y_true=HREE),
+                                MAPE=MAPE(y_pred=pHREE, y_true=HREE))
+```
+
+```{r}
+ rf_pred_trim_hree  |>ggplot( aes(pHREE,HREE))+
+  geom_point(alpha = 0.7, colour = "black", size = 5) +
+theme_minimal() +
+  theme(axis.title.x = element_text(size = 20),        
+        axis.title.y = element_text(size = 20))+labs(x="Predicted", y="Actual") +geom_abline(slope = 1, intercept = 0, color = "red",linetype="dashed", size=1)  +  # Diagonal line # Diagonal line
+  theme(aspect.ratio = 1)  # Set 
+```
 ## LREE
 
-## HREE
+```{r}
+
+element_lree<-c("Ag", "As",
+"Cd",
+"Co",
+"Cu",
+"Li",
+"Mo",
+"Ni",
+"Pb",
+"Sc",
+"Tl",
+"Zn",
+"LREE")
+all_data_wide_lree<-all_data |>
+select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |>
+filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% element_lree) |>
+pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
+result <- replace_outliers_and_log(all_data_wide_lree, Project_Name, c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn","LREE"))
+
+# Extract the cleaned data and the log of replaced values
+all_data_wide_lree <- result$cleaned_data
+outlier_log_lree <- result$outlier_log
+
+all_data_model_lree<-all_data_wide_lree |>
+mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .))) |>
+mutate(
+Corr_type = case_when(
+Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
+Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
+Project_Name == "Fort Cooper" ~ "Type C",
+TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
+))
+```
+```{r}
+all_data_wide_lree
+
+all_data_trim<- all_data_wide_lree |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250)
+
+all_data_model_lree_trim<-all_data_trim |>
+mutate_all(~replace(., is.na(.), -999.00)) |>
+mutate(
+Corr_type = case_when(
+Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
+Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
+Project_Name == "Fort Cooper" ~ "Type C",
+TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
+))
+
+
+```
+```{r}
+## Initial spilt
+
+set.seed(123)
+
+trees_split_trim <- initial_split(all_data_model_lree_trim, strata = Corr_type)
+trees_train_trim <- training(trees_split_trim)
+trees_test_trim<- testing(trees_split_trim )
+
+selected_train_trim<- trees_train_trim |>
+select( Ag:LREE)
+
+selected_test_trim<-trees_test_trim |>
+select(Ag:LREE)
+```
+
+```{r}
+set.seed(12345)
+rf_spec_trim <- rand_forest(
+
+mtry = tune(), trees = tune(), min_n = tune()) |>
+set_mode("regression") |>
+set_engine("ranger")
+
+
+rf_grid_trim  <-
+grid_latin_hypercube(
+min_n(),
+mtry(range = c(3, 13)),
+trees(),
+size = 80)
+
+
+```
+
+
+```{r}
+set.seed(444)
+LREE_fold_trim<- vfold_cv(selected_train_trim)
+
+## accelerate the speed for hyperparameter calculation
+doParallel::registerDoParallel()
+
+rf_wf_trim <- workflow()|>
+add_model(rf_spec_trim )|>
+add_formula( LREE~ Ag+Cd+Co+Cu+Li+Mo+Ni+Pb+Sc+Tl+Zn)
+
+
+rf_rs_trim <-
+rf_wf_trim|>
+tune_grid(
+resamples = LREE_fold_trim,
+grid = rf_grid_trim
+)
+
+```
+
+
+
+
+
+
+```{r dplyr::selectbest}
+set.seed(12345)
+best_rmse_rf_ranger_trim <-  rf_rs_trim |>
+select_best(metric = "rmse")
+
+
+best_rmse_rf_ranger_trim
+
+
+best_rsq_rf_ranger_trim<- rf_rs_trim|>
+select_best(metric = "rsq")
+
+best_rsq_rf_ranger_trim
+```
+```{r}
+set.seed(12345)
+final_wf_rf_ranger_trim <-
+rf_wf_trim |>
+finalize_workflow(best_rmse_rf_ranger_trim)
+
+final_fit_rf_ranger_trim<-final_wf_rf_ranger_trim |> last_fit(trees_split_trim)
+
+final_tree_rf_ranger_trim<- extract_workflow(final_fit_rf_ranger_trim)
+
+final_tree_rf_ranger_trim
+```
+```{r}
+set.seed(12345)
+final_fit_rf_ranger_trim |>
+collect_metrics()
+```
+
+
+```{r}
+final_fit_rf_ranger_trim$.predictions[[1]] |>
+  summarise(MAE=MAE( .pred,LREE),
+            MAPE=MAPE(.pred,LREE))
+                               
+```
+```{r}
+final_fit_rf_ranger_trim$.predictions[[1]]  |>ggplot( aes(.pred,LREE))+
+  
+  geom_point(alpha = 0.7, colour = "black", size = 5) +
+theme_minimal() +
+  theme(axis.title.x = element_text(size = 20),        
+        axis.title.y = element_text(size = 20))+labs(x="Predicted", y="Actual") +geom_abline(slope = 1, intercept = 0, color = "red",linetype="dashed", size=1)  +  # Diagonal line # Diagonal line
+  theme(aspect.ratio = 1)  # Set 
+```
 
 # Discussions
 
