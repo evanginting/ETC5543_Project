@@ -149,6 +149,55 @@ DT_alt <- DT %>%
   ) %>%
   ungroup()
 
+# Replace missing values with Project_Name-specific medians or global median if none exist (For HREE)
+DT_hree_alt <- DT %>%
+  filter(!is.na(HREE)) %>%
+  # Calculate Project_Name-specific medians for each element
+  group_by(Project_Name) %>%
+  mutate(
+    across(
+      .cols = c(Ag, Cd, Co, Cu, Li, Mo, Ni, Pb, Sc, Tl, Zn),  # Specify target elements
+      .fns = ~ ifelse(
+        # If the value is missing, replace it
+        is.na(.),
+        # Check if all values in the group are missing for this element
+        ifelse(
+          all(is.na(.)), 
+          # If all are missing, use the global median (stored in `global_medians`)
+          global_medians[[paste0("global_", cur_column())]],
+          # Otherwise, use the Project_Name-specific median
+          median(., na.rm = TRUE)
+        ), 
+        .
+      )
+    )
+  ) %>%
+  ungroup()
+
+# Replace missing values with Project_Name-specific medians or global median if none exist (For LREE)
+DT_lree_alt <- DT %>%
+  filter(!is.na(LREE)) %>%
+  # Calculate Project_Name-specific medians for each element
+  group_by(Project_Name) %>%
+  mutate(
+    across(
+      .cols = c(Ag, Cd, Co, Cu, Li, Mo, Ni, Pb, Sc, Tl, Zn),  # Specify target elements
+      .fns = ~ ifelse(
+        # If the value is missing, replace it
+        is.na(.),
+        # Check if all values in the group are missing for this element
+        ifelse(
+          all(is.na(.)), 
+          # If all are missing, use the global median (stored in `global_medians`)
+          global_medians[[paste0("global_", cur_column())]],
+          # Otherwise, use the Project_Name-specific median
+          median(., na.rm = TRUE)
+        ), 
+        .
+      )
+    )
+  ) %>%
+  ungroup()
 ```
 
 
@@ -156,10 +205,23 @@ DT_alt <- DT %>%
 ### Split data into train and test data sets
 Finally, before building the model, the data will be splitted into training and test set by 2/3 proportion and by considering the project area.
 ```{r}
+# Splitting the data (REE)
 set.seed(2022)
 DT_initial <- initial_split(DT_alt, prop = 2/3, strata = Project_Name)
 DT_train <- training(DT_initial)
 DT_test <- testing(DT_initial)
+
+# Splitting the data (HREE)
+set.seed(2022)
+DT_hree_initial <- initial_split(DT_hree_alt, prop = 2/3, strata = Project_Name)
+DT_hree_train <- training(DT_hree_initial)
+DT_hree_test <- testing(DT_hree_initial)
+
+# Splitting the data (LREE)
+set.seed(2022)
+DT_lree_initial <- initial_split(DT_lree_alt, prop = 2/3, strata = Project_Name)
+DT_lree_train <- training(DT_lree_initial)
+DT_lree_test <- testing(DT_lree_initial)
 ```
 
 
@@ -710,8 +772,141 @@ results_test %>%
   facet_wrap(~train)
 ```
 
+### Random Forest Model: Option 5 (All elements from ME-4ACD81)
+Combination of All elements from ME-4ACD81 in predicting REE, with modification of the strata when splitting the training and test data.
+
+#### Data Preparation
+```{r}
+DT_alt_2 <- DT_alt %>%
+  mutate(Corr_type = case_when(Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
+                             Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
+                             Project_Name == "Fort Cooper" ~ "Type C",
+                             TRUE ~ "Type D"))
+
+# Splitting the data (REE)
+set.seed(2022)
+DT_initial_2 <- initial_split(DT_alt_2, prop = 2/3, strata = Corr_type)
+DT_train_2 <- training(DT_initial_2)
+DT_test_2 <- testing(DT_initial_2)
+
+# Filter the training and test datasets to include predictors and target variables only
+DT_train_fltr_alt_5 <- DT_train_2[,c("REE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")] 
+DT_test_fltr_alt_5 <- DT_test_2[,c("REE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")]
+
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_fltr_folds_5 <- vfold_cv(DT_train_fltr_alt_5, v = 5, repeats = 2)
+
+```
+
+#### Build the Model
+```{r}
+# Create a recipe for preprocessing
+rf_recipe_5 <- recipe(REE ~ ., data = DT_train_fltr_alt_5)
+
+# Create a workflow
+rf_tuned_workflow_5 <- workflow() %>%
+  add_recipe(rf_recipe_5) %>%
+  add_model(rf_tuned_spec)
+
+# Set-up the hyperparameter tuning
+rf_tuned_grid_5 <- grid_regular(
+  mtry(range = c(1,11)),
+  min_n(),
+  trees(),
+  levels = 5)
+
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_random_tune_5 <- tune_grid(
+  rf_tuned_workflow_5,
+  resamples = DT_fltr_folds_5,
+  grid = rf_tuned_grid_5,
+  metrics = metric_set(rmse, rsq, mae)
+)
+
+# Show the best configurations
+show_best(rf_random_tune_5, n = 3)
+
+# Fit the best model into the training set
+set.seed(2022)
+rf_random_tuned_fit_5 <- finalize_workflow(rf_tuned_workflow_5, select_best(rf_random_tune_5)) %>%
+    fit(DT_train_fltr_alt_5)
+
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_fltr_alt_5_prep <- bake(prep(rf_recipe_5), new_data = DT_train_fltr_alt_5)
+DT_test_fltr_alt_5_prep <- bake(prep(rf_recipe_5), new_data = DT_test_fltr_alt_5)
+
+# Make predictions on the preprocessed testing data
+rf_tr_rdm_tuned_5_pred <- predict(rf_random_tuned_fit_5, new_data = DT_train_fltr_alt_5_prep)
+rf_ts_rdm_tuned_5_pred <- predict(rf_random_tuned_fit_5, new_data = DT_test_fltr_alt_5_prep)
+```
+
+```{r}
+# Plot variable importance
+rf_random_tuned_fit_5 %>%
+  extract_fit_parsnip() %>%
+  vip::vip()
+```
+
+
+#### Evaluate the Model
+```{r}
+# RF Tuned Results for all elements from ME-4ACD81
+## Training set evaluation
+results_train_rf_rdm_tuned_5 <- rf_tr_rdm_tuned_5_pred %>%
+  bind_cols(DT_train_fltr_alt_5) %>%
+  select(.pred, REE) %>%
+  rename(truth = REE) %>%
+  mutate(model = "RF_Rdm_Tuned_5")
+
+## Test set evaluation
+results_test_rf_rdm_tuned_5 <- rf_ts_rdm_tuned_5_pred %>%
+ bind_cols(DT_test_fltr_alt_5) %>%
+  select(.pred, REE) %>%
+  rename(truth = REE) %>%
+  mutate(model = "RF_Rdm_Tuned_5")
+
+# Merge the results
+## Training set
+results_train <- bind_rows(results_train, results_train_rf_rdm_tuned_5)
+
+## Test set
+results_test <- bind_rows(results_test, results_test_rf_rdm_tuned_5)
+
+# Show the evaluation metrics for every model
+## Training set
+results_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3, warning = FALSE, error = FALSE}
+results_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
 ### XGBoost Model: All elements from ME-4ACD81
-Combination of All elements from ME-4ACD81 in predicting REE. This is the only model being performed with XGBoost considering the model of all elements from random forest produce the best performance.
+Combination of All elements from ME-4ACD81 in predicting REE. This is the only model being performed with XGBoost considering this combination of predictors produce the best model.
 
 #### Data Preparation
 Data preparation is not needed for this model, because this model use the same data as what "Random Forest Option 3" use.
@@ -783,14 +978,14 @@ xgb_test_predictions <- predict(xgb_tuned_fit, new_data = DT_test_fltr_alt_3)
 # Evaluate performance on training data
 xgb_train_results <- xgb_train_predictions %>%
   bind_cols(DT_train_fltr_alt_3) %>%
-  select(.pred, REE) %>%
+  dplyr::select(.pred, REE) %>%
   rename(truth = REE) %>%
   mutate(model = "XGBoost_Tuned")
 
 # Evaluate performance on test data
 xgb_test_results <- xgb_test_predictions %>%
   bind_cols(DT_test_fltr_alt_3) %>%
-  select(.pred, REE) %>%
+  dplyr::select(.pred, REE) %>%
   rename(truth = REE) %>%
   mutate(model = "XGBoost_Tuned")
 
@@ -875,322 +1070,1085 @@ print(results_test_best)
 
 ## Predictive Modelling (HREE)
 
+### Random Forest Model: Option 1 (All elements from ME-4ACD81)
+Combination of All elements from ME-4ACD81 in predicting HREE.
+
+#### Data Preparation
 ```{r}
+# Filter the training and test datasets to include predictors and target variables only
+DT_hree_train_fltr <- DT_hree_train[,c("HREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")] 
+DT_hree_test_fltr <- DT_hree_test[,c("HREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")]
 
-all_data |>
-select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |>
-filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% element_lree)|>
-  ggplot() +geom_density( aes(x=Element_Value_ppm))+facet_wrap(.~Element_Symbol,  scales = "free_y")
-```
-```{r}
-all_data_wide<-all_data  |>
-  select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |> 
-  filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% HREE) |>
-  pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_hree_fltr_folds <- vfold_cv(DT_hree_train_fltr, v = 5, repeats = 2)
 
-# Function to replace outliers directly and create a log of replaced values
-replace_outliers_and_log <- function(data, project_var, target_vars) {
-  # Create an empty data frame to track replaced values
-  outlier_log <- data.frame(Project_Name = character(),
-                            Element = character(),
-                            Original_Value = numeric(),
-                            Replaced_Value = numeric(),
-                            stringsAsFactors = FALSE)
-
-  # Loop through each target variable and apply the replacement logic
-  for (target_var in target_vars) {
-    # Calculate the median of the target variable for each Project_Name
-    medians <- data %>%
-      group_by({{ project_var }}) %>%
-      summarize(project_median = median(.data[[target_var]], na.rm = TRUE)) %>%
-      ungroup()
-    
-    # Join the median values back to the original data
-    data <- data %>%
-      left_join(medians, by = rlang::as_name(enquo(project_var))) %>%
-      rename(!!paste0("median_", target_var) := project_median)  # Rename to unique median column for each variable
-    
-    # Calculate IQR and identify outliers for the target variable globally
-    Q1 <- quantile(data[[target_var]], 0.25, na.rm = TRUE)
-    Q3 <- quantile(data[[target_var]], 0.75, na.rm = TRUE)
-    IQR <- Q3 - Q1
-    lower_bound <- Q1 - 1.5 * IQR
-    upper_bound <- Q3 + 1.5 * IQR
-    
-    # Replace outliers directly in the target variable and log replaced values
-    data <- data %>%
-      mutate(
-        # Replace outliers with the median value specific to the Project_Name
-        replaced_value = ifelse(.data[[target_var]] < lower_bound | .data[[target_var]] > upper_bound, .data[[paste0("median_", target_var)]], NA),
-        # Log the original value and the replaced value in the log dataframe
-        outlier_flag = !is.na(replaced_value)
-      )
-    
-    # Create a log of replaced values
-    temp_log <- data %>%
-      filter(outlier_flag) %>%
-      transmute(
-        Project_Name = .data[[rlang::as_name(enquo(project_var))]],
-        Element = target_var,
-        Original_Value = .data[[target_var]],
-        Replaced_Value = replaced_value
-      )
-    
-    # Combine with the main log dataset
-    outlier_log <- bind_rows(outlier_log, temp_log)
-    
-    # Replace the actual outliers in the original data
-    data <- data %>%
-      mutate(!!target_var := ifelse(outlier_flag, replaced_value, .data[[target_var]])) %>%
-      # Remove temporary columns
-      select(-paste0("median_", target_var), -replaced_value, -outlier_flag)
-  }
-  
-  return(list(cleaned_data = data, outlier_log = outlier_log))
-}
-
-# Example usage for multiple elements (e.g., Pb, Ag, Au) with Project_Name as the reference grouping variable
-result <- replace_outliers_and_log(all_data_wide, Project_Name, c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn","HREE"))
-
-# Extract the cleaned data and the log of replaced values
-all_data_wide <- result$cleaned_data
-outlier_log <- result$outlier_log
-
-
-
-
-all_data_trim_hree<- all_data_wide |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250& HREE<=30)
-all_data_model_trim_hree<-all_data_trim_hree|> 
-mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .)))|> 
-  mutate(
-    Corr_type = case_when(
-    Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
-    Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
-    Project_Name == "Fort Cooper" ~ "Type C",
-    TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
-  ))
-       
-set.seed(123)
-
-trees_split_trim_hree <- initial_split(all_data_model_trim_hree, strata = Corr_type)
-trees_train_trim_hree <- training(trees_split_trim_hree)
-trees_test_trim_hree <- testing(trees_split_trim_hree)
-
-
-selected_train_trim_hree <- trees_train_trim_hree |>
-  select( Ag:HREE)
-
-
-selected_test_trim_hree <- trees_test_trim_hree |>
-  select( Ag:HREE)
-```
-```{r}
-colSums(is.na(all_data_trim_hree))
-
-colSums(is.na(all_data_trim))
 ```
 
-
-
+#### Build the Model
 ```{r}
-set.seed(12345)
-fb_fit_rf_trim_hree <- rf_spec |>
-fit(HREE ~ ., data = selected_train_trim_hree)
-fb_fit_rf
+# Create a recipe for preprocessing
+rf_hree_recipe <- recipe(HREE ~ ., data = DT_hree_train_fltr)
 
+# Create a workflow
+rf_hree_tuned_workflow <- workflow() %>%
+  add_recipe(rf_hree_recipe) %>%
+  add_model(rf_tuned_spec)
 
+# Set-up the hyperparameter tuning
+rf_hree_tuned_grid <- grid_regular(
+  mtry(range = c(1,11)),
+  min_n(),
+  trees(),
+  levels = 5)
 
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_hree_random_tune <- tune_grid(
+  rf_hree_tuned_workflow,
+  resamples = DT_hree_fltr_folds,
+  grid = rf_hree_tuned_grid,
+  metrics = metric_set(rmse, rsq, mae)
+)
 
-rf_pred_trim_hree<- selected_test_trim_hree|>
-mutate(pHREE= predict(fb_fit_rf_trim_hree$fit,
-selected_test_trim_hree ))
+# Show the best configurations
+show_best(rf_hree_random_tune, n = 3)
 
+# Fit the best model into the training set
+set.seed(2022)
+rf_hree_random_tuned_fit <- finalize_workflow(rf_hree_tuned_workflow, select_best(rf_hree_random_tune)) %>%
+    fit(DT_hree_train_fltr)
 
-rf_pred_trim_hree |> yardstick::metrics(truth = HREE, estimate = pHREE)
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_hree_fltr_prep <- bake(prep(rf_hree_recipe), new_data = DT_hree_train_fltr)
+DT_test_hree_fltr_prep <- bake(prep(rf_hree_recipe), new_data = DT_hree_test_fltr)
+
+# Make predictions on the preprocessed testing data
+rf_hree_tr_rdm_tuned_pred <- predict(rf_hree_random_tuned_fit, new_data = DT_hree_train_fltr)
+rf_hree_ts_rdm_tuned_pred <- predict(rf_hree_random_tuned_fit, new_data = DT_hree_test_fltr)
 ```
 
 ```{r}
- rf_pred_trim_hree |> summarise(MAE=MAE(y_pred=pHREE, y_true=HREE),
-                                MAPE=MAPE(y_pred=pHREE, y_true=HREE))
+# Plot variable importance
+rf_hree_random_tuned_fit %>%
+  extract_fit_parsnip() %>%
+  vip::vip()
+```
+
+
+#### Evaluate the Model
+```{r}
+# RF Tuned Results for all elements from ME-4ACD81
+## Training set evaluation
+results_train_rf_hree_rdm_tuned <- rf_hree_tr_rdm_tuned_pred %>%
+  bind_cols(DT_hree_train_fltr) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "RF_Rdm_Tuned_HREE")
+
+## Test set evaluation
+results_test_rf_hree_rdm_tuned <- rf_hree_ts_rdm_tuned_pred %>%
+  bind_cols(DT_hree_test_fltr) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "RF_Rdm_Tuned_HREE")
+
+# Merge the results
+## Training set
+results_hree_train <- results_train_rf_hree_rdm_tuned
+
+## Test set
+results_hree_test <- results_test_rf_hree_rdm_tuned
+
+# Show the evaluation metrics for every model
+## Training set
+results_hree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_hree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+results_hree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_hree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+### Random Forest Model: Option 2 (All elements from ME-4ACD81)
+Combination of All elements from ME-4ACD81 in predicting HREE, but using different strata method.
+
+#### Data Preparation
+```{r}
+DT_hree_alt_2 <- DT_hree_alt %>%
+  mutate(Corr_type = case_when(Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
+                             Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
+                             Project_Name == "Fort Cooper" ~ "Type C",
+                             TRUE ~ "Type D")) %>%
+  filter(Co <= 250 & Zn <= 250 & Ni <= 250 & Li <= 250)
+
+# Splitting the data (HREE)
+set.seed(2022)
+DT_hree_initial_2 <- initial_split(DT_hree_alt_2, prop = 2/3, strata = Corr_type)
+DT_hree_train_2 <- training(DT_hree_initial_2)
+DT_hree_test_2 <- testing(DT_hree_initial_2)
+
+# Filter the training and test datasets to include predictors and target variables only
+DT_hree_train_fltr_2 <- DT_hree_train_2[,c("HREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")] 
+DT_hree_test_fltr_2 <- DT_hree_test_2[,c("HREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")]
+
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_hree_fltr_folds_2 <- vfold_cv(DT_hree_train_fltr_2, v = 5, repeats = 2)
+
+```
+
+#### Build the Model
+```{r}
+# Create a recipe for preprocessing
+rf_hree_recipe_2 <- recipe(HREE ~ ., data = DT_hree_train_fltr_2)
+
+# Create a workflow
+rf_hree_tuned_workflow_2 <- workflow() %>%
+  add_recipe(rf_hree_recipe_2) %>%
+  add_model(rf_tuned_spec)
+
+# Set-up the hyperparameter tuning
+rf_hree_tuned_grid_2 <- grid_regular(
+  mtry(range = c(1,11)),
+  min_n(),
+  trees(),
+  levels = 5)
+
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_hree_random_tune_2 <- tune_grid(
+  rf_hree_tuned_workflow_2,
+  resamples = DT_hree_fltr_folds_2,
+  grid = rf_hree_tuned_grid_2,
+  metrics = metric_set(rmse, rsq, mae)
+)
+
+# Show the best configurations
+show_best(rf_hree_random_tune_2, n = 3)
+
+# Fit the best model into the training set
+set.seed(2022)
+rf_hree_random_tuned_fit_2 <- finalize_workflow(rf_hree_tuned_workflow_2, select_best(rf_hree_random_tune_2)) %>%
+    fit(DT_hree_train_fltr_2)
+
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_hree_fltr_prep_2 <- bake(prep(rf_hree_recipe_2), new_data = DT_hree_train_fltr_2)
+DT_test_hree_fltr_prep_2 <- bake(prep(rf_hree_recipe_2), new_data = DT_hree_test_fltr_2)
+
+# Make predictions on the preprocessed testing data
+rf_hree_tr_rdm_tuned_pred_2 <- predict(rf_hree_random_tuned_fit_2, new_data = DT_hree_train_fltr_2)
+rf_hree_ts_rdm_tuned_pred_2 <- predict(rf_hree_random_tuned_fit_2, new_data = DT_hree_test_fltr_2)
 ```
 
 ```{r}
- rf_pred_trim_hree  |>ggplot( aes(pHREE,HREE))+
-  geom_point(alpha = 0.7, colour = "black", size = 5) +
-theme_minimal() +
-  theme(axis.title.x = element_text(size = 20),        
-        axis.title.y = element_text(size = 20))+labs(x="Predicted", y="Actual") +geom_abline(slope = 1, intercept = 0, color = "red",linetype="dashed", size=1)  +  # Diagonal line # Diagonal line
-  theme(aspect.ratio = 1)  # Set 
+# Plot variable importance
+rf_hree_random_tuned_fit %>%
+  extract_fit_parsnip() %>%
+  vip::vip()
+```
+
+
+#### Evaluate the Model
+```{r}
+# RF Tuned Results for all elements from ME-4ACD81
+## Training set evaluation
+results_train_rf_hree_rdm_tuned_2 <- rf_hree_tr_rdm_tuned_pred_2 %>%
+  bind_cols(DT_hree_train_fltr_2) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "RF_Rdm_Tuned_HREE_2")
+
+## Test set evaluation
+results_test_rf_hree_rdm_tuned_2 <- rf_hree_ts_rdm_tuned_pred_2 %>%
+  bind_cols(DT_hree_test_fltr_2) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "RF_Rdm_Tuned_HREE_2")
+
+# Merge the results
+## Training set
+results_hree_train <- bind_rows(results_hree_train, results_train_rf_hree_rdm_tuned_2)
+
+## Test set
+results_hree_test <- bind_rows(results_hree_test, results_test_rf_hree_rdm_tuned_2)
+
+# Show the evaluation metrics for every model
+## Training set
+results_hree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_hree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+results_hree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_hree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+### Random Forest Model: Option 3 (All elements which has high variable importance)
+Combination of elements that have high variable importance in from the model in option 2, which are Pb and Sc.
+
+#### Data Preparation
+```{r}
+# Filter the training and test datasets to include predictors and target variables only
+DT_hree_train_fltr_3 <- DT_hree_train_2[,c("HREE","Pb", "Sc")] 
+DT_hree_test_fltr_3 <- DT_hree_test_2[,c("HREE","Pb", "Sc")]
+
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_hree_fltr_folds_3 <- vfold_cv(DT_hree_train_fltr_3, v = 5, repeats = 2)
+
+```
+
+#### Build the Model
+```{r}
+# Create a recipe for preprocessing
+rf_hree_recipe_3 <- recipe(HREE ~ ., data = DT_hree_train_fltr_3)
+
+# Create a workflow
+rf_hree_tuned_workflow_3 <- workflow() %>%
+  add_recipe(rf_hree_recipe_3) %>%
+  add_model(rf_tuned_spec)
+
+# Set-up the hyperparameter tuning
+rf_hree_tuned_grid_3 <- grid_regular(
+  mtry(range = c(1,2)),
+  min_n(),
+  trees(),
+  levels = 5)
+
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_hree_random_tune_3 <- tune_grid(
+  rf_hree_tuned_workflow_3,
+  resamples = DT_hree_fltr_folds_3,
+  grid = rf_hree_tuned_grid_3,
+  metrics = metric_set(rmse, rsq, mae)
+)
+
+# Show the best configurations
+show_best(rf_hree_random_tune_3, n = 3)
+
+# Fit the best model into the training set
+set.seed(2022)
+rf_hree_random_tuned_fit_3 <- finalize_workflow(rf_hree_tuned_workflow_3, select_best(rf_hree_random_tune_3)) %>%
+    fit(DT_hree_train_fltr_3)
+
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_hree_fltr_prep_3 <- bake(prep(rf_hree_recipe_3), new_data = DT_hree_train_fltr_3)
+DT_test_hree_fltr_prep_3 <- bake(prep(rf_hree_recipe_3), new_data = DT_hree_test_fltr_3)
+
+# Make predictions on the preprocessed testing data
+rf_hree_tr_rdm_tuned_pred_3 <- predict(rf_hree_random_tuned_fit_3, new_data = DT_hree_train_fltr_3)
+rf_hree_ts_rdm_tuned_pred_3 <- predict(rf_hree_random_tuned_fit_3, new_data = DT_hree_test_fltr_3)
+```
+
+#### Evaluate the Model
+```{r}
+# RF Tuned Results for Pb & Sc
+## Training set evaluation
+results_train_rf_hree_rdm_tuned_3 <- rf_hree_tr_rdm_tuned_pred_3 %>%
+  bind_cols(DT_hree_train_fltr_3) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "RF_Rdm_Tuned_HREE_3")
+
+## Test set evaluation
+results_test_rf_hree_rdm_tuned_3 <- rf_hree_ts_rdm_tuned_pred_3 %>%
+  bind_cols(DT_hree_test_fltr_3) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "RF_Rdm_Tuned_HREE_3")
+
+# Merge the results
+## Training set
+results_hree_train <- bind_rows(results_hree_train, results_train_rf_hree_rdm_tuned_3)
+
+## Test set
+results_hree_test <- bind_rows(results_hree_test, results_test_rf_hree_rdm_tuned_3)
+
+# Show the evaluation metrics for every model
+## Training set
+results_hree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_hree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+results_hree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_hree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+### XGBoost Model: All elements from ME-4ACD81
+Combination of All elements from ME-4ACD81 in predicting HREE. This is the only model being performed with XGBoost considering this combination of predictors produce the best model.
+
+#### Data Preparation
+Data preparation is not needed for this model, because this model use the same data as what "Random Forest Option 2" use.
+
+#### Build the Model
+```{r}
+# Define the recipe for XGBoost
+xgb_recipe_hree <- recipe(HREE ~ ., data = DT_hree_train_fltr_2) 
+
+# XGB tune workflow
+xgb_tuned_workflow_hree <- workflow() %>%
+  add_model(xgb_tuned_spec) %>%
+  add_recipe(xgb_recipe_hree)
+
+
+# Set-up the hyperparameter tuning
+xgboost_params_hree <- parameters(
+  tree_depth(),
+  learn_rate(),
+  loss_reduction(),
+  min_n(),
+  sample_size = sample_prop(),
+  finalize(mtry(), DT_hree_train_fltr_2))
+
+xgboost_grid_hree <- 
+  dials::grid_space_filling(
+    xgboost_params_hree, 
+    size = 20
+  )
+
+
+# Tune the model
+set.seed(2022)
+xgb_tune_hree <- xgb_tuned_workflow_hree %>% 
+  tune_grid(resamples = DT_hree_fltr_folds_2, 
+            grid = xgboost_grid_hree,
+            metrics = metric_set(rmse, rsq, mae),
+            control = control_grid(save_pred = TRUE))
+
+# Show the best configurations
+show_best(xgb_tune_hree, n = 5, metric = "rmse")
+
+# Fit the best model into the training set
+set.seed(2022)
+xgb_tuned_fit_hree <- finalize_workflow(xgb_tuned_workflow_hree, select_best(xgb_tune_hree, metric = "rmse")) %>%
+    fit(DT_hree_train_fltr_2)
+
+# Make predictions on the test set
+xgb_hree_train_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_train_fltr_2)
+
+# Make predictions on the test set
+xgb_hree_test_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_test_fltr_2)
+```
+
+
+#### Evaluate the Model
+```{r}
+# Evaluate performance on training data
+xgb_train_results_hree <- xgb_hree_train_predictions %>%
+  bind_cols(DT_hree_train_fltr_2) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "XGBoost_Tuned_HREE")
+
+# Evaluate performance on test data
+xgb_test_results_hree <- xgb_hree_test_predictions %>%
+  bind_cols(DT_hree_test_fltr_2) %>%
+  dplyr::select(.pred, HREE) %>%
+  rename(truth = HREE) %>%
+  mutate(model = "XGBoost_Tuned_HREE")
+
+# Merge the results
+## Training set
+results_hree_train <- bind_rows(results_hree_train, xgb_train_results_hree)
+
+## Test set
+results_hree_test <- bind_rows(results_hree_test, xgb_test_results_hree)
+
+
+# Show the evaluation metrics for every model
+## Training set
+results_hree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_hree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison_xgb2, warning = FALSE, error = FALSE}
+results_hree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_hree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
 ```
 
 ## Predictive Modelling (LREE)
+
+### Random Forest Model: Option 1 (All elements from ME-4ACD81)
+Combination of All elements from ME-4ACD81 in predicting LREE.
+
+#### Data Preparation
 ```{r}
+# Filter the training and test datasets to include predictors and target variables only
+DT_lree_train_fltr <- DT_lree_train[,c("LREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")] 
+DT_lree_test_fltr <- DT_lree_test[,c("LREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")]
 
-element_lree<-c("Ag", "As",
-"Cd",
-"Co",
-"Cu",
-"Li",
-"Mo",
-"Ni",
-"Pb",
-"Sc",
-"Tl",
-"Zn",
-"LREE")
-all_data_wide_lree<-all_data |>
-select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |>
-filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% element_lree) |>
-pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
-result <- replace_outliers_and_log(all_data_wide_lree, Project_Name, c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn","LREE"))
-
-# Extract the cleaned data and the log of replaced values
-all_data_wide_lree <- result$cleaned_data
-outlier_log_lree <- result$outlier_log
-
-all_data_model_lree<-all_data_wide_lree |>
-mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .))) |>
-mutate(
-Corr_type = case_when(
-Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
-Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
-Project_Name == "Fort Cooper" ~ "Type C",
-TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
-))
-```
-```{r}
-all_data_wide_lree
-
-all_data_trim<- all_data_wide_lree |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250)
-
-all_data_model_lree_trim<-all_data_trim |>
-mutate_all(~replace(., is.na(.), -999.00)) |>
-mutate(
-Corr_type = case_when(
-Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
-Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
-Project_Name == "Fort Cooper" ~ "Type C",
-TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
-))
-
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_lree_fltr_folds <- vfold_cv(DT_lree_train_fltr, v = 5, repeats = 2)
 
 ```
 
+#### Build the Model
 ```{r}
-colSums(is.na(all_data_wide))
-colSums(is.na(all_data_wide_lree))
-```
+# Create a recipe for preprocessing
+rf_lree_recipe <- recipe(LREE ~ ., data = DT_lree_train_fltr)
 
-```{r}
-## Initial spilt
+# Create a workflow
+rf_lree_tuned_workflow <- workflow() %>%
+  add_recipe(rf_lree_recipe) %>%
+  add_model(rf_tuned_spec)
 
-set.seed(123)
+# Set-up the hyperparameter tuning
+rf_lree_tuned_grid <- grid_regular(
+  mtry(range = c(1,11)),
+  min_n(),
+  trees(),
+  levels = 5)
 
-trees_split_trim <- initial_split(all_data_model_lree_trim, strata = Corr_type)
-trees_train_trim <- training(trees_split_trim)
-trees_test_trim<- testing(trees_split_trim )
-
-selected_train_trim<- trees_train_trim |>
-select( Ag:LREE)
-
-selected_test_trim<-trees_test_trim |>
-select(Ag:LREE)
-```
-
-```{r}
-set.seed(12345)
-rf_spec_trim <- rand_forest(
-
-mtry = tune(), trees = tune(), min_n = tune()) |>
-set_mode("regression") |>
-set_engine("ranger")
-
-
-rf_grid_trim  <-
-grid_latin_hypercube(
-min_n(),
-mtry(range = c(3, 13)),
-trees(),
-size = 80)
-
-
-```
-
-
-```{r}
-set.seed(444)
-LREE_fold_trim<- vfold_cv(selected_train_trim)
-
-## accelerate the speed for hyperparameter calculation
-doParallel::registerDoParallel()
-
-rf_wf_trim <- workflow()|>
-add_model(rf_spec_trim )|>
-add_formula( LREE~ Ag+Cd+Co+Cu+Li+Mo+Ni+Pb+Sc+Tl+Zn)
-
-
-rf_rs_trim <-
-rf_wf_trim|>
-tune_grid(
-resamples = LREE_fold_trim,
-grid = rf_grid_trim
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_lree_random_tune <- tune_grid(
+  rf_lree_tuned_workflow,
+  resamples = DT_lree_fltr_folds,
+  grid = rf_lree_tuned_grid,
+  metrics = metric_set(rmse, rsq, mae)
 )
 
+# Show the best configurations
+show_best(rf_lree_random_tune, n = 3)
+
+# Fit the best model into the training set
+set.seed(2022)
+rf_lree_random_tuned_fit <- finalize_workflow(rf_lree_tuned_workflow, select_best(rf_lree_random_tune)) %>%
+    fit(DT_lree_train_fltr)
+
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_lree_fltr_prep <- bake(prep(rf_lree_recipe), new_data = DT_lree_train_fltr)
+DT_test_lree_fltr_prep <- bake(prep(rf_lree_recipe), new_data = DT_lree_test_fltr)
+
+# Make predictions on the preprocessed testing data
+rf_lree_tr_rdm_tuned_pred <- predict(rf_lree_random_tuned_fit, new_data = DT_lree_train_fltr)
+rf_lree_ts_rdm_tuned_pred <- predict(rf_lree_random_tuned_fit, new_data = DT_lree_test_fltr)
 ```
-
-
-
-
-
-
-```{r dplyr::selectbest}
-set.seed(12345)
-best_rmse_rf_ranger_trim <-  rf_rs_trim |>
-select_best(metric = "rmse")
-
-
-best_rmse_rf_ranger_trim
-
-
-best_rsq_rf_ranger_trim<- rf_rs_trim|>
-select_best(metric = "rsq")
-
-best_rsq_rf_ranger_trim
-```
-```{r}
-set.seed(12345)
-final_wf_rf_ranger_trim <-
-rf_wf_trim |>
-finalize_workflow(best_rmse_rf_ranger_trim)
-
-final_fit_rf_ranger_trim<-final_wf_rf_ranger_trim |> last_fit(trees_split_trim)
-
-final_tree_rf_ranger_trim<- extract_workflow(final_fit_rf_ranger_trim)
-
-final_tree_rf_ranger_trim
-```
-```{r}
-set.seed(12345)
-final_fit_rf_ranger_trim |>
-collect_metrics()
-```
-
 
 ```{r}
-final_fit_rf_ranger_trim$.predictions[[1]] |>
-  summarise(MAE=MAE( .pred,LREE),
-            MAPE=MAPE(.pred,LREE))
-                               
+# Plot variable importance
+rf_lree_random_tuned_fit %>%
+  extract_fit_parsnip() %>%
+  vip::vip()
 ```
+
+
+#### Evaluate the Model
 ```{r}
-final_fit_rf_ranger_trim$.predictions[[1]]  |>ggplot( aes(.pred,LREE))+
-  
-  geom_point(alpha = 0.7, colour = "black", size = 5) +
-theme_minimal() +
-  theme(axis.title.x = element_text(size = 20),        
-        axis.title.y = element_text(size = 20))+labs(x="Predicted", y="Actual") +geom_abline(slope = 1, intercept = 0, color = "red",linetype="dashed", size=1)  +  # Diagonal line # Diagonal line
-  theme(aspect.ratio = 1)  # Set 
+# RF Tuned Results for all elements from ME-4ACD81
+## Training set evaluation
+results_train_rf_lree_rdm_tuned <- rf_lree_tr_rdm_tuned_pred %>%
+  bind_cols(DT_lree_train_fltr) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE")
+
+## Test set evaluation
+results_test_rf_lree_rdm_tuned <- rf_lree_ts_rdm_tuned_pred %>%
+  bind_cols(DT_lree_test_fltr) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE")
+
+# Merge the results
+## Training set
+results_lree_train <- results_train_rf_lree_rdm_tuned
+
+## Test set
+results_lree_test <- results_test_rf_lree_rdm_tuned
+
+# Show the evaluation metrics for every model
+## Training set
+results_lree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_lree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+results_lree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_lree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+### Random Forest Model: Option 2 (All elements from ME-4ACD81)
+Combination of All elements from ME-4ACD81 in predicting HREE, but using different strata method.
+
+#### Data Preparation
+```{r}
+DT_lree_alt_2 <- DT_lree_alt %>%
+  mutate(Corr_type = case_when(Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
+                             Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
+                             Project_Name == "Fort Cooper" ~ "Type C",
+                             TRUE ~ "Type D")) %>%
+  filter(Co <= 250 & Zn <= 250 & Ni <= 250 & Li <= 250)
+
+# Splitting the data (HREE)
+set.seed(2022)
+DT_lree_initial_2 <- initial_split(DT_lree_alt_2, prop = 2/3, strata = Corr_type)
+DT_lree_train_2 <- training(DT_lree_initial_2)
+DT_lree_test_2 <- testing(DT_lree_initial_2)
+
+# Filter the training and test datasets to include predictors and target variables only
+DT_lree_train_fltr_2 <- DT_lree_train_2[,c("LREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")] 
+DT_lree_test_fltr_2 <- DT_lree_test_2[,c("LREE","Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")]
+
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_lree_fltr_folds_2 <- vfold_cv(DT_lree_train_fltr_2, v = 5, repeats = 2)
+
+```
+
+#### Build the Model
+```{r}
+# Create a recipe for preprocessing
+rf_lree_recipe_2 <- recipe(LREE ~ ., data = DT_lree_train_fltr_2)
+
+# Create a workflow
+rf_lree_tuned_workflow_2 <- workflow() %>%
+  add_recipe(rf_lree_recipe_2) %>%
+  add_model(rf_tuned_spec)
+
+# Set-up the hyperparameter tuning
+rf_lree_tuned_grid_2 <- grid_regular(
+  mtry(range = c(1,11)),
+  min_n(),
+  trees(),
+  levels = 5)
+
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_lree_random_tune_2 <- tune_grid(
+  rf_lree_tuned_workflow_2,
+  resamples = DT_lree_fltr_folds_2,
+  grid = rf_lree_tuned_grid_2,
+  metrics = metric_set(rmse, rsq, mae)
+)
+
+# Show the best configurations
+show_best(rf_lree_random_tune_2, n = 3)
+
+# Fit the best model into the training set
+set.seed(2022)
+rf_lree_random_tuned_fit_2 <- finalize_workflow(rf_lree_tuned_workflow_2, select_best(rf_lree_random_tune_2)) %>%
+    fit(DT_lree_train_fltr_2)
+
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_lree_fltr_prep_2 <- bake(prep(rf_lree_recipe_2), new_data = DT_lree_train_fltr_2)
+DT_test_lree_fltr_prep_2 <- bake(prep(rf_lree_recipe_2), new_data = DT_lree_test_fltr_2)
+
+# Make predictions on the preprocessed testing data
+rf_lree_tr_rdm_tuned_pred_2 <- predict(rf_lree_random_tuned_fit_2, new_data = DT_lree_train_fltr_2)
+rf_lree_ts_rdm_tuned_pred_2 <- predict(rf_lree_random_tuned_fit_2, new_data = DT_lree_test_fltr_2)
+```
+
+```{r}
+# Plot variable importance
+rf_lree_random_tuned_fit %>%
+  extract_fit_parsnip() %>%
+  vip::vip()
 ```
 
 
+#### Evaluate the Model
+```{r}
+# RF Tuned Results for all elements from ME-4ACD81
+## Training set evaluation
+results_train_rf_lree_rdm_tuned_2 <- rf_lree_tr_rdm_tuned_pred_2 %>%
+  bind_cols(DT_lree_train_fltr_2) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE_2")
+
+## Test set evaluation
+results_test_rf_lree_rdm_tuned_2 <- rf_lree_ts_rdm_tuned_pred_2 %>%
+  bind_cols(DT_lree_test_fltr_2) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE_2")
+
+# Merge the results
+## Training set
+results_lree_train <- bind_rows(results_lree_train, results_train_rf_lree_rdm_tuned_2)
+
+## Test set
+results_lree_test <- bind_rows(results_lree_test, results_test_rf_lree_rdm_tuned_2)
+
+# Show the evaluation metrics for every model
+## Training set
+results_lree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_lree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+results_hree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_hree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+### Random Forest Model: Option 3 (Elements with high variable importance)
+Combination of elements with high variable importance from model 1, which are Tl, Pb, Sc, Cd, Zn, Cu.
+
+#### Data Preparation
+```{r}
+# Filter the training and test datasets to include predictors and target variables only
+DT_lree_train_fltr_3 <- DT_lree_train[,c("LREE","Tl", "Pb", "Sc", "Cd", "Zn", "Cu")] 
+DT_lree_test_fltr_3 <- DT_lree_test[,c("LREE","Tl", "Pb", "Sc", "Cd", "Zn", "Cu")]
+
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_lree_fltr_folds_3 <- vfold_cv(DT_lree_train_fltr_3, v = 5, repeats = 2)
+
+```
+
+#### Build the Model
+```{r}
+# Create a recipe for preprocessing
+rf_lree_recipe_3 <- recipe(LREE ~ ., data = DT_lree_train_fltr_3)
+
+# Create a workflow
+rf_lree_tuned_workflow_3 <- workflow() %>%
+  add_recipe(rf_lree_recipe_3) %>%
+  add_model(rf_tuned_spec)
+
+# Set-up the hyperparameter tuning
+rf_lree_tuned_grid_3 <- grid_regular(
+  mtry(range = c(1,6)),
+  min_n(),
+  trees(),
+  levels = 5)
+
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_lree_random_tune_3 <- tune_grid(
+  rf_lree_tuned_workflow_3,
+  resamples = DT_lree_fltr_folds_3,
+  grid = rf_lree_tuned_grid_3,
+  metrics = metric_set(rmse, rsq, mae)
+)
+
+# Show the best configurations
+show_best(rf_lree_random_tune_3, n = 3)
+
+# Fit the best model into the training set
+set.seed(2022)
+rf_lree_random_tuned_fit_3 <- finalize_workflow(rf_lree_tuned_workflow_3, select_best(rf_lree_random_tune_3)) %>%
+    fit(DT_lree_train_fltr_3)
+
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_lree_fltr_prep_3 <- bake(prep(rf_lree_recipe_3), new_data = DT_lree_train_fltr_3)
+DT_test_lree_fltr_prep_3 <- bake(prep(rf_lree_recipe_3), new_data = DT_lree_test_fltr_3)
+
+# Make predictions on the preprocessed testing data
+rf_lree_tr_rdm_tuned_pred_3 <- predict(rf_lree_random_tuned_fit_3, new_data = DT_lree_train_fltr_3)
+rf_lree_ts_rdm_tuned_pred_3 <- predict(rf_lree_random_tuned_fit_3, new_data = DT_lree_test_fltr_3)
+```
+
+```{r}
+# Plot variable importance
+rf_lree_random_tuned_fit_3 %>%
+  extract_fit_parsnip() %>%
+  vip::vip()
+```
+
+
+#### Evaluate the Model
+```{r}
+# RF Tuned Results for all elements from ME-4ACD81
+## Training set evaluation
+results_train_rf_lree_rdm_tuned_3 <- rf_lree_tr_rdm_tuned_pred_3 %>%
+  bind_cols(DT_lree_train_fltr_3) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE_3")
+
+## Test set evaluation
+results_test_rf_lree_rdm_tuned_3 <- rf_lree_ts_rdm_tuned_pred_3 %>%
+  bind_cols(DT_lree_test_fltr_3) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE_3")
+
+# Merge the results
+## Training set
+results_lree_train <- bind_rows(results_lree_train, results_train_rf_lree_rdm_tuned_3)
+
+## Test set
+results_lree_test <- bind_rows(results_lree_test, results_test_rf_lree_rdm_tuned_3)
+
+# Show the evaluation metrics for every model
+## Training set
+results_lree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_lree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+results_lree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_lree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+### Random Forest Model: Option 4 (Elements with high correlation coefficient)
+Combination of elements with above 0.5 correlation coefficient with LREE, which are Pb, Sc, Zn.
+
+#### Data Preparation
+```{r}
+# Filter the training and test datasets to include predictors and target variables only
+DT_lree_train_fltr_4 <- DT_lree_train[,c("LREE","Pb", "Sc", "Zn")] 
+DT_lree_test_fltr_4 <- DT_lree_test[,c("LREE","Pb", "Sc", "Zn")]
+
+# Create a cross-validation data for resampling purposes during hyperparameter tuning
+set.seed(2022)
+DT_lree_fltr_folds_4 <- vfold_cv(DT_lree_train_fltr_4, v = 5, repeats = 2)
+
+```
+
+#### Build the Model
+```{r}
+# Create a recipe for preprocessing
+rf_lree_recipe_4 <- recipe(LREE ~ ., data = DT_lree_train_fltr_4)
+
+# Create a workflow
+rf_lree_tuned_workflow_4 <- workflow() %>%
+  add_recipe(rf_lree_recipe_4) %>%
+  add_model(rf_tuned_spec)
+
+# Set-up the hyperparameter tuning
+rf_lree_tuned_grid_4 <- grid_regular(
+  mtry(range = c(1,3)),
+  min_n(),
+  trees(),
+  levels = 5)
+
+# Perform the hyperparameter tuning search
+set.seed(2022)
+rf_lree_random_tune_4 <- tune_grid(
+  rf_lree_tuned_workflow_4,
+  resamples = DT_lree_fltr_folds_4,
+  grid = rf_lree_tuned_grid_4,
+  metrics = metric_set(rmse, rsq, mae)
+)
+
+# Show the best configurations
+show_best(rf_lree_random_tune_4, n = 3)
+
+# Fit the best model into the training set
+set.seed(2022)
+rf_lree_random_tuned_fit_4 <- finalize_workflow(rf_lree_tuned_workflow_4, select_best(rf_lree_random_tune_4)) %>%
+    fit(DT_lree_train_fltr_4)
+
+# Apply the trained recipe to the testing data
+# 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
+DT_train_lree_fltr_prep_4 <- bake(prep(rf_lree_recipe_4), new_data = DT_lree_train_fltr_4)
+DT_test_lree_fltr_prep_4 <- bake(prep(rf_lree_recipe_4), new_data = DT_lree_test_fltr_4)
+
+# Make predictions on the preprocessed testing data
+rf_lree_tr_rdm_tuned_pred_4 <- predict(rf_lree_random_tuned_fit_4, new_data = DT_lree_train_fltr_4)
+rf_lree_ts_rdm_tuned_pred_4 <- predict(rf_lree_random_tuned_fit_4, new_data = DT_lree_test_fltr_4)
+```
+
+
+#### Evaluate the Model
+```{r}
+# RF Tuned Results for all elements from ME-4ACD81
+## Training set evaluation
+results_train_rf_lree_rdm_tuned_4 <- rf_lree_tr_rdm_tuned_pred_4 %>%
+  bind_cols(DT_lree_train_fltr_4) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE_4")
+
+## Test set evaluation
+results_test_rf_lree_rdm_tuned_4 <- rf_lree_ts_rdm_tuned_pred_4 %>%
+  bind_cols(DT_lree_test_fltr_4) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "RF_Rdm_Tuned_LREE_4")
+
+# Merge the results
+## Training set
+results_lree_train <- bind_rows(results_lree_train, results_train_rf_lree_rdm_tuned_4)
+
+## Test set
+results_lree_test <- bind_rows(results_lree_test, results_test_rf_lree_rdm_tuned_4)
+
+# Show the evaluation metrics for every model
+## Training set
+results_lree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_lree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+results_lree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_lree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
+
+### XGBoost Model: All elements from ME-4ACD81
+Combination of elements with above 0.5 correlation coefficient with LREE, which are Pb, Sc, Zn. This is the only model being performed with XGBoost considering this combination of predictors produce the best model from the Random Forest model series.
+
+#### Data Preparation
+Data preparation is not needed for this model, because this model use the same data as what "Random Forest Option 4" use.
+
+#### Build the Model
+```{r}
+# Define the recipe for XGBoost
+xgb_recipe_lree <- recipe(LREE ~ ., data = DT_lree_train_fltr_4) 
+
+# XGB tune workflow
+xgb_tuned_workflow_lree <- workflow() %>%
+  add_model(xgb_tuned_spec) %>%
+  add_recipe(xgb_recipe_lree)
+
+
+# Set-up the hyperparameter tuning
+xgboost_params_lree <- parameters(
+  tree_depth(),
+  learn_rate(),
+  loss_reduction(),
+  min_n(),
+  sample_size = sample_prop(),
+  finalize(mtry(), DT_lree_train_fltr_4))
+
+xgboost_grid_lree <- 
+  dials::grid_space_filling(
+    xgboost_params_lree, 
+    size = 20
+  )
+
+
+# Tune the model
+set.seed(2022)
+xgb_tune_lree <- xgb_tuned_workflow_lree %>% 
+  tune_grid(resamples = DT_lree_fltr_folds_4, 
+            grid = xgboost_grid_lree,
+            metrics = metric_set(rmse, rsq, mae),
+            control = control_grid(save_pred = TRUE))
+
+# Show the best configurations
+show_best(xgb_tune_lree, n = 5, metric = "rmse")
+
+# Fit the best model into the training set
+set.seed(2022)
+xgb_tuned_fit_lree <- finalize_workflow(xgb_tuned_workflow_lree, select_best(xgb_tune_lree, metric = "rmse")) %>%
+    fit(DT_lree_train_fltr_4)
+
+# Make predictions on the test set
+xgb_lree_train_predictions <- predict(xgb_tuned_fit_lree, new_data = DT_lree_train_fltr_4)
+
+# Make predictions on the test set
+xgb_lree_test_predictions <- predict(xgb_tuned_fit_lree, new_data = DT_lree_test_fltr_4)
+```
+
+
+#### Evaluate the Model
+```{r}
+# Evaluate performance on training data
+xgb_train_results_lree <- xgb_lree_train_predictions %>%
+  bind_cols(DT_lree_train_fltr_4) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "XGBoost_Tuned_LREE")
+
+# Evaluate performance on test data
+xgb_test_results_lree <- xgb_lree_test_predictions %>%
+  bind_cols(DT_lree_test_fltr_4) %>%
+  dplyr::select(.pred, LREE) %>%
+  rename(truth = LREE) %>%
+  mutate(model = "XGBoost_Tuned_LREE")
+
+# Merge the results
+## Training set
+results_lree_train <- bind_rows(results_lree_train, xgb_train_results_lree)
+
+## Test set
+results_lree_test <- bind_rows(results_lree_test, xgb_test_results_lree)
+
+
+# Show the evaluation metrics for every model
+## Training set
+results_lree_train %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+
+## Test set
+results_lree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth))
+```
+
+#### Prediction vs Actual Comparison
+```{r viz_comparison_xgb2, warning = FALSE, error = FALSE}
+results_lree_test %>%
+  mutate(train = "testing") %>%
+  bind_rows(results_lree_train %>%
+              mutate(train = "training")) %>%
+  ggplot(aes(.pred, truth, color = model)) +
+  geom_abline(lty = 2, size = 0.75, linetype = "dashed") +
+  geom_point(alpha = 0.7) +
+  facet_wrap(~train)
+```
 
