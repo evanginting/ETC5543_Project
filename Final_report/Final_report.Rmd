@@ -665,21 +665,6 @@ all_data_wide <- result$cleaned_data
 outlier_log <- result$outlier_log
 
 
-all_data_trim_hree<- all_data_wide |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250& HREE<=30)
-all_data_model_trim_hree<-all_data_trim_hree|> 
-  mutate(
-    Corr_type = case_when(
-    Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
-    Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
-    Project_Name == "Fort Cooper" ~ "Type C",
-    TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
-  ))
-       
-set.seed(123)
-
-trees_split_trim_hree <- initial_split(all_data_model_trim_hree, strata = Corr_type)
-trees_train_trim_hree <- training(trees_split_trim_hree)
-trees_test_trim_hree <- testing(trees_split_trim_hree)
 
 
 all_data_trim_hree<- all_data_wide |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250& HREE<=30)
