@@ -390,18 +390,29 @@ The boxplots shows some critical points that can be summarised as follow:
 - Comparison Accross Elements: Ge stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (REE, REEY, MREE, LREE, HREE) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
 # Methodology
-The framework of modelling methodology in this project fully adheres on Tidymodels R-package [@tidymodels]:
 
-```{r modelbuilding,fig.cap = "The mindset of model build-up in predivtive analysis"}
-knitr::include_graphics("Img/model_structure.png")
+## Predicting Critical Elements
+
+The predictive modeling process in this project follows a structured methodology, consisting of key steps aimed at selecting the most accurate and robust model for predicting the target variable. Each step contributes to refining the model’s performance, from data preprocessing and feature selection to model training and evaluation. The overall framework of this methodology is outlined in the diagram below. 
+
+```{r modelbuilding, fig.cap = "The mindset of model build-up in predictive analysis"}
+knitr::include_graphics("/cloud/project/Final_report/Final_report_files/figure-latex/Methodology.png")
 ```
 
+The methodology for this study follows a three-stage process. First, data preprocessing is conducted, addressing outliers and missing values to ensure clean data. Next, several modeling scenarios are explored using Random Forest and Gradient Boosting, with hyperparameter tuning applied to optimise model performance. These scenarios include using all elements, elements with high correlation to target variables, and different stratification methods for data splitting. Finally, model performance is evaluated using key metrics such as Root Mean Squared Error (RMSE), R-squared, Mean Absolute Error (MAE), and Mean Absolute Percentage Error (MAPE).
+
+### Data Pre-Processing
+
+On one hand, outlier is well known as the observations/data points that deviate significantly from other observations in a dataset. On the other hand, missing value is observation when there is no data stored for certain variables. In predictive modelling, outliers and missing value can have an effect to the regression model when predicting the target variable in a negative way. For example, outliers value will disrupt the normal pattern of the dataset, while missing value will introduce uncertainty to the model. Thus, if not treated, they might lead the model to make inaccurate predictions. With this concern, outlier and missing value will be treated, aimed to reduce the negative effect to the model performance.
+
+For outlier, Tukey! introduce the approach to detect outlier in a dataset. He defined that outlier can be detected by the 1.5 Interquartile Range (IQR). An observation is considered an outlier if it lies below Q1 − 1.5 * IQR or above Q3 + 1.5 * IQR, where IQR is the interquartile range between the first and third quartiles. This method is particularly effective for detecting outliers in data with a skewed distribution. This method will be applied to the dataset for this project in detecting outliers. Next, in treating the outliers, [Barnett] stated that, as a simple approach, outliers can be replaced with sample median for robust estimation. This, with the additional issue regarding lab test error in determining the elements' concentration values, the outliers will be replaced with median value of where the samples were obtained from. For example, for outliers detected in "Sc" data from "Confidential Project A", then those outliers will be replaced with median value of "Sc" of "Confidential Project A".
+
+For missing values, Hastie! stated that, there are number of ways in treating missing value (assuming random missing value), which are remove observations with any missing value; rely on the learning algorithm to handle missing values during the training process; and fill in all missing values prior to training process. The last option was chosen and the missing value are filled with the median value of where the samples were obtained from, but if the element does not exist in that particular project, then the global median will be applied. For example, for missing value detected in "Sc" data from "Confidential Project A", then those missing values will be replaced with median value of "Sc" in general.
 
 
+### Stratified sampling and Initial split
 
-## Stratified sampling and Initial split
-
-Unlike simple random sampling, stratified sapling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have  limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect NA in correlation calculation and all element in the list.[@Menon2020]
+Unlike simple random sampling, stratified sampling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have  limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect NA in correlation calculation and all element in the list.[@Menon2020]
 
 Figure \ref{fig:globalmat} shows the global correlation matrix of element in full project. Most of the pairwise element tend to display weak positive relationship, represented by light red grids in the heatmap.
 ```{r globalmat, fig.width=10, fig.height=10, fig.cap="Correlation heatmap of element in full project"}
@@ -546,14 +557,14 @@ wrap_plots(corr_plots[c(1,14,8)], nrow=2)
 ```{r fig.width=10, fig.height=10, fig.cap="The example of project correlation matrix  in Fort Cooper region"}
 corr_plots[4][[1]]
 ```
-Based on this strata division, the raw data will be split to training and testing set with 75%-25% proportion.
+Based on this strata division, the raw data will be split to training and testing set with 2/3 proportion.
 
-## Machine learning methods
-Two main machine learning method are primarily focused on this project:
+### Machine learning methods
+Two main machine learning method are primarily utilised in this project:
 
-The first target is **random forest**(RF). As an enable learning method, it constructs multiple decision trees  through the subsets of the training data by bootstrapping resampling with replacement. In regression method,the final output is processed by a bagging stage, which combines the result from individual tree from all these individual trees by averaging the predictions from each tree. It can remarkably improve predictive accuracy and reduce overfitting comparing with single decision tree.[@ISLR] The engine setting in Tidymodels will be `Ranger` and `randomForest`.
+The first target is **random forest** (RF). As an enable learning method, it constructs multiple decision trees through the subsets of the training data by bootstrapping resampling with replacement. In regression method,the final output is processed by a bagging stage, which combines the result from individual tree from all these individual trees by averaging the predictions from each tree. It can remarkably improve predictive accuracy and reduce overfitting comparing with single decision tree.[@ISLR] The engine setting in Tidymodels will be `Ranger` and `randomForest`.
 
-Another target is **gradient boosting tree**(GBT),Also known as stagewise ensemble method. The process begins by initializing the model with a simple estimator in decision tree, sequentially fit the weak learner to new-added tree. Each subsequent model  focuses on the mistakes made by the earlier trees and tries to correct the residuals of the previous model, until a satisfactory level of performance is reached. GBT particularly works well in REE,HREE and LREE prediction because it learns iteratively, allowing it to capture intricate patterns and nonlinear relationships within the data, especially when subtle patterns are important. The engine setting in Tidymodels will be `xgboost`.[@ISLR]
+Another target is **gradient boosting tree** (GBT),Also known as stagewise ensemble method. The process begins by initializing the model with a simple estimator in decision tree, sequentially fit the weak learner to new-added tree. Each subsequent model  focuses on the mistakes made by the earlier trees and tries to correct the residuals of the previous model, until a satisfactory level of performance is reached. GBT particularly works well in REE,HREE and LREE prediction because it learns iteratively, allowing it to capture intricate patterns and nonlinear relationships within the data, especially when subtle patterns are important. The engine setting in Tidymodels will be `xgboost`.[@ISLR]
 
 However, both of two methods are vulnerable for overfitting problem in model training. In model fitting practice, except for the regular approaches to use all elements in ME-4ACD81, additional variable sub-setting and observation trimming techniques are introduced in the comparison with origin method to evaluate the optimal performance, including the conditions of:
 
@@ -564,9 +575,9 @@ However, both of two methods are vulnerable for overfitting problem in model tra
 3).Removing outliers or low-quality data points that may skew the model's performance. 
 
 
-## Hyperparameter tuning
+### Hyperparameter tuning
 
-Hyperparameter tuning is a critical step in optimizing machine learning models, where the goal is to find the best combination of parameter setting that maximizes predictive performance. In this study, hyperparameters were carefully adjusted under the Tidymodels framework in R. Three key hyperparameters were the top prioritized in tuning:
+Hyperparameter tuning is a critical step in optimising machine learning models, where the goal is to find the best combination of parameter setting that maximises predictive performance. In this study, hyperparameters were carefully adjusted under the Tidymodels framework in R. Three key hyperparameters were the top prioritized in tuning:
 
 1). **mtry** (Number of Predictors to Sample): Controls the number of predictors considered at each split in a decision tree. A smaller mtry introduces more variability among trees, while a larger mtry can lead to more accurate splits but risks in overfitting problem.
 
@@ -574,321 +585,15 @@ Hyperparameter tuning is a critical step in optimizing machine learning models, 
 
 3).**trees**(Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
 
-To determine the best combination of these hyperparameters in the grid, k-fold cross-validation was employed. The cross validation can help to evaluate a model's performance by splitting the training data into multiple subsets. In each iteration, the model is trained on all but one fold and validated on the remaining fold, repeating this process across all folds.  By averaging the performance metrics across these iterations, cross-validation provides a reliable estimate of how well the model generalizes to new, unseen data.
+To determine the best combination of these hyperparameters in the grid, k-fold cross-validation was employed. The cross validation can help to evaluate a model's performance by splitting the training data into multiple subsets. In each iteration, the model is trained on all but one fold and validated on the remaining fold, repeating this process across all folds. By averaging the performance metrics across these iterations, cross-validation provides a reliable estimate of how well the model generalises to new, unseen data.
 
-## Metrics evaluation
+### Metrics evaluation
 
 There are two type of regression metrics are utilized in performance evaluation. The first principal metrics is R-squared, which is use to mesausre the proportion of model variance can be explained by independent variables and error-related metrics between predicted and actual value like, RMSE, MAE and MAPE. In general comparison, higher r-squared with lower error variability tend to indicate a better-fitting model.
+
 # Results 
 
 
-## HREE
-```{r}
-
-all_data |>
-select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |>
-filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% element_lree)|>
-  ggplot() +geom_density( aes(x=Element_Value_ppm))+facet_wrap(.~Element_Symbol,  scales = "free_y")
-```
-```{r}
-all_data_wide<-all_data  |>
-  select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |> 
-  filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% HREE) |>
-  pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
-
-# Function to replace outliers directly and create a log of replaced values
-replace_outliers_and_log <- function(data, project_var, target_vars) {
-  # Create an empty data frame to track replaced values
-  outlier_log <- data.frame(Project_Name = character(),
-                            Element = character(),
-                            Original_Value = numeric(),
-                            Replaced_Value = numeric(),
-                            stringsAsFactors = FALSE)
-
-  # Loop through each target variable and apply the replacement logic
-  for (target_var in target_vars) {
-    # Calculate the median of the target variable for each Project_Name
-    medians <- data %>%
-      group_by({{ project_var }}) %>%
-      summarize(project_median = median(.data[[target_var]], na.rm = TRUE)) %>%
-      ungroup()
-    
-    # Join the median values back to the original data
-    data <- data %>%
-      left_join(medians, by = rlang::as_name(enquo(project_var))) %>%
-      rename(!!paste0("median_", target_var) := project_median)  # Rename to unique median column for each variable
-    
-    # Calculate IQR and identify outliers for the target variable globally
-    Q1 <- quantile(data[[target_var]], 0.25, na.rm = TRUE)
-    Q3 <- quantile(data[[target_var]], 0.75, na.rm = TRUE)
-    IQR <- Q3 - Q1
-    lower_bound <- Q1 - 1.5 * IQR
-    upper_bound <- Q3 + 1.5 * IQR
-    
-    # Replace outliers directly in the target variable and log replaced values
-    data <- data %>%
-      mutate(
-        # Replace outliers with the median value specific to the Project_Name
-        replaced_value = ifelse(.data[[target_var]] < lower_bound | .data[[target_var]] > upper_bound, .data[[paste0("median_", target_var)]], NA),
-        # Log the original value and the replaced value in the log dataframe
-        outlier_flag = !is.na(replaced_value)
-      )
-    
-    # Create a log of replaced values
-    temp_log <- data %>%
-      filter(outlier_flag) %>%
-      transmute(
-        Project_Name = .data[[rlang::as_name(enquo(project_var))]],
-        Element = target_var,
-        Original_Value = .data[[target_var]],
-        Replaced_Value = replaced_value
-      )
-    
-    # Combine with the main log dataset
-    outlier_log <- bind_rows(outlier_log, temp_log)
-    
-    # Replace the actual outliers in the original data
-    data <- data %>%
-      mutate(!!target_var := ifelse(outlier_flag, replaced_value, .data[[target_var]])) %>%
-      # Remove temporary columns
-      select(-paste0("median_", target_var), -replaced_value, -outlier_flag)
-  }
-  
-  return(list(cleaned_data = data, outlier_log = outlier_log))
-}
-
-# Example usage for multiple elements (e.g., Pb, Ag, Au) with Project_Name as the reference grouping variable
-result <- replace_outliers_and_log(all_data_wide, Project_Name, c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn","HREE"))
-
-# Extract the cleaned data and the log of replaced values
-all_data_wide <- result$cleaned_data
-outlier_log <- result$outlier_log
-
-
-
-
-all_data_trim_hree<- all_data_wide |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250& HREE<=30)
-all_data_model_trim_hree<-all_data_trim_hree|> 
-mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .)))|> 
-  mutate(
-    Corr_type = case_when(
-    Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
-    Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
-    Project_Name == "Fort Cooper" ~ "Type C",
-    TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
-  ))
-       
-set.seed(123)
-
-trees_split_trim_hree <- initial_split(all_data_model_trim_hree, strata = Corr_type)
-trees_train_trim_hree <- training(trees_split_trim_hree)
-trees_test_trim_hree <- testing(trees_split_trim_hree)
-
-
-selected_train_trim_hree <- trees_train_trim_hree |>
-  select( Ag:HREE)
-
-
-selected_test_trim_hree <- trees_test_trim_hree |>
-  select( Ag:HREE)
-```
-
-
-
-
-```{r}
-set.seed(12345)
-fb_fit_rf_trim_hree <- rf_spec |>
-fit(HREE ~ ., data = selected_train_trim_hree)
-fb_fit_rf
-
-
-
-
-rf_pred_trim_hree<- selected_test_trim_hree|>
-mutate(pHREE= predict(fb_fit_rf_trim_hree$fit,
-selected_test_trim_hree ))
-
-
-rf_pred_trim_hree |> yardstick::metrics(truth = HREE, estimate = pHREE)
-```
-
-```{r}
- rf_pred_trim_hree |> summarise(MAE=MAE(y_pred=pHREE, y_true=HREE),
-                                MAPE=MAPE(y_pred=pHREE, y_true=HREE))
-```
-
-```{r}
- rf_pred_trim_hree  |>ggplot( aes(pHREE,HREE))+
-  geom_point(alpha = 0.7, colour = "black", size = 5) +
-theme_minimal() +
-  theme(axis.title.x = element_text(size = 20),        
-        axis.title.y = element_text(size = 20))+labs(x="Predicted", y="Actual") +geom_abline(slope = 1, intercept = 0, color = "red",linetype="dashed", size=1)  +  # Diagonal line # Diagonal line
-  theme(aspect.ratio = 1)  # Set 
-```
-## LREE
-
-```{r}
-
-element_lree<-c("Ag", "As",
-"Cd",
-"Co",
-"Cu",
-"Li",
-"Mo",
-"Ni",
-"Pb",
-"Sc",
-"Tl",
-"Zn",
-"LREE")
-all_data_wide_lree<-all_data |>
-select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |>
-filter(Element_Value_ppm!=-999.00 & Element_Symbol %in% element_lree) |>
-pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
-result <- replace_outliers_and_log(all_data_wide_lree, Project_Name, c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn","LREE"))
-
-# Extract the cleaned data and the log of replaced values
-all_data_wide_lree <- result$cleaned_data
-outlier_log_lree <- result$outlier_log
-
-all_data_model_lree<-all_data_wide_lree |>
-mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .))) |>
-mutate(
-Corr_type = case_when(
-Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
-Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
-Project_Name == "Fort Cooper" ~ "Type C",
-TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
-))
-```
-```{r}
-all_data_wide_lree
-
-all_data_trim<- all_data_wide_lree |> filter(Co <=250 & Zn<=250 & Ni<=250 &Li<=250)
-
-all_data_model_lree_trim<-all_data_trim |>
-mutate_all(~replace(., is.na(.), -999.00)) |>
-mutate(
-Corr_type = case_when(
-Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
-Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
-Project_Name == "Fort Cooper" ~ "Type C",
-TRUE ~ "Type D"  # .default should be replaced by TRUE for default case
-))
-
-
-```
-```{r}
-## Initial spilt
-
-set.seed(123)
-
-trees_split_trim <- initial_split(all_data_model_lree_trim, strata = Corr_type)
-trees_train_trim <- training(trees_split_trim)
-trees_test_trim<- testing(trees_split_trim )
-
-selected_train_trim<- trees_train_trim |>
-select( Ag:LREE)
-
-selected_test_trim<-trees_test_trim |>
-select(Ag:LREE)
-```
-
-```{r}
-set.seed(12345)
-rf_spec_trim <- rand_forest(
-
-mtry = tune(), trees = tune(), min_n = tune()) |>
-set_mode("regression") |>
-set_engine("ranger")
-
-
-rf_grid_trim  <-
-grid_latin_hypercube(
-min_n(),
-mtry(range = c(3, 13)),
-trees(),
-size = 80)
-
-
-```
-
-
-```{r}
-set.seed(444)
-LREE_fold_trim<- vfold_cv(selected_train_trim)
-
-## accelerate the speed for hyperparameter calculation
-doParallel::registerDoParallel()
-
-rf_wf_trim <- workflow()|>
-add_model(rf_spec_trim )|>
-add_formula( LREE~ Ag+Cd+Co+Cu+Li+Mo+Ni+Pb+Sc+Tl+Zn)
-
-
-rf_rs_trim <-
-rf_wf_trim|>
-tune_grid(
-resamples = LREE_fold_trim,
-grid = rf_grid_trim
-)
-
-```
-
-
-
-
-
-
-```{r dplyr::selectbest}
-set.seed(12345)
-best_rmse_rf_ranger_trim <-  rf_rs_trim |>
-select_best(metric = "rmse")
-
-
-best_rmse_rf_ranger_trim
-
-
-best_rsq_rf_ranger_trim<- rf_rs_trim|>
-select_best(metric = "rsq")
-
-best_rsq_rf_ranger_trim
-```
-```{r}
-set.seed(12345)
-final_wf_rf_ranger_trim <-
-rf_wf_trim |>
-finalize_workflow(best_rmse_rf_ranger_trim)
-
-final_fit_rf_ranger_trim<-final_wf_rf_ranger_trim |> last_fit(trees_split_trim)
-
-final_tree_rf_ranger_trim<- extract_workflow(final_fit_rf_ranger_trim)
-
-final_tree_rf_ranger_trim
-```
-```{r}
-set.seed(12345)
-final_fit_rf_ranger_trim |>
-collect_metrics()
-```
-
-
-```{r}
-final_fit_rf_ranger_trim$.predictions[[1]] |>
-  summarise(MAE=MAE( .pred,LREE),
-            MAPE=MAPE(.pred,LREE))
-                               
-```
-```{r}
-final_fit_rf_ranger_trim$.predictions[[1]]  |>ggplot( aes(.pred,LREE))+
-  
-  geom_point(alpha = 0.7, colour = "black", size = 5) +
-theme_minimal() +
-  theme(axis.title.x = element_text(size = 20),        
-        axis.title.y = element_text(size = 20))+labs(x="Predicted", y="Actual") +geom_abline(slope = 1, intercept = 0, color = "red",linetype="dashed", size=1)  +  # Diagonal line # Diagonal line
-  theme(aspect.ratio = 1)  # Set 
-```
 
 # Discussions
 
