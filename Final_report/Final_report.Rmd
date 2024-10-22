@@ -409,187 +409,72 @@ For outlier, Tukey! introduce the approach to detect outlier in a dataset. He de
 
 For missing values, Hastie! stated that, there are number of ways in treating missing value (assuming random missing value), which are remove observations with any missing value; rely on the learning algorithm to handle missing values during the training process; and fill in all missing values prior to training process. The last option was chosen and the missing value are filled with the median value of where the samples were obtained from, but if the element does not exist in that particular project, then the global median will be applied. For example, for missing value detected in "Sc" data from "Confidential Project A", then those missing values will be replaced with median value of "Sc" in general.
 
-
 ### Stratified sampling and Initial split
 
-Unlike simple random sampling, stratified sampling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have  limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect NA in correlation calculation and all element in the list.[@Menon2020]
+Unlike simple random sampling, stratified sampling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have  limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect NA in correlation calculation and all element in the list [@Menon2020]. Based on this strata division, the raw data will be split to training and testing set with 2/3 proportion.
 
-Figure \ref{fig:globalmat} shows the global correlation matrix of element in full project. Most of the pairwise element tend to display weak positive relationship, represented by light red grids in the heatmap.
-```{r globalmat, fig.width=10, fig.height=10, fig.cap="Correlation heatmap of element in full project"}
-all_data_wide<-all_data  |>
-  select(Project_Name,Sample_ID,Element_Symbol,Element_Value_ppm)  |> 
-  filter(Element_Value_ppm!=-999.00 ) |>
-  pivot_wider(names_from = Element_Symbol,values_from = Element_Value_ppm)
+### Prediction Model
 
+In this project, the tidymodels package will be used to implement predictive modeling in R. Tidymodels is a comprehensive framework built on tidyverse principles, designed for modeling and machine learning [tidymodels]. Two prediction methods are employed in this analysis: Random Forest (RF) and Gradient Boosting Tree (GBT), both of which are well-suited for handling complex, non-linear relationships in the data. These methods have been selected for their robustness in prediction and their ability to minimise overfitting through ensemble learning techniques.
 
-## Replace outlier
+Random Forest is an ensemble learning method that constructs multiple decision trees using subsets of the training data through a technique called 'bagging' (Bootstrap Aggregating). Bagging is a variance reduction technique for an estimated prediction function. In regression, this involves fitting the same regression tree multiple times to different bootstrap samples of the training data and averaging the results. Random Forest is a significant modification of bagging, as it builds a large collection of de-correlated trees and then averages their outputs. The concept behind Random Forest is to improve the variance reduction achieved by bagging by reducing the correlation between the trees, while minimizing any increase in variance. This is accomplished by randomly selecting input variables during the tree-growing process [Hastie; breiman]. The engine setting in tidymodels will be set to `randomForest`.
 
-replace_outliers_and_log <- function(data, project_var, target_vars) {
-  # Create an empty data frame to track replaced values
-  outlier_log <- data.frame(Project_Name = character(),
-                            Element = character(),
-                            Original_Value = numeric(),
-                            Replaced_Value = numeric(),
-                            stringsAsFactors = FALSE)
-
-  # Loop through each target variable and apply the replacement logic
-  for (target_var in target_vars) {
-    # Calculate the median of the target variable for each Project_Name
-    medians <- data %>%
-      group_by({{ project_var }}) %>%
-      summarize(project_median = median(.data[[target_var]], na.rm = TRUE)) %>%
-      ungroup()
-    
-    # Join the median values back to the original data
-    data <- data %>%
-      left_join(medians, by = rlang::as_name(enquo(project_var))) %>%
-      rename(!!paste0("median_", target_var) := project_median)  # Rename to unique median column for each variable
-    
-    # Calculate IQR and identify outliers for the target variable globally
-    Q1 <- quantile(data[[target_var]], 0.25, na.rm = TRUE)
-    Q3 <- quantile(data[[target_var]], 0.75, na.rm = TRUE)
-    IQR <- Q3 - Q1
-    lower_bound <- Q1 - 1.5 * IQR
-    upper_bound <- Q3 + 1.5 * IQR
-    
-    # Replace outliers directly in the target variable and log replaced values
-    data <- data %>%
-      mutate(
-        # Replace outliers with the median value specific to the Project_Name
-        replaced_value = ifelse(.data[[target_var]] < lower_bound | .data[[target_var]] > upper_bound, .data[[paste0("median_", target_var)]], NA),
-        # Log the original value and the replaced value in the log dataframe
-        outlier_flag = !is.na(replaced_value)
-      )
-    
-    # Create a log of replaced values
-    temp_log <- data %>%
-      filter(outlier_flag) %>%
-      transmute(
-        Project_Name = .data[[rlang::as_name(enquo(project_var))]],
-        Element = target_var,
-        Original_Value = .data[[target_var]],
-        Replaced_Value = replaced_value
-      )
-    
-    # Combine with the main log dataset
-    outlier_log <- bind_rows(outlier_log, temp_log)
-    
-    # Replace the actual outliers in the original data
-    data <- data %>%
-      mutate(!!target_var := ifelse(outlier_flag, replaced_value, .data[[target_var]])) %>%
-      # Remove temporary columns
-      select(-paste0("median_", target_var), -replaced_value, -outlier_flag)
-  }
-  
-  return(list(cleaned_data = data, outlier_log = outlier_log))
-}
-# Extract the cleaned data and the log of replaced values
-all_data_wide <- result$cleaned_data|> 
-mutate(across(where(is.numeric), ~ ifelse(is.na(.), median(., na.rm = TRUE), .)))
-outlier_log <- result$outlier_log
-col_names<- colnames(all_data_wide[, which(names(all_data_wide) == "Ag"):which(names(all_data_wide) == "HREE")])
-
-result <- replace_outliers_and_log(all_data_wide, Project_Name, col_names)
-
-cor_all_data<- all_data_wide |> 
-  select(-Project_Name, -Sample_ID )|>
-    cor( use="pairwise.complete.obs" )
-cor_all_data |> ggcorrplot(method ="square", type ="lower",
-                              outline.color ="white",
-                               ggtheme = ggplot2::theme_dark(),
-                                colors = c("#6D9EC1", "white", "#E46726")
-)+ggtitle("Correlation heatmap of element in full project")
-
-```
-The project  can be fitted into 4 different types:
-
-
-
-```{r}
-
-
-## call unique sample
-regions <- unique(all_data$Project_Name)
-
-## Remove Oaky Creek with only 1 sample
-regions<-regions[-14]
-
-corr_plots <- list()
-
-for(i in seq_along(regions)){
-cor_matrix_all<-all_data_wide |>
-  filter( Project_Name == regions[i]) |>
-  select( -Project_Name, -Sample_ID)|>
-  cor( use="pairwise.complete.obs" )
-
-corr_p2<-cor_matrix_all |> ggcorrplot( method ="square", type ="lower",
-                              outline.color ="white",
-                               ggtheme = ggplot2::theme_dark(),
-                                colors = c("#6D9EC1", "white", "#E46726")
-)+ggtitle(paste( regions[i]))+ 
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1,size=8),
-        axis.text.y = element_text(size=8))
-## Adjust the text label position in x axis
-
-corr_plots[[i]] <- corr_p2
-}
-
-
-
-```
-1). Neighbor matrix has a stronger positive relationship than global correlation matrix, including the regions in `Collinsville`,`Newlands` and `Coppabella`.
-
-
-```{r fig.width=12, fig.height=12, fig.cap="The example of project correlation matrix  with  stronger positive relationship"}
-wrap_plots(corr_plots[c(9,10,13)], nrow=2)
-```
-2). Neighbor matrix has a stronger negative relationship than global correlation matrix, which is a pervasive scenario including the regions in  `Moorvale`,`Wandoan`, `Confidential_C`, `Confidential_A` etc. 9 regions.
-```{r fig.width=12, fig.height=12, fig.cap="The example of project correlation matrix  with  stronger negative relationship"}
-wrap_plots(corr_plots[c(12,15,2,16)], nrow=2)
-```
-
-3). Grid-like distribution format are observed in `Rolleston`, `Collingwood Park` and `Unamed` because these projects only detected  a smaller category of element's sample. Therefore, the matrix structure will structured as a stronger, discrete blocks of correlation. The Oaky Creek project only obtained single sample will also be classified in this type.
-
-```{r fig.width=12, fig.height=12, fig.cap="The example of project correlation matrix  with  grid format"}
-wrap_plots(corr_plots[c(1,14,8)], nrow=2)
-```
-4). Located in one of Australia's most significant coal-producing regions, The matrix format in Fort Cooper mine reserve closely resembles the global matrix without distinct differentiation in correlation distribution.
-```{r fig.width=10, fig.height=10, fig.cap="The example of project correlation matrix  in Fort Cooper region"}
-corr_plots[4][[1]]
-```
-Based on this strata division, the raw data will be split to training and testing set with 2/3 proportion.
-
-### Machine learning methods
-Two main machine learning method are primarily utilised in this project:
-
-The first target is **random forest** (RF). As an enable learning method, it constructs multiple decision trees through the subsets of the training data by bootstrapping resampling with replacement. In regression method,the final output is processed by a bagging stage, which combines the result from individual tree from all these individual trees by averaging the predictions from each tree. It can remarkably improve predictive accuracy and reduce overfitting comparing with single decision tree.[@ISLR] The engine setting in Tidymodels will be `Ranger` and `randomForest`.
-
-Another target is **gradient boosting tree** (GBT),Also known as stagewise ensemble method. The process begins by initializing the model with a simple estimator in decision tree, sequentially fit the weak learner to new-added tree. Each subsequent model  focuses on the mistakes made by the earlier trees and tries to correct the residuals of the previous model, until a satisfactory level of performance is reached. GBT particularly works well in REE,HREE and LREE prediction because it learns iteratively, allowing it to capture intricate patterns and nonlinear relationships within the data, especially when subtle patterns are important. The engine setting in Tidymodels will be `xgboost`.[@ISLR]
-
-However, both of two methods are vulnerable for overfitting problem in model training. In model fitting practice, except for the regular approaches to use all elements in ME-4ACD81, additional variable sub-setting and observation trimming techniques are introduced in the comparison with origin method to evaluate the optimal performance, including the conditions of:
-
-1).Predictors with high coefficient to target variable (>0.5) 
-
-2).Top variable importance in model contribution
-
-3).Removing outliers or low-quality data points that may skew the model's performance. 
-
+Whereas random forests build an ensemble of deep independent trees, GBT build an ensemble of shallow trees in sequence with each tree learning and improving on the previous one. The main idea of boosting is to add new models to the ensemble sequentially. In essence, boosting attacks the bias-variance-tradeoff by starting with a weak model (e.g., a decision tree with only a few splits) and sequentially boosts its performance by continuing to build new trees, where each new tree in the sequence tries to fix up where the previous one made the biggest mistakes (i.e., each new tree in the sequence will focus on the training rows where the previous tree had the largest prediction errors) [Boehmke]. The engine setting in tidymodels will be set to `xgboost`.
 
 ### Hyperparameter tuning
 
-Hyperparameter tuning is a critical step in optimising machine learning models, where the goal is to find the best combination of parameter setting that maximises predictive performance. In this study, hyperparameters were carefully adjusted under the Tidymodels framework in R. Three key hyperparameters were the top prioritized in tuning:
+Building an effective machine learning model is a complex and time-intensive process that requires selecting the appropriate algorithm and optimizing the model’s architecture through hyperparameter tuning. Machine learning models have two kinds of parameters: model parameters, which are initialised and updated during the training process (such as weights in neural networks), and hyperparameters, which cannot be learned from the data and must be set before training begins. Hyperparameters define key aspects of the model's structure and learning process. Examples include the penalty parameter in support vector machines, the learning rate in neural networks, the activation function, and optimizer types. Hyperparameter tuning is essential for improving model performance, as it involves finding the optimal combination of settings that maximises predictive accuracy. Tree-based model have more hyperparameter that can be tuned, however, for this project, seven key hyperparameters were the top priority for tuning:
 
-1). **mtry** (Number of Predictors to Sample): Controls the number of predictors considered at each split in a decision tree. A smaller mtry introduces more variability among trees, while a larger mtry can lead to more accurate splits but risks in overfitting problem.
+1). mtry (Number of Predictors to Sample): Controls the number of predictors considered at each split in a decision tree. A smaller mtry introduces more variability among trees, while a larger mtry can lead to more accurate splits but risks in overfitting problem.
 
-2). **min_n**(Minimal terminal node size):  Determines the minimum number of observations in the ending node. Smaller values allow trees to grow deeper, capturing more details in training data, while larger values lead to simpler models that may generalize better.
+2). min_n (Minimal terminal node size):  Determines the minimum number of observations in the ending node. Smaller values allow trees to grow deeper, capturing more details in training data, while larger values lead to simpler models that may generalize better.
 
-3).**trees**(Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+3). trees (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+
+4). tree_depth (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+
+5). learn_rate (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+
+6). sample_size (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+
+7). loss_reduction (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
 
 To determine the best combination of these hyperparameters in the grid, k-fold cross-validation was employed. The cross validation can help to evaluate a model's performance by splitting the training data into multiple subsets. In each iteration, the model is trained on all but one fold and validated on the remaining fold, repeating this process across all folds. By averaging the performance metrics across these iterations, cross-validation provides a reliable estimate of how well the model generalises to new, unseen data.
 
-### Metrics evaluation
+### Model evaluation
+When assessing a model's performance on a particular dataset, it is essential to have a method for determining how closely its predictions align with the actual observed data. This involves measuring the degree to which the predicted value for an observation approximates the true value for that observation. In this project, several metrics will be used, including Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE), and R-Squared. These metrics provide a comprehensive understanding of how well the model fits the data, capturing both the average magnitude of error and the variability explained by the model [ISLR;Hastie].
 
-There are two type of regression metrics are utilized in performance evaluation. The first principal metrics is R-squared, which is use to mesausre the proportion of model variance can be explained by independent variables and error-related metrics between predicted and actual value like, RMSE, MAE and MAPE. In general comparison, higher r-squared with lower error variability tend to indicate a better-fitting model.
+#### Root Mean Squared Error (RMSE)
+RMSE is a standard way to measure the error of a model in predicting continuous outcomes. It represents the square root of the average of the squared differences between the observed and predicted values. RMSE gives more weight to large errors, making it particularly useful when large errors are undesirable [ISLR;Hastie]. The formula for RMSE is:
+
+$RMSE\=n1​i\=1∑n​(yi​−y^​i​)2$
+
+where $yi$ is the actual value, $y^i$ is the predicted value, and n is the number of observations.
+
+#### Mean Absolute Error (MAE)
+
+MAE measures the average magnitude of the errors in a set of predictions, without considering their direction. It’s a linear score, meaning all individual differences are weighted equally [ISLR;Hastie]. The formula for MAE is:
+
+$MAE\=n1​i\=1∑n​∣yi​−y^​i​∣$
+
+MAE is easy to interpret because it provides the average error in the same units as the target variable.
+
+#### Mean Absolute Percentage Error (MAPE)
+
+MAPE expresses the error as a percentage of the actual values, making it useful for comparing models on different scales or datasets. However, MAPE can be problematic when actual values are very close to zero [ISLR;Hastie]. The formula for MAPE is:
+
+$MAPE\=n100%​i\=1∑n​​yi​yi​−y^​i$
+
+#### R-squared (Coefficient of Determination)
+
+R-squared explains the proportion of the variance in the dependent variable that is predictable from the independent variables. It provides insight into how well the model captures the variability in the data, with a higher R-squared indicating a better fit [ISLR;Hastie].
+
+$R2\=1−∑i\=1n​(yi​−yˉ​)2∑i\=1n​(yi​−y^​i​)2$
+
+where $y^-$ is the mean of the actual values.
+
+#### Additional Considerations
+These evaluation metrics each have strengths and weaknesses. RMSE penalizes large errors more than MAE, making it more sensitive to outliers. MAPE is useful for interpretation as it gives a percentage error, but it can be misleading when actual values are very low. R-squared is a useful measure of fit, but it can sometimes be artificially high in overfitting scenarios. Therefore, it is essential to use a combination of these metrics to gain a well-rounded understanding of the model’s performance. For this project, we are going to look for a model that produce the smallest RMSE, MAE, and MAPE, while produce the largest R-Squared, because this implies the model produce the least error and cover the most variability from the data.
 
 # Results 
 
