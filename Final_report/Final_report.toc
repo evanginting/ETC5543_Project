@@ -22,14 +22,36 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Initial Data Analysis and wrangling process}{14}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Exploratory Data Analysis}{15}{section*.4}%
+\contentsline {section}{Exploratory Data Analysis}{14}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Methodology}{18}{figure.caption.5}%
+\contentsline {section}{Methodology}{18}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Results}{18}{figure.caption.5}%
+\contentsline {subsection}{Predicting Critical Elements}{18}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Discussions}{18}{figure.caption.5}%
+\contentsline {subsubsection}{Data Pre-Processing}{19}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Conclusion}{18}{figure.caption.5}%
+\contentsline {subsubsection}{Stratified sampling and Initial split}{20}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Appendix}{18}{figure.caption.5}%
+\contentsline {subsubsection}{Prediction Model}{20}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Hyperparameter tuning}{21}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Model evaluation}{22}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Root Mean Squared Error (RMSE)}{22}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Mean Absolute Error (MAE)}{22}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Mean Absolute Percentage Error (MAPE)}{22}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{R-squared (Coefficient of Determination)}{23}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{Additional Considerations}{23}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Results}{23}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Discussions}{23}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Conclusion}{23}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Appendix}{23}{figure.caption.8}%

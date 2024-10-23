@@ -32,9 +32,7 @@ header-include:
   \floatplacement{figure}{H}
   \usepackage{colortbl} 
   \usepackage{color} 
-
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE, messages=FALSE, warning=FALSE)
@@ -55,8 +53,8 @@ theme_set(theme_minimal())
 ```
 
 \newpage
-# Abstract
 
+# Abstract
 
 # Background and Motivation
 
@@ -133,15 +131,6 @@ kbl(CE_list,
 
 ```
 
-
-
-
-
-
-
-
-
-
 As one of the promising top global producers of these critical elements, Australia, with its abundant deposit and technological expertise, plays a pivotal role in the sustainable energy transition and supply chain stability. Australia is the largest producer of lithium, the third largest producer of cobalt, and the fourth largest producer of rare earths. It also produces significant amounts of aluminium, nickel, and copper, which are essential for low-emission technologies like electric vehicles, solar panels, and wind turbines [@DISR2023]. Australia's Government strategy to ensure the fulfillment of this potential has been proactive and multifaceted, especially in the past 5 years. The strategy include a range of incentives, finance facilities, grants and other support for the critical elements sector. Some of the important initiatives as reported in @DISR2023, are:
 
 1). The Australian Government’s Critical Minerals Facility, with AUD 4 billion budget, supports projects that are aligned with the nation’s Critical Minerals Strategy and serve the national interest.
@@ -152,17 +141,17 @@ As one of the promising top global producers of these critical elements, Austral
 
 4). Australian federal, state and territory government authorities are collaborating on the AUD 10 million Critical Minerals National Productivity Initiative to develop pre-feasibility studies of common-user infrastructure for the critical elements sector.
 
-5). The Major Projects Facilitation Agency (MPFA) supports developers of projects over AUD 20 million by providing information on Australian Government regulations and approvals, mapping out critical approval processes, and communicating with regulators to address issues. 
+5). The Major Projects Facilitation Agency (MPFA) supports developers of projects over AUD 20 million by providing information on Australian Government regulations and approvals, mapping out critical approval processes, and communicating with regulators to address issues.
 
 6). The Critical Minerals Production Tax Incentive offers a production incentive worth 10 percent of relevant processing and refining costs for Australia’s 31 critical elements. This incentive is available for up to 10 years per project for production between 2027–28 and 2039–40, provided the projects reach final investment decisions by 2030.
 
-
 ## Critical elements in coals
-The green technology initiatives and commitments by countries worldwide for decarbonization have led to a growing market of clean energy and technology. As a result, critical elements, including REE, are projected to be in high demand in the future [@usde2017]. Currently, China leads the world in REE production, dominating the international trade and global value chain of rare earths [@us2024mineral]. However, their recent export restrictions on REE have led to a disruption in the global supply chain [@MANCHERI2015262]. In response, there is an increasing focus on identifying alternative sources of critical elements, with coal being explored as a potential new source of critical elements [@Hodgkinson2021].  
 
-In @Hodgkinson2020 element mapping project on Bowen basin Table \ref{tab:concentration}, the largest coal reserves in Australia, the concentration of element  composition is subjective to sample's lithology rather than the depth grading:
+The green technology initiatives and commitments by countries worldwide for decarbonization have led to a growing market of clean energy and technology. As a result, critical elements, including REE, are projected to be in high demand in the future [@usde2017]. Currently, China leads the world in REE production, dominating the international trade and global value chain of rare earths [@us2024mineral]. However, their recent export restrictions on REE have led to a disruption in the global supply chain [@MANCHERI2015262]. In response, there is an increasing focus on identifying alternative sources of critical elements, with coal being explored as a potential new source of critical elements [@Hodgkinson2021].
 
-1). In coal and its derivatives, although the majority of element concentrations fall below the benchmark when compared to Post-Archaean Australian Shales (PAAS) standard [@McLennan2011], a widely used geochemical reference material in the  average composition of shales, local samples exhibit enrichment in Heavy Rare Earth Elements (HREEs) and scandium(Sc). Additionally, concentrations of the critical element bismuth (Bi) are abnormally elevated, showing levels 4-6 times higher than the crustal average.
+In @Hodgkinson2020 element mapping project on Bowen basin Table \ref{tab:concentration}, the largest coal reserves in Australia, the concentration of element composition is subjective to sample's lithology rather than the depth grading:
+
+1). In coal and its derivatives, although the majority of element concentrations fall below the benchmark when compared to Post-Archaean Australian Shales (PAAS) standard [@McLennan2011], a widely used geochemical reference material in the average composition of shales, local samples exhibit enrichment in Heavy Rare Earth Elements (HREEs) and scandium(Sc). Additionally, concentrations of the critical element bismuth (Bi) are abnormally elevated, showing levels 4-6 times higher than the crustal average.
 
 2). Siltstone and mudstone yield unremarkable findings in terms of elemental enrichment, with most element concentrations failing to meet significant thresholds. However, the concentration of cobalt compounds approaches the crustal average, suggesting potential economic value that warrants further investigation.
 
@@ -229,11 +218,11 @@ kable(table2_bind,
 
 ```
 
-
 ## Economic concentrations
+
 Before the recent surge in demand, extracting critical elements (including REE) from coal was considered costly, however, methods have been developed that reduce the cost and also enviromentally friendly. Coal and coal byproducts are substantially enhanced with trace metals and have been proposed as a potential source [@Eterigho2021]. A report by US Department of Energy suggests that extracting REEs from coal material already mined for other purposes, either as a dual product or byproduct, could be more cost-effective than a dedicated REE mining. Despite the challenge of processing large volumes to obtain economic concentrations, cost may be reduced due to the pre-processed (mined, crushed, and washed) state of the materials and transported to areas with existing infrastructure [@usde2017; @Hodgkinson2021]. Based on research, the elements and metals in coal that are considered to have the best chance for economic recovery are: REE, Ag, Au, PGEs, Be, Se, V, Ga, Sb, Sc, Mo, W, Re, Ge, U, Y, Nb, Zr, Al [@DAI2018155].
 
-Efficient extraction of critical elements from coal or coal ash, and finding coal sources with highly elevated concentrations of these elements, are essential prerequisites. The value of the element in any coal sources largely determined by their concentration, which varies based on geological and geochemical conditions. Therefore, to economically recovering critical elements from coal is by identifying sources with the highest critical elements levels and accessibility first before proceeding to extraction and recovery stages [@Eterigho2021]. @Reid2018 in his report suggests that critical elements average level in coal is typically just 35 ppm, which is insufficient for economic extraction. While @Seredin2012 in their reports suggests that a cutoff grade for Rare Earth Oxides (ROE) for coal seam has been suggested as 800-900 ppm. Table \ref{tab:cutoff-grade} provide suggested cut-off grade for 18 critical elements. Additionally, @TALAN2022107897 reports that coal sources are often relatively enriched in the heavy rare earths (HREEs, Ho, Er, Tm, Yb, Lu) and critical rare earths (CREEs, Y, Nd, Dy, Eu, Tb) compared to traditional mineral deposits. A cut-off grade of 115–130 ppm rare earth element on a whole mass basis may be considered economical. However, the U.S. Department of Energy set a criterion in their work assessing raw coal with total rare earth element content greater than 300 ppm on a whole dry coal basis. 
+Efficient extraction of critical elements from coal or coal ash, and finding coal sources with highly elevated concentrations of these elements, are essential prerequisites. The value of the element in any coal sources largely determined by their concentration, which varies based on geological and geochemical conditions. Therefore, to economically recovering critical elements from coal is by identifying sources with the highest critical elements levels and accessibility first before proceeding to extraction and recovery stages [@Eterigho2021]. @Reid2018 in his report suggests that critical elements average level in coal is typically just 35 ppm, which is insufficient for economic extraction. While @Seredin2012 in their reports suggests that a cutoff grade for Rare Earth Oxides (ROE) for coal seam has been suggested as 800-900 ppm. Table \ref{tab:cutoff-grade} provide suggested cut-off grade for 18 critical elements. Additionally, @TALAN2022107897 reports that coal sources are often relatively enriched in the heavy rare earths (HREEs, Ho, Er, Tm, Yb, Lu) and critical rare earths (CREEs, Y, Nd, Dy, Eu, Tb) compared to traditional mineral deposits. A cut-off grade of 115–130 ppm rare earth element on a whole mass basis may be considered economical. However, the U.S. Department of Energy set a criterion in their work assessing raw coal with total rare earth element content greater than 300 ppm on a whole dry coal basis.
 
 ```{r cutoff-grade, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width = '100%'}
 
@@ -255,38 +244,34 @@ kable(CE_cutoff,
            footnote_as_chunk = T)
 ```
 
-
 ## Existing economic deposits
-Currently, there are no coal mines or coal basins extracting critical elements (including REE) at a commercial states. Most sources found conclude that we are still in the research and development process [@Hodgkinson2020; @DAI2018155; @Eterigho2021; @osti_1808639; @TALAN2022107897]. A report by @Eterigho2021 suggests that the research and development are primarily at the laboratory and pilot scale stages. For example, scholars like Honaker and coworkers who have significant experience in this subject, have constructed a 0.23 t/h solid feed pilot plant for testing different coal-based feedstocks [@osti_1808639]. However, commercial-scale extraction processes have not yet been widely implemented. @TALAN2022107897 report support this finding as well. They propose a potential approach for commercial-scale extraction of critical elements, indicating ongoing effort to bridge the gap between laboratory research and commercial application. Additionally, they note that further validation and techno-economic analysis are required before these processes can be scaled up commercially. Furthermore, scholars who focusing their research on China's coal resources also suggest further research is needed to scale up the extraction process [@Qin2015; @Qin2015b; @Liu2024; @Zhao2019; @ZOU2023105245]. Given that China is the leader in critical elements production, this fact indicates that their production of critical elements does not primarily come from coal and its byproducts. 
 
-We can conclude that significant research and development efforts have been made towards commercial extraction of critical elements from coal and coal byproducts. However, it is still long way from actual large-scale implementation. Most scholars indicate the necessity of considering sustainability factors. Effective waste management and treatment, along with the evaluation of extraction costs and technical feasibility, are important. At the end of the day, these elements are going to be utilised in green technology initiatives, such as renewable energy systems and electric vehicles, which demand high-purity materials. Ensuring that their extraction processes are environmentally and economically sustainable is crucial to align with the goals of these green technologies initiatives. Furthermore, ongoing research is vital to bridge existing technology gaps and develop robust, scalable methods that can transition from pilot projects to commercial operations. 
+Currently, there are no coal mines or coal basins extracting critical elements (including REE) at a commercial states. Most sources found conclude that we are still in the research and development process [@Hodgkinson2020; @DAI2018155; @Eterigho2021; @osti_1808639; @TALAN2022107897]. A report by @Eterigho2021 suggests that the research and development are primarily at the laboratory and pilot scale stages. For example, scholars like Honaker and coworkers who have significant experience in this subject, have constructed a 0.23 t/h solid feed pilot plant for testing different coal-based feedstocks [@osti_1808639]. However, commercial-scale extraction processes have not yet been widely implemented. @TALAN2022107897 report support this finding as well. They propose a potential approach for commercial-scale extraction of critical elements, indicating ongoing effort to bridge the gap between laboratory research and commercial application. Additionally, they note that further validation and techno-economic analysis are required before these processes can be scaled up commercially. Furthermore, scholars who focusing their research on China's coal resources also suggest further research is needed to scale up the extraction process [@Qin2015; @Qin2015b; @Liu2024; @Zhao2019; @ZOU2023105245]. Given that China is the leader in critical elements production, this fact indicates that their production of critical elements does not primarily come from coal and its byproducts.
 
+We can conclude that significant research and development efforts have been made towards commercial extraction of critical elements from coal and coal byproducts. However, it is still long way from actual large-scale implementation. Most scholars indicate the necessity of considering sustainability factors. Effective waste management and treatment, along with the evaluation of extraction costs and technical feasibility, are important. At the end of the day, these elements are going to be utilised in green technology initiatives, such as renewable energy systems and electric vehicles, which demand high-purity materials. Ensuring that their extraction processes are environmentally and economically sustainable is crucial to align with the goals of these green technologies initiatives. Furthermore, ongoing research is vital to bridge existing technology gaps and develop robust, scalable methods that can transition from pilot projects to commercial operations.
 
 ## Extraction of critical elements
+
 There are several stages required for critical elements can be extracted from coal and coal byproducts. Coal and coal byproducts is first prepared by crushing and milling to release the organic from inorganic elements to generate fine concentrates. These concentrates are then undergo further separation techniques such as physical (froth flotation, electrostatic, magnetic, gravity) and chemical (leaching). Later, it will further processed into purification to extract the REE into pure oxide form (e.g. REO). REO can be standalone products, however, market demand dictates their conversion into metals. Thus, in the refining stage, using an electrolysis or a metallothermic reduction process, REOs will be converted into high-purity rare earth metals. These metals may then be alloyed with other elements to make them harder and stronger for the end-use market [@Eterigho2021; @usde2017; @TALAN2022107897]. The figure \ref{fig:ree-vc} visualise this process.
 
 ```{r ree-vc, fig.align = "center", out.width = '100%', fig.cap="REE Value Chain (Source: US Department of Energy, 2017)"}
 knitr::include_graphics("/cloud/project/Final_report/Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png")
 ```
 
-Recently, water-leaching is a prevailing  approach since it mitigate the flaw from traditional techniques. Water leaching can be considered as  less environmentally detrimental compared to strong acid/alkaline leaching, as well as cost effective for solvent selection. The  crucial stages on this preparation workflow  are low temperature activation and water leaching.  During the stage of low temperature activation, the chemical reaction within coal fly ash (CFA) will be facilitated by complexation agents (ammonium salts or weak acids) in covered alumina crucibles, which  help liberate critical elements from the matrix of the CFA. After the activation and cool down to ambient temperature, the tablets are placed in water for the leaching and dissolve process. Water acts as the leaching solvent, extracting these soluble elements into the leachate.The configuration in temperature and mass ratio of solvent will be the vital determinant for optimized recovery. Take Lithium  example, it can achieve a stable leaching efficiency of 90% through ammonium fluoride leaching at 150°C with a $SiO_2/NH_4F$ mass ratio of 1:1.35 @Xu2021. 
+Recently, water-leaching is a prevailing approach since it mitigate the flaw from traditional techniques. Water leaching can be considered as less environmentally detrimental compared to strong acid/alkaline leaching, as well as cost effective for solvent selection. The crucial stages on this preparation workflow are low temperature activation and water leaching. During the stage of low temperature activation, the chemical reaction within coal fly ash (CFA) will be facilitated by complexation agents (ammonium salts or weak acids) in covered alumina crucibles, which help liberate critical elements from the matrix of the CFA. After the activation and cool down to ambient temperature, the tablets are placed in water for the leaching and dissolve process. Water acts as the leaching solvent, extracting these soluble elements into the leachate.The configuration in temperature and mass ratio of solvent will be the vital determinant for optimized recovery. Take Lithium example, it can achieve a stable leaching efficiency of 90% through ammonium fluoride leaching at 150°C with a $SiO_2/NH_4F$ mass ratio of 1:1.35 @Xu2021.
 
-Another innovation is Hydrophobic-Hydrophilic Separation (HHS), designed to leverages the disparity  of affinity (water-repellent & water-friendly) properties of substances to achieve separation.It can treat as a complementary application for small particle delamination without size limit, providing flexible and extensible purpose in the segregation of ultrafine coal @Hodgkinson2021.
+Another innovation is Hydrophobic-Hydrophilic Separation (HHS), designed to leverages the disparity of affinity (water-repellent & water-friendly) properties of substances to achieve separation.It can treat as a complementary application for small particle delamination without size limit, providing flexible and extensible purpose in the segregation of ultrafine coal @Hodgkinson2021.
 
+In precious @Hodgkinson2020 element mapping project on Bowen basin,the largest coal reserves in Australia, the concentration of element composition is subjective to sample's lithology rather than the depth grading:
 
-In precious @Hodgkinson2020 element mapping  project on Bowen basin,the largest coal reserves in Australia, the concentration of element  composition is subjective to sample's lithology rather than the depth grading:
+1). In coal and derivative, albeit majority of element concentrations is inferior of the benchmark against earth crust average, local samples exhibit enrichment in HREE and Scandium in respect to @McLennan2011 Post-Archaean Australian Shales (PAAS) standard , while abnormal 4-6 times higher than crustal average in moderate critical element, Bismuth(Bi) .
 
+2). Siltstone and mudstone has a lackluster finding to classify enrichment for majority of elements concentration,except for the concentration of Cobalt compound barely meet crustal average, whose ubiquitous economic value may warrant further examination.
 
-1). In coal and derivative,  albeit majority of element concentrations is inferior of the benchmark against earth crust average, local  samples exhibit  enrichment in HREE and Scandium in respect to @McLennan2011 Post-Archaean Australian Shales (PAAS) standard , while abnormal 4-6 times higher than crustal average in moderate  critical element, Bismuth(Bi) .
-
-2). Siltstone and mudstone has a lackluster finding to classify enrichment for majority of elements concentration,except for  the concentration of Cobalt compound barely meet crustal average,  whose ubiquitous economic value may warrant further examination.
-
-3).  As the sediment from volcanic ash, tuffaceous rock is rich in pumice and lithic fragments. The sample display a series of  elevated concentrations of  strategic elements including REE, Ga and Bi. Besides, a potential Lithium-rich borehole is found, with approximate 5 times higher than crustal average.
-
-
-
+3). As the sediment from volcanic ash, tuffaceous rock is rich in pumice and lithic fragments. The sample display a series of elevated concentrations of strategic elements including REE, Ga and Bi. Besides, a potential Lithium-rich borehole is found, with approximate 5 times higher than crustal average.
 
 # Objectives and Significance
+
 The primary objective of this study is to develop a predictive model using machine learning and spatial statistics to identify and quantify critical minerals—such as copper, lithium, nickel, cobalt, and rare earth elements—in coal mine waste. By analyzing existing coal data, this study aims to provide valuable insights into the potential recovery of these essential minerals from coal deposits, contributing to waste reduction and supporting the transition to low-emission technologies. The outcome of this study will help assess the economic value of these minerals and promote sustainable practices within the mining and energy sectors.
 
 The study utilises multiple datasets, some of which are publicly available while others are confidential. The public dataset was released by the Australian Coal Industry's Research Program (ACARP) in 2021, whereas the confidential data comes from Matrix Geoscience's clients. Although the datasets originate from different sources, both contain information on the concentration of various critical elements sampled from coal mines and power plants across Australia. Additionally, the study employs data on elemental concentrations from Post Archean Australian Shale (PAAS), which represents the background crustal abundance of elements. This comparison helps determine whether the elemental concentrations in the coal samples exceed typical crustal abundance levels.
@@ -296,32 +281,33 @@ This study is significant because it addresses a critical gap in understanding t
 # Data
 
 ## Data source and description
+
 As the escalating research into this flourishing market, the largest national scientific research institution, CSIRO (Commonwealth Scientific and Industrial Research Organisation) in Australia Federation has initiated the early-stage research into the potential of element extraction in coal mines. Launched in 2001, The C29030 project in Australian Coal Industry's Research Program (ACARP) [@Hodgkinson2021] has gauged the first comprehensive map of element concentration in Australian coal and provided the open dataset for testing result. This element mapping targets on 50 elements that has rarely studied from nearly 90 samples in Queensland and New South Wales, which are carefully selected in 13 coal mines and power plants to represent 6 basins, covering a range of coal measures and seams of varying ages. The dataset is a wide format excel spreadsheet, with the information of detected element name and their corresponding concentration in parts per million (ppm) for each labelled sample(e.g.2648CR01), as well as the sample's coordinate in a separate record.
 
 Simultaneously, private-sector analyses are also promptly emerging, utilising a variety of advanced analytic techniques, including four-acid digestion with ICP-AES and fusion-based acid digestion with ICP-MS. Although the report format is not standardised (long or wide format), but all of them cover basic information for element name and concentration as well as additional borehole composite index in ppm, which is sufficient for further deep-dive investigation.
 
-Eventually, PAAS file attached to [@McLennan2011] Post-Archean Australian Shale normalised score, representing the average composition of shale formed after the Archean eon, which is a geochemical reference baseline in the comparison of element enrichment  in this report.
-
+Eventually, PAAS file attached to [@McLennan2011] Post-Archean Australian Shale normalised score, representing the average composition of shale formed after the Archean eon, which is a geochemical reference baseline in the comparison of element enrichment in this report.
 
 ## Initial Data Analysis and wrangling process
 
 To prepare for exploratory data analysis and predictive modeling, different data formats must be collated into a standardised structure, which involves converting the data into a long format and trimming the trivial variables to ensure consistency and readiness for further analysis. The cleaning data will include `element symbol`, `elment value in ppm` and `project region` only, but other specific cleaning requirements still need to be addressed. First and foremost, The private projects are unable to disclose the location in detail, therefore; they will be replaced to Confidential A, B and C respectively. Furthermore, partial element values are recorded as character due to their undetected status(nd) and subtle presence(`<` sign). a value of `-999.00` will be assigned to represent their negative relationship without compromising data integrity. Another significant issue in data wrangling is the sample duplication, mainly because cross detection methods are applied in their analysis. To resolve this, we will remain the element concentration value for the most precise observation range.
 
-After the preliminary tidying, the data is organised and concise but some information is still lacking in subsequent study. Since the analytic technique will only detect single element, the critical element groups like REE and it's subcategories are absent in calculation. the element list need to be expanded by the aggregation of the concentration values from their corresponding symbols.  Additionally, the data must be joined with PAAS file and normalised value should be derived by using formula $\text{Normalized value}= \frac{\text{Element value(ppm)}}{\text{PAAS score(ppm)}}$, along with Boolean flag for enrichment (above background, >=1). The final step is replacing outliers and missing values by the median value within their respective project. If no project-specific values are available the global median of the element will be applied. The median replacement is a mild imputation  to ensure the robustness and consistency of data structure and in turn, maintain data integrity without distorting the subsequent modelling.
+After the preliminary tidying, the data is organised and concise but some information is still lacking in subsequent study. Since the analytic technique will only detect single element, the critical element groups like REE and it's subcategories are absent in calculation. the element list need to be expanded by the aggregation of the concentration values from their corresponding symbols. Additionally, the data must be joined with PAAS file and normalised value should be derived by using formula $\text{Normalized value}= \frac{\text{Element value(ppm)}}{\text{PAAS score(ppm)}}$, along with Boolean flag for enrichment (above background, \>=1). The final step is replacing outliers and missing values by the median value within their respective project. If no project-specific values are available the global median of the element will be applied. The median replacement is a mild imputation to ensure the robustness and consistency of data structure and in turn, maintain data integrity without distorting the subsequent modelling.
 
 ```{r}
 # Loading all data
 alldata <- readRDS('/cloud/project//results/all_data.rds')
 ```
 
-In a nutshell,  The final cleaning data include total `r ncol(alldata)` variables and `r nrow(alldata)` observations. Figure \ref{fig:visdat} shows the correct data type for all variables, with no missing value left.
+In a nutshell, The final cleaning data include total `r ncol(alldata)` variables and `r nrow(alldata)` observations. Figure \ref{fig:visdat} shows the correct data type for all variables, with no missing value left.
+
 ```{r visdat, fig.cap="n at-a-glance of final data wrangling result"}
 alldata |> vis_dat()
 ```
 
 # Exploratory Data Analysis
 
-The Exploratory Data Analysis (EDA) was carried out on critical elements concentration data, which provide information about the concentration of critical mineral across different areas in Australia that has been normalised using PAAS (Post-Archean Australian Shale) standard. The primary objective of this analysis is to gain a deeper understanding of the data's structure and key characteristics. Through this, we aim to identify significant trends, correlations, and outliers that may influence the outcomes of the study. 
+The Exploratory Data Analysis (EDA) was carried out on critical elements concentration data, which provide information about the concentration of critical mineral across different areas in Australia that has been normalised using PAAS (Post-Archean Australian Shale) standard. The primary objective of this analysis is to gain a deeper understanding of the data's structure and key characteristics. Through this, we aim to identify significant trends, correlations, and outliers that may influence the outcomes of the study.
 
 The EDA for critical elements concentration data starts with a descriptive statistics for every critical elements included in the data. These summary statistics can be found in the Table \ref{tab:desc-stats}. The descriptive statistics features include the minimum value of the critical elements, maximum value, the mean, the median, the standard deviation, and the kurtosis of the variable.
 
@@ -356,6 +342,7 @@ kable(desc_stats,
 The most important statistics from this table is kurtosis. Kurtosis measures the combined weight of the tails of a distribution relative to its centre. In this way, we can use kurtosis as an indicator of the presence of outliers. A high kurtosis values is indicative of outliers. The summary statistics suggest that Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni are having many outliers due to high kurtosis value. Validating the outliers will be easier with data visualisation, which will be presented in the next step.
 
 The next step was analysing the distribution of each element's normalised value. By utilising boxplots, it will help identifying the outliers of each critical elements, while also identifying which element's has median value above the PAAS standard. Obtaining these information will help to understand whether certain element is naturally abundance in the nature, thus it is most likely economically efficient to extract. The figure \ref{fig:element-dist} provide these informations.
+
 ```{r element-dist, fig.cap = "Distribution of Critical Elements (Box-Plot)", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center"}
 bp1 <- alldata %>%
   filter(Element_Symbol %in% c("Ag","Al","Au","Ba","Be","Bi","Cd","Ce","Co","Cr","Cs","Cu","Dy",
@@ -383,35 +370,35 @@ grid.arrange(bp1, bp2, ncol = 2)
 
 The boxplots shows some critical points that can be summarised as follow:
 
-- Medians: Most of the elements have their medians close to 0, indicating that the majority of the values are low or concentrated around a lower range. Considering that the threshold to define whether a sample is below/above background is 1 (vertical red dashed line), some elements that have median above the threshold are Re, Ag, Au, Mo, Bi, Li, Cu, Eu, Dy, Gd, Sm, Lu, Yb, Tm, Tb, MREE, Er, Ho, U, Ga, Y, Pb, Nd, Sc, REEY, REE, Th, V, Pr, LREE
-- Spread and Variability: The elements exhibit varying degrees of spread. For example, Ge shows a wide range with its box stretching from a low value near 0 to a higher value around 10, indicating a large variability. On the opposite side, elements like Mn, Fe, Cr, Co, Rb, Ni, HREE have very narrow IQR, indicating less variability.
-- Outliers: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, Ge, Bi, Mn, and Ba show notable outliers far from the main data range. Additionally, some elements that was reported from table \ref{tab:desc-stats}, which have high kurtosis are Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
-- Symmetry and Skewness: Some elements like Ge, Bi, and Ag appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like Ga and Sm show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
-- Comparison Accross Elements: Ge stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (REE, REEY, MREE, LREE, HREE) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
+-   Medians: Most of the elements have their medians close to 0, indicating that the majority of the values are low or concentrated around a lower range. Considering that the threshold to define whether a sample is below/above background is 1 (vertical red dashed line), some elements that have median above the threshold are Re, Ag, Au, Mo, Bi, Li, Cu, Eu, Dy, Gd, Sm, Lu, Yb, Tm, Tb, MREE, Er, Ho, U, Ga, Y, Pb, Nd, Sc, REEY, REE, Th, V, Pr, LREE
+-   Spread and Variability: The elements exhibit varying degrees of spread. For example, Ge shows a wide range with its box stretching from a low value near 0 to a higher value around 10, indicating a large variability. On the opposite side, elements like Mn, Fe, Cr, Co, Rb, Ni, HREE have very narrow IQR, indicating less variability.
+-   Outliers: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, Ge, Bi, Mn, and Ba show notable outliers far from the main data range. Additionally, some elements that was reported from table \ref{tab:desc-stats}, which have high kurtosis are Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
+-   Symmetry and Skewness: Some elements like Ge, Bi, and Ag appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like Ga and Sm show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
+-   Comparison Accross Elements: Ge stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (REE, REEY, MREE, LREE, HREE) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
 # Methodology
 
 ## Predicting Critical Elements
 
-The predictive modeling process in this project follows a structured methodology, consisting of key steps aimed at selecting the most accurate and robust model for predicting the target variable. Each step contributes to refining the model’s performance, from data preprocessing and feature selection to model training and evaluation. The overall framework of this methodology is outlined in the diagram below. 
+The predictive modeling process in this project follows a structured methodology, consisting of key steps aimed at selecting the most accurate and robust model for predicting the target variable. Each step contributes to refining the model’s performance, from data preprocessing and feature selection to model training and evaluation. The overall framework of this methodology is outlined in the figure \ref{fig:modelbuilding}.
 
 ```{r modelbuilding, fig.cap = "The mindset of model build-up in predictive analysis"}
 knitr::include_graphics("/cloud/project/Final_report/Final_report_files/figure-latex/Methodology.png")
 ```
 
-The methodology for this study follows a three-stage process. First, data preprocessing is conducted, addressing outliers and missing values to ensure clean data. Next, several modeling scenarios are explored using Random Forest and Gradient Boosting, with hyperparameter tuning applied to optimise model performance. These scenarios include using all elements, elements with high correlation to target variables, and different stratification methods for data splitting. Finally, model performance is evaluated using key metrics such as Root Mean Squared Error (RMSE), R-squared, Mean Absolute Error (MAE), and Mean Absolute Percentage Error (MAPE).
+The methodology for this project follows a three-stage process. First, data preprocessing is conducted, addressing outliers and missing values to ensure clean data. Next, several modeling scenarios are explored using Random Forest and Gradient Boosting, with hyperparameter tuning applied to optimise model performance. These scenarios include using all elements, elements with high correlation to target variables, and different stratification methods for data splitting. Finally, model performance is evaluated using key metrics such as Root Mean Squared Error (RMSE), R-squared, Mean Absolute Error (MAE), and Mean Absolute Percentage Error (MAPE).
 
 ### Data Pre-Processing
 
 On one hand, outlier is well known as the observations/data points that deviate significantly from other observations in a dataset. On the other hand, missing value is observation when there is no data stored for certain variables. In predictive modelling, outliers and missing value can have an effect to the regression model when predicting the target variable in a negative way. For example, outliers value will disrupt the normal pattern of the dataset, while missing value will introduce uncertainty to the model. Thus, if not treated, they might lead the model to make inaccurate predictions. With this concern, outlier and missing value will be treated, aimed to reduce the negative effect to the model performance.
 
-For outlier, Tukey! introduce the approach to detect outlier in a dataset. He defined that outlier can be detected by the 1.5 Interquartile Range (IQR). An observation is considered an outlier if it lies below Q1 − 1.5 * IQR or above Q3 + 1.5 * IQR, where IQR is the interquartile range between the first and third quartiles. This method is particularly effective for detecting outliers in data with a skewed distribution. This method will be applied to the dataset for this project in detecting outliers. Next, in treating the outliers, [Barnett] stated that, as a simple approach, outliers can be replaced with sample median for robust estimation. This, with the additional issue regarding lab test error in determining the elements' concentration values, the outliers will be replaced with median value of where the samples were obtained from. For example, for outliers detected in "Sc" data from "Confidential Project A", then those outliers will be replaced with median value of "Sc" of "Confidential Project A".
+For outlier, Tukey! introduce the approach to detect outlier in a dataset. He defined that outlier can be detected by the 1.5 Interquartile Range (IQR). An observation is considered an outlier if it lies below Q1 - 1.5xIQR or above Q3 + 1.5xIQR, where IQR is the interquartile range between the first and third quartiles. This method is particularly effective for detecting outliers in data with a skewed distribution. This method will be applied to the dataset for this project in detecting outliers. Next, in treating the outliers, [Barnett] stated that, as a simple approach, outliers can be replaced with sample median for robust estimation. This, with the additional issue regarding lab test error in determining the elements' concentration values, the outliers will be replaced with median value of where the samples were obtained from. For example, for outliers detected in "Sc" data from "Confidential Project A", will be replaced with median value of "Sc" of "Confidential Project A".
 
 For missing values, Hastie! stated that, there are number of ways in treating missing value (assuming random missing value), which are remove observations with any missing value; rely on the learning algorithm to handle missing values during the training process; and fill in all missing values prior to training process. The last option was chosen and the missing value are filled with the median value of where the samples were obtained from, but if the element does not exist in that particular project, then the global median will be applied. For example, for missing value detected in "Sc" data from "Confidential Project A", then those missing values will be replaced with median value of "Sc" in general.
 
 ### Stratified sampling and Initial split
 
-Unlike simple random sampling, stratified sampling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have  limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect NA in correlation calculation and all element in the list [@Menon2020]. Based on this strata division, the raw data will be split to training and testing set with 2/3 proportion.
+Unlike simple random sampling, stratified sampling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect NA in correlation calculation and all element in the list [Menon2020]. Based on this strata division, the raw data will be split to training and testing set with 2/3 proportion.
 
 ### Prediction Model
 
@@ -419,43 +406,45 @@ In this project, the tidymodels package will be used to implement predictive mod
 
 Random Forest is an ensemble learning method that constructs multiple decision trees using subsets of the training data through a technique called 'bagging' (Bootstrap Aggregating). Bagging is a variance reduction technique for an estimated prediction function. In regression, this involves fitting the same regression tree multiple times to different bootstrap samples of the training data and averaging the results. Random Forest is a significant modification of bagging, as it builds a large collection of de-correlated trees and then averages their outputs. The concept behind Random Forest is to improve the variance reduction achieved by bagging by reducing the correlation between the trees, while minimizing any increase in variance. This is accomplished by randomly selecting input variables during the tree-growing process [Hastie; breiman]. The engine setting in tidymodels will be set to `randomForest`.
 
-Whereas random forests build an ensemble of deep independent trees, GBT build an ensemble of shallow trees in sequence with each tree learning and improving on the previous one. The main idea of boosting is to add new models to the ensemble sequentially. In essence, boosting attacks the bias-variance-tradeoff by starting with a weak model (e.g., a decision tree with only a few splits) and sequentially boosts its performance by continuing to build new trees, where each new tree in the sequence tries to fix up where the previous one made the biggest mistakes (i.e., each new tree in the sequence will focus on the training rows where the previous tree had the largest prediction errors) [Boehmke]. The engine setting in tidymodels will be set to `xgboost`.
+Whereas random forests build an ensemble of deep independent trees, GBT build an ensemble of shallow trees in sequence with each tree learning and improving on the previous one. The main idea of boosting is to add new models to the ensemble sequentially. In essence, boosting attacks the bias-variance-tradeoff by starting with a weak model (e.g., a decision tree with only a few splits) and sequentially boosts its performance by continuing to build new trees, where each new tree in the sequence tries to fix up where the previous one made the biggest mistakes (i.e., each new tree in the sequence will focus on the training rows where the previous tree had the largest prediction errors) [Boehmke github]. The engine setting in tidymodels will be set to `xgboost`.
 
 ### Hyperparameter tuning
 
-Building an effective machine learning model is a complex and time-intensive process that requires selecting the appropriate algorithm and optimizing the model’s architecture through hyperparameter tuning. Machine learning models have two kinds of parameters: model parameters, which are initialised and updated during the training process (such as weights in neural networks), and hyperparameters, which cannot be learned from the data and must be set before training begins. Hyperparameters define key aspects of the model's structure and learning process. Examples include the penalty parameter in support vector machines, the learning rate in neural networks, the activation function, and optimizer types. Hyperparameter tuning is essential for improving model performance, as it involves finding the optimal combination of settings that maximises predictive accuracy. Tree-based model have more hyperparameter that can be tuned, however, for this project, seven key hyperparameters were the top priority for tuning:
+Building an effective machine learning model is a complex and time-intensive process that requires selecting the appropriate algorithm and optimizing the model’s architecture through hyperparameter tuning. Machine learning models have two kinds of parameters: model parameters, which are initialised and updated during the training process (such as weights in neural networks), and hyperparameters, which cannot be learned from the data and must be set before training begins. Hyperparameters define key aspects of the model's structure and learning process. Examples include the penalty parameter in support vector machines, the learning rate in neural networks, the activation function, and optimizer types. Hyperparameter tuning is essential for improving model performance, as it involves finding the optimal combination of settings that maximises predictive accuracy [Yang]. Tree-based model have more hyperparameter that can be tuned, however, for this project, seven key hyperparameters were the top priority for tuning, which are:
 
-1). mtry (Number of Predictors to Sample): Controls the number of predictors considered at each split in a decision tree. A smaller mtry introduces more variability among trees, while a larger mtry can lead to more accurate splits but risks in overfitting problem.
+1). mtry (number of predictors to sample): Controls the number of predictors considered at each split in a decision tree. A smaller mtry introduces more variability among trees, while a larger mtry can lead to more accurate splits but risks in overfitting problem.
 
-2). min_n (Minimal terminal node size):  Determines the minimum number of observations in the ending node. Smaller values allow trees to grow deeper, capturing more details in training data, while larger values lead to simpler models that may generalize better.
+2). min_n (minimal terminal node size): Determines the minimum number of observations in the ending node. Smaller values allow trees to grow deeper, capturing more details in training data, while larger values lead to simpler models that may generalize better.
 
-3). trees (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+3). trees (number of trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
 
-4). tree_depth (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+4). tree_depth (tree depth): Controls the depth of the individual trees.
 
-5). learn_rate (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+5). learn_rate (learning rate): It determines the influence of each tree on the final prediction and regulates the pace at which the algorithm progresses along the gradient descent path (or learns).
 
 6). sample_size (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
 
-7). loss_reduction (Number of Trees): Define the the total number of decision trees in the ensemble. More trees generally improve performance but also increase computational cost.
+7). loss_reduction (Number of Trees): The reduction in the loss function required to split further
 
-To determine the best combination of these hyperparameters in the grid, k-fold cross-validation was employed. The cross validation can help to evaluate a model's performance by splitting the training data into multiple subsets. In each iteration, the model is trained on all but one fold and validated on the remaining fold, repeating this process across all folds. By averaging the performance metrics across these iterations, cross-validation provides a reliable estimate of how well the model generalises to new, unseen data.
+To determine the best combination of these hyperparameters in the grid, k-fold cross-validation was employed. In k-fold cross-validation, the dataset is randomly divided into K equal-sized groups, known as "folds." For each resampling iteration, the model is trained on K-1 folds, while the remaining fold is used for validation. In standard k-fold cross-validation (without repetition), the process is repeated *K* times, ensuring that each fold is used once for validation [tidymodels]. Cross-validation provides a reliable estimate of the optimal tuning parameter value.
 
 ### Model evaluation
+
 When assessing a model's performance on a particular dataset, it is essential to have a method for determining how closely its predictions align with the actual observed data. This involves measuring the degree to which the predicted value for an observation approximates the true value for that observation. In this project, several metrics will be used, including Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), Mean Absolute Percentage Error (MAPE), and R-Squared. These metrics provide a comprehensive understanding of how well the model fits the data, capturing both the average magnitude of error and the variability explained by the model [ISLR;Hastie].
 
 #### Root Mean Squared Error (RMSE)
+
 RMSE is a standard way to measure the error of a model in predicting continuous outcomes. It represents the square root of the average of the squared differences between the observed and predicted values. RMSE gives more weight to large errors, making it particularly useful when large errors are undesirable [ISLR;Hastie]. The formula for RMSE is:
 
-$RMSE\=n1​i\=1∑n​(yi​−y^​i​)2$
+$RMSE = \sqrt{\frac{1}{n} {\sum^n_{i=1}(y_i-\hat{y_i})^2}}$
 
-where $yi$ is the actual value, $y^i$ is the predicted value, and n is the number of observations.
+where $y_i$ is the actual value, $\hat{y_i}$ is the predicted value, and n is the number of observations.
 
 #### Mean Absolute Error (MAE)
 
 MAE measures the average magnitude of the errors in a set of predictions, without considering their direction. It’s a linear score, meaning all individual differences are weighted equally [ISLR;Hastie]. The formula for MAE is:
 
-$MAE\=n1​i\=1∑n​∣yi​−y^​i​∣$
+$MAE = \frac{1}{n} {\sum^n_{i=1}|y_i-\hat{y_i}|}$
 
 MAE is easy to interpret because it provides the average error in the same units as the target variable.
 
@@ -463,33 +452,30 @@ MAE is easy to interpret because it provides the average error in the same units
 
 MAPE expresses the error as a percentage of the actual values, making it useful for comparing models on different scales or datasets. However, MAPE can be problematic when actual values are very close to zero [ISLR;Hastie]. The formula for MAPE is:
 
-$MAPE\=n100%​i\=1∑n​​yi​yi​−y^​i$
+$MAPE = \frac{100\%}{n} {\sum^n_{i=1}|\frac{y_i-\hat{y_i}}{y_i}|}$
 
 #### R-squared (Coefficient of Determination)
 
 R-squared explains the proportion of the variance in the dependent variable that is predictable from the independent variables. It provides insight into how well the model captures the variability in the data, with a higher R-squared indicating a better fit [ISLR;Hastie].
 
-$R2\=1−∑i\=1n​(yi​−yˉ​)2∑i\=1n​(yi​−y^​i​)2$
+$R^2 = 1-\frac{\sum^n_{i=1}(y_i-\hat{y_i})^2}{\sum^n_{i=1}(y_i-\bar{y})^2}$
 
-where $y^-$ is the mean of the actual values.
+where $\bar{y}$ is the mean of the actual values.
 
 #### Additional Considerations
+
 These evaluation metrics each have strengths and weaknesses. RMSE penalizes large errors more than MAE, making it more sensitive to outliers. MAPE is useful for interpretation as it gives a percentage error, but it can be misleading when actual values are very low. R-squared is a useful measure of fit, but it can sometimes be artificially high in overfitting scenarios. Therefore, it is essential to use a combination of these metrics to gain a well-rounded understanding of the model’s performance. For this project, we are going to look for a model that produce the smallest RMSE, MAE, and MAPE, while produce the largest R-Squared, because this implies the model produce the least error and cover the most variability from the data.
 
-# Results 
+# Results
 
 
 
 # Discussions
 
-
 # Conclusion
 
-
 # Appendix
-
 
 \newpage
 
 # Reference
-
