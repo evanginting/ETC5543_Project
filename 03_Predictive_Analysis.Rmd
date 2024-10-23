@@ -304,7 +304,7 @@ results_test_rf %>%
 ```
 
 ### Random Forest Model: Option 2 (Pb, Sc)
-Combination of Pb, Sc, Zn in predicting REE. These two elements have moderately strong correlation with REE where their correlation coeff. are above 0,5. Starting from this, hyperparameter tuning will be performed.
+Combination of Pb, Sc in predicting REE. These two elements have moderately strong correlation with REE where their correlation coeff. are above 0,5. Starting from this, hyperparameter tuning will be performed.
 
 #### Data Preparation
 ```{r}
@@ -1030,17 +1030,36 @@ results_test %>%
 ### Selecting the best Model
 #### Model Comparison
 ```{r}
-# Display top 3 model
-results_test %>%
-  filter(model %in% c("RF_Rdm_Tuned_3", "RF_Default", "RF_Rdm_Tuned_4")) %>%
+# Display all model
+results_ree_test_df <- results_test %>%
   group_by(model) %>%
   summarise(RMSE = RMSE(.pred, truth),
             R_Square = R2_Score(.pred, truth),
             MAE = MAE(.pred, truth),
-            MAPE = MAPE(.pred, truth))
+            MAPE = MAPE(.pred, truth)) %>%
+  filter(model %in% c("RF_Rdm_Tuned_2","RF_Rdm_Tuned_3", "RF_Rdm_Tuned_4", "RF_Rdm_Tuned_5", "XGBoost_Tuned")) %>%
+  mutate(method = case_when(model == "RF_Rdm_Tuned_2" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_3" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_4" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_5" ~ "Random Forest",
+                                    model == "XGBoost_Tuned" ~ "XGBoost")) %>%
+  mutate(model_scenarios = case_when(model == "RF_Rdm_Tuned_2" ~ "Elements with correlation coefficient above 0.5",
+                                    model == "RF_Rdm_Tuned_3" ~ "Default tuned",
+                                    model == "RF_Rdm_Tuned_4" ~ "Elements with high variable importance",
+                                    model == "RF_Rdm_Tuned_5" ~ "Project-stratified model",
+                                    model == "XGBoost_Tuned" ~ "Default tuned")) %>%
+  mutate(elements = case_when(model == "RF_Rdm_Tuned_2" ~ "Pb, Sc",
+                                    model == "RF_Rdm_Tuned_3" ~ "All elements",
+                                    model == "RF_Rdm_Tuned_4" ~ "Pb, Tl, Sc, Zn, Cu, Cd",
+                                    model == "RF_Rdm_Tuned_5" ~ "All elements",
+                                    model == "XGBoost_Tuned" ~ "All elements")) %>%
+  select(method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
+
+# Saving the data into .RDS format for final report purpose
+saveRDS(results_ree_test_df, './Final_report/Final_report_files/results_ree_test_df.rds')
 ```
 
-Random Forest Model 3 is the best model, beating every model on RMSE, R-square, and MAPE.
+Random Forest "Default tuned" model is the best model, beating every model on RMSE, R-square, and MAPE.
 
 #### Prediction vs Actual Comparison of Best Model
 ```{r pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
@@ -1049,6 +1068,11 @@ Random Forest Model 3 is the best model, beating every model on RMSE, R-square, 
 #   mutate(train = "Testing") %>%
 #   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
 #               mutate(train = "Training")) 
+
+ree_rmse_value <- results_ree_test_df[2,4]
+ree_rsq_value <- results_ree_test_df[2,7]
+ree_mae_value <- results_ree_test_df[2,5]
+ree_mape_value <- results_ree_test_df[2,6]
 
 results_test_best <- results_test %>%
   filter(model %in% c("RF_Rdm_Tuned_3")) %>%
@@ -1062,9 +1086,18 @@ results_test_best <- results_test %>%
   # facet_wrap(~train) +
   theme_minimal() +
   theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
-        axis.title.y = element_text(size = 20))            # Increase Y-axis title size
-
+        axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
+  # Annotate the plot with the metrics
+  annotate("text", x = 390, y = 45, label = paste("RMSE: ", round(ree_rmse_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 390, y = 30, label = paste("MAE: ", round(ree_mae_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 390, y = 15, label = paste("MAPE: ", round(ree_mape_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 390, y = 0, label = paste("R-squared: ", round(ree_rsq_value, 2)), size = 5, hjust = 1)
+  
+  
 print(results_test_best)
+
+# Save the plot to a .png file
+ggsave("./Final_report/Final_report_files/figure-latex/results_ree_test_best.png", plot = results_test_best, width = 8, height = 8, dpi = 300)
 ```
 
 
@@ -1548,6 +1581,75 @@ results_hree_test %>%
   geom_point(alpha = 0.7) +
   facet_wrap(~train)
 ```
+
+### Selecting the best Model
+#### Model Comparison
+```{r}
+# Display all model
+results_hree_test_df <- results_hree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth)) %>%
+  mutate(method = case_when(model == "RF_Rdm_Tuned_HREE" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_HREE_2" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_HREE_3" ~ "Random Forest",
+                                    model == "XGBoost_Tuned_HREE" ~ "XGBoost")) %>%
+  mutate(model_scenarios = case_when(model == "RF_Rdm_Tuned_HREE" ~ "Default tuned",
+                                    model == "RF_Rdm_Tuned_HREE_3" ~ "Model with high variable importance",
+                                    model == "RF_Rdm_Tuned_HREE_2" ~ "Project-stratified",
+                                    model == "XGBoost_Tuned_HREE" ~ "Project-stratified")) %>%
+  mutate(elements = case_when(model == "RF_Rdm_Tuned_HREE_3" ~ "Pb, Sc",
+                                    model == "RF_Rdm_Tuned_HREE" ~ "All elements",
+                                    model == "RF_Rdm_Tuned_HREE_2" ~ "All elements",
+                                    model == "XGBoost_Tuned_HREE" ~ "All elements")) %>%
+  select(method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
+
+# Saving the data into .RDS format for final report purpose
+saveRDS(results_hree_test_df, './Final_report/Final_report_files/results_hree_test_df.rds')
+```
+
+Random Forest with "Project-stratified" Model is the best model, beating every model on RMSE, R-square, and MAPE.
+
+#### Prediction vs Actual Comparison of Best Model
+```{r pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
+# results_test_best <- results_test %>%
+#   filter(model %in% c("RF_Rdm_Tuned_3")) %>%
+#   mutate(train = "Testing") %>%
+#   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
+#               mutate(train = "Training")) 
+
+hree_rmse_value <- results_hree_test_df[2,4]
+hree_rsq_value <- results_hree_test_df[2,7]
+hree_mae_value <- results_hree_test_df[2,5]
+hree_mape_value <- results_hree_test_df[2,6]
+
+results_hree_test_best <- results_hree_test %>%
+  filter(model %in% c("RF_Rdm_Tuned_HREE_2")) %>%
+  ggplot(aes(.pred, truth)) +
+  geom_abline(lty = 2, linewidth = 0.75, linetype = "dashed", colour='red') +
+  geom_point(alpha = 0.7, colour = "black", size = 5) +
+  xlim(c(0,35)) +
+  ylim(c(0,35)) +
+  xlab("Predicted") +
+  ylab("Actual") +
+  # facet_wrap(~train) +
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
+        axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
+  # Annotate the plot with the metrics
+  annotate("text", x = 32, y = 7, label = paste("RMSE: ", round(hree_rmse_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 32, y = 5, label = paste("MAE: ", round(hree_mae_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 32, y = 3, label = paste("MAPE: ", round(hree_mape_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 32, y = 1, label = paste("R-squared: ", round(hree_rsq_value, 2)), size = 5, hjust = 1)
+
+print(results_hree_test_best)
+
+# Save the plot to a .png file
+ggsave("./Final_report/Final_report_files/figure-latex/results_hree_test_best.png", plot = results_hree_test_best, width = 8, height = 8, dpi = 300)
+```
+
 
 ## Predictive Modelling (LREE)
 
@@ -2152,3 +2254,73 @@ results_lree_test %>%
   facet_wrap(~train)
 ```
 
+### Selecting the best Model
+#### Model Comparison
+```{r}
+# Display all model
+results_lree_test_df <- results_lree_test %>%
+  group_by(model) %>%
+  summarise(RMSE = RMSE(.pred, truth),
+            R_Square = R2_Score(.pred, truth),
+            MAE = MAE(.pred, truth),
+            MAPE = MAPE(.pred, truth)) %>%
+  mutate(method = case_when(model == "RF_Rdm_Tuned_LREE" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_LREE_2" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_LREE_3" ~ "Random Forest",
+                                    model == "RF_Rdm_Tuned_LREE_4" ~ "Random Forest",
+                                    model == "XGBoost_Tuned_LREE" ~ "XGBoost")) %>%
+  mutate(model_scenarios = case_when(model == "RF_Rdm_Tuned_LREE" ~ "Default tuned",
+                                    model == "RF_Rdm_Tuned_LREE_2" ~ "Project-stratified",
+                                    model == "RF_Rdm_Tuned_LREE_3" ~ "Elements with high variable importance",
+                                    model == "RF_Rdm_Tuned_LREE_4" ~ "Elements with correlation coefficient above 0.5",
+                                    model == "XGBoost_Tuned_LREE" ~ "Default tuned")) %>%
+  mutate(elements = case_when(model == "RF_Rdm_Tuned_LREE" ~ "All elements",
+                                    model == "RF_Rdm_Tuned_LREE_2" ~ "All elements",
+                                    model == "RF_Rdm_Tuned_LREE_3" ~ "Tl, Pb, Sc, Cd, Zn, Cu",
+                                    model == "RF_Rdm_Tuned_LREE_4" ~ "Pb, Sc, Zn",
+                                    model == "XGBoost_Tuned_LREE" ~ "All elements")) %>%
+  select(method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
+
+# Saving the data into .RDS format for final report purpose
+saveRDS(results_lree_test_df, './Final_report/Final_report_files/results_lree_test_df.rds')
+```
+
+Random Forest "Elements with correlation coefficient above 0.5" model is the best model, beating every model on RMSE, R-square, and MAPE.
+
+#### Prediction vs Actual Comparison of Best Model
+```{r pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
+# results_test_best <- results_test %>%
+#   filter(model %in% c("RF_Rdm_Tuned_3")) %>%
+#   mutate(train = "Testing") %>%
+#   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
+#               mutate(train = "Training")) 
+
+lree_rmse_value <- results_lree_test_df[4,4]
+lree_rsq_value <- results_lree_test_df[4,7]
+lree_mae_value <- results_lree_test_df[4,5]
+lree_mape_value <- results_lree_test_df[4,6]
+
+results_lree_test_best <- results_lree_test %>%
+  filter(model %in% c("RF_Rdm_Tuned_LREE_4")) %>%
+  ggplot(aes(.pred, truth)) +
+  geom_abline(lty = 2, linewidth = 0.75, linetype = "dashed", colour='red') +
+  geom_point(alpha = 0.7, colour = "black", size = 5) +
+  xlim(c(0,300)) +
+  ylim(c(0,300)) +
+  xlab("Predicted") +
+  ylab("Actual") +
+  # facet_wrap(~train) +
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
+        axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
+  # Annotate the plot with the metrics
+  annotate("text", x = 290, y = 45, label = paste("RMSE: ", round(lree_rmse_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 290, y = 30, label = paste("MAE: ", round(lree_mae_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 290, y = 15, label = paste("MAPE: ", round(lree_mape_value, 2)), size = 5, hjust = 1) +
+  annotate("text", x = 290, y = 0, label = paste("R-squared: ", round(lree_rsq_value, 2)), size = 5, hjust = 1)
+
+print(results_lree_test_best)
+
+# Save the plot to a .png file
+ggsave("./Final_report/Final_report_files/figure-latex/results_lree_test_best.png", plot = results_lree_test_best, width = 8, height = 8, dpi = 300)
+```
