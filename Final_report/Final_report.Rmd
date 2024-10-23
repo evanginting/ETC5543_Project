@@ -43,12 +43,13 @@ library(knitr)
 library(kableExtra)
 library(tinytex)
 library(corrplot)
-library(ggcorrplot) 
+library(ggcorrplot)
+library(grid)
 library(gridExtra)
+library(png)
 library(moments)
 library(visdat)
 library(patchwork)
-library(MLmetrics)
 theme_set(theme_minimal())
 ```
 
@@ -464,13 +465,69 @@ where $\bar{y}$ is the mean of the actual values.
 
 #### Additional Considerations
 
-These evaluation metrics each have strengths and weaknesses. RMSE penalizes large errors more than MAE, making it more sensitive to outliers. MAPE is useful for interpretation as it gives a percentage error, but it can be misleading when actual values are very low. R-squared is a useful measure of fit, but it can sometimes be artificially high in overfitting scenarios. Therefore, it is essential to use a combination of these metrics to gain a well-rounded understanding of the model’s performance. For this project, we are going to look for a model that produce the smallest RMSE, MAE, and MAPE, while produce the largest R-Squared, because this implies the model produce the least error and cover the most variability from the data.
+These evaluation metrics each have strengths and weaknesses. RMSE penalises large errors more than MAE, making it more sensitive to outliers. MAPE is useful for interpretation as it gives a percentage error, but it can be misleading when actual values are very low. R-squared is a useful measure of fit, but it can sometimes be artificially high in overfitting scenarios. Therefore, it is essential to use a combination of these metrics to gain a well-rounded understanding of the model’s performance. For this project, we are going to look for a model that produce the smallest RMSE, MAE, and MAPE, while produce the largest R-Squared, because this implies the model produce the least error and cover the most variability from the data.
+
+## Elements with Above PAAS Level
 
 # Results
 
+## Predicting Critical Elements
 
+```{r test_res, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE}
+# Load data
+results_ree_test_df <- readRDS('./Final_report_files/results_ree_test_df.rds')
+results_hree_test_df <- readRDS('./Final_report_files/results_hree_test_df.rds')
+results_lree_test_df <- readRDS('./Final_report_files/results_lree_test_df.rds')
+
+# Merge all data
+test_res <- bind_rows(results_ree_test_df, results_hree_test_df, results_lree_test_df)
+
+# Populate a formal table
+#kable(test_res, 
+#      booktabs = T,
+#      format = "latex",
+#      align = "c",
+#      escape = FALSE,
+#      caption = "\\textbf{Evaluation Metrics of All Model for Predicting REE, HREE, and LREE Across Different Scenarios}",
+#      col.names = c("Target Variable", "Method", "Scenarios", "Elements", "RMSE", "MAE", "MAPE", "R Squared")) %>%
+#  kable_classic_2(full_width = F)
+```
+
+Table \ref{tab:test_res} shows the model performance evaluation for predicting REE, HREE, and LREE across different scenarios. For REE prediction, the predictive model was built under five different scenarios. From the error evaluation metrics, the RMSE value is ranging from 47.57 to 66.45, MAE value is ranging from 33.85 to 38.18, and MAPE value is ranging from 26.40% to 29.44%. A model with the lowest value indicates the least error, which turn out the random forest default tuned model where all elements are included is the lowest of all. Additionally, from the variability metric, the R-Square value is ranging from 0.37 to 0.62. A model with the highest value indicates a better model in capturing variability of the data, in this case the same model also score the the highest of all. This results concludes the best model in predicting REE is the random forest default tuned model where all elements are included. 
+
+For HREE prediction, the predictive model was built under four different scenarios. A scenario where we construct the model with elements which has correlation coefficient above 0.5 is absent because there is only one element that fall under this category (Sc). It was decided not to perform this scenario for HREE for the reason that Sc correlation coefficient to HREE is only 0.57, with just moderately strong coefficient, Authors thought predicting HREE with one element will: first, oversimplified the model; second, ignore the fact that HREE is less abundant in the nature which further reduces the likelihood that a single moderately correlated element could serve as a reliable predictor. Next, From the error evaluation metrics, the RMSE value is ranging from 2.9 to 3.33, MAE value is ranging from 2.01 to 2.26, and MAPE value is ranging from 28.86% to 36.93%. The Grouped Project - Stratified has the lowest value of RMSE and MAE, but the random forest default tuned model is the lowest of MAPE. Moreover, R-Square value is ranging from 0.46 to 0.55. In this case, Grouped Project - Stratified has the highest score. In Overall, the latter model has better metrics in three evaluation metrics, making it the best model in predicting HREE.
+
+For LREE prediction, five different scenarios was performed to get the optimal performance. From the error evaluation metrics, the RMSE value is ranging from 38.43 to 59.47, MAE value is ranging from 26.62 to 32.45, and MAPE value is ranging from 25.07% to 31.38%. The model that was constructed using elements with correlation coefficient above 0.5 score the lowest of all, making it the model with least error rate. Furthermore, R-Square value is ranging from 0.44 to 0.63. In this case, the same model score the highest. It can be concluded that the random forest which constructed with elements that has correlation coefficient value above 0.5 is the best model in predicting LREE.
+
+With the best model identified, figure \ref{fig:element-bestplot} shows the predicted vs actual values of each model. The red dashed diagonal line portray the ideal scenario where the predicted values perfectly match the actual values. Points lying on this line indicate perfect prediction, while deviations from the line reflect prediction errors. 
+
+```{r bestplot, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width="33%", out.height="20%", fig.cap = "Predicted vs Actual Values of the Best Models", fig.show = 'hold', fig.align = 'center'}
+
+knitr::include_graphics(c("./Final_report_files/figure-latex/results_ree_test_best.png",
+                          "./Final_report_files/figure-latex/results_hree_test_best.png",
+                          "./Final_report_files/figure-latex/results_lree_test_best.png"))
+
+```
+
+The plot that compares predicted vs. actual values of REE reveals moderate prediction performance by the model. With an RMSE of 47.57 and MAE of 33.85, the model demonstrates an average prediction error of roughly 47 units and an average absolute error of about 34 units, indicating that predictions are fairly close to the actual values but still have notable deviations. A MAPE of 26% suggests that, on average, the model's predictions deviate by 26% from the actual REE values, which is a slight improvement in accuracy compared to other similar models. The R-squared value of 0.62 indicates that 62% of the variance in the actual values is captured by the model, showing a reasonable fit but still leaving significant room for error. In terms of key insights, the model performs relatively well for mid-range REE values, as the points are closely aligned along the diagonal line. However, the scatter becomes more pronounced at higher REE values (beyond 300), where the model underestimates the actual values, as observed by the upward spread of points above the line. This suggests that while the model captures general patterns, it faces challenges in predicting high REE values with precision, due to outliers and high range (max - min) value of REE as describe in Table \ref{tab:desc-stats}.
+
+From HREE plot, the model demonstrates reasonable predictive performance with some room for improvement. The RMSE of 2.9 indicates that, on average, the model’s predictions deviate by about 2.9 units from the actual HREE values. The MAE of 2.01 suggests that the average absolute error is 2.01 units, indicating that the model tends to have relatively small errors overall. The MAPE of 33% shows that the model's predictions are, on average, 33% off from the actual values, which reflects moderate accuracy. The R-squared value of 0.55 reveals that 55% of the variance in the actual HREE values is captured by the model, indicating that the model captures the general pattern but leaves a significant portion of variability unexplained. Some key insights from the plot, most data points cluster around lower values, particularly between 0 and 10 for both predicted and actual values, suggesting that the model predicts these ranges fairly well. However, for higher actual HREE values (above 20), the model tends to underestimate, as indicated by points above the diagonal line. Additionally, there are a few outliers, particularly the one near 30, where the model considerably underpredicts. Overall, the model performs well for low to mid-range HREE values but struggles with higher values, leading to underestimation and some degree of error at the upper range.
+
+Similar to other model where they have captured the general trend with some noticeable deviations, the same case observed from LREE plot. The RMSE of 38.44 and MAE of 29.6 indicate moderate errors in the predictions. MAE is slightly lower than RMSE, meaning that large errors (outliers) are not excessively frequent, but the general prediction error is still notable. A MAPE of 31% highlights that the model’s predictions are, on average, 31% away from the actual values, indicating moderate accuracy. The R-squared value of 0.63 suggests that 63% of the variance in the actual data is explained by the model, which shows a fair fit but leaves room for unexplained variance. Key insights from the plot include more accurate predictions in the lower to mid-range values of LREE, with a clustering of points near the diagonal line, while the model tends to underestimate higher actual LREE values, as shown by the increasing spread above 200. This underestimation at higher values signals some challenges in predicting extreme values accurately, which might be resulted from outliers and high range of LREE as describe in Table \ref{tab:desc-stats}.
+
+## Elements with Above PAAS Level
 
 # Discussions
+
+## Predicting Critical Elements
+
+"As all the best models have been thoroughly analyzed, it is worth discussing whether these models can be considered 'good models' for predicting REE, HREE, and LREE. Starting with the advantages, all the best models have RMSE and MAE values that are relatively close to the actual values, with some deviations. However, when these figures are compared to the standard deviation of each target variable, they fall significantly below the standard deviation. As shown in Table \ref{tab:desc-stats}, the standard deviations of REE, HREE, and LREE are 78.9, 4.81, and 71, respectively. This indicates that the model’s prediction errors are smaller than the natural variability in the target variables, meaning the models perform better than a simple mean-based prediction. [Moriasi] reported that if RMSE and MAE values are less than half of the standard deviation, the error can be considered low. In this case, the MAE values meet this criterion, while the RMSE values are slightly higher, which might be due to the model's higher sensitivity to outliers. Additionally, [Moriasi] recommends using the RMSE to Standard Deviation Ratio (RSR) to assess model performance, categorizing models as 'very good' if RSR is below 0.5, 'good' if RSR is between 0.50 and 0.60, 'satisfactory' if RSR is between 0.60 and 0.70, and 'unsatisfactory' if RSR is above 0.70. The RSR of all the best models falls within the 'good' category, which suggests that these models can be considered good based on RMSE performance.
+
+On the downside, the R-squared values of 0.62 (REE), 0.55 (HREE), and 0.63 (LREE) indicate that the models are only moderately strong in capturing the variability of the data. Ideally, an R-squared value above 0.8 would be desirable, but [Moriasi] states that an R-squared above 0.5 is still acceptable. Furthermore, the MAPE values of 26% (REE), 33% (HREE), and 31% (LREE) are relatively high, although they remain below the 50% threshold.
+
+There are several key considerations that justify classifying these models as good models. First, none of the elements from the ME-4ACD81 test show a high correlation with the target variables, making it challenging to produce highly accurate models. Second, a cost-benefit trade-off exists. Given that the ME-4ACD81 test is almost four times cheaper than the ME-MS81 test, these models are satisfactory, especially for businesses operating on tight budgets. Third, linked to the second point, the affordability of the ME-4ACD81 test allows for more samples to be tested, resulting in more data. With additional data, the model can be retrained, potentially improving its predictive accuracy. Therefore, it is reasonable to use samples tested via the ME-4ACD81 test. Finally, it should be noted that some errors were reported by the lab when inputting sample concentration values, leading to many outliers in the data. However, due to time constraints, the authors were unable to obtain corrected data."      
+
+## Elements with Above PAAS Level
 
 # Conclusion
 

@@ -1053,7 +1053,8 @@ results_ree_test_df <- results_test %>%
                                     model == "RF_Rdm_Tuned_4" ~ "Pb, Tl, Sc, Zn, Cu, Cd",
                                     model == "RF_Rdm_Tuned_5" ~ "All elements",
                                     model == "XGBoost_Tuned" ~ "All elements")) %>%
-  select(method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
+  mutate(target_var = "REE") %>%
+  select(target_var, method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
 
 # Saving the data into .RDS format for final report purpose
 saveRDS(results_ree_test_df, './Final_report/Final_report_files/results_ree_test_df.rds')
@@ -1069,10 +1070,10 @@ Random Forest "Default tuned" model is the best model, beating every model on RM
 #   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
 #               mutate(train = "Training")) 
 
-ree_rmse_value <- results_ree_test_df[2,4]
-ree_rsq_value <- results_ree_test_df[2,7]
-ree_mae_value <- results_ree_test_df[2,5]
-ree_mape_value <- results_ree_test_df[2,6]
+ree_rmse_value <- results_ree_test_df[2,5]
+ree_rsq_value <- results_ree_test_df[2,8]
+ree_mae_value <- results_ree_test_df[2,6]
+ree_mape_value <- results_ree_test_df[2,7]
 
 results_test_best <- results_test %>%
   filter(model %in% c("RF_Rdm_Tuned_3")) %>%
@@ -1604,7 +1605,8 @@ results_hree_test_df <- results_hree_test %>%
                                     model == "RF_Rdm_Tuned_HREE" ~ "All elements",
                                     model == "RF_Rdm_Tuned_HREE_2" ~ "All elements",
                                     model == "XGBoost_Tuned_HREE" ~ "All elements")) %>%
-  select(method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
+  mutate(target_var = "HREE") %>%
+  select(target_var, method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
 
 # Saving the data into .RDS format for final report purpose
 saveRDS(results_hree_test_df, './Final_report/Final_report_files/results_hree_test_df.rds')
@@ -1620,10 +1622,10 @@ Random Forest with "Project-stratified" Model is the best model, beating every m
 #   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
 #               mutate(train = "Training")) 
 
-hree_rmse_value <- results_hree_test_df[2,4]
-hree_rsq_value <- results_hree_test_df[2,7]
-hree_mae_value <- results_hree_test_df[2,5]
-hree_mape_value <- results_hree_test_df[2,6]
+hree_rmse_value <- results_hree_test_df[2,5]
+hree_rsq_value <- results_hree_test_df[2,8]
+hree_mae_value <- results_hree_test_df[2,6]
+hree_mape_value <- results_hree_test_df[2,7]
 
 results_hree_test_best <- results_hree_test %>%
   filter(model %in% c("RF_Rdm_Tuned_HREE_2")) %>%
@@ -2279,7 +2281,8 @@ results_lree_test_df <- results_lree_test %>%
                                     model == "RF_Rdm_Tuned_LREE_3" ~ "Tl, Pb, Sc, Cd, Zn, Cu",
                                     model == "RF_Rdm_Tuned_LREE_4" ~ "Pb, Sc, Zn",
                                     model == "XGBoost_Tuned_LREE" ~ "All elements")) %>%
-  select(method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
+  mutate(target_var = "LREE") %>%
+  select(target_var, method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
 
 # Saving the data into .RDS format for final report purpose
 saveRDS(results_lree_test_df, './Final_report/Final_report_files/results_lree_test_df.rds')
@@ -2295,10 +2298,10 @@ Random Forest "Elements with correlation coefficient above 0.5" model is the bes
 #   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
 #               mutate(train = "Training")) 
 
-lree_rmse_value <- results_lree_test_df[4,4]
-lree_rsq_value <- results_lree_test_df[4,7]
-lree_mae_value <- results_lree_test_df[4,5]
-lree_mape_value <- results_lree_test_df[4,6]
+lree_rmse_value <- results_lree_test_df[4,5]
+lree_rsq_value <- results_lree_test_df[4,8]
+lree_mae_value <- results_lree_test_df[4,6]
+lree_mape_value <- results_lree_test_df[4,7]
 
 results_lree_test_best <- results_lree_test %>%
   filter(model %in% c("RF_Rdm_Tuned_LREE_4")) %>%
