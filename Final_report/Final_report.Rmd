@@ -517,6 +517,89 @@ Similar to other model where they have captured the general trend with some noti
 
 ## Elements with Above PAAS Level
 
+PAAS (Post-Archean Australian Average Shale) represents the precise  composition of the upper crust, which is derived from the average of 23 shales in Post-Archean age, with the exclusion of aberrant materials and the correction of quadratic equation.[@McLennan1989] PAAS normalization refers to the  process of tested element concentrations normalization against the PAAS score, providing a standardized way to element abundance across different samples. The The formula can be written as:
+
+$\text{PAAS Normalized}=\frac{ \text{Element Concentration in Sample (ppm)}}{\text{PAAS Concentration (ppm)}}$
+
+Figure \@ref(fig:paaslvl) showcase the overall distribution of PAAS levels for all elements in global project, which can give a panorama viewpoint for the enrichment and universal of each element's distribution. 
+A ratio greater than 1 indicates that the element concentration in the sample is enriched relative to PAAS standard(Represented as green triangle), implying potential for economic exploitation, vice versa. 
+
+Only a few elements, such as `Rhenium(Re)`, `Germanium(Ge)`, and `HREE`, cannot meet the detectable sample sizes  because of not found or subtle presence, while the remaining elements are well-represented, with sufficient sample volumes observed in abundant concentration.
+
+Notably, elements like `Silver(Ag)` and `Gold(Au)` tend to be elevated the greatest proportion of samples in enrichment. Only one valid samples is detected below average. However, their spatial disparity is volatile. Even within the same region might receive completely reverse result, which can pose the challenge in mass production.
+
+In turn, the elements of `Bismuth(Bi)`and `Lithium(Li)` present promising prospects in future growth. First and foremost, The extraction from coal mine is a supplementary solution for ore reserves and driven by market‘s demand-supply dynamics. With the rising awareness of environmental sustainability and conservation, Bismuth, as a non-toxic alternative to `lead (Pb)`, has gained widespread attention,especially its alloy glasses for radiation protection purposes.[@Buriahi2021]. The global shifts towards EVs has also accounted for a surge of demand in lithium batteries.Besides, Compared with other elements with above-average levels, their samples  show higher levels of enrichment (more than 5 times the PAAS standard), with some specific projects detecting concentrations exceeding 10 times the PAAS standard. 
+
+Meanwhile, some instances of the element enrichment are misled by the operational misconduct. Despite scarce numbers of valid samples, Germanium is still outstanding in the graphic for it's extreme enriched samples displaying  30~40 times higher than PAAS standard. Considering it is a relatively rare in most natural environments and all these abnormal samples come from the same project(`Wandoan`), this seems more like a human error in statistical reporting from the laboratory. `Molybdenum(Mo)` and `Barium(Ba)` are also not the typcial elements enriched in coal seams. Their apparent enrichment might be incurred by the contamination of drilling fluids.
+```{r paaslvlcode, eval=FALSE}
+p1<-alldata|> 
+
+  
+    ggplot(aes( y=Element_Symbol,x=PAAS_normalised_value, color=Above_PASS_flag, shape =Above_PASS_flag
+ ))+geom_point( ) +  # 1 for circle, 2 for triangle
+  scale_color_manual(values = c("black", "#028A0F")) +  # Black for below background, green for enriched
+  geom_vline(xintercept = 1, linetype = "dashed", color ="red") +  # Dashed vertical line at x = 1
+  labs(x = "PAAS Normalised Value (ppm)", y = "Element Symbol",
+       color="Above PAAS Standard",
+       shape ="Above PAAS Standard") +
+  theme_bw()+
+  scale_shape(solid = FALSE)+
+  theme(legend.position="bottom")+ggtitle("The PAAS levels of global project")
+ggsave("Final_report_files/figure-latex/PAAS_global_project.png", plot = p1)
+```
+
+
+```{r paaslvl,fig.width=12, fig.height=12,fig.cap="The distribution of element concentration with reference to PASS levels", eval=FALSE}
+
+knitr::include_graphics("Final_report_files/figure-latex/PAAS_global_project.png")
+
+```
+Understanding the spatial variability and geochemical behavior across projects enable the subsequent exploration focus on  project regions with the highest potential yield. Figure \@ref(fig:regionalbk) is the project breakdown for the distribution of element concentration with reference to PASS levels. `Confidential_A` and `Fort Cooper Coal Measure(FCCM)` are the primary potential enrichment areas. All measured elements exhibit a clear and widespread enrichment pattern, consistently maintaining an enrichment range of 1 to 5 times to the PAAS standard. 
+
+Moreover, `PowerPlant Ash` and `Confidential_B` also  have certain potential for development. Although their elements are not as pronounced as those in the two regions mentioned above, a significant number of samples still show  higher enrichment levels above the PAAS standard, particularly for critical elements e.g. `Aluminum(Al)` and `Titanium(Ti)` in `PowerPlant Ash`,  LREE and MREE series in `Confidential_B`. The variance among their samples is substantial, suggesting that the enrichment might be localized. 
+
+In the end, Also some impoverished projects are found in project breakdown, including `Unnamed`, `Coppabella`, `Newland` and `Metropolitian` etc 8 projects. These projects show lower-than-average concentrations across the majority of measured elements, indicating limited economic potential under current conditions.
+```{r Scatterplot, eval=FALSE}
+
+regions<-unique(alldata$Project_Name)
+scatter_plots<-list()
+for(i in seq_along(regions)){
+
+p3<-alldata |> 
+    filter( Project_Name==regions[i] & Element_Value_ppm >=0)|> ##Remove negative normalized value
+  
+    ggplot(aes( y=Element_Symbol,x=PAAS_normalised_value, color=Above_PASS_flag, shape =Above_PASS_flag
+ ))+geom_point( ) +  # 1 for circle, 2 for triangle
+  scale_color_manual(values = c("black", "#028A0F")) +  # Black for below background, green for enriched
+  geom_vline(xintercept = 1, linetype = "dashed", color ="red") +  # Dashed vertical line at x = 1
+  labs(x = "PAAS Normalised Value (ppm)", y = "Element Symbol",
+       color="Above PAAS Standard",
+       shape ="Above PAAS Standard") +
+  theme_bw()+
+  scale_shape(solid = FALSE)+
+  theme(legend.position="bottom",
+       axis.text.y = element_text(size = 5))+ggtitle(paste(regions[i] ))
+scatter_plots[[i]] <- p3
+}
+saveRDS( scatter_plots,"Final_report_files/PAAS_regional_breakdown.rds") 
+```
+
+
+```{r regionalbk, fig.width=12, fig.height=12, fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels" }
+scatter_plots<-readRDS("Final_report_files/PAAS_regional_breakdown.rds")
+wrap_plots(scatter_plots[1:3],ncol=1)
+
+wrap_plots(scatter_plots[4:6],ncol=1)
+
+wrap_plots(scatter_plots[7:9],ncol=1)
+
+wrap_plots(scatter_plots[10:12],ncol=1)
+
+wrap_plots(scatter_plots[13:15],ncol=1)
+
+wrap_plots(scatter_plots[16:17],ncol=1)
+```
+
 # Discussions
 
 ## Predicting Critical Elements
@@ -528,6 +611,11 @@ On the downside, the R-squared values of 0.62 (REE), 0.55 (HREE), and 0.63 (LREE
 There are several key considerations that justify classifying these models as good models. First, none of the elements from the ME-4ACD81 test show a high correlation with the target variables, making it challenging to produce highly accurate models. Second, a cost-benefit trade-off exists. Given that the ME-4ACD81 test is almost four times cheaper than the ME-MS81 test, these models are satisfactory, especially for businesses operating on tight budgets. Third, linked to the second point, the affordability of the ME-4ACD81 test allows for more samples to be tested, resulting in more data. With additional data, the model can be retrained, potentially improving its predictive accuracy. Therefore, it is reasonable to use samples tested via the ME-4ACD81 test. Finally, it should be noted that some errors were reported by the lab when inputting sample concentration values, leading to many outliers in the data. However, due to time constraints, the authors were unable to obtain corrected data."      
 
 ## Elements with Above PAAS Level
+
+With the escalating demand in the Australian market and the presence of enriched concentrations, previous study suggests `Bismuth` and `Lithium` are the top promising elements for economic extraction. However,due to the various measurement protocols applied in element mapping across projects (ME-4ACD81 and ME-MS81 analysis etc.), there is a significant amount of missing data for some elements, attributed to insufficient measurement precision and scope, instead of absence in coal mines. Re-examining these project's samples using a consistent testing method can help improve data integrity.=In general, the abnormal findings on enrichment highly aligns with the recent cutting-edge analyses from both local and international research, including [@sun2010] and [@Hodgkinson2020].
+
+
+The project-wise breakdown serves as an insightful guideline for prospective extraction efforts by pinpointing enrichment area. A comprehensive and in-depth investigation resource is imperative to prioritize on `Confidential_A` and `Fort Cooper Coal Measure(FCCM)`, where the distribution of enriched elements is pervasive and stable-concentrated.  To optimize resource input but still yield high-quality output, A targeted study in specific enriched elements may prove to be more effective in other potential area, such as `PowerPlant Ash` and `Confidential_B`. Conversely, some projects that only received lackluster results should rule out in further exploration.
 
 # Conclusion
 
