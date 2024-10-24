@@ -20,48 +20,50 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Data source and description}{13}{section*.4}%
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Data scope}{14}{section*.4}%
+\defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Initial Data Analysis and wrangling process}{14}{section*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Exploratory Data Analysis}{14}{figure.caption.5}%
+\contentsline {section}{Exploratory Data Analysis}{15}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Methodology}{18}{figure.caption.6}%
+\contentsline {section}{Methodology}{19}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Predicting Critical Elements}{18}{section*.7}%
+\contentsline {subsection}{Predicting Critical Elements}{19}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Data Pre-Processing}{19}{figure.caption.8}%
+\contentsline {subsubsection}{Data Pre-Processing}{20}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Stratified sampling and Initial split}{20}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Prediction Model}{20}{figure.caption.8}%
+\contentsline {subsubsection}{Prediction Model}{21}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Hyperparameter tuning}{21}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Model evaluation}{22}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Root Mean Squared Error (RMSE)}{22}{figure.caption.8}%
+\contentsline {paragraph}{Root Mean Squared Error (RMSE)}{23}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Mean Absolute Error (MAE)}{22}{figure.caption.8}%
+\contentsline {paragraph}{Mean Absolute Error (MAE)}{23}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Mean Absolute Percentage Error (MAPE)}{22}{figure.caption.8}%
+\contentsline {paragraph}{Mean Absolute Percentage Error (MAPE)}{23}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{R-squared (Coefficient of Determination)}{23}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{Additional Considerations}{23}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Elements with Above PAAS Level}{23}{figure.caption.8}%
+\contentsline {subsection}{Elements with Above PAAS Level}{24}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Results}{23}{figure.caption.8}%
+\contentsline {section}{Results}{24}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Predicting Critical Elements}{23}{section*.9}%
+\contentsline {subsection}{Predicting Critical Elements}{24}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Elements with Above PAAS Level}{25}{figure.caption.10}%
+\contentsline {subsection}{Elements with Above PAAS Level}{26}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Discussions}{26}{figure.caption.10}%
+\contentsline {section}{Discussions}{33}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Predicting Critical Elements}{26}{section*.11}%
+\contentsline {subsection}{Predicting Critical Elements}{33}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Elements with Above PAAS Level}{27}{section*.11}%
+\contentsline {subsection}{Elements with Above PAAS Level}{34}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Conclusion}{27}{section*.11}%
+\contentsline {section}{Conclusion}{34}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Appendix}{27}{section*.11}%
+\contentsline {section}{Appendix}{34}{section*.11}%

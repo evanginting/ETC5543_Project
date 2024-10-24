@@ -2251,6 +2251,32 @@
     <bcf:citekey order="48">McLennan2011</bcf:citekey>
     <bcf:citekey order="49">Hodgkinson2021</bcf:citekey>
     <bcf:citekey order="50">McLennan2011</bcf:citekey>
+    <bcf:citekey order="51">tukey1977</bcf:citekey>
+    <bcf:citekey order="52">tukey1977</bcf:citekey>
+    <bcf:citekey order="53">Hastie09</bcf:citekey>
+    <bcf:citekey order="54">Hastie09</bcf:citekey>
+    <bcf:citekey order="55">Menon2020</bcf:citekey>
+    <bcf:citekey order="56">Hastie09</bcf:citekey>
+    <bcf:citekey order="56">Breiman01</bcf:citekey>
+    <bcf:citekey order="57">boehmke2019</bcf:citekey>
+    <bcf:citekey order="58">YANG2020295</bcf:citekey>
+    <bcf:citekey order="59">tidymodels</bcf:citekey>
+    <bcf:citekey order="60">ISLR</bcf:citekey>
+    <bcf:citekey order="60">Hastie09</bcf:citekey>
+    <bcf:citekey order="61">ISLR</bcf:citekey>
+    <bcf:citekey order="61">Hastie09</bcf:citekey>
+    <bcf:citekey order="62">ISLR</bcf:citekey>
+    <bcf:citekey order="62">Hastie09</bcf:citekey>
+    <bcf:citekey order="63">ISLR</bcf:citekey>
+    <bcf:citekey order="63">Hastie09</bcf:citekey>
+    <bcf:citekey order="64">ISLR</bcf:citekey>
+    <bcf:citekey order="64">Hastie09</bcf:citekey>
+    <bcf:citekey order="65">McLennan1989</bcf:citekey>
+    <bcf:citekey order="66">Buriahi2021</bcf:citekey>
+    <bcf:citekey order="67">Moriasi2007</bcf:citekey>
+    <bcf:citekey order="68">Moriasi2007</bcf:citekey>
+    <bcf:citekey order="69">Moriasi2007</bcf:citekey>
+    <bcf:citekey order="70">Hodgkinson2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
