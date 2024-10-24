@@ -395,6 +395,7 @@ knitr::include_graphics("/cloud/project/Final_report/Final_report_files/figure-l
 
 The methodology for this project follows a three-stage process. First, data preprocessing is conducted, addressing outliers and missing values to ensure clean data. Next, several modeling scenarios are explored using Random Forest and Gradient Boosting, with hyperparameter tuning applied to optimise model performance. These scenarios include using all elements, elements with high correlation to target variables, and different stratification methods for data splitting. Finally, model performance is evaluated using key metrics such as Root Mean Squared Error (RMSE), R-squared, Mean Absolute Error (MAE), and Mean Absolute Percentage Error (MAPE).
 
+
 ### Data Pre-Processing
 
 On one hand, outlier is well known as the observations/data points that deviate significantly from other observations in a dataset. On the other hand, missing value is observation when there is no data stored for certain variables. In predictive modelling, outliers and missing value can have an effect to the regression model when predicting the target variable in a negative way. For example, outliers value will disrupt the normal pattern of the dataset, while missing value will introduce uncertainty to the model. Thus, if not treated, they might lead the model to make inaccurate predictions. With this concern, outlier and missing value will be treated, aimed to reduce the negative effect to the model performance.
@@ -475,6 +476,13 @@ These evaluation metrics each have strengths and weaknesses. RMSE penalises larg
 
 ## Elements with Above PAAS Level
 
+PAAS (Post-Archean Australian Average Shale) represents the precise composition of the upper crust, which is derived from the average of 23 shales in Post-Archean age, with the exclusion of aberrant materials and the correction of quadratic equation. [@McLennan1989] PAAS normalisation refers to the  process of tested element concentrations normalization against the PAAS score, providing a standardized way to element abundance across different samples. The The formula can be written as:
+
+$\text{PAAS Normalized}=\frac{ \text{Element Concentration in Sample (ppm)}}{\text{PAAS Concentration (ppm)}}$
+The cut-off benchmark is 1 ppm for the classification of element enrichment.  A ratio exceeding 1 ppm indicates that the element concentration in the sample is enriched relative to PAAS standard, implying potential for economic exploitation, vice versa. 
+
+The visualization technique adopts the distribution scatter plot for two scenarios: 1). Aggregating all testing samples in global project a to comprehend which element is considered enrichment from a holistic perspective and 2). Splitting down to each individual project to identify which region is relative enriched than others.
+
 # Results
 
 ## Predicting Critical Elements
@@ -523,11 +531,7 @@ Similar to other model where they have captured the general trend with some noti
 
 ## Elements with Above PAAS Level
 
-PAAS (Post-Archean Australian Average Shale) represents the precise  composition of the upper crust, which is derived from the average of 23 shales in Post-Archean age, with the exclusion of aberrant materials and the correction of quadratic equation. [@McLennan1989] PAAS normalisation refers to the  process of tested element concentrations normalization against the PAAS score, providing a standardized way to element abundance across different samples. The The formula can be written as:
-
-$\text{PAAS Normalized}=\frac{ \text{Element Concentration in Sample (ppm)}}{\text{PAAS Concentration (ppm)}}$
-
-Figure \ref{fig:paaslvl} showcase the overall distribution of PAAS levels for all elements in global project, which can give a panorama viewpoint for the enrichment and universal of each element's distribution. A ratio greater than 1 indicates that the element concentration in the sample is enriched relative to PAAS standard(Represented as green triangle), implying potential for economic exploitation, vice versa. 
+Figure \ref{fig:paaslvl} showcase the overall distribution of PAAS levels for all elements in global project, which can give a panorama viewpoint for the enrichment and universal of each element's distribution. The cut-off threshold of element enrichment is represented as red vertical dashed line, while the enriched and diminished samples are represented as green triangle and black circle respectively.
 
 Only a few elements, such as `Rhenium(Re)`, `Germanium(Ge)`, and `HREE`, cannot meet the detectable sample sizes  because of not found or subtle presence, while the remaining elements are well-represented, with sufficient sample volumes observed in abundant concentration.
 
@@ -617,7 +621,7 @@ There are several key considerations that justify classifying these models as go
 
 ## Elements with Above PAAS Level
 
-With the escalating demand in the Australian market and the presence of enriched concentrations, previous study suggests `Bismuth` and `Lithium` are the top promising elements for economic extraction. However,due to the various measurement protocols applied in element mapping across projects (ME-4ACD81 and ME-MS81 analysis etc.), there is a significant amount of missing data for some elements, attributed to insufficient measurement precision and scope, instead of absence in coal mines. Re-examining these project's samples using a consistent testing method can help improve data integrity. In general, the abnormal findings on enrichment aligns with the recent cutting-edge analyses from both local and international research, including [sun2010] and [@Hodgkinson2020].
+With the escalating demand in the Australian market and the presence of enriched concentrations, previous study suggests `Bismuth` and `Lithium` are the top promising elements for economic extraction. However,due to the various measurement protocols applied in element mapping across projects (ME-4ACD81 and ME-MS81 analysis etc.), there is a significant amount of missing data for some elements, attributed to insufficient measurement precision and scope, instead of absence in coal mines. Re-examining these project's samples using a consistent testing method can help improve data integrity. In general, the abnormal findings on enrichment aligns with the recent cutting-edge analyses from both local and international research, including [@Sun2010] and [@Hodgkinson2020].
 
 The project-wise breakdown serves as an insightful guideline for prospective extraction efforts by pinpointing enrichment area. A comprehensive and in-depth investigation resource is imperative to prioritize on `Confidential_A` and `Fort Cooper Coal Measure(FCCM)`, where the distribution of enriched elements is pervasive and stable-concentrated.  To optimise resource input but still yield high-quality output, A targeted study in specific enriched elements may prove to be more effective in other potential area, such as `PowerPlant Ash` and `Confidential_B`. Conversely, some projects that only received lackluster results should rule out in further exploration.
 
