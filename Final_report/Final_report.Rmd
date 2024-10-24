@@ -253,8 +253,6 @@ For outliers, @tukey1977 introduce the approach to detect outliers in a dataset.
 
 For missing values, @Hastie09 stated that there are number of ways in treating missing value (assuming random missing value), which are removing observations with any missing value; rely on the learning algorithm to handle missing values during the training process; and fill in all missing values prior to training process. The last option was chosen and the missing value are filled with the median value of where the samples were obtained from, but if the element does not exist in that particular project, then the global median will be applied. For example, for missing value detected in "Sc" data from "Confidential Project A", then those missing values will be replaced with median value of "Sc" in general.
 
-### Stratified sampling and Initial split
-
 Unlike simple random sampling, stratified sampling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect "NA" in correlation calculation and all element in the list [@Menon2020]. Additionally, the processed data will be split to training and testing set with 2/3 proportion.
 
 ### Prediction Model
