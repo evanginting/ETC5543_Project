@@ -1,0 +1,1987 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{Austrade2024}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=75d669f119698feb7a880e10e92de550}{%
+           family={Austrade},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {Australian Trade}%
+        {Investment Comission}%
+      }
+      \strng{namehash}{75d669f119698feb7a880e10e92de550}
+      \strng{fullhash}{75d669f119698feb7a880e10e92de550}
+      \strng{bibnamehash}{75d669f119698feb7a880e10e92de550}
+      \strng{authorbibnamehash}{75d669f119698feb7a880e10e92de550}
+      \strng{authornamehash}{75d669f119698feb7a880e10e92de550}
+      \strng{authorfullhash}{75d669f119698feb7a880e10e92de550}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{Australian Critical Minerals Prospectus}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://international.austrade.gov.au/en/news-and-analysis/publications-and-reports/critical-minerals-prospectus
+      \endverb
+      \verb{url}
+      \verb https://international.austrade.gov.au/en/news-and-analysis/publications-and-reports/critical-minerals-prospectus
+      \endverb
+    \endentry
+    \entry{boehmke2019}{book}{}
+      \name{author}{2}{}{%
+        {{hash=ac0d9be69c6a449d43d2e67492d18613}{%
+           family={Boehmke},
+           familyi={B\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=8a86915e93e0e3d37ab6e623a0ede9fa}{%
+           family={Greenwell},
+           familyi={G\bibinitperiod},
+           given={B.M.},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{a82b8c14566d3b905394ac88e49536f8}
+      \strng{fullhash}{a82b8c14566d3b905394ac88e49536f8}
+      \strng{bibnamehash}{a82b8c14566d3b905394ac88e49536f8}
+      \strng{authorbibnamehash}{a82b8c14566d3b905394ac88e49536f8}
+      \strng{authornamehash}{a82b8c14566d3b905394ac88e49536f8}
+      \strng{authorfullhash}{a82b8c14566d3b905394ac88e49536f8}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781000730197}
+      \field{series}{Chapman \& Hall/CRC The R Series}
+      \field{title}{Hands-On Machine Learning with R}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://books.google.com.au/books?id=aXC9DwAAQBAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.com.au/books?id=aXC9DwAAQBAJ
+      \endverb
+    \endentry
+    \entry{Breiman01}{article}{}
+      \name{author}{1}{}{%
+        {{hash=132b7100417675d55d5d4d8b244f7a34}{%
+           family={Breiman},
+           familyi={B\bibinitperiod},
+           given={Leo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers}%
+      }
+      \strng{namehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{fullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{bibnamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorbibnamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authornamehash}{132b7100417675d55d5d4d8b244f7a34}
+      \strng{authorfullhash}{132b7100417675d55d5d4d8b244f7a34}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Random forests are a combination of tree predictors such that each tree depends on the values of a random vector sampled independently and with the same distribution for all trees in the forest. The generalization error for forests converges a.s. to a limit as the number of trees in the forest becomes large. The generalization error of a forest of tree classifiers depends on the strength of the individual trees in the forest and the correlation between them. Using a random selection of features to split each node yields error rates that compare favorably to Adaboost (Y. Freund \& R. Schapire, Machine Learning: Proceedings of the Thirteenth International conference, ***, 148–156), but are more robust with respect to noise. Internal estimates monitor error, strength, and correlation and these are used to show the response to increasing the number of features used in the splitting. Internal estimates are also used to measure variable importance. These ideas are also applicable to regression.}
+      \field{issn}{0885-6125}
+      \field{journaltitle}{Mach. Learn.}
+      \field{month}{10}
+      \field{number}{1}
+      \field{title}{Random Forests}
+      \field{volume}{45}
+      \field{year}{2001}
+      \field{pages}{5\bibrangedash 32}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1023/A:1010933404324
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1023/A:1010933404324
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1023/A:1010933404324
+      \endverb
+      \keyw{regression,ensemble,classification}
+    \endentry
+    \entry{Buriahi2021}{article}{}
+      \name{author}{7}{}{%
+        {{hash=49d3db58bd256cbb72761d6ef7d49348}{%
+           family={Al-Buriahi},
+           familyi={A\bibinithyphendelim B\bibinitperiod},
+           given={M.S.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7ad11ed826b323b3c2eb6be42a7d3f68}{%
+           family={Olarinoye},
+           familyi={O\bibinitperiod},
+           given={I.O.},
+           giveni={I\bibinitperiod}}}%
+        {{hash=e0f9f6eca36427d9e626ace71d4199f3}{%
+           family={Alomairy},
+           familyi={A\bibinitperiod},
+           given={Sultan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bb3d258b83e63ca23a96bafdf6cb27e2}{%
+           family={Kebaili},
+           familyi={K\bibinitperiod},
+           given={Imen},
+           giveni={I\bibinitperiod}}}%
+        {{hash=99a07c9c2f51015d740f05f0e9cf0184}{%
+           family={Kaya},
+           familyi={K\bibinitperiod},
+           given={Rumeysa},
+           giveni={R\bibinitperiod}}}%
+        {{hash=b8557dc40315a40177cfc0729a59a7ac}{%
+           family={Arslan},
+           familyi={A\bibinitperiod},
+           given={Halil},
+           giveni={H\bibinitperiod}}}%
+        {{hash=960eb8181f4c481bfbc165a5c81e1bf6}{%
+           family={Tonguc},
+           familyi={T\bibinitperiod},
+           given={Baris\bibnamedelima T.},
+           giveni={B\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {OXFORD}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier Ltd}%
+      }
+      \strng{namehash}{175895ef9f007e4fd7cef153d1201f36}
+      \strng{fullhash}{53019e42c8ad8fb5d4b9c4e34665b13a}
+      \strng{bibnamehash}{53019e42c8ad8fb5d4b9c4e34665b13a}
+      \strng{authorbibnamehash}{53019e42c8ad8fb5d4b9c4e34665b13a}
+      \strng{authornamehash}{175895ef9f007e4fd7cef153d1201f36}
+      \strng{authorfullhash}{53019e42c8ad8fb5d4b9c4e34665b13a}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0149-1970}
+      \field{journaltitle}{Progress in nuclear energy (New series)}
+      \field{title}{Dense and environment friendly bismuth barium telluroborate glasses for nuclear protection applications}
+      \field{volume}{137}
+      \field{year}{2021}
+      \field{pages}{103763\bibrangedash}
+      \range{pages}{-1}
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S014919702100130X
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S014919702100130X
+      \endverb
+      \keyw{Atomic properties ; Attenuation coefficients ; Barium ; Bismuth ; Boron oxides ; Chemical composition ; Electromagnetics ; Er2O3 additive ; Erbium oxide ; Fast neutrons ; Gamma rays ; GEANT4 ; Mathematical analysis ; Neutrons ; Nuclear power plants ; Nuclear radiation ; Nuclear Science & Technology ; Photons ; Radiation ; Radiation protection ; Radiation shielding ; Science & Technology ; Shielding ; Studies ; Technology ; Telluroborate glass}
+    \endentry
+    \entry{Coyne2023}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3758eed460a146664737fb510268e8f0}{%
+           family={Coyne},
+           familyi={C\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=b3a2647c49004d4723f6b7e26161bbff}{%
+           family={Campbell},
+           familyi={C\bibinitperiod},
+           given={Henry},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Australian Strategic Policy Institute}%
+      }
+      \strng{namehash}{ff00815a637093a9c0ee2a765705f898}
+      \strng{fullhash}{ff00815a637093a9c0ee2a765705f898}
+      \strng{bibnamehash}{ff00815a637093a9c0ee2a765705f898}
+      \strng{authorbibnamehash}{ff00815a637093a9c0ee2a765705f898}
+      \strng{authornamehash}{ff00815a637093a9c0ee2a765705f898}
+      \strng{authorfullhash}{ff00815a637093a9c0ee2a765705f898}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2200-6656}
+      \field{month}{9}
+      \field{title}{Developing Australia's Critical Minerals and Rare Earths: Implementing the Outcomes from the 2023 Darwin Dialogue}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.aspi.org.au/report/developing-australias-critical-minerals-and-rare-earths-implementing-outcomes-2023-darwin
+      \endverb
+      \verb{url}
+      \verb https://www.aspi.org.au/report/developing-australias-critical-minerals-and-rare-earths-implementing-outcomes-2023-darwin
+      \endverb
+    \endentry
+    \entry{DAI2018155}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c8cecfc782c14e04bfaab638845d7956}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Shifeng},
+           giveni={S\bibinitperiod}}}%
+        {{hash=62715cdffd624b3af62da35ade7b0ee1}{%
+           family={Finkelman},
+           familyi={F\bibinitperiod},
+           given={Robert\bibnamedelima B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6043d4b83d08972d5bb4a8fe90808c6}
+      \strng{fullhash}{e6043d4b83d08972d5bb4a8fe90808c6}
+      \strng{bibnamehash}{e6043d4b83d08972d5bb4a8fe90808c6}
+      \strng{authorbibnamehash}{e6043d4b83d08972d5bb4a8fe90808c6}
+      \strng{authornamehash}{e6043d4b83d08972d5bb4a8fe90808c6}
+      \strng{authorfullhash}{e6043d4b83d08972d5bb4a8fe90808c6}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Coal is a resource primarily used for electric power generation, and currently supplies 41\% of global electricity needs. Coal can also be considered as an economic source of strategically important elements, such as Ge, Ga, U, V, Se, rare earth elements, Y, Sc, Nb, Au, Ag, and Re, as well as base metals Al and Mg. The extraction and utilization of these critical elements from coal could result in a number of benefits, which will make this source an economically and environmentally attractive option especially for China, the U.S., Russia, India, and other countries that will remain major coal users for the foreseeable future.}
+      \field{issn}{0166-5162}
+      \field{journaltitle}{International Journal of Coal Geology}
+      \field{title}{Coal as a promising source of critical elements: Progress and future prospects}
+      \field{volume}{186}
+      \field{year}{2018}
+      \field{pages}{155\bibrangedash 164}
+      \range{pages}{10}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.coal.2017.06.005
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0166516217304007
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0166516217304007
+      \endverb
+      \keyw{Coal,Critical elements in coal,Environmental protection,Coal-hosted rare-metal deposits}
+    \endentry
+    \entry{DISR2023}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=9a80e51aac9a152d65eaa27ea58c4f4b}{%
+           family={DISR},
+           familyi={D\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {Australian Government Department of Industry, Science}%
+        {Resources}%
+      }
+      \list{publisher}{1}{%
+        {Critical Minerals Office}%
+      }
+      \strng{namehash}{9a80e51aac9a152d65eaa27ea58c4f4b}
+      \strng{fullhash}{9a80e51aac9a152d65eaa27ea58c4f4b}
+      \strng{bibnamehash}{9a80e51aac9a152d65eaa27ea58c4f4b}
+      \strng{authorbibnamehash}{9a80e51aac9a152d65eaa27ea58c4f4b}
+      \strng{authornamehash}{9a80e51aac9a152d65eaa27ea58c4f4b}
+      \strng{authorfullhash}{9a80e51aac9a152d65eaa27ea58c4f4b}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{Critical Minerals Strategy 2023–2030}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.industry.gov.au/publications/critical-minerals-strategy-2023-2030
+      \endverb
+      \verb{url}
+      \verb https://www.industry.gov.au/publications/critical-minerals-strategy-2023-2030
+      \endverb
+    \endentry
+    \entry{Emsbo2021}{article}{}
+      \name{author}{3}{}{%
+        {{hash=91c93946d7cb3b63d4a01a9d2c97158b}{%
+           family={Emsbo},
+           familyi={E\bibinitperiod},
+           given={Poul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=12c7fc9c8221f017da45cc06d12034b2}{%
+           family={Lawley},
+           familyi={L\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{hash=54b2644810f3d8a15facc06af46867fc}{%
+           family={Czarnota},
+           familyi={C\bibinitperiod},
+           given={Karol},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Geophysical Union}%
+      }
+      \strng{namehash}{270f349401588c99eb18246ea922d163}
+      \strng{fullhash}{270f349401588c99eb18246ea922d163}
+      \strng{bibnamehash}{270f349401588c99eb18246ea922d163}
+      \strng{authorbibnamehash}{270f349401588c99eb18246ea922d163}
+      \strng{authornamehash}{270f349401588c99eb18246ea922d163}
+      \strng{authorfullhash}{270f349401588c99eb18246ea922d163}
+      \field{sortinit}{E}
+      \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The global economy is unprepared to meet the exploding demand for critical minerals. These materials, many of which were of little economic interest until recently, are required to fuel a proliferation of technologies and industries that have become vital for social and economic well-being the world over. But supplies of critical minerals are at risk because of their natural scarcity and because of geopolitical issues and trade policies that complicate their distribution, among other factors.}
+      \field{title}{Geological surveys unite to improve critical mineral security}
+      \field{year}{2021}
+      \verb{doi}
+      \verb https://doi.org/10.1029/2021EO154252
+      \endverb
+      \verb{urlraw}
+      \verb https://pubs.usgs.gov/publication/70226887
+      \endverb
+      \verb{url}
+      \verb https://pubs.usgs.gov/publication/70226887
+      \endverb
+    \endentry
+    \entry{Eterigho2021}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=0d50f4de1c3ffecdae48b4a3389f9496}{%
+           family={Eterigho-Ikelegbe},
+           familyi={E\bibinithyphendelim I\bibinitperiod},
+           given={Orevaoghene},
+           giveni={O\bibinitperiod}}}%
+        {{hash=075ed14c63576ab51a0d23cecfba7d23}{%
+           family={Harrar},
+           familyi={H\bibinitperiod},
+           given={Hamza},
+           giveni={H\bibinitperiod}}}%
+        {{hash=0bb1282c9be5d6a02caec1e0372f594b}{%
+           family={Bada},
+           familyi={B\bibinitperiod},
+           given={Samson},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier Ltd}%
+      }
+      \strng{namehash}{25eccefe869d5953f54043dd583b7236}
+      \strng{fullhash}{25eccefe869d5953f54043dd583b7236}
+      \strng{bibnamehash}{25eccefe869d5953f54043dd583b7236}
+      \strng{authorbibnamehash}{25eccefe869d5953f54043dd583b7236}
+      \strng{authornamehash}{25eccefe869d5953f54043dd583b7236}
+      \strng{authorfullhash}{25eccefe869d5953f54043dd583b7236}
+      \field{sortinit}{E}
+      \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Given the geographical imbalance distribution and supply shortage of rare earth elements (REEs) in renewable energy processes, magnets, many high-tech technologies, etc., researchers are increasingly seeking to recover REEs from unconventional sources such as coal and coal by-products. This article provides a brief overview of the REEs mode of occurrence and its association in coal. It also discusses existing and potential beneficiation strategies for enriching REEs from coal and coal discard. Furthermore, the hydrometallurgical leaching of REEs from coal and coal discard is reviewed and a summary of recent outcomes on REEs recovery from the coal source is presented. The review validated the technical feasibility of the physical beneficiation of REE minerals from coal without a significant particle size reduction to produce high-grade REE feedstocks for leaching. Although ultrafine milling results in higher REE recovery values, additional milling costs may affect the viability of the process. Overall, the study confirms the abundance of REEs in coal, identifies gaps in knowledge, and highlighs future research that must be addressed to advance REEs recovery from these sources.}
+      \field{issn}{08926875}
+      \field{journaltitle}{Minerals Engineering}
+      \field{month}{11}
+      \field{title}{Rare earth elements from coal and coal discard – A review}
+      \field{volume}{173}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.1016/j.mineng.2021.107187
+      \endverb
+      \keyw{Coal discard,Critical elements,Floatation,Leachability,Rare earth elements,Thermal treatment}
+    \endentry
+    \entry{Fortier2018}{article}{}
+      \name{author}{6}{}{%
+        {{hash=86157286a710d2f0271b61e957b178cd}{%
+           family={Fortier},
+           familyi={F\bibinitperiod},
+           given={S.M.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d67a4421a907b982b369997cd46e3020}{%
+           family={Nassar},
+           familyi={N\bibinitperiod},
+           given={N.T.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=e70888bf3adda6599192fddc83566bdf}{%
+           family={Lederer},
+           familyi={L\bibinitperiod},
+           given={G.W.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e3391f62ca2c66ccb2b021f03ca6cea4}{%
+           family={Brainard},
+           familyi={B\bibinitperiod},
+           given={Jamie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=28611c8515ea4509b37fa95c0f26e018}{%
+           family={Gambogi},
+           familyi={G\bibinitperiod},
+           given={Joseph},
+           giveni={J\bibinitperiod}}}%
+        {{hash=44efafa8524011f49bf68bfdbc101aae}{%
+           family={McCullough},
+           familyi={M\bibinitperiod},
+           given={E.A.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {U.S. Geological Survey}%
+      }
+      \strng{namehash}{07794c40a54b4dbd99da46533e1b25f2}
+      \strng{fullhash}{9057948896697dfe5dbdea43ce41857b}
+      \strng{bibnamehash}{9057948896697dfe5dbdea43ce41857b}
+      \strng{authorbibnamehash}{9057948896697dfe5dbdea43ce41857b}
+      \strng{authornamehash}{07794c40a54b4dbd99da46533e1b25f2}
+      \strng{authorfullhash}{9057948896697dfe5dbdea43ce41857b}
+      \field{sortinit}{F}
+      \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Pursuant to the Presidential Executive Order (EO) No. 13817, “A Federal Strategy to Ensure Secure and Reliable Supplies of Critical Minerals,” the Secretary of the Interior, in coordination with the Secretary of Defense, and in consultation with the heads of other relevant executive departments and agencies, was tasked with developing and submitting a draft list of minerals defined as “critical minerals” to the Federal Register within 60 days of the issue of the EO (December 20, 2017). Based on an analysis by the U.S. Geological Survey and other U.S. Government agencies, using multiple criteria, 35 minerals or mineral material groups have been identified that are currently (February 2018) considered critical. These include the following: aluminum (bauxite), antimony, arsenic, barite, beryllium, bismuth, cesium, chromium, cobalt, fluorspar, gallium, germanium, graphite (natural), hafnium, helium, indium, lithium, magnesium, manganese, niobium, platinum group metals, potash, rare earth elements group, rhenium, rubidium, scandium, strontium, tantalum, tellurium, tin, titanium, tungsten, uranium, vanadium, and zirconium. The categorization of minerals as critical may change during the course of the review process and is thus provisional.}
+      \field{issn}{2331-1258}
+      \field{title}{Draft critical mineral list—Summary of methodology and background information—U.S. Geological Survey technical input document in response to Secretarial Order No. 3359}
+      \field{year}{2018}
+      \verb{doi}
+      \verb https://doi.org/10.3133/ofr20181021
+      \endverb
+      \verb{urlraw}
+      \verb https://pubs.usgs.gov/publication/ofr20181021
+      \endverb
+      \verb{url}
+      \verb https://pubs.usgs.gov/publication/ofr20181021
+      \endverb
+    \endentry
+    \entry{geoscience2023}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1fdbc675a68fd585448933cbadf051c7}{%
+           family={{Geoscience Australia}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Department of Industry, Science, Energy}%
+        {Resources}%
+      }
+      \strng{namehash}{1fdbc675a68fd585448933cbadf051c7}
+      \strng{fullhash}{1fdbc675a68fd585448933cbadf051c7}
+      \strng{bibnamehash}{1fdbc675a68fd585448933cbadf051c7}
+      \strng{authorbibnamehash}{1fdbc675a68fd585448933cbadf051c7}
+      \strng{authornamehash}{1fdbc675a68fd585448933cbadf051c7}
+      \strng{authorfullhash}{1fdbc675a68fd585448933cbadf051c7}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{Critical Minerals Strategy 2023--2030}
+      \field{year}{2023}
+      \field{pages}{8\bibrangedash 14}
+      \range{pages}{7}
+      \verb{urlraw}
+      \verb https://www.industry.gov.au/publications/critical-minerals-strategy-2023-2030
+      \endverb
+      \verb{url}
+      \verb https://www.industry.gov.au/publications/critical-minerals-strategy-2023-2030
+      \endverb
+    \endentry
+    \entry{Hastie09}{book}{}
+      \name{author}{3}{}{%
+        {{hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           familyi={H\bibinitperiod},
+           given={Trevor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           familyi={T\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=971cf69058b64a94326dea0f2a8bbcce}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={Jerome},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{7ca1bfe876d5e037b6aed69704221267}
+      \strng{fullhash}{7ca1bfe876d5e037b6aed69704221267}
+      \strng{bibnamehash}{7ca1bfe876d5e037b6aed69704221267}
+      \strng{authorbibnamehash}{7ca1bfe876d5e037b6aed69704221267}
+      \strng{authornamehash}{7ca1bfe876d5e037b6aed69704221267}
+      \strng{authorfullhash}{7ca1bfe876d5e037b6aed69704221267}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{title}{The elements of statistical learning: data mining, inference and prediction}
+      \field{year}{2009}
+      \verb{urlraw}
+      \verb http://www-stat.stanford.edu/~tibs/ElemStatLearn/
+      \endverb
+      \verb{url}
+      \verb http://www-stat.stanford.edu/~tibs/ElemStatLearn/
+      \endverb
+      \keyw{inference mathmatics dataanalysis method clutering statistics}
+    \endentry
+    \entry{Hodgkinson2020}{article}{}
+      \name{author}{2}{}{%
+        {{hash=da54798e87481b1b87fd31b0c025530d}{%
+           family={Hodgkinson},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi H.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=b39c4b695e3bc62b1a65717bf6f2cf97}{%
+           family={Grigorescu},
+           familyi={G\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Taylor}%
+        {Francis Ltd.}%
+      }
+      \strng{namehash}{3a1a4d59f12380c3cf06559daaacf87c}
+      \strng{fullhash}{3a1a4d59f12380c3cf06559daaacf87c}
+      \strng{bibnamehash}{3a1a4d59f12380c3cf06559daaacf87c}
+      \strng{authorbibnamehash}{3a1a4d59f12380c3cf06559daaacf87c}
+      \strng{authornamehash}{3a1a4d59f12380c3cf06559daaacf87c}
+      \strng{authorfullhash}{3a1a4d59f12380c3cf06559daaacf87c}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Mineral matter in coals has been found to host valuable elements including germanium, lithium and rare-earth elements (REE), but such content of Australian coals remains under-explored. The aim of this paper is to provide a proof-of-concept study that determines elemental concentrations in the mineral matter of the high-ash, Fort Cooper Coal Measures (FCCM), Bowen Basin, Queensland. Coal in the FCCM has good coking properties but has not been extensively explored owing to its high ash content. This study performs a preliminary assessment of the elements from the coal portion that would typically become waste after washing or combustion. Given that the needs for industrial extraction methods will change over time, cataloguing and documenting the elemental composition of coal may assist future development of multiple products for the benefit of both the coal and mineral industries. This preliminary study has revealed similar elevations of REE and higher-than-average crustal concentrations of lithium, bismuth and scandium in some of the samples. Further analyses will be required on a larger dataset to better understand elemental associations and explore spatial patterns of elemental content that may indicate localised enrichments. Understanding the potential of valuable elements in the FCCM may stimulate interest in multiple-product-coal (or elemental-coal) mining in this under-exploited resource and further encourage the reduction of waste from other Australian coals at the wash-plant stage.}
+      \field{issn}{14400952}
+      \field{issue}{3}
+      \field{journaltitle}{Australian Journal of Earth Sciences}
+      \field{month}{4}
+      \field{title}{Strategic elements in the Fort Cooper Coal Measures: potential rare earth elements and other multi-product targets}
+      \field{volume}{67}
+      \field{year}{2020}
+      \field{pages}{305\bibrangedash 319}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1080/08120099.2019.1660712
+      \endverb
+      \keyw{Bowen Basin,Fort Cooper Coal Measures,REE,coal,elements,high-ash,lithium,mineral matter,waste}
+    \endentry
+    \entry{Hodgkinson2021}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=7e53b491944bdcdfb2fc63fcc47924e5}{%
+           family={Hodgkinson},
+           familyi={H\bibinitperiod},
+           given={Jane\bibnamedelima H},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=50c792740253b10256b1cf46b0be1b0e}{%
+           family={Grigorescu},
+           familyi={G\bibinitperiod},
+           given={Micaela},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {CSIRO, Australian Coal Association Research Projects}%
+      }
+      \strng{namehash}{09a297c29e8c9faed1db7231019b84f7}
+      \strng{fullhash}{09a297c29e8c9faed1db7231019b84f7}
+      \strng{bibnamehash}{09a297c29e8c9faed1db7231019b84f7}
+      \strng{authorbibnamehash}{09a297c29e8c9faed1db7231019b84f7}
+      \strng{authornamehash}{09a297c29e8c9faed1db7231019b84f7}
+      \strng{authorfullhash}{09a297c29e8c9faed1db7231019b84f7}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{9}
+      \field{title}{C29030 ACARP - Mapping of Elemental Coal Content for Exploration and Mining}
+      \field{year}{2021}
+    \endentry
+    \entry{osti_1808639}{article}{}
+      \name{author}{6}{}{%
+        {{hash=d06394bb8a02a65212ee57d6b334c69d}{%
+           family={Honaker},
+           familyi={H\bibinitperiod},
+           given={R.\bibnamedelimi Q.},
+           giveni={R\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=13414502df57d59c82c59a065c752294}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+        {{hash=7ee6881ef75e010080587aa75e8ea336}{%
+           family={Werner},
+           familyi={W\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bdc919fc50bb4e57e711d32b13ec2f6f}{%
+           family={Noble},
+           familyi={N\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8436056ee68cfb3867fef0f805b92b4d}{%
+           family={Luttrell},
+           familyi={L\bibinitperiod},
+           given={G.\bibnamedelimi H.},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=c278d2c0ce2afee5ea917c5355945828}{%
+           family={Yoon},
+           familyi={Y\bibinitperiod},
+           given={R.\bibnamedelimi H.},
+           giveni={R\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{70048c18932251b4efec7b7af8132249}
+      \strng{fullhash}{87f173e504a9f4717615cac46bb584ef}
+      \strng{bibnamehash}{87f173e504a9f4717615cac46bb584ef}
+      \strng{authorbibnamehash}{87f173e504a9f4717615cac46bb584ef}
+      \strng{authornamehash}{70048c18932251b4efec7b7af8132249}
+      \strng{authorfullhash}{87f173e504a9f4717615cac46bb584ef}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mining, Metallurgy and Exploration}
+      \field{month}{12}
+      \field{number}{1}
+      \field{title}{Enhancement of a Process Flowsheet for Recovering and Concentrating Critical Materials from Bituminous Coal Sources}
+      \field{volume}{37}
+      \field{year}{2019}
+      \verb{doi}
+      \verb 10.1007/s42461-019-00148-x
+      \endverb
+    \endentry
+    \entry{IEA2021}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=18fdbec513c87989c7580f31bb7f03ab}{%
+           family={IEA},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {International Energy Agency}%
+      }
+      \strng{namehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{fullhash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{bibnamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authorbibnamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authornamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authorfullhash}{18fdbec513c87989c7580f31bb7f03ab}
+      \field{extraname}{1}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{The Role of Critical Minerals in Clean Energy Transitions}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.iea.org/reports/the-role-of-critical-minerals-in-clean-energy-transitions
+      \endverb
+      \verb{url}
+      \verb https://www.iea.org/reports/the-role-of-critical-minerals-in-clean-energy-transitions
+      \endverb
+    \endentry
+    \entry{IEA2024b}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=18fdbec513c87989c7580f31bb7f03ab}{%
+           family={IEA},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {International Energy Agency}%
+      }
+      \strng{namehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{fullhash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{bibnamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authorbibnamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authornamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authorfullhash}{18fdbec513c87989c7580f31bb7f03ab}
+      \field{extraname}{2}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Critical Minerals Data Explorer}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.iea.org/data-and-statistics/data-tools/critical-minerals-data-explorer
+      \endverb
+      \verb{url}
+      \verb https://www.iea.org/data-and-statistics/data-tools/critical-minerals-data-explorer
+      \endverb
+    \endentry
+    \entry{IEA2024}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=18fdbec513c87989c7580f31bb7f03ab}{%
+           family={IEA},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {International Energy Agency}%
+      }
+      \strng{namehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{fullhash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{bibnamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authorbibnamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authornamehash}{18fdbec513c87989c7580f31bb7f03ab}
+      \strng{authorfullhash}{18fdbec513c87989c7580f31bb7f03ab}
+      \field{extraname}{3}
+      \field{sortinit}{I}
+      \field{sortinithash}{9417e9a1288a9371e2691d999083ed39}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Global Critical Minerals Outlook 2024}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.iea.org/reports/global-critical-minerals-outlook-2024
+      \endverb
+      \verb{url}
+      \verb https://www.iea.org/reports/global-critical-minerals-outlook-2024
+      \endverb
+    \endentry
+    \entry{ISLR}{book}{}
+      \name{author}{4}{}{%
+        {{hash=df184c5fa522ac8a515ec4de13aef234}{%
+           family={James},
+           familyi={J\bibinitperiod},
+           given={Gareth.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1ab16961e0de50711fa6bd9425f9b4a6}{%
+           family={Witten},
+           familyi={W\bibinitperiod},
+           given={Daniela.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           familyi={H\bibinitperiod},
+           given={Trevor.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           familyi={T\bibinitperiod},
+           given={Robert.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {New York, NY}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{fullhash}{da61646157a6be769f34984f5cb603b0}
+      \strng{bibnamehash}{da61646157a6be769f34984f5cb603b0}
+      \strng{authorbibnamehash}{da61646157a6be769f34984f5cb603b0}
+      \strng{authornamehash}{f8f737f83d9e451c1afaa13cdc120516}
+      \strng{authorfullhash}{da61646157a6be769f34984f5cb603b0}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{An Introduction to Statistical Learning provides an accessible overview of the field of statistical learning, an essential toolset for making sense of the vast and complex data sets that have emerged in fields ranging from biology to finance to marketing to astrophysics in the past twenty years. This book presents some of the most important modeling and prediction techniques, along with relevant applications. Topics include linear regression, classification, resampling methods, shrinkage approaches, tree-based methods, support vector machines, clustering, and more. Color graphics and real-world examples are used to illustrate the methods presented. Since the goal of this textbook is to facilitate the use of these statistical learning techniques by practitioners in science, industry, and other fields, each chapter contains a tutorial on implementing the analyses and methods presented in R, an extremely popular open source statistical software platform. Two of the authors co-wrote The Elements of Statistical Learning (Hastie, Tibshirani and Friedman, 2nd edition 2009), a popular reference book for statistics and machine learning researchers. An Introduction to Statistical Learning covers many of the same topics, but at a level accessible to a much broader audience. This book is targeted at statisticians and non-statisticians alike who wish to use cutting-edge statistical learning techniques to analyze their data. The text assumes only a previous course in linear regression and no knowledge of matrix algebra.}
+      \field{booktitle}{An Introduction to Statistical Learning : with Applications in R}
+      \field{chapter}{8.1~8.2}
+      \field{edition}{1st ed. 2013.}
+      \field{isbn}{1-4614-7138-9}
+      \field{series}{Springer Texts in Statistics, 103}
+      \field{title}{An Introduction to Statistical Learning : with Applications in R}
+      \field{year}{2013}
+      \keyw{Statistics}
+    \endentry
+    \entry{tidymodels}{manual}{}
+      \name{author}{2}{}{%
+        {{hash=3305789acf03200ed22f154007d4fab9}{%
+           family={Kuhn},
+           familyi={K\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1d0f6977ce2d043e298a59a1cd75b7ef}{%
+           family={Wickham},
+           familyi={W\bibinitperiod},
+           given={Hadley},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{d95c1181c29fd5ff1dc34114d6fa00b9}
+      \strng{fullhash}{d95c1181c29fd5ff1dc34114d6fa00b9}
+      \strng{bibnamehash}{d95c1181c29fd5ff1dc34114d6fa00b9}
+      \strng{authorbibnamehash}{d95c1181c29fd5ff1dc34114d6fa00b9}
+      \strng{authornamehash}{d95c1181c29fd5ff1dc34114d6fa00b9}
+      \strng{authorfullhash}{d95c1181c29fd5ff1dc34114d6fa00b9}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Tidymodels: a collection of packages for modeling and machine learning using tidyverse principles.}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://www.tidymodels.org
+      \endverb
+      \verb{url}
+      \verb https://www.tidymodels.org
+      \endverb
+    \endentry
+    \entry{Liu2024}{article}{}
+      \name{author}{4}{}{%
+        {{hash=09896aa5fbccc018f8f5276bd3c2cc51}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Chao},
+           giveni={C\bibinitperiod}}}%
+        {{hash=82ea44fefddb42131882b63bffcc3639}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Ting},
+           giveni={T\bibinitperiod}}}%
+        {{hash=3bcea9cf06863bfc278fdf5c12ca3969}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Gaoshang},
+           giveni={G\bibinitperiod}}}%
+        {{hash=8b127d91406c31357cdcd796fd756403}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Da},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{c9b4f7af0823623b8282658bcd68542b}
+      \strng{fullhash}{bac0af6e9f818dc6685df32c225c0b8d}
+      \strng{bibnamehash}{bac0af6e9f818dc6685df32c225c0b8d}
+      \strng{authorbibnamehash}{bac0af6e9f818dc6685df32c225c0b8d}
+      \strng{authornamehash}{c9b4f7af0823623b8282658bcd68542b}
+      \strng{authorfullhash}{bac0af6e9f818dc6685df32c225c0b8d}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{<p>Lithium gains an increasing importance in new energy vehicles and stationary energy storage, and development and utilization of lithium mines has attracted great attention around the world. In addition to the traditional lithium resources, lithium resources in coal seams have great potential in industrial application. Therefore, how to develop and utilize them is strategically significant for guaranteeing supply of lithium resources in China and promoting clean energy transformation. This paper summarizes the metallogenic ages, occurrence, enrichment factors, availability of lithium resources in coal seams in China. Conclusion are obtained as follows. i. coal-hosted lithium deposits discovered in China so far mainly occur in the Carboniferous-Permian strata of North China. They are less concentrated in smaller range in the Permian strata of Qilian-Qinling. ii. In China, coal-hosted lithium is mainly enriched in aluminum-bearing minerals. Lithium in coal seams mainly occurs in the inorganic matter, and some occurs in the organic matter. iii. Lithium enrichment in coal seams is caused by stable supply of aluminum and lithium-bearing minerals and special structural and geological factors. iv. According to China’s national standards on grades of lithium content in coal seams, the metallogenic belts of lithium in coal seams at the southern foothill of Yin Shan and in Qilian-Qinling have the potential of lithium development and extraction, covering Junger mining area in Inner Mongolia, and Pingshuo and Ningwu mining areas in Shanxi.</p>}
+      \field{issn}{2296-598X}
+      \field{journaltitle}{Frontiers in Energy Research}
+      \field{title}{A review of China’s resources of lithium in coal seams}
+      \field{volume}{12}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.3389/fenrg.2024.1008320
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2024.1008320
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2024.1008320
+      \endverb
+    \endentry
+    \entry{MANCHERI2015262}{article}{}
+      \name{author}{1}{}{%
+        {{hash=1cb3432364c19b48e716e3421f05e654}{%
+           family={Mancheri},
+           familyi={M\bibinitperiod},
+           given={Nabeel\bibnamedelima A.},
+           giveni={N\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{1cb3432364c19b48e716e3421f05e654}
+      \strng{fullhash}{1cb3432364c19b48e716e3421f05e654}
+      \strng{bibnamehash}{1cb3432364c19b48e716e3421f05e654}
+      \strng{authorbibnamehash}{1cb3432364c19b48e716e3421f05e654}
+      \strng{authornamehash}{1cb3432364c19b48e716e3421f05e654}
+      \strng{authorfullhash}{1cb3432364c19b48e716e3421f05e654}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Export restrictions on metals and mineral products have been broadly applied by many countries with a view to securing domestic supply and addressing resource depletion. Export restrictions are designed to meet diverse policy objectives ranging from environmental protection and increasing fiscal revenue to the development of processing sectors. The global dependency on China for raw materials (particularly rare earth elements) is a contentious issue, as China imposes a number of restrictions on the export of these minerals. This study uses the case of rare earth elements to evaluate Chinese export restrictions, reviewing China's current monopoly over the industry and providing insights on how widely traded these minerals are and China's position in international trade in terms of both volume and value. The study investigates the various trade restrictions imposed by China and their implications, including the availability of materials to industrialized countries.}
+      \field{issn}{0301-4207}
+      \field{journaltitle}{Resources Policy}
+      \field{title}{World trade in rare earths, Chinese export restrictions, and implications}
+      \field{volume}{46}
+      \field{year}{2015}
+      \field{pages}{262\bibrangedash 271}
+      \range{pages}{10}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.resourpol.2015.10.009
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0301420715001002
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0301420715001002
+      \endverb
+      \keyw{Mineral trade,Export restrictions,Rare earth elements}
+    \endentry
+    \entry{McLennan1989}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=70ed952fda76c020a5b2fc01887b65d7}{%
+           family={McLennan},
+           familyi={M\bibinitperiod},
+           given={S.\bibnamedelimi M},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Germany}%
+      }
+      \list{publisher}{1}{%
+        {Walter de Gruyter GmbH}%
+      }
+      \strng{namehash}{70ed952fda76c020a5b2fc01887b65d7}
+      \strng{fullhash}{70ed952fda76c020a5b2fc01887b65d7}
+      \strng{bibnamehash}{70ed952fda76c020a5b2fc01887b65d7}
+      \strng{authorbibnamehash}{70ed952fda76c020a5b2fc01887b65d7}
+      \strng{authornamehash}{70ed952fda76c020a5b2fc01887b65d7}
+      \strng{authorfullhash}{70ed952fda76c020a5b2fc01887b65d7}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Geochemistry and Mineralogy of Rare Earth Elements}
+      \field{edition}{Originally published 1989}
+      \field{isbn}{9780939950256}
+      \field{title}{RARE EARTH ELEMENTS IN SEDIMENTARY ROCKS: INFLUENCE OF PROVENANCE AND SEDIMENTARY PROCESSES}
+      \field{volume}{21}
+      \field{year}{2018}
+      \field{pages}{169\bibrangedash 200}
+      \range{pages}{32}
+      \verb{urlraw}
+      \verb https://ebookcentral.proquest.com/lib/monash/reader.action?docID=5600203
+      \endverb
+      \verb{url}
+      \verb https://ebookcentral.proquest.com/lib/monash/reader.action?docID=5600203
+      \endverb
+    \endentry
+    \entry{McLennan2011}{article}{}
+      \name{author}{1}{}{%
+        {{hash=fc000d13fe40160aa8c28b2c14e77519}{%
+           family={McLennan},
+           familyi={M\bibinitperiod},
+           given={Scott\bibnamedelima M.},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Blackwell Publishing Ltd}%
+      }
+      \strng{namehash}{fc000d13fe40160aa8c28b2c14e77519}
+      \strng{fullhash}{fc000d13fe40160aa8c28b2c14e77519}
+      \strng{bibnamehash}{fc000d13fe40160aa8c28b2c14e77519}
+      \strng{authorbibnamehash}{fc000d13fe40160aa8c28b2c14e77519}
+      \strng{authornamehash}{fc000d13fe40160aa8c28b2c14e77519}
+      \strng{authorfullhash}{fc000d13fe40160aa8c28b2c14e77519}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1525-2027}
+      \field{journaltitle}{G3}
+      \field{month}{4}
+      \field{number}{4}
+      \field{title}{Relationships between the Trace Element Composition of Sedimentary Rocks and Upper Continental Crust}
+      \field{volume}{2}
+      \field{year}{2011}
+      \verb{doi}
+      \verb 10.1029/2000GC000109
+      \endverb
+      \verb{urlraw}
+      \verb https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2000GC000109
+      \endverb
+      \verb{url}
+      \verb https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2000GC000109
+      \endverb
+    \endentry
+    \entry{Menon2020}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=54a76f42bfeb74f9d4bdffb0273e308c}{%
+           family={Menon},
+           familyi={M\bibinitperiod},
+           given={Saaransh},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{54a76f42bfeb74f9d4bdffb0273e308c}
+      \strng{fullhash}{54a76f42bfeb74f9d4bdffb0273e308c}
+      \strng{bibnamehash}{54a76f42bfeb74f9d4bdffb0273e308c}
+      \strng{authorbibnamehash}{54a76f42bfeb74f9d4bdffb0273e308c}
+      \strng{authornamehash}{54a76f42bfeb74f9d4bdffb0273e308c}
+      \strng{authorfullhash}{54a76f42bfeb74f9d4bdffb0273e308c}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{12}
+      \field{note}{Medium}
+      \field{title}{Stratified sampling in Machine Learning}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb https://medium.com/analytics-vidhya/stratified-sampling-in-machine-learning-f5112b5b9cfe
+      \endverb
+      \verb{url}
+      \verb https://medium.com/analytics-vidhya/stratified-sampling-in-machine-learning-f5112b5b9cfe
+      \endverb
+    \endentry
+    \entry{Moriasi2007}{article}{}
+      \name{author}{6}{}{%
+        {{hash=82fed86c903647577ca4909a18f78986}{%
+           family={Moriasi},
+           familyi={M\bibinitperiod},
+           given={Daniel\bibnamedelima N.},
+           giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=d300cf1ede64d744e7b0a04db6b34f85}{%
+           family={Arnold},
+           familyi={A\bibinitperiod},
+           given={Jeffrey\bibnamedelima G.},
+           giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=5985335aa7d761072f54b2226003f185}{%
+           family={Liew},
+           familyi={L\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=bef332f2fc8a0bd5aa35948416e1e547}{%
+           family={Bingner},
+           familyi={B\bibinitperiod},
+           given={Ronald\bibnamedelima L.},
+           giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=16a37daf3a29b37a04052bfcb12776dc}{%
+           family={Harmel},
+           familyi={H\bibinitperiod},
+           given={R.\bibnamedelimi Daren},
+           giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=0a1401c86c996e55664b0a623816a3e9}{%
+           family={Veith},
+           familyi={V\bibinitperiod},
+           given={Tamie\bibnamedelima L.},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{367e35669bcbb7e79f1f64f57feaa3ab}
+      \strng{fullhash}{47bf722fd79b72da67fbfd7f185a848f}
+      \strng{bibnamehash}{47bf722fd79b72da67fbfd7f185a848f}
+      \strng{authorbibnamehash}{47bf722fd79b72da67fbfd7f185a848f}
+      \strng{authornamehash}{367e35669bcbb7e79f1f64f57feaa3ab}
+      \strng{authorfullhash}{47bf722fd79b72da67fbfd7f185a848f}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transactions of the ASABE}
+      \field{title}{Model Evaluation Guidelines for Systematic Quantification of Accuracy in Watershed Simulations}
+      \field{volume}{50}
+      \field{year}{2007}
+      \field{pages}{885\bibrangedash 900}
+      \range{pages}{16}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:11186951
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:11186951
+      \endverb
+    \endentry
+    \entry{Qin2015b}{article}{}
+      \name{author}{6}{}{%
+        {{hash=6ee548bfd63a167112dbc2244668d845}{%
+           family={Qin},
+           familyi={Q\bibinitperiod},
+           given={Shenjun},
+           giveni={S\bibinitperiod}}}%
+        {{hash=572e9d353ebc671cf1eee337bd345139}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Yuzhuang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=c537e0b67981b860467c8e8fe55e8fb3}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yanheng},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=43e7dd026d8ec0a1807a67a1a8a57bcd}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jinxi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f184ea77198671cb73c8d0ca5c34642b}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Cunliang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=35510eacf7d4f1f414366a6b14167b81}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Kang},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{24e4f1c1ab383f2947271d7518cbc88f}
+      \strng{fullhash}{1c9412d96963f87e39c6d1dd7c42f4b3}
+      \strng{bibnamehash}{1c9412d96963f87e39c6d1dd7c42f4b3}
+      \strng{authorbibnamehash}{1c9412d96963f87e39c6d1dd7c42f4b3}
+      \strng{authornamehash}{24e4f1c1ab383f2947271d7518cbc88f}
+      \strng{authorfullhash}{1c9412d96963f87e39c6d1dd7c42f4b3}
+      \field{extraname}{1}
+      \field{sortinit}{Q}
+      \field{sortinithash}{c54e16deb53fc904a621fa8fd8703b5a}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0012-8252}
+      \field{journaltitle}{Earth-Science Reviews}
+      \field{month}{11}
+      \field{title}{Coal deposits as promising alternative sources for gallium}
+      \field{volume}{150}
+      \field{year}{2015}
+      \field{pages}{95\bibrangedash 101}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1016/J.EARSCIREV.2015.07.010
+      \endverb
+      \keyw{Gallium enrichment,Gallium in coal,Gallium recovery,Geochemistry,Mode of occurrence,Origin}
+    \endentry
+    \entry{Qin2015}{article}{}
+      \name{author}{4}{}{%
+        {{hash=6ee548bfd63a167112dbc2244668d845}{%
+           family={Qin},
+           familyi={Q\bibinitperiod},
+           given={Shenjun},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f184ea77198671cb73c8d0ca5c34642b}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Cunliang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c537e0b67981b860467c8e8fe55e8fb3}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yanheng},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=2c81656c924858824dfb10d50423b77a}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Yong},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Inderscience Publishers}%
+      }
+      \strng{namehash}{24e4f1c1ab383f2947271d7518cbc88f}
+      \strng{fullhash}{81daae4280afe5d3de763af2743c126d}
+      \strng{bibnamehash}{81daae4280afe5d3de763af2743c126d}
+      \strng{authorbibnamehash}{81daae4280afe5d3de763af2743c126d}
+      \strng{authornamehash}{24e4f1c1ab383f2947271d7518cbc88f}
+      \strng{authorfullhash}{81daae4280afe5d3de763af2743c126d}
+      \field{extraname}{2}
+      \field{sortinit}{Q}
+      \field{sortinithash}{c54e16deb53fc904a621fa8fd8703b5a}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Coals are a major source of pollution in certain parts of the world due to mining, coal combustion, and disposal of fly ash. The recovery of valuable rare metals from coals or coal-processing byproducts is a promising way to utilise these traditional resources economically, efficiently and in an environmentally friendly way. Lithium, a highly interesting metal, has been found dispersed and even anomalously enriched in coal deposits, and is potentially extractable. This paper presents a review of geochemical investigations on Li-bearing coal and the technical development of Li extraction from coal. Based on available literature, inductively coupled plasma mass spectrometry (ICP-MS) and inductively coupled plasma as an excitation source (ICP-AES) are regarded as the preferred methods of measuring Li concentration in coal and coal ash. Anomalous Li accumulations have been reported in coal deposits, especially in China. The limited studies on Li modes of occurrence and origins are discussed, and Li is shown to have an affinity mainly for clay minerals in coal, although further investigations are needed. Lithium is also found to be enriched in fly and bottom ashes during coal combustion. Finally, two successful Li recovery techniques from coal ash are presented.}
+      \field{issn}{1753-3309}
+      \field{issue}{2}
+      \field{journaltitle}{International Journal of Oil, Gas and Coal Technology}
+      \field{month}{1}
+      \field{note}{doi: 10.1504/IJOGCT.2015.067490}
+      \field{title}{Review of coal as a promising source of lithium}
+      \field{volume}{9}
+      \field{year}{2015}
+      \field{pages}{215\bibrangedash 229}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1504/IJOGCT.2015.067490
+      \endverb
+      \verb{urlraw}
+      \verb https://www.inderscienceonline.com/doi/abs/10.1504/IJOGCT.2015.067490
+      \endverb
+      \verb{url}
+      \verb https://www.inderscienceonline.com/doi/abs/10.1504/IJOGCT.2015.067490
+      \endverb
+    \endentry
+    \entry{Reid2018}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=8d82839be6afd59c432fc7cf084f4326}{%
+           family={Reid},
+           familyi={R\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{8d82839be6afd59c432fc7cf084f4326}
+      \strng{fullhash}{8d82839be6afd59c432fc7cf084f4326}
+      \strng{bibnamehash}{8d82839be6afd59c432fc7cf084f4326}
+      \strng{authorbibnamehash}{8d82839be6afd59c432fc7cf084f4326}
+      \strng{authornamehash}{8d82839be6afd59c432fc7cf084f4326}
+      \strng{authorfullhash}{8d82839be6afd59c432fc7cf084f4326}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Non-energy uses of coal}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.sustainable-carbon.org/report/non-energy-uses-of-coal-report-ccc291/
+      \endverb
+      \verb{url}
+      \verb https://www.sustainable-carbon.org/report/non-energy-uses-of-coal-report-ccc291/
+      \endverb
+    \endentry
+    \entry{Seredin2012}{article}{}
+      \name{author}{2}{}{%
+        {{hash=aed3003b2ff9d6eac8fd7d9cd795bd8f}{%
+           family={Seredin},
+           familyi={S\bibinitperiod},
+           given={Vladimir\bibnamedelima V.},
+           giveni={V\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=c8cecfc782c14e04bfaab638845d7956}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Shifeng},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{0430f4b3a2c7cc2ac9f6979570b4b272}
+      \strng{fullhash}{0430f4b3a2c7cc2ac9f6979570b4b272}
+      \strng{bibnamehash}{0430f4b3a2c7cc2ac9f6979570b4b272}
+      \strng{authorbibnamehash}{0430f4b3a2c7cc2ac9f6979570b4b272}
+      \strng{authornamehash}{0430f4b3a2c7cc2ac9f6979570b4b272}
+      \strng{authorfullhash}{0430f4b3a2c7cc2ac9f6979570b4b272}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0166-5162}
+      \field{journaltitle}{International Journal of Coal Geology}
+      \field{month}{5}
+      \field{title}{Coal deposits as potential alternative sources for lanthanides and yttrium}
+      \field{volume}{94}
+      \field{year}{2012}
+      \field{pages}{67\bibrangedash 93}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.1016/J.COAL.2011.11.001
+      \endverb
+      \keyw{Coal deposits,REY distribution,REY mode of occurrence,Rare earth elements and yttrium (REY)}
+    \endentry
+    \entry{Lian2024}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9045e037542d620524b96818e9a343ad}{%
+           family={Sinclair},
+           familyi={S\bibinitperiod},
+           given={Lian},
+           giveni={L\bibinitperiod}}}%
+        {{hash=8493fb83f2ec127ee469576fbc6e7002}{%
+           family={Coe},
+           familyi={C\bibinitperiod},
+           given={Neil\bibnamedelima M},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{48124d69ea93fd9ad8f6030de3e6ea18}
+      \strng{fullhash}{48124d69ea93fd9ad8f6030de3e6ea18}
+      \strng{bibnamehash}{48124d69ea93fd9ad8f6030de3e6ea18}
+      \strng{authorbibnamehash}{48124d69ea93fd9ad8f6030de3e6ea18}
+      \strng{authornamehash}{48124d69ea93fd9ad8f6030de3e6ea18}
+      \strng{authorfullhash}{48124d69ea93fd9ad8f6030de3e6ea18}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Australia is experiencing a rapid escalation in exploration for, and extraction and processing of, critical minerals. This new boom is driven by changing geopolitics and global demand for low carbon technologies. This is arguably the biggest economic opportunity since the mining boom of the 2000s, driving the biggest transformation of the extractive industries in Australia since the development of offshore gas in the 1970s. Against this backdrop, Australian governments at all levels are implementing strategies to upgrade the domestic extraction and processing of critical minerals. In this paper we conduct a comparative analysis of 17 strategies specifically targeting critical minerals – or the cognate categories of ‘strategic raw materials’ and ‘high-tech metals’. Based on a close reading and comparison of these strategies, the analysis finds far more commonalities than differences. Together they chart an approach typified by the facilitation of trade and investment, efforts to de-risk individual projects, and the streamlining of investment through regional hubs with common-infrastructure and planning. At the same time, they also exhibit concerning similarities in terms of the limited attention paid to improving environmental and social regulation or First Nations’ rights. Instead, ‘ESG’ is presented as a competitive advantage in global markets. This analysis is significant in identifying an emerging Australian mode of ‘green developmentalism’ that, while committing significant public funds to developing the mineral processing industry in the context of decarbonisation, keeps private capital firmly in the centre of its vision. This contrasts with more extensively studied modes of green developmentalism in other resource-rich countries.}
+      \field{issn}{0301-4207}
+      \field{journaltitle}{Resources policy}
+      \field{title}{Critical mineral strategies in Australia: Industrial upgrading without environmental or social upgrading}
+      \field{volume}{91}
+      \field{year}{2024-04}
+      \field{pages}{104860}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.resourpol.2024.104860
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0301420724002277
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0301420724002277
+      \endverb
+    \endentry
+    \entry{Skirrow2013}{article}{}
+      \name{author}{6}{}{%
+        {{hash=4d724e49d26e6a70c4d89aaaeb922b29}{%
+           family={Skirrow},
+           familyi={S\bibinitperiod},
+           given={Roger\bibnamedelima G.},
+           giveni={R\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=c3db9e574d41421375c7c1d7111e7060}{%
+           family={Huston},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima L.},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=c6f46ff9f360faf0b979b6523917899a}{%
+           family={Mernagh},
+           familyi={M\bibinitperiod},
+           given={Terrence\bibnamedelima P.},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=e3183ac81222857722d5091a014e7f31}{%
+           family={Thorne},
+           familyi={T\bibinitperiod},
+           given={Jane\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=284b96ec7f4a0289175a2cea215e51de}{%
+           family={Dulfer},
+           familyi={D\bibinitperiod},
+           given={Helen},
+           giveni={H\bibinitperiod}}}%
+        {{hash=04fa13d701ec8dcb2c266eaad60264c9}{%
+           family={Senior},
+           familyi={S\bibinitperiod},
+           given={Anthony\bibnamedelima B.},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Geoscience Australia}%
+      }
+      \strng{namehash}{9a058ee35b939385ff853a6860e04167}
+      \strng{fullhash}{47dcf7135b4c45ffb939c39e85a2efa7}
+      \strng{bibnamehash}{47dcf7135b4c45ffb939c39e85a2efa7}
+      \strng{authorbibnamehash}{47dcf7135b4c45ffb939c39e85a2efa7}
+      \strng{authornamehash}{9a058ee35b939385ff853a6860e04167}
+      \strng{authorfullhash}{47dcf7135b4c45ffb939c39e85a2efa7}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Critical Commodities for a High-Tech World: Australia's Potential to Supply Global Demand}
+      \field{year}{2013}
+      \verb{urlraw}
+      \verb https://www.ga.gov.au/data-pubs/data-and-publications-search/publications/critical-commodities-for-a-high-tech-world
+      \endverb
+      \verb{url}
+      \verb https://www.ga.gov.au/data-pubs/data-and-publications-search/publications/critical-commodities-for-a-high-tech-world
+      \endverb
+    \endentry
+    \entry{Sun2010}{article}{}
+      \name{author}{6}{}{%
+        {{hash=572e9d353ebc671cf1eee337bd345139}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Yuzhuang},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=c537e0b67981b860467c8e8fe55e8fb3}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yanheng},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f184ea77198671cb73c8d0ca5c34642b}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Cunliang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=90fa420604391e80311bb1254bab73d6}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Mingyue},
+           giveni={M\bibinitperiod}}}%
+        {{hash=43e7dd026d8ec0a1807a67a1a8a57bcd}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Jinxi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=6ee548bfd63a167112dbc2244668d845}{%
+           family={Qin},
+           familyi={Q\bibinitperiod},
+           given={Shenjun},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications Ltd STM}%
+      }
+      \strng{namehash}{7bf007b3a54c49e7d7eb61dbf8911c4c}
+      \strng{fullhash}{4525a8b0369ccab0f724fa3d0fb7ef0a}
+      \strng{bibnamehash}{4525a8b0369ccab0f724fa3d0fb7ef0a}
+      \strng{authorbibnamehash}{4525a8b0369ccab0f724fa3d0fb7ef0a}
+      \strng{authornamehash}{7bf007b3a54c49e7d7eb61dbf8911c4c}
+      \strng{authorfullhash}{4525a8b0369ccab0f724fa3d0fb7ef0a}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0144-5987}
+      \field{issue}{2}
+      \field{journaltitle}{Energy Exploration and Exploitation}
+      \field{month}{4}
+      \field{note}{doi: 10.1260/0144-5987.28.2.97}
+      \field{title}{Concentrations of Lithium in Chinese Coals}
+      \field{volume}{28}
+      \field{year}{2010}
+      \field{pages}{97\bibrangedash 104}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1260/0144-5987.28.2.97
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1260/0144-5987.28.2.97
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1260/0144-5987.28.2.97
+      \endverb
+    \endentry
+    \entry{TALAN2022107897}{article}{}
+      \name{author}{2}{}{%
+        {{hash=8903840ad5400890208c70f483b4d527}{%
+           family={Talan},
+           familyi={T\bibinitperiod},
+           given={Deniz},
+           giveni={D\bibinitperiod}}}%
+        {{hash=f4f4dbe5f2d34eedea917a20e241a373}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Qingqing},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{6f56d1c825957858efe13c8953dd5a32}
+      \strng{fullhash}{6f56d1c825957858efe13c8953dd5a32}
+      \strng{bibnamehash}{6f56d1c825957858efe13c8953dd5a32}
+      \strng{authorbibnamehash}{6f56d1c825957858efe13c8953dd5a32}
+      \strng{authornamehash}{6f56d1c825957858efe13c8953dd5a32}
+      \strng{authorfullhash}{6f56d1c825957858efe13c8953dd5a32}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The world’s majority predominantly relies on foreign sources for supplying critical minerals. This renders the countries susceptible to supply chain disruption and urges them to develop alternative sources to compete in technological advancements. Among many proven newly identified sources, coal and coal-based materials present their opportunities. Due to the complex structure of coal, many mineral forms can be found in coal-related sources, including critical element-containing minerals. Among the fifty critical elements and minerals defined by the USGS, the rare earth elements, cobalt, lithium, and manganese, are particularly significant as they have enormous importance in high-technology product development. These critical metals can be found in high concentrations in coal-derived sources, such as coal refuse, coal combustion products, and coal acid mine drainage, and be recovered through various separation techniques. This study aims to advance the understanding of these elements' extraction and commercial potential from coal and coal-related sources and help address the world's challenges in the critical mineral supply chain. The concentrations and occurrences of these four commodities in coal-related sources were first reviewed. Later, their recovery processes were discussed, and a conceptual process flowsheet was proposed to selectively recover the rare earth elements, lithium, cobalt, and manganese from coal-based sources.}
+      \field{issn}{0892-6875}
+      \field{journaltitle}{Minerals Engineering}
+      \field{title}{A review study of rare Earth, Cobalt, Lithium, and Manganese in Coal-based sources and process development for their recovery}
+      \field{volume}{189}
+      \field{year}{2022}
+      \field{pages}{107897}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.mineng.2022.107897
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0892687522005076
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0892687522005076
+      \endverb
+      \keyw{Critical minerals,Coal-based materials,Process development,Rare earth elements,Cobalt,Lithium,Manganese}
+    \endentry
+    \entry{tukey1977}{book}{}
+      \name{author}{1}{}{%
+        {{hash=444903ebfc1a03fbab9cd193ee0cd3e0}{%
+           family={Tukey},
+           familyi={T\bibinitperiod},
+           given={J.W.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Publishing Company}%
+      }
+      \strng{namehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{fullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{bibnamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{authorbibnamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{authornamehash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \strng{authorfullhash}{444903ebfc1a03fbab9cd193ee0cd3e0}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780201076165}
+      \field{number}{v. 2}
+      \field{series}{Addison-Wesley series in behavioral science}
+      \field{title}{Exploratory Data Analysis}
+      \field{year}{1977}
+      \verb{urlraw}
+      \verb https://books.google.com.au/books?id=UT9dAAAAIAAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.com.au/books?id=UT9dAAAAIAAJ
+      \endverb
+    \endentry
+    \entry{usde2017}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=42daec949f8476d26444726666aeb22b}{%
+           family={{United States Department of Energy}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {United States Department of Energy}%
+      }
+      \strng{namehash}{42daec949f8476d26444726666aeb22b}
+      \strng{fullhash}{42daec949f8476d26444726666aeb22b}
+      \strng{bibnamehash}{42daec949f8476d26444726666aeb22b}
+      \strng{authorbibnamehash}{42daec949f8476d26444726666aeb22b}
+      \strng{authornamehash}{42daec949f8476d26444726666aeb22b}
+      \strng{authorfullhash}{42daec949f8476d26444726666aeb22b}
+      \field{sortinit}{U}
+      \field{sortinithash}{77a6935510e008adcf5b555e7b4f0711}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{1}
+      \field{title}{Report on Rare Earth Elements from Coal and Coal Byproducts}
+      \field{year}{2017}
+    \endentry
+    \entry{us2024mineral}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c331da575c7eb6f801042d5153adc8a3}{%
+           family={USGS},
+           familyi={U\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {US Geological Survey Reston, VA}%
+      }
+      \strng{namehash}{c331da575c7eb6f801042d5153adc8a3}
+      \strng{fullhash}{c331da575c7eb6f801042d5153adc8a3}
+      \strng{bibnamehash}{c331da575c7eb6f801042d5153adc8a3}
+      \strng{authorbibnamehash}{c331da575c7eb6f801042d5153adc8a3}
+      \strng{authornamehash}{c331da575c7eb6f801042d5153adc8a3}
+      \strng{authorfullhash}{c331da575c7eb6f801042d5153adc8a3}
+      \field{sortinit}{U}
+      \field{sortinithash}{77a6935510e008adcf5b555e7b4f0711}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mineral Commodity Summaries: Rare Earths}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-rare-earths.pdf
+      \endverb
+      \verb{url}
+      \verb https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-rare-earths.pdf
+      \endverb
+    \endentry
+    \entry{Wang2022}{article}{}
+      \name{author}{8}{}{%
+        {{hash=c26cc02bbb5db725a2c79cb200894d76}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Peng},
+           giveni={P\bibinitperiod}}}%
+        {{hash=07963c0d38974d7d9e151397ac251643}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Wei-Qiang},
+           giveni={W\bibinithyphendelim Q\bibinitperiod}}}%
+        {{hash=18d39cd9e77b4715ac099c551d2955a7}{%
+           family={Cui},
+           familyi={C\bibinitperiod},
+           given={Xueqin},
+           giveni={X\bibinitperiod}}}%
+        {{hash=c57f2d36ef7adfc417e86fbf6f203092}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jiashuo},
+           giveni={J\bibinitperiod}}}%
+        {{hash=4d5a1ec375736c19dc1665edb1bb6fee}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Wen},
+           giveni={W\bibinitperiod}}}%
+        {{hash=2521c2fcb663069c2c5eb6a313e7748f}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Chenyang},
+           giveni={C\bibinitperiod}}}%
+        {{hash=9cdaf94f6a70ed7d9aeaa56c40617db4}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Wenjia},
+           giveni={W\bibinitperiod}}}%
+        {{hash=8e0cc4b80e2bcbfc693d145046134aff}{%
+           family={Geng},
+           familyi={G\bibinitperiod},
+           given={Xinyi},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IOP Publishing}%
+      }
+      \strng{namehash}{1945ae4f24598c69c95ba36c072b63da}
+      \strng{fullhash}{265fc4f82b7be424f4e6f1eae5fd1862}
+      \strng{bibnamehash}{265fc4f82b7be424f4e6f1eae5fd1862}
+      \strng{authorbibnamehash}{265fc4f82b7be424f4e6f1eae5fd1862}
+      \strng{authornamehash}{1945ae4f24598c69c95ba36c072b63da}
+      \strng{authorfullhash}{265fc4f82b7be424f4e6f1eae5fd1862}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{To avoid catastrophic climate change, the world is promoting a fast and unprecedented transition from fuels to renewables. However, the infrastructures of renewables, such as wind turbines and solar cells, rely heavily on critical minerals like rare earths, indium, etc. Such interactions between climate targets, energy transitions, and critical minerals were widely overlooked in the present climate scenario analysis. This study aims to fill this gap through an introduction of metal–energy–climate nexus framework with its application on global energy transition towards a carbon-neutral (or below 1.5 °C) target, in which six state-of-the-art integrated assessment models (IAMs) under different shared socioeconomic pathways were applied. Our analysis revealed that climate mitigation is expected to boost significantly the critical mineral demand by 2.6–267-fold, which varies greatly by IAM models. Solar power development may be constrained by tellurium (Te) and selenium (Se) shortage, while wind power will be jeopardized by the limited scalability of rare earth production. Moreover, a more sustainable pathway may come at higher demand for critical minerals along with higher renewable ratios. Consequently, a holistic investigation of the interaction of mineral, energy, and climate systems is highly recommended for future scenario designing.}
+      \field{journaltitle}{Environmental Research Letters}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{Critical mineral constraints in global renewable scenarios under 1.5 °C target}
+      \field{volume}{17}
+      \field{year}{2022}
+      \field{pages}{125004}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1088/1748-9326/aca4ea
+      \endverb
+      \verb{urlraw}
+      \verb https://dx.doi.org/10.1088/1748-9326/aca4ea
+      \endverb
+      \verb{url}
+      \verb https://dx.doi.org/10.1088/1748-9326/aca4ea
+      \endverb
+    \endentry
+    \entry{Xu2021}{article}{}
+      \name{author}{10}{}{%
+        {{hash=16db0ff711a59bb81b91af59093b63dd}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Haiqing},
+           giveni={H\bibinitperiod}}}%
+        {{hash=ed80b669ad29b066c94820ce4dcedbe4}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Chunli},
+           giveni={C\bibinitperiod}}}%
+        {{hash=e40cd8562b83d7a553c6754654890ae1}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Xue},
+           giveni={X\bibinitperiod}}}%
+        {{hash=83b3886baf9b8bbfafc160318edefc23}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Zhongbing},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=19b9723645f5a1e1abb104400e9352d6}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Junwei},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2dd64130127fee9a2db6d6e528ef37e9}{%
+           family={Zeng},
+           familyi={Z\bibinitperiod},
+           given={Guisheng},
+           giveni={G\bibinitperiod}}}%
+        {{hash=b2e07ef809f78891cf3fb983160853ce}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Pengfei},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3099a3def97c4c9048701bba7621f9fe}{%
+           family={Guan},
+           familyi={G\bibinitperiod},
+           given={Qian},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=2e7d5564e0be1ae158107d963fe19e5c}{%
+           family={Ji},
+           familyi={J\bibinitperiod},
+           given={Haiyan},
+           giveni={H\bibinitperiod}}}%
+        {{hash=20242d20405f0dd1f6ca3265c143d77c}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Shuzhen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier B.V}%
+      }
+      \strng{namehash}{6b6bd5fc566745c556675cb00adaa594}
+      \strng{fullhash}{97b95e431f1010fe6b3ad273e97a9d4c}
+      \strng{bibnamehash}{97b95e431f1010fe6b3ad273e97a9d4c}
+      \strng{authorbibnamehash}{97b95e431f1010fe6b3ad273e97a9d4c}
+      \strng{authornamehash}{6b6bd5fc566745c556675cb00adaa594}
+      \strng{authorfullhash}{97b95e431f1010fe6b3ad273e97a9d4c}
+      \field{sortinit}{X}
+      \field{sortinithash}{e90038f30fa4b9ce59606fc8347e3cc7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1383-5866}
+      \field{journaltitle}{Separation and Purification Technology}
+      \field{month}{12}
+      \field{title}{Extraction of Lithium from Coal Fly Ash by Low-Temperature Ammonium Fluoride Activation-Assisted Leaching}
+      \field{volume}{279}
+      \field{year}{2021}
+      \field{pages}{Article 119757}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.1016/j.seppur.2021.119757
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S1383586621014647
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S1383586621014647
+      \endverb
+    \endentry
+    \entry{YANG2020295}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7f8a6256a19361714c6f6a011671f17d}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Li},
+           giveni={L\bibinitperiod}}}%
+        {{hash=e0bc9fb2a53a5ae2c43f946abc2d7026}{%
+           family={Shami},
+           familyi={S\bibinitperiod},
+           given={Abdallah},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{fe94961415bbb2dc0eb174c499655848}
+      \strng{fullhash}{fe94961415bbb2dc0eb174c499655848}
+      \strng{bibnamehash}{fe94961415bbb2dc0eb174c499655848}
+      \strng{authorbibnamehash}{fe94961415bbb2dc0eb174c499655848}
+      \strng{authornamehash}{fe94961415bbb2dc0eb174c499655848}
+      \strng{authorfullhash}{fe94961415bbb2dc0eb174c499655848}
+      \field{sortinit}{Y}
+      \field{sortinithash}{6ae2ff5458ff901249c2745238c951b7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Machine learning algorithms have been used widely in various applications and areas. To fit a machine learning model into different problems, its hyper-parameters must be tuned. Selecting the best hyper-parameter configuration for machine learning models has a direct impact on the model’s performance. It often requires deep knowledge of machine learning algorithms and appropriate hyper-parameter optimization techniques. Although several automatic optimization techniques exist, they have different strengths and drawbacks when applied to different types of problems. In this paper, optimizing the hyper-parameters of common machine learning models is studied. We introduce several state-of-the-art optimization techniques and discuss how to apply them to machine learning algorithms. Many available libraries and frameworks developed for hyper-parameter optimization problems are provided, and some open challenges of hyper-parameter optimization research are also discussed in this paper. Moreover, experiments are conducted on benchmark datasets to compare the performance of different optimization methods and provide practical examples of hyper-parameter optimization. This survey paper will help industrial users, data analysts, and researchers to better develop machine learning models by identifying the proper hyper-parameter configurations effectively.}
+      \field{issn}{0925-2312}
+      \field{journaltitle}{Neurocomputing}
+      \field{title}{On hyperparameter optimization of machine learning algorithms: Theory and practice}
+      \field{volume}{415}
+      \field{year}{2020}
+      \field{pages}{295\bibrangedash 316}
+      \range{pages}{22}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.neucom.2020.07.061
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0925231220311693
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0925231220311693
+      \endverb
+      \keyw{Hyper-parameter optimization,Machine learning,Bayesian optimization,Particle swarm optimization,Genetic algorithm,Grid search}
+    \endentry
+    \entry{Zhao2019}{article}{}
+      \name{author}{7}{}{%
+        {{hash=83ab589fc1432ce949cb31441d689991}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod}}}%
+        {{hash=c8cecfc782c14e04bfaab638845d7956}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Shifeng},
+           giveni={S\bibinitperiod}}}%
+        {{hash=de6e737af523d1d52d293b8ff01f4425}{%
+           family={Nechaev},
+           familyi={N\bibinitperiod},
+           given={Victor\bibnamedelima P.},
+           giveni={V\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=55ba6b2f6f668b3a0d36bc4db12bca9a}{%
+           family={Nechaeva},
+           familyi={N\bibinitperiod},
+           given={Evgeniya\bibnamedelima V.},
+           giveni={E\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=286a0150eb5107e1d5dab36c0e08532b}{%
+           family={Graham},
+           familyi={G\bibinitperiod},
+           given={Ian\bibnamedelima T.},
+           giveni={I\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=185451787fb7463697846d7a09e70d06}{%
+           family={French},
+           familyi={F\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00d0f413a9c2746dcebef1fcd2b9712d}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jihua},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier B.V.}%
+      }
+      \strng{namehash}{9a870310bce06d1689071317cfbe0d25}
+      \strng{fullhash}{544232958ac581e902522984d9791b16}
+      \strng{bibnamehash}{544232958ac581e902522984d9791b16}
+      \strng{authorbibnamehash}{544232958ac581e902522984d9791b16}
+      \strng{authornamehash}{9a870310bce06d1689071317cfbe0d25}
+      \strng{authorfullhash}{544232958ac581e902522984d9791b16}
+      \field{sortinit}{Z}
+      \field{sortinithash}{8f7b480688e809b50b6f6577b16f3db5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper discusses the modes of occurrence of critical elements and their origins in the studied coal and associated rock samples (partings and roof strata) from the Datanhao coal mine, Daqingshan Coalfield, Inner Mongolia, northern China. The studied coals are enriched in trace elements including Zr, Hf, Th, Be, F, Zn, Ga, Nb, Mo, Cd, In, Sn, Ta, Hg, W, Pb, and rare earth elements and Y (REY). Zirconium, Nb, Ta, and Hf are largely associated with anatase in the studied coal and non-coal samples. The main carriers of REY, Th, and U in both coal and non-coal samples are Ca-bearing REE-phosphate minerals, most likely monazite, although U is partly associated with organic matter. Fluorine in the Datanhao coals is mainly associated with kaolinite. Most partings identified as volcanic ash-derived tonsteins from the Datanhao Mine exhibit negative Eu anomalies that, along with the common presence of equant-shaped euhedral volcanic quartz (beta-quartz), indicate a felsic volcanic source located in the Xing'an-Mongolia Orogenic Belt. Other probable sources of clastic material into the basin include the pre-Cambrian granites from the adjacent uplands, which may be responsible for the light rare earth element enrichment of the studied deposits, and associated metamorphic rocks from the adjacent uplands. Owing to acidic hydrothermal fluids, which are most likely related to the Yanshanian (Jurassic to Early Cretaceous) intrusive activity and/or low-temperature basinal waters circulating within the coal-bearing unit during the epigenetic stage, most of the coal benches from the Datanhao mine are also relatively enriched in middle rare earth elements. On the other hand, some coal and non-coal bench samples from the middle Datanhao section are enriched in heavy REE. This, along with the presence of abundant syngenetic or early diagenetic carbonate minerals, indicates deposition in an episodic alkaline environment, the origin of which is mostly probably attributed to evaporation and/or saline water inputs resembling a playa lake environment. As the concentrations of Zr, Hf, Nb, and Ta are all close to or higher than the respective industry cut-off grades or standards for these critical elements, the Datanhao coal seam has potential economic significance for these as an important by-product of the coal mining.}
+      \field{issn}{01691368}
+      \field{journaltitle}{Ore Geology Reviews}
+      \field{month}{8}
+      \field{title}{Enrichment of critical elements (Nb-Ta-Zr-Hf-REE) within coal and host rocks from the Datanhao mine, Daqingshan Coalfield, northern China}
+      \field{volume}{111}
+      \field{year}{2019}
+      \verb{doi}
+      \verb 10.1016/j.oregeorev.2019.102951
+      \endverb
+      \keyw{Critical elements,Depositional environment,Pennsylvanian coal,Rare earth elements}
+    \endentry
+    \entry{ZOU2023105245}{article}{}
+      \name{author}{7}{}{%
+        {{hash=8b5dc151c38931f402c98cc1e1981ccd}{%
+           family={Zou},
+           familyi={Z\bibinitperiod},
+           given={Jianhua},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2b98e98e149cd3a848ccbc12909e86d1}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Hongyu},
+           giveni={H\bibinitperiod}}}%
+        {{hash=83ab589fc1432ce949cb31441d689991}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod}}}%
+        {{hash=fbd7d87b446787eba87a8d7dc63879c7}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xinghua},
+           giveni={X\bibinitperiod}}}%
+        {{hash=1161a5311adb3130e6d43df93c8b498f}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Hang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=93df928f56f95c1d11ae2b102402cce6}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Tian},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a753993c6afc6bfea114ea4114b2e619}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Hui},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{5f90558f9c4202fba1250030d41d75ef}
+      \strng{fullhash}{2af325a63b28f1071f6b83d4b4b554c9}
+      \strng{bibnamehash}{2af325a63b28f1071f6b83d4b4b554c9}
+      \strng{authorbibnamehash}{2af325a63b28f1071f6b83d4b4b554c9}
+      \strng{authornamehash}{5f90558f9c4202fba1250030d41d75ef}
+      \strng{authorfullhash}{2af325a63b28f1071f6b83d4b4b554c9}
+      \field{sortinit}{Z}
+      \field{sortinithash}{8f7b480688e809b50b6f6577b16f3db5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Critical elements in coals and host rocks have attracted much attention due to their growing demand and rising economic significance. This research reports new data of elevated critical elements and mineralogical characteristics of the coals and host rocks from the Daping Mine, Yudongnan Coalfield, neighboring to the previously reported coal-hosted Li and rare earth elements plus yittrium (REY) ore deposit of the Donggou Mine in the same coalfield. The coal in the Daping Mine is mainly a medium-volatile bituminous coal and characterized by a low-ash yield (Ad = 13.08–30.32\%, 19.65\% on average) and a high-sulfur content (1.75–9.25\%, 3.43\% on average). Critical elements including Li, Ga, Nb, Ta, REY are enriched in the coal. Minerals in the Daping coal are mainly clay minerals (including illite, mixed layer of illite/smectite (I/S), kaolinite, and chamosite) and pyrite, and to a lesser extent, calcite, anatase, and marcasite, with traces of zircon, celestite, and baddeleyite. Lithium is mainly associated with illite, and Ga, Nb, Ta, and REY also have an inorganic affinity. The terrigenous materials of the Daping coal were from the intermediate-felsic rocks at the top of the Kangdian Upland rather than the basalts. Hydrothermal solutions also make a great contribution to the enrichment of critical elements and minerals. High-temperature solutions (>200 °C) may be responsible for the weakly negative Eu anomalies. The coal ashes in the Daping Mine have significant concentrations of Li2O (2583 ppm on average), Ga (83.5 ppm on average), (Nb, Ta)2O5 (143 ppm on average), and REO (oxides of REY, 1125 ppm on average), all of which are higher than their respective cut-off grades. Moreover, the floor strata are enriched in these critical elements. Thus, the coal ashes and floor strata are potential resources for extraction of these critical elements.}
+      \field{issn}{0169-1368}
+      \field{journaltitle}{Ore Geology Reviews}
+      \field{title}{Enrichment of critical elements (Li-Ga-Nb-Ta-REE-Y) in the coals and host rocks from the Daping Mine, Yudongnan Coalfield, SW China}
+      \field{volume}{152}
+      \field{year}{2023}
+      \field{pages}{105245}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.oregeorev.2022.105245
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0169136822005534
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0169136822005534
+      \endverb
+      \keyw{Critical elements,Terrigenous materials input,Hydrothermal solutions,Coal,the Daping Mine,Late Permian}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

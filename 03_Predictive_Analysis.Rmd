@@ -1089,10 +1089,10 @@ results_test_best <- results_test %>%
   theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
         axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
-  annotate("text", x = 390, y = 45, label = paste("RMSE: ", round(ree_rmse_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 390, y = 30, label = paste("MAE: ", round(ree_mae_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 390, y = 15, label = paste("MAPE: ", round(ree_mape_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 390, y = 0, label = paste("R-squared: ", round(ree_rsq_value, 2)), size = 5, hjust = 1)
+  annotate("text", x = 390, y = 60, label = paste("RMSE: ", round(ree_rmse_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 390, y = 40, label = paste("MAE: ", round(ree_mae_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 390, y = 20, label = paste("MAPE: ", round(ree_mape_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 390, y = 0, label = paste("R-squared: ", round(ree_rsq_value, 2)), size = 9, hjust = 1)
   
   
 print(results_test_best)
@@ -1641,10 +1641,10 @@ results_hree_test_best <- results_hree_test %>%
   theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
         axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
-  annotate("text", x = 32, y = 7, label = paste("RMSE: ", round(hree_rmse_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 32, y = 5, label = paste("MAE: ", round(hree_mae_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 32, y = 3, label = paste("MAPE: ", round(hree_mape_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 32, y = 1, label = paste("R-squared: ", round(hree_rsq_value, 2)), size = 5, hjust = 1)
+  annotate("text", x = 32, y = 7, label = paste("RMSE: ", round(hree_rmse_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 32, y = 5, label = paste("MAE: ", round(hree_mae_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 32, y = 3, label = paste("MAPE: ", round(hree_mape_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 32, y = 1, label = paste("R-squared: ", round(hree_rsq_value, 2)), size = 9, hjust = 1)
 
 print(results_hree_test_best)
 
@@ -2317,10 +2317,10 @@ results_lree_test_best <- results_lree_test %>%
   theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
         axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
-  annotate("text", x = 290, y = 45, label = paste("RMSE: ", round(lree_rmse_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 290, y = 30, label = paste("MAE: ", round(lree_mae_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 290, y = 15, label = paste("MAPE: ", round(lree_mape_value, 2)), size = 5, hjust = 1) +
-  annotate("text", x = 290, y = 0, label = paste("R-squared: ", round(lree_rsq_value, 2)), size = 5, hjust = 1)
+  annotate("text", x = 290, y = 45, label = paste("RMSE: ", round(lree_rmse_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 290, y = 30, label = paste("MAE: ", round(lree_mae_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 290, y = 15, label = paste("MAPE: ", round(lree_mape_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 290, y = 0, label = paste("R-squared: ", round(lree_rsq_value, 2)), size = 9, hjust = 1)
 
 print(results_lree_test_best)
 

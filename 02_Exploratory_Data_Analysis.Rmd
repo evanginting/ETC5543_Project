@@ -101,6 +101,30 @@ The most important statistics from this table is kurtosis. Kurtosis measures the
 
 
 ```{r}
+# Populate descriptive stats table
+desc_stats_flt <- alldata %>%
+  group_by(Element_Symbol, Element_Description) %>%
+  summarise(min = min(Element_Value_ppm),
+         max = max(Element_Value_ppm),
+         mean = mean(Element_Value_ppm),
+         median = median(Element_Value_ppm),
+         range = max(Element_Value_ppm) - min(Element_Value_ppm),
+         q1 = quantile(Element_Value_ppm, 0.25),
+         q3 = quantile(Element_Value_ppm, 0.75),
+         iqr = IQR(Element_Value_ppm),
+         sd = sd(Element_Value_ppm),
+         var = var(Element_Value_ppm),
+         skewness = moments::skewness(Element_Value_ppm),
+         kurtosis = moments::kurtosis(Element_Value_ppm)) %>%
+  filter(Element_Symbol %in% c("REE", "HREE", "LREE", "Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn")) %>%
+  select(Element_Symbol, min, max, mean, median, sd, kurtosis)
+
+# Saving the data into .RDS format for final report purpose
+saveRDS(desc_stats_flt, './Final_report/Final_report_files/desc_stats_flt.rds')
+```
+
+
+```{r}
 alldata_wide <- dcast(alldata,Project_Name+Sample_ID~Element_Symbol, value.var = c("Element_Value_ppm"), fun=mean, fill=NA)
 
 sum(is.na(alldata_wide$Co))
@@ -186,6 +210,9 @@ bp_alt <- alldata %>%
 
 
 print(bp_alt)
+
+# Save the plot to a .png file
+ggsave("./Final_report/Final_report_files/figure-latex/bp_test_a.png", plot = bp_alt, width = 8, height = 6, dpi = 300)
 ```
 
 
@@ -370,6 +397,9 @@ pg_cop_cheaper <- ggcorrplot(corr_cop_cheaper,
                      outline.col = "white", 
                      lab = TRUE, 
                      lab_size = 3)
+
+# Save the plot to a .png file
+ggsave("./Final_report/Final_report_files/figure-latex/pg_cop_cheaper.png", plot = pg_cop_cheaper, width = 8, height = 8, dpi = 300)
 
 print(pg_cop_cheaper)
 ```
