@@ -1,81 +1,83 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Abstract}{4}{Doc-Start}%
+\contentsline {section}{Abstract}{3}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Background and Motivation}{4}{Doc-Start}%
+\contentsline {section}{Background and Motivation}{3}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Critical elements overview}{4}{section*.1}%
+\contentsline {subsection}{Critical elements overview}{3}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Critical elements in coals}{6}{section*.1}%
+\contentsline {subsection}{Critical elements in coals}{5}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Economic concentrations}{6}{section*.1}%
+\contentsline {subsection}{Economic concentrations}{5}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Existing economic deposits}{7}{section*.1}%
+\contentsline {subsection}{Existing economic deposits}{6}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Extraction of critical elements}{8}{section*.1}%
+\contentsline {subsection}{Extraction of critical elements}{7}{Doc-Start}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Objectives and Significance}{10}{figure.caption.2}%
+\contentsline {section}{Objectives and Significance}{9}{figure.caption.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Data}{11}{figure.caption.2}%
+\contentsline {section}{Data}{10}{figure.caption.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Data source and description}{11}{section*.3}%
+\contentsline {subsection}{Data source and description}{10}{figure.caption.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Data scope}{11}{section*.3}%
+\contentsline {subsection}{Data scope}{10}{figure.caption.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Initial Data Analysis and wrangling process}{12}{section*.3}%
+\contentsline {subsection}{Initial Data Analysis (IDA) and wrangling process}{11}{figure.caption.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Exploratory Data Analysis}{12}{figure.caption.4}%
+\contentsline {section}{Exploratory Data Analysis}{11}{figure.caption.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Predictive Modelling}{14}{section*.5}%
+\contentsline {subsection}{Predictive Modelling}{13}{figure.caption.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Methodology}{16}{figure.caption.8}%
+\contentsline {section}{Methodology}{15}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Predictive Modelling}{16}{section*.9}%
+\contentsline {subsection}{Predictive Modelling}{15}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Data Pre-Processing}{16}{figure.caption.10}%
+\contentsline {subsubsection}{Data Pre-Processing}{16}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Stratified sampling and Initial split}{18}{figure.caption.10}%
+\contentsline {subsubsection}{Prediction Model}{17}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Prediction Model}{18}{figure.caption.10}%
+\contentsline {subsubsection}{Hyperparameter tuning}{18}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Hyperparameter tuning}{19}{figure.caption.10}%
+\contentsline {subsubsection}{Model evaluation}{19}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Model evaluation}{20}{figure.caption.10}%
+\contentsline {paragraph}{Root Mean Squared Error (RMSE)}{19}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Root Mean Squared Error (RMSE)}{20}{figure.caption.10}%
+\contentsline {paragraph}{Mean Absolute Error (MAE)}{19}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Mean Absolute Error (MAE)}{20}{figure.caption.10}%
+\contentsline {paragraph}{Mean Absolute Percentage Error (MAPE)}{19}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Mean Absolute Percentage Error (MAPE)}{20}{figure.caption.10}%
+\contentsline {paragraph}{R-squared (Coefficient of Determination)}{19}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{R-squared (Coefficient of Determination)}{21}{figure.caption.10}%
+\contentsline {paragraph}{Additional Considerations}{20}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Additional Considerations}{21}{figure.caption.10}%
+\contentsline {subsubsection}{Model Scenarios}{20}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Enrichment Analysis}{21}{figure.caption.10}%
+\contentsline {subsection}{Enrichment Analysis}{20}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Results}{21}{figure.caption.10}%
+\contentsline {section}{Results}{21}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Predictive Modelling}{22}{section*.11}%
+\contentsline {subsection}{Predictive Modelling}{21}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Enrichment Analysis}{25}{figure.caption.15}%
+\contentsline {subsection}{Enrichment Analysis}{24}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Discussions}{31}{figure.caption.16}%
+\contentsline {section}{Discussions}{26}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Predictive Modelling}{31}{section*.17}%
+\contentsline {subsection}{Predictive Modelling}{26}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Enrichment Analysis}{32}{section*.17}%
+\contentsline {subsection}{Enrichment Analysis}{27}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Conclusion}{32}{section*.17}%
+\contentsline {section}{Conclusion}{27}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Appendix}{33}{section*.17}%
+\contentsline {section}{Appendix}{29}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Appendix 1}{33}{section*.18}%
+\contentsline {subsection}{Appendix 1}{29}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Appendix 2}{35}{table.5}%
+\contentsline {subsection}{Appendix 2}{31}{table.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Appendix 3}{36}{table.6}%
+\contentsline {subsection}{Appendix 3}{33}{table.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Appendix 4}{36}{table.caption.19}%
+\contentsline {subsection}{Appendix 4}{33}{table.caption.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Appendix 5}{38}{table.8}%
+\contentsline {subsection}{Appendix 5}{35}{table.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{Appendix 6}{36}{figure.caption.13}%

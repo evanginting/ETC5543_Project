@@ -1037,21 +1037,21 @@ results_ree_test_df <- results_test %>%
             R_Square = R2_Score(.pred, truth),
             MAE = MAE(.pred, truth),
             MAPE = MAPE(.pred, truth)) %>%
-  filter(model %in% c("RF_Rdm_Tuned_2","RF_Rdm_Tuned_3", "RF_Rdm_Tuned_4", "RF_Rdm_Tuned_5", "XGBoost_Tuned")) %>%
+  filter(model %in% c("RF_Rdm_Tuned_2","RF_Rdm_Tuned_3", "RF_Rdm_Tuned_4", "XGBoost_Tuned")) %>%
   mutate(method = case_when(model == "RF_Rdm_Tuned_2" ~ "Random Forest",
                                     model == "RF_Rdm_Tuned_3" ~ "Random Forest",
                                     model == "RF_Rdm_Tuned_4" ~ "Random Forest",
-                                    model == "RF_Rdm_Tuned_5" ~ "Random Forest",
+                                    # model == "RF_Rdm_Tuned_5" ~ "Random Forest",
                                     model == "XGBoost_Tuned" ~ "XGBoost")) %>%
   mutate(model_scenarios = case_when(model == "RF_Rdm_Tuned_2" ~ "Elements with correlation coefficient above 0.5",
                                     model == "RF_Rdm_Tuned_3" ~ "Default tuned",
                                     model == "RF_Rdm_Tuned_4" ~ "Elements with high variable importance",
-                                    model == "RF_Rdm_Tuned_5" ~ "Project-stratified model",
+                                    # model == "RF_Rdm_Tuned_5" ~ "Project-stratified model",
                                     model == "XGBoost_Tuned" ~ "Default tuned")) %>%
   mutate(elements = case_when(model == "RF_Rdm_Tuned_2" ~ "Pb, Sc",
                                     model == "RF_Rdm_Tuned_3" ~ "All elements",
                                     model == "RF_Rdm_Tuned_4" ~ "Pb, Tl, Sc, Zn, Cu, Cd",
-                                    model == "RF_Rdm_Tuned_5" ~ "All elements",
+                                    # model == "RF_Rdm_Tuned_5" ~ "All elements",
                                     model == "XGBoost_Tuned" ~ "All elements")) %>%
   mutate(target_var = "REE") %>%
   select(target_var, method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
@@ -1086,8 +1086,8 @@ results_test_best <- results_test %>%
   ylab("Actual") +
   # facet_wrap(~train) +
   theme_minimal() +
-  theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
-        axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
+  theme(axis.title.x = element_text(size = 24),            # Increase X-axis title size
+        axis.title.y = element_text(size = 24)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
   annotate("text", x = 390, y = 60, label = paste("RMSE: ", round(ree_rmse_value, 2)), size = 9, hjust = 1) +
   annotate("text", x = 390, y = 40, label = paste("MAE: ", round(ree_mae_value, 2)), size = 9, hjust = 1) +
@@ -1225,11 +1225,12 @@ results_hree_test %>%
   facet_wrap(~train)
 ```
 
+----POSSIBLY SCRAPPED----
 ### Random Forest Model: Option 2 (All elements from ME-4ACD81)
 Combination of All elements from ME-4ACD81 in predicting HREE, but using different strata method.
 
 #### Data Preparation
-```{r}
+```{r, eval = FALSE, include = FALSE}
 DT_hree_alt_2 <- DT_hree_alt %>%
   mutate(Corr_type = case_when(Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
                              Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
@@ -1254,7 +1255,7 @@ DT_hree_fltr_folds_2 <- vfold_cv(DT_hree_train_fltr_2, v = 5, repeats = 2)
 ```
 
 #### Build the Model
-```{r}
+```{r, eval = FALSE, include = FALSE}
 # Create a recipe for preprocessing
 rf_hree_recipe_2 <- recipe(HREE ~ ., data = DT_hree_train_fltr_2)
 
@@ -1297,16 +1298,16 @@ rf_hree_tr_rdm_tuned_pred_2 <- predict(rf_hree_random_tuned_fit_2, new_data = DT
 rf_hree_ts_rdm_tuned_pred_2 <- predict(rf_hree_random_tuned_fit_2, new_data = DT_hree_test_fltr_2)
 ```
 
-```{r}
+```{r, eval = FALSE, include = FALSE}
 # Plot variable importance
-rf_hree_random_tuned_fit %>%
+rf_hree_random_tuned_fit_2 %>%
   extract_fit_parsnip() %>%
   vip::vip()
 ```
 
 
 #### Evaluate the Model
-```{r}
+```{r, eval = FALSE, include = FALSE}
 # RF Tuned Results for all elements from ME-4ACD81
 ## Training set evaluation
 results_train_rf_hree_rdm_tuned_2 <- rf_hree_tr_rdm_tuned_pred_2 %>%
@@ -1348,7 +1349,7 @@ results_hree_test %>%
 ```
 
 #### Prediction vs Actual Comparison
-```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+```{r viz_comparison3_hree, eval = FALSE, include = FALSE, warning = FALSE, error = FALSE}
 results_hree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_hree_train %>%
@@ -1358,6 +1359,8 @@ results_hree_test %>%
   geom_point(alpha = 0.7) +
   facet_wrap(~train)
 ```
+
+----
 
 ### Random Forest Model: Option 3 (All elements which has high variable importance)
 Combination of elements that have high variable importance in from the model in option 2, which are Pb and Sc.
@@ -1481,7 +1484,7 @@ Data preparation is not needed for this model, because this model use the same d
 #### Build the Model
 ```{r}
 # Define the recipe for XGBoost
-xgb_recipe_hree <- recipe(HREE ~ ., data = DT_hree_train_fltr_2) 
+xgb_recipe_hree <- recipe(HREE ~ ., data = DT_hree_train_fltr_3) 
 
 # XGB tune workflow
 xgb_tuned_workflow_hree <- workflow() %>%
@@ -1496,7 +1499,7 @@ xgboost_params_hree <- parameters(
   loss_reduction(),
   min_n(),
   sample_size = sample_prop(),
-  finalize(mtry(), DT_hree_train_fltr_2))
+  finalize(mtry(), DT_hree_train_fltr_3))
 
 xgboost_grid_hree <- 
   dials::grid_space_filling(
@@ -1508,7 +1511,7 @@ xgboost_grid_hree <-
 # Tune the model
 set.seed(2022)
 xgb_tune_hree <- xgb_tuned_workflow_hree %>% 
-  tune_grid(resamples = DT_hree_fltr_folds_2, 
+  tune_grid(resamples = DT_hree_fltr_folds_3, 
             grid = xgboost_grid_hree,
             metrics = metric_set(rmse, rsq, mae),
             control = control_grid(save_pred = TRUE))
@@ -1519,13 +1522,13 @@ show_best(xgb_tune_hree, n = 5, metric = "rmse")
 # Fit the best model into the training set
 set.seed(2022)
 xgb_tuned_fit_hree <- finalize_workflow(xgb_tuned_workflow_hree, select_best(xgb_tune_hree, metric = "rmse")) %>%
-    fit(DT_hree_train_fltr_2)
+    fit(DT_hree_train_fltr_3)
 
 # Make predictions on the test set
-xgb_hree_train_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_train_fltr_2)
+xgb_hree_train_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_train_fltr_3)
 
 # Make predictions on the test set
-xgb_hree_test_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_test_fltr_2)
+xgb_hree_test_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_test_fltr_3)
 ```
 
 
@@ -1533,14 +1536,14 @@ xgb_hree_test_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_test
 ```{r}
 # Evaluate performance on training data
 xgb_train_results_hree <- xgb_hree_train_predictions %>%
-  bind_cols(DT_hree_train_fltr_2) %>%
+  bind_cols(DT_hree_train_fltr_3) %>%
   dplyr::select(.pred, HREE) %>%
   rename(truth = HREE) %>%
   mutate(model = "XGBoost_Tuned_HREE")
 
 # Evaluate performance on test data
 xgb_test_results_hree <- xgb_hree_test_predictions %>%
-  bind_cols(DT_hree_test_fltr_2) %>%
+  bind_cols(DT_hree_test_fltr_3) %>%
   dplyr::select(.pred, HREE) %>%
   rename(truth = HREE) %>%
   mutate(model = "XGBoost_Tuned_HREE")
@@ -1594,17 +1597,17 @@ results_hree_test_df <- results_hree_test %>%
             MAE = MAE(.pred, truth),
             MAPE = MAPE(.pred, truth)) %>%
   mutate(method = case_when(model == "RF_Rdm_Tuned_HREE" ~ "Random Forest",
-                                    model == "RF_Rdm_Tuned_HREE_2" ~ "Random Forest",
+                                    # model == "RF_Rdm_Tuned_HREE_2" ~ "Random Forest",
                                     model == "RF_Rdm_Tuned_HREE_3" ~ "Random Forest",
                                     model == "XGBoost_Tuned_HREE" ~ "XGBoost")) %>%
   mutate(model_scenarios = case_when(model == "RF_Rdm_Tuned_HREE" ~ "Default tuned",
                                     model == "RF_Rdm_Tuned_HREE_3" ~ "Model with high variable importance",
-                                    model == "RF_Rdm_Tuned_HREE_2" ~ "Project-stratified",
-                                    model == "XGBoost_Tuned_HREE" ~ "Project-stratified")) %>%
+                                    # model == "RF_Rdm_Tuned_HREE_2" ~ "Project-stratified",
+                                    model == "XGBoost_Tuned_HREE" ~ "Model with high variable importance")) %>%
   mutate(elements = case_when(model == "RF_Rdm_Tuned_HREE_3" ~ "Pb, Sc",
                                     model == "RF_Rdm_Tuned_HREE" ~ "All elements",
-                                    model == "RF_Rdm_Tuned_HREE_2" ~ "All elements",
-                                    model == "XGBoost_Tuned_HREE" ~ "All elements")) %>%
+                                    # model == "RF_Rdm_Tuned_HREE_2" ~ "All elements",
+                                    model == "XGBoost_Tuned_HREE" ~ "Pb, Sc")) %>%
   mutate(target_var = "HREE") %>%
   select(target_var, method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
 
@@ -1628,7 +1631,7 @@ hree_mae_value <- results_hree_test_df[2,6]
 hree_mape_value <- results_hree_test_df[2,7]
 
 results_hree_test_best <- results_hree_test %>%
-  filter(model %in% c("RF_Rdm_Tuned_HREE_2")) %>%
+  filter(model %in% c("RF_Rdm_Tuned_HREE_3")) %>%
   ggplot(aes(.pred, truth)) +
   geom_abline(lty = 2, linewidth = 0.75, linetype = "dashed", colour='red') +
   geom_point(alpha = 0.7, colour = "black", size = 5) +
@@ -1638,8 +1641,8 @@ results_hree_test_best <- results_hree_test %>%
   ylab("Actual") +
   # facet_wrap(~train) +
   theme_minimal() +
-  theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
-        axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
+  theme(axis.title.x = element_text(size = 24),            # Increase X-axis title size
+        axis.title.y = element_text(size = 24)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
   annotate("text", x = 32, y = 7, label = paste("RMSE: ", round(hree_rmse_value, 2)), size = 9, hjust = 1) +
   annotate("text", x = 32, y = 5, label = paste("MAE: ", round(hree_mae_value, 2)), size = 9, hjust = 1) +
@@ -2266,18 +2269,19 @@ results_lree_test_df <- results_lree_test %>%
             R_Square = R2_Score(.pred, truth),
             MAE = MAE(.pred, truth),
             MAPE = MAPE(.pred, truth)) %>%
+  filter(model %in% c("RF_Rdm_Tuned_LREE","RF_Rdm_Tuned_LREE_3","RF_Rdm_Tuned_LREE_4", "XGBoost_Tuned_LREE")) %>%
   mutate(method = case_when(model == "RF_Rdm_Tuned_LREE" ~ "Random Forest",
-                                    model == "RF_Rdm_Tuned_LREE_2" ~ "Random Forest",
+                                    # model == "RF_Rdm_Tuned_LREE_2" ~ "Random Forest",
                                     model == "RF_Rdm_Tuned_LREE_3" ~ "Random Forest",
                                     model == "RF_Rdm_Tuned_LREE_4" ~ "Random Forest",
                                     model == "XGBoost_Tuned_LREE" ~ "XGBoost")) %>%
   mutate(model_scenarios = case_when(model == "RF_Rdm_Tuned_LREE" ~ "Default tuned",
-                                    model == "RF_Rdm_Tuned_LREE_2" ~ "Project-stratified",
+                                    # model == "RF_Rdm_Tuned_LREE_2" ~ "Project-stratified",
                                     model == "RF_Rdm_Tuned_LREE_3" ~ "Elements with high variable importance",
                                     model == "RF_Rdm_Tuned_LREE_4" ~ "Elements with correlation coefficient above 0.5",
                                     model == "XGBoost_Tuned_LREE" ~ "Default tuned")) %>%
   mutate(elements = case_when(model == "RF_Rdm_Tuned_LREE" ~ "All elements",
-                                    model == "RF_Rdm_Tuned_LREE_2" ~ "All elements",
+                                    # model == "RF_Rdm_Tuned_LREE_2" ~ "All elements",
                                     model == "RF_Rdm_Tuned_LREE_3" ~ "Tl, Pb, Sc, Cd, Zn, Cu",
                                     model == "RF_Rdm_Tuned_LREE_4" ~ "Pb, Sc, Zn",
                                     model == "XGBoost_Tuned_LREE" ~ "All elements")) %>%
@@ -2298,10 +2302,10 @@ Random Forest "Elements with correlation coefficient above 0.5" model is the bes
 #   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
 #               mutate(train = "Training")) 
 
-lree_rmse_value <- results_lree_test_df[4,5]
-lree_rsq_value <- results_lree_test_df[4,8]
-lree_mae_value <- results_lree_test_df[4,6]
-lree_mape_value <- results_lree_test_df[4,7]
+lree_rmse_value <- results_lree_test_df[2,5]
+lree_rsq_value <- results_lree_test_df[2,8]
+lree_mae_value <- results_lree_test_df[2,6]
+lree_mape_value <- results_lree_test_df[2,7]
 
 results_lree_test_best <- results_lree_test %>%
   filter(model %in% c("RF_Rdm_Tuned_LREE_4")) %>%
@@ -2314,8 +2318,8 @@ results_lree_test_best <- results_lree_test %>%
   ylab("Actual") +
   # facet_wrap(~train) +
   theme_minimal() +
-  theme(axis.title.x = element_text(size = 20),            # Increase X-axis title size
-        axis.title.y = element_text(size = 20)) +          # Increase Y-axis title size
+  theme(axis.title.x = element_text(size = 24),            # Increase X-axis title size
+        axis.title.y = element_text(size = 24)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
   annotate("text", x = 290, y = 45, label = paste("RMSE: ", round(lree_rmse_value, 2)), size = 9, hjust = 1) +
   annotate("text", x = 290, y = 30, label = paste("MAE: ", round(lree_mae_value, 2)), size = 9, hjust = 1) +

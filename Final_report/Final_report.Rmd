@@ -35,6 +35,7 @@ output:
     number_sections: no
     citation_package: biblatex
     toc: true
+    toc_depth: 1
 header-include:
   \usepackage{float}
   \floatplacement{figure}{H}
@@ -72,9 +73,9 @@ As global demand for critical minerals rises, this study investigates the econom
 
 In this technology advancement era where mineral-based technologies are relied by many industrial sectors, critical elements become highly-sought elements in the world [@Emsbo2021]. Critical elements can be defined by two main criteria: first, elements that are essential for manufacturing modern technologies, supporting economic frameworks, and ensuring national security; and second, elements with vulnerable supply chains, which can be affected by political issues, geographic concentration of extraction or production, and natural disasters [@Lian2024; @Fortier2018; @DISR2023].
 
-According to [Critical Minerals Strategy 2023–2030](https://www.industry.gov.au/publications/critical-minerals-strategy-2023-2030) [@geoscience2023], fifteen elements have been identified as highly vulnerable to future supply chain disruptions and additional fifteen elements as moderate risk, which defined in Table \ref{tab:celist} [@Coyne2023; @Skirrow2013; @IEA2024b; @Fortier2018; @Austrade2024]. Among these critical elements, Rare Earth Elements (REE) represent a significant subset. REEs are a group of seventeen chemically similar metallic elements composed of fifteen lanthanides, scandium, and yttrium. They further grouped into heavy (HREEs) and light (LREEs) based on their atomic number, electron arrangement, and chemical properties [@Reid2018].
+According to [Critical Minerals Strategy 2023–2030](https://www.industry.gov.au/publications/critical-minerals-strategy-2023-2030) [@geoscience2023], fifteen elements have been identified as highly vulnerable to future supply chain disruptions and additional fifteen elements as moderate risk, which defined in Appendix [1]({#appendix-one}) [@Coyne2023; @Skirrow2013; @IEA2024b; @Fortier2018; @Austrade2024]. Among these critical elements, Rare Earth Elements (REE) represent a significant subset. REEs are a group of seventeen chemically similar metallic elements composed of fifteen lanthanides, scandium, and yttrium. They further grouped into heavy (HREEs) and light (LREEs) based on their atomic number, electron arrangement, and chemical properties [@Reid2018].
 
-Global initiatives to reduce carbon emissions by transitioning to clean energy have led to increasing demand for critical elements, which are essential resources for achieving this goal [@IEA2021; @Wang2022]. According to @IEA2024 research, demand for these elements is projected to double, triple, or even quadruple, depending on the scenario, relative to current production levels. Among these elements, lithium is experiencing the most rapid growth due to rising demand for electric vehicle (EV) batteries, while copper leads in terms of production volume. Graphite demand is expected to almost quadruple, and the demand for nickel, cobalt, and REEs is projected to double. Furthermore, @Fortier2018 indicates that the growing reliance on critical elements is also driven by their applications across various key sectors, including energy, defense, communications, healthcare, transportation, and agriculture. These dynamics have intensified competition to discover new sources and establish stable, long-term supply chains for these vital resources [@Emsbo2021]. The prominent usage of each element and its projected demand are also detailed in Table \ref{tab:celist}.
+Global initiatives to reduce carbon emissions by transitioning to clean energy have led to increasing demand for critical elements, which are essential resources for achieving this goal [@IEA2021; @Wang2022]. According to @IEA2024 research, demand for these elements is projected to double, triple, or even quadruple, depending on the scenario, relative to current production levels. Among these elements, lithium is experiencing the most rapid growth due to rising demand for electric vehicle (EV) batteries, while copper leads in terms of production volume. Graphite demand is expected to almost quadruple, and the demand for nickel, cobalt, and REEs is projected to double. Furthermore, @Fortier2018 indicates that the growing reliance on critical elements is also driven by their applications across various key sectors, including energy, defense, communications, healthcare, transportation, and agriculture. These dynamics have intensified competition to discover new sources and establish stable, long-term supply chains for these vital resources [@Emsbo2021]. The prominent usage of each element and its projected demand are also detailed in Appendix [1]({#appendix-one}).
 
 As one of the promising top global producers of these critical elements, Australia, with its abundant deposit and technological expertise, plays a pivotal role in the sustainable energy transition and supply chain stability. Australia is the largest producer of lithium, the third largest producer of cobalt, and the fourth largest producer of REEs. It also produces significant amounts of aluminium, nickel, and copper, which are essential for low-emission technologies like electric vehicles, solar panels, and wind turbines [@DISR2023]. Australia's Government strategy to ensure the fulfillment of this potential has been proactive and multifaceted, especially in the past 5 years. The strategy include a range of incentives, finance facilities, grants and other support for the critical elements sector. Some of the important initiatives as reported in @DISR2023, are:
 
@@ -94,7 +95,7 @@ As one of the promising top global producers of these critical elements, Austral
 
 The green technology initiatives and commitments by countries worldwide for decarbonisation have led to a growing market of clean energy and technology. As a result, critical elements, including REEs, are projected to be in high demand in the future [@usde2017]. Currently, China leads the world in REE production, dominating the international trade and global value chain of rare earths [@us2024mineral]. However, their recent export restrictions on REE have led to a disruption in the global supply chain [@MANCHERI2015262]. In response, there is an increasing focus on identifying alternative sources of critical elements, with coal being explored as a potential new source of critical elements [@Hodgkinson2021].
 
-Table \ref{tab:concentration} provides element mapping of the Bowen Basin, the largest coal reserve in Australia, based on @Hodgkinson2020 study. The concentration of element composition is more influenced by the lithology of the samples than by depth gradation:
+Appendix [2]({#appendix-two}) provides element mapping of the Bowen Basin, the largest coal reserve in Australia, based on @Hodgkinson2020 study. The concentration of element composition is more influenced by the lithology of the samples than by depth gradation:
 
 1). In coal and its derivatives, although the majority of element concentrations fall below the benchmark when compared to Post-Archaean Australian Shales (PAAS) standard [@McLennan2011], a widely used geochemical reference material in the average shale compositions, local samples show enrichment in REEs. Additionally, concentrations of bismuth (Bi) are abnormally elevated, showing levels 4-6 times higher than the crustal average.
 
@@ -106,7 +107,7 @@ Table \ref{tab:concentration} provides element mapping of the Bowen Basin, the l
 
 Before the recent surge in demand, extracting critical elements from coal was considered costly, however, methods have been developed that reduce the cost and also enviromentally friendly. Coal and coal byproducts are substantially enhanced with trace metals and have been proposed as a potential source [@Eterigho2021]. A report by US Department of Energy suggests that extracting critical elements from coal material already mined for other purposes, either as a dual product or byproduct, could be more cost-effective than a dedicated mine. Despite the challenge of processing large volumes to obtain economic concentrations, cost may be reduced due to the pre-processed (mined, crushed, and washed) state of the materials and transported to areas with existing infrastructure [@usde2017; @Hodgkinson2021]. Based on research, the elements and metals in coal that are considered to have the best chance for economic recovery are: REEs, Ag, Au, PGEs, Be, Se, V, Ga, Sb, Sc, Mo, W, Re, Ge, U, Y, Nb, Zr, Al [@DAI2018155].
 
-Efficient extraction of critical elements from coal or coal ash, and finding coal sources with highly elevated concentrations of these elements, are essential prerequisites. The value of the element in any coal sources largely determined by their concentration, which varies based on geological and geochemical conditions. Therefore, to economically recovering critical elements from coal is by identifying sources with the highest critical elements levels and accessibility before proceeding to extraction and recovery stages [@Eterigho2021]. @Reid2018 in his report suggests that critical elements average level in coal is typically just 35 ppm, which is insufficient for economic extraction. While @Seredin2012 in their reports suggests that a cutoff grade for Rare Earth Oxides (ROE) for coal seam has been suggested as 800-900 ppm. Table \ref{tab:cutoff-grade} provide suggested cut-off grade for 18 critical elements. Additionally, @TALAN2022107897 reports that coal sources are often relatively enriched in the heavy rare earths (HREEs, Ho, Er, Tm, Yb, Lu) and critical rare earths (CREEs, Y, Nd, Dy, Eu, Tb) compared to traditional mineral deposits. A cut-off grade of 115–130 ppm rare earth element on a whole mass basis may be considered economical. However, the U.S. Department of Energy set a criterion in their work assessing raw coal with total rare earth element content greater than 300 ppm on a whole dry coal basis.
+Efficient extraction of critical elements from coal or coal ash, and finding coal sources with highly elevated concentrations of these elements, are essential prerequisites. The value of the element in any coal sources largely determined by their concentration, which varies based on geological and geochemical conditions. Therefore, to economically recovering critical elements from coal is by identifying sources with the highest critical elements levels and accessibility before proceeding to extraction and recovery stages [@Eterigho2021]. @Reid2018 in his report suggests that critical elements average level in coal is typically just 35 ppm, which is insufficient for economic extraction. While @Seredin2012 in their reports suggests that a cutoff grade for Rare Earth Oxides (ROE) for coal seam has been suggested as 800-900 ppm. Appendix [3]({#appendix-three}) provide suggested cut-off grade for 18 critical elements. Additionally, @TALAN2022107897 reports that coal sources are often relatively enriched in the heavy rare earths (HREEs, Ho, Er, Tm, Yb, Lu) and critical rare earths (CREEs, Y, Nd, Dy, Eu, Tb) compared to traditional mineral deposits. A cut-off grade of 115–130 ppm rare earth element on a whole mass basis may be considered economical. However, the U.S. Department of Energy set a criterion in their work assessing raw coal with total rare earth element content greater than 300 ppm on a whole dry coal basis.
 
 
 ## Existing economic deposits
@@ -159,7 +160,7 @@ The concentration values of elements in the data was obtained from a series of l
 
 From a cost perspective, the ME-MS81 test costs AUD 35.84 per sample, whereas ME-4ACD1 test costs AUD 9.96 per sample, which is nearly four times price difference. Given the lower cost of the ME-4ACD1, it will be more economically feasible to conduct the test for future rock samples. Hence, the goal of the predictive analysis is to determine if predicting critical elements, particularly REE, HREE, and LREE, using elements tested in this test is practical. ME-4ACD1 tests covers only eleven elements, which are Cadmium (Cd), Molybdenum (Mo), Lead (Pb), Silver (Ag), Scandium (Sc), Zinc (Zn), Lithium (Li), Cobalt (Co), Copper (Cu), Nickel (Ni), and Thallium (Tl). Therefore, our predictive model will utilise these elements (Independent Variables) to predict REE, HREE, and LREE (Dependent Variables). Furthermore, this data scope applies only to the predictive modelling part. 
 
-## Initial Data Analysis and wrangling process
+## Initial Data Analysis (IDA) and wrangling process
 
 Before conducting exploratory data analysis, various data formats must be standardised, which involves converting the data into a long format and trimming the necessary variables to ensure consistency and readiness. The cleaned data will include `element symbol`, `element value in ppm` and `project name`. Further data cleaning is still required. Firstly, The data from confidential sources cannot disclose detailed locations; thus, they will be identified as Confidential A, B, and C. Additionally, some element values (`element value in ppm`) are recorded as character initially, this was meant to cover elements that has no data (nd). For these undetected elements, an integer of `-999.00` will be assigned to camouflage the undetected values, ensuring same data type for this variable. However, this will not affect the calculation or the predictive modelling, as they will be excluded later on.
 
@@ -174,7 +175,7 @@ alldata <- readRDS('/cloud/project//results/all_data.rds')
 
 For a brief information, the clean data include total `r ncol(alldata)` variables and `r nrow(alldata)` observations, including `r n_distinct(alldata$Project_Name)` project area, `r n_distinct(alldata$Sample_ID)` samples, and `r n_distinct(alldata$Element_Symbol)` elements. Figure \ref{fig:visdat} shows the correct data type for all variables, with no missing value left.
 
-```{r visdat, fig.cap="n at-a-glance of final data wrangling result"}
+```{r visdat, fig.cap="Final Data Wrangling Result"}
 alldata |> vis_dat()
 ```
 
@@ -182,21 +183,21 @@ alldata |> vis_dat()
 
 The Exploratory Data Analysis (EDA) was carried out on critical elements concentration data, which provide information about the concentration of critical mineral across different areas in Australia that has been normalised using PAAS (Post-Archean Australian Shale) standard. The primary objective of this analysis is to gain a deeper understanding of the data's structure and key characteristics. Through this, we aim to identify significant trends, correlations, and outliers that may influence the outcomes of the study.
 
-The EDA for critical elements concentration data starts with a descriptive statistics for every critical elements included in the data. These summary statistics can be found in the Table \ref{tab:descstats}. The descriptive statistics features include the minimum value of the critical elements, maximum value, the mean, the median, the standard deviation, and the kurtosis of the variable.
+The EDA for critical elements concentration data starts with a descriptive statistics for every critical elements included in the data. These summary statistics can be found in the Appendix [4]({#appendix-four}). The descriptive statistics features include the minimum value of the critical elements, maximum value, the mean, the median, the standard deviation, and the kurtosis of the variable.
 
 The most important statistics from this table is kurtosis. Kurtosis measures the combined weight of the tails of a distribution relative to its centre. In this way, we can use kurtosis as an indicator of the presence of outliers. A high kurtosis values is indicative of outliers. The summary statistics suggest that Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni are having many outliers due to high kurtosis value. Validating the outliers will be easier with data visualisation, which will be presented in the next step.
 
-The next step was analysing the distribution of each element's normalised value. By utilising boxplots, it will help identifying the outliers of each critical elements, while also identifying which element's has median value above the PAAS standard. Obtaining these information will help to understand whether certain element is naturally abundance in the nature, thus it is most likely economically efficient to extract. The figure \ref{fig:element-dist} provide these informations. The boxplots shows some critical points that can be summarised as follow:
+The next step was analysing the distribution of each element's normalised value. By utilising boxplots, it will help identifying the outliers of each critical elements, while also identifying which element's has median value above the PAAS standard. Obtaining these information will help to understand whether certain element is naturally abundance in the nature, thus it is most likely economically efficient to extract. The figure Appendix [5]({#appendix-five}) provide these informations. The boxplots shows some critical points that can be summarised as follow:
 
 -   Medians: Most of the elements have their medians close to 0, indicating that the majority of the values are low or concentrated around a lower range. Considering that the threshold to define whether a sample is below/above background is 1 (vertical red dashed line), some elements that have median above the threshold are Re, Ag, Au, Mo, Bi, Li, Cu, Eu, Dy, Gd, Sm, Lu, Yb, Tm, Tb, MREEs, Er, Ho, U, Ga, Y, Pb, Nd, Sc, REEYs, REEs, Th, V, Pr, LREEs.
 -   Spread and variability: The elements exhibit varying degrees of spread. For example, Ge shows a wide range with its box stretching from a low value near 0 to a higher value around 10, indicating a large variability. On the opposite side, elements like Mn, Fe, Cr, Co, Rb, Ni, HREEs have very narrow IQR, indicating less variability.
--   Outliers: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, Ge, Bi, Mn, and Ba show notable outliers far from the main data range. Additionally, some elements that was reported from table \ref{tab:desc-stats}, which have high kurtosis are Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
+-   Outliers: Several elements have significant outliers, as indicated by the dots outside the whiskers of the box plots. For instance, Ge, Bi, Mn, and Ba show notable outliers far from the main data range. Additionally, some elements that was reported from Appendix [5]({#appendix-five}), which have high kurtosis are Al, Ba, Bi, Ce, Co, Cr, Cs, Cu, Fe, Mn, Nb, and Ni. These outliers suggest the presence of some unusually high or low values for these elements, which could be of interest for further investigation.
 -   Symmetry and skewness: Some elements like Ge, Bi, and Ag appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like Ga and Sm show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
 -   Comparison across Elements: Ge stands out with a particularly large spread and median, making it an outliers among the elements. Conversely, many rare earth elements (REEs, REEYs, MREEs, LREEs, HREEs) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
 ## Predictive Modelling
 
-While some general EDA has been covered, some substantial analysis specific for predictive modelling is needed. As has been mentioned previously that predictive modelling will only use 11 elements that was tested from ME-4ACD1 test, this section will focus solely on those elements. 
+While some general EDA has been conducted, a more in-depth analysis specific to predictive modeling is required. As mentioned earlier, the predictive models will use only the 11 elements tested in the ME-4ACD1 analysis. This section will therefore focus exclusively on those elements.
 
 Table \ref{tab:descstatsflt} shows the descriptive statistics of the dependent variables (REEs, HREEs, and LREEs) and independent variables (all elements from ME-4ACD1 test). 
 ```{r descstatsflt, align = 'center'}
@@ -236,11 +237,11 @@ knitr::include_graphics("./Final_report_files/figure-latex/pg_cop_cheaper.png")
 
 ## Predictive Modelling
 
-The predictive modeling process in this study follows a structured methodology, consisting of key steps aimed at selecting the most accurate and robust model for predicting the target variable. Each step contributes to refining the model’s performance, from data pre-processing and feature selection to model training and evaluation. The overall framework of this methodology is outlined in the figure \ref{fig:modelbuilding}.
-
 ```{r modelbuilding, fig.cap = "The Methodology of This Study", fig.align = 'center', fig.show = 'hold', out.width="95%"}
 knitr::include_graphics("./Final_report_files/figure-latex/Methodologyv2.png")
 ```
+
+The predictive modeling process in this study follows a structured methodology, consisting of key steps aimed at selecting the most accurate and robust model for predicting the target variable. Each step contributes to refining the model’s performance, from data pre-processing and feature selection to model training and evaluation. The framework of this methodology is shown in the figure \ref{fig:modelbuilding}.
 
 The methodology for this study follows a three-stage process. First, further data pre-processing is conducted, addressing outliers and missing values to ensure clean data. Next, several modeling scenarios are explored using Random Forest and Gradient Boosting, with hyperparameter tuning applied to optimise model performance. These scenarios include using all elements, elements with high correlation coefficient to target variables, and different stratification methods for data splitting. Finally, model performance is evaluated using key metrics such as Root Mean Squared Error (RMSE), R-squared, Mean Absolute Error (MAE), and Mean Absolute Percentage Error (MAPE).
 
@@ -253,11 +254,11 @@ For outliers, @tukey1977 introduce the approach to detect outliers in a dataset.
 
 For missing values, @Hastie09 stated that there are number of ways in treating missing value (assuming random missing value), which are removing observations with any missing value; rely on the learning algorithm to handle missing values during the training process; and fill in all missing values prior to training process. The last option was chosen and the missing value are filled with the median value of where the samples were obtained from, but if the element does not exist in that particular project, then the global median will be applied. For example, for missing value detected in "Sc" data from "Confidential Project A", then those missing values will be replaced with median value of "Sc" in general.
 
-Unlike simple random sampling, stratified sampling is deployed to preserve the diversity of project's key feature across the training and test datasets, which leads to unbiased predictive modeling. However, some projects have limited borehole samples measured in the laboratory and their patterns might not be adequately presented in the initial data split. Thus, the project-based aggregation in terms of the classification within correlation matrix offers an effective solution to mitigate this bias. To properly address the hidden pattern in the neighbor similarity against global matrix, The approach incorporates completed pairwise method to neglect "NA" in correlation calculation and all element in the list [@Menon2020]. Additionally, the processed data will be split to training and testing set with 2/3 proportion.
+Finally, after treating outliers and missing values, the processed data will be split with a 2/3 proportion for training and 1/3 for testing follows a widely accepted practice in predictive modelling. This approach ensures robust evaluation of model's performance on unseen case, which helps avoid overfitting. Stratifying by project area was essential to account for the inherent variability across different mining sites. Since element's concentration values vary significantly by location, stratification ensures that the training and testing datasets maintain a representative distribution of project areas.
 
 ### Prediction Model
 
-In this project, the tidymodels package will be used to implement predictive modeling in R. Tidymodels is a comprehensive framework built on tidyverse principles, designed for modeling and machine learning [tidymodels]. In addition, two prediction methods are employed in this analysis: Random Forest (RF) and Gradient Boosting Tree (GBT), both of which are well-suited for handling complex, non-linear relationships in the data. These methods have been selected for their robustness in prediction and their ability to minimise overfitting through ensemble learning techniques.
+In this project, the tidymodels package will be used to implement predictive modeling in R. Tidymodels is a comprehensive framework built on tidyverse principles, designed for modeling and machine learning [@tidymodels]. In addition, two prediction methods are employed in this analysis: Random Forest (RF) and Gradient Boosting Tree (GBT), both of which are well-suited for handling complex, non-linear relationships in the data. These methods have been selected for their robustness in prediction and their ability to minimise overfitting through ensemble learning techniques.
 
 Random Forest is an ensemble learning method that constructs multiple decision trees using subsets of the training data through a technique called 'bagging' (Bootstrap Aggregating). Bagging is a variance reduction technique for an estimated prediction function. In regression, this involves fitting the same regression tree multiple times to different bootstrap samples of the training data and averaging the results. Random Forest is a significant modification of bagging, as it builds a large collection of de-correlated trees and then averages their outputs. The concept behind Random Forest is to improve the variance reduction achieved by bagging by reducing the correlation between the trees, while minimizing any increase in variance. This is accomplished by randomly selecting input variables during the tree-growing process [@Hastie09; @Breiman01]. The engine setting in tidymodels will be set to `randomForest`.
 
@@ -321,6 +322,9 @@ where $\bar{y}$ is the mean of the actual values.
 
 These evaluation metrics each have strengths and weaknesses. RMSE penalises large errors more than MAE, making it more sensitive to outliers. MAPE is useful for interpretation as it gives a percentage error, but it can be misleading when actual values are very low. R-squared is a useful measure of fit, but it can sometimes be artificially high in overfitting scenarios. Therefore, it is essential to use a combination of these metrics to gain a well-rounded understanding of the model’s performance. For this project, we are going to look for a model that produce the smallest RMSE, MAE, and MAPE, while produce the largest R-Squared, because this implies the model produce the least error and cover the most variability from the data.
 
+### Model Scenarios
+To build the predictive models, several scenarios were tested to determine which combination of elements provides the best performance in predicting REEs, HREEs, and LREEs. First, a model will be constructed using all elements from ME-4ACD81 test. Second, variable importance will be analysed to identify which variable contribute most to the prediction model, and these will be used in constructing to construct the second model. Third, elements with a high correlation coefficient (above 0.5) will be used to build another model. Among these three scenarios, the one that produces the best result will be applied using the GBT method to evaluate potential improvement with different machine learning techniques.
+
 ## Enrichment Analysis
 
 PAAS (Post-Archean Australian Average Shale) represents the precise composition of the upper crust, which is derived from the average of 23 shales in Post-Archean age, with the exclusion of aberrant materials and the correction of quadratic equation. @McLennan1989 stated that PAAS normalisation refers to the process of tested element concentrations normalisation against the PAAS score, providing a standardised way to element abundance across different samples. The The formula can be written as $\text{PAAS Normalized}=\frac{ \text{Element Concentration in Sample (ppm)}}{\text{PAAS Concentration (ppm)}}$. The cut-off benchmark is 1 ppm for the classification of element enrichment. A ratio exceeding 1 ppm indicates that the element concentration in the sample is enriched relative to PAAS standard, implying potential for economic extraction, vice versa. 
@@ -331,12 +335,12 @@ The visualisation technique adopts the distribution scatter plot for two scenari
 
 ## Predictive Modelling
 
-```{r testres1, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width = "80%"}
+```{r testres1, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, cache=FALSE, out.width = "80%"}
 # Load data
-results_ree_test_df <- readRDS('./Final_report_files/results_ree_test_df.rds')
+results_ree_test_rpt <- readRDS('./Final_report_files/results_ree_test_df.rds')
 
 # Populate a formal table
-kable(results_ree_test_df, 
+kable(results_ree_test_rpt, 
       booktabs = T,
       format = "latex",
       align = "clllcccc",
@@ -355,14 +359,14 @@ kable(results_ree_test_df,
   column_spec(4, width = "3,1cm") 
 ```
 
-Table \ref{tab:testres1} shows the model performance evaluation for predicting REE, HREE, and LREE across different scenarios. For REE prediction, the predictive model was built under five different scenarios. From the error evaluation metrics, the RMSE value is ranging from 47.57 to 66.45, MAE value is ranging from 33.85 to 38.18, and MAPE value is ranging from 26.40% to 29.44%. A model with the lowest value indicates the least error, which turn out the random forest default tuned model where all elements are included is the lowest of all. Additionally, from the variability metric, the R-Square value is ranging from 0.37 to 0.62. A model with the highest value indicates a better model in capturing variability of the data, in this case the same model also score the the highest of all. This results concludes the best model in predicting REE is the random forest default tuned model where all elements are included. 
+Table \ref{tab:testres1} shows the model performance evaluation for predicting REE, HREE, and LREE across different scenarios. For REE prediction, the predictive model was built under four different scenarios. From the error evaluation metrics, the RMSE value is ranging from 47.57 to 66.45, MAE value is ranging from 33.85 to 38.18, and MAPE value is ranging from 26.40% to 29.44%. A model with the lowest value indicates the least error, which turn out the random forest default tuned model where all elements are included is the lowest of all. Additionally, from the variability metric, the R-Square value is ranging from 0.37 to 0.62. A model with the highest value indicates a better model in capturing variability of the data, in this case the same model also score the the highest of all. This results concludes the best model in predicting REE is the random forest default tuned model where all elements are included. 
 
-```{r testres2, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width = "80%"}
+```{r testres2, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, cache=FALSE, out.width = "80%"}
 # Load hree test result
-results_hree_test_df <- readRDS('./Final_report_files/results_hree_test_df.rds')
+results_hree_test_rpt <- readRDS('./Final_report_files/results_hree_test_df.rds')
 
 # Populate a formal table
-kable(results_hree_test_df, 
+kable(results_hree_test_rpt, 
       booktabs = T,
       format = "latex",
       align = "clllcccc",
@@ -380,14 +384,14 @@ kable(results_hree_test_df,
   column_spec(3, width = "4,5cm") %>%
   column_spec(4, width = "3,1cm") 
 ```
-For HREE prediction, the predictive model was built under four different scenarios, shown in Table \ref{tab:testres2}. A scenario where we construct the model with elements which has correlation coefficient above 0.5 is absent because there is only one element that fall under this category (Sc). It was decided not to perform this scenario for HREE for the reason that Sc correlation coefficient to HREE is only 0.57, with just moderately strong coefficient, authors thought predicting HREE with one element will: first, oversimplified the model; second, ignore the fact that HREE is less abundant in the nature which further reduces the likelihood that a single moderately correlated element could serve as a reliable predictor. Next, From the error evaluation metrics, the RMSE value is ranging from 2.9 to 3.33, MAE value is ranging from 2.01 to 2.26, and MAPE value is ranging from 28.86% to 36.93%. The Grouped Project - Stratified has the lowest value of RMSE and MAE, but the random forest default tuned model is the lowest of MAPE. Moreover, R-Square value is ranging from 0.46 to 0.55. In this case, Grouped Project - Stratified has the highest score. In Overall, the latter model has better metrics in three evaluation metrics, making it the best model in predicting HREE.
+For HREE prediction, the predictive model was built under three different scenarios, shown in Table \ref{tab:testres2}. A scenario where we construct the model with elements which has correlation coefficient above 0.5 is absent because there is only one element that fall under this category (Sc). It was decided not to perform this scenario for HREE for the reason that Sc correlation coefficient to HREE is only 0.57, with just moderately strong coefficient, authors thought predicting HREE with one element will: first, oversimplified the model; second, ignore the fact that HREE is less abundant in the nature which further reduces the likelihood that a single moderately correlated element could serve as a reliable predictor. Next, From the error evaluation metrics, the RMSE value is ranging from 3.1 to 3.38, MAE value is ranging from 2.13 to 2.45, and MAPE value is ranging from 29%% to 37%. The model with high variable importance has the lowest value of RMSE, but the random forest default tuned model is the lowest of RMSE and MAPE. Moreover, R-Square value is ranging from 0.46 to 0.55. In this case, the model with high variable importance has the highest score. In Overall, the latter model has better metrics in three evaluation metrics, making it the best model in predicting HREE.
 
-```{r testres3, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width = "80%"}
+```{r testres3, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, cache=FALSE, out.width = "80%"}
 # Load lree test result
-results_lree_test_df <- readRDS('./Final_report_files/results_lree_test_df.rds')
+results_lree_test_rpt <- readRDS('./Final_report_files/results_lree_test_df.rds')
 
 # Populate a formal table
-kable(results_lree_test_df, 
+kable(results_lree_test_rpt, 
       booktabs = T,
       format = "latex",
       align = "clllcccc",
@@ -405,7 +409,7 @@ kable(results_lree_test_df,
   column_spec(3, width = "4,5cm") %>%
   column_spec(4, width = "3,1cm") 
 ```
-Table \ref{tab:testres3} shows the results for LREE prediction, where five different scenarios was performed. From the error evaluation metrics, the RMSE value is ranging from 38.43 to 59.47, MAE value is ranging from 26.62 to 32.45, and MAPE value is ranging from 25.07% to 31.38%. The model that was constructed using elements with correlation coefficient above 0.5 score the lowest of all, making it the model with least error rate. Furthermore, R-Square value is ranging from 0.44 to 0.63. In this case, the same model score the highest. It can be concluded that the random forest which constructed with elements that has correlation coefficient value above 0.5 is the best model in predicting LREE.
+Table \ref{tab:testres3} shows the results for LREE prediction, where four different scenarios was performed. From the error evaluation metrics, the RMSE value is ranging from 38.43 to 59.47, MAE value is ranging from 26.62 to 32.45, and MAPE value is ranging from 25.07% to 31.38%. The model that was constructed using elements with correlation coefficient above 0.5 score the lowest of all, making it the model with least error rate. Furthermore, R-Square value is ranging from 0.44 to 0.63. In this case, the same model score the highest. It can be concluded that the random forest which constructed with elements that has correlation coefficient value above 0.5 is the best model in predicting LREE.
 
 With the best model identified, figure \ref{fig:bestplot} shows the predicted vs actual values of each model. The red dashed diagonal line portray the ideal scenario where the predicted values perfectly match the actual values. Points lying on this line indicate perfect prediction, while deviations from the line reflect prediction errors. 
 
@@ -419,13 +423,13 @@ knitr::include_graphics(c("./Final_report_files/figure-latex/results_ree_test_be
 
 The plot that compares predicted vs. actual values of REE reveals moderate prediction performance by the model. With an RMSE of 47.57 and MAE of 33.85, the model demonstrates an average prediction error of roughly 47 units and an average absolute error of about 34 units, indicating that predictions are fairly close to the actual values but still have notable deviations. A MAPE of 26% suggests that, on average, the model's predictions deviate by 26% from the actual REE values, which is a slight improvement in accuracy compared to other similar models. The R-squared value of 0.62 indicates that 62% of the variance in the actual values is captured by the model, showing a reasonable fit but still leaving significant room for error. In terms of key insights, the model performs relatively well for mid-range REE values, as the points are closely aligned along the diagonal line. However, the scatter becomes more pronounced at higher REE values (beyond 300), where the model underestimates the actual values, as observed by the upward spread of points above the line. This suggests that while the model captures general patterns, it faces challenges in predicting high REE values with precision, due to outliers and high range (max - min) value of REE as describe in Table \ref{tab:descstatsflt}.
 
-From HREE plot, the model demonstrates reasonable predictive performance with some room for improvement. The RMSE of 2.9 indicates that, on average, the model’s predictions deviate by about 2.9 units from the actual HREE values. The MAE of 2.01 suggests that the average absolute error is 2.01 units, indicating that the model tends to have relatively small errors overall. The MAPE of 33% shows that the model's predictions are, on average, 33% off from the actual values, which reflects moderate accuracy. The R-squared value of 0.55 reveals that 55% of the variance in the actual HREE values is captured by the model, indicating that the model captures the general pattern but leaves a significant portion of variability unexplained. Some key insights from the plot, most data points cluster around lower values, particularly between 0 and 10 for both predicted and actual values, suggesting that the model predicts these ranges fairly well. However, for higher actual HREE values (above 20), the model tends to underestimate, as indicated by points above the diagonal line. Additionally, there are a few outliers, particularly the one near 30, where the model considerably underpredicts. Overall, the model performs well for low to mid-range HREE values but struggles with higher values, leading to underestimation and some degree of error at the upper range.
+From HREE plot, the model demonstrates reasonable predictive performance with some room for improvement. The RMSE of 3.14 indicates that, on average, the model’s predictions deviate by about 3.14 units from the actual HREE values. The MAE of 2.24 suggests that the average absolute error is 2.24 units, indicating that the model tends to have relatively small errors overall. The MAPE of 37% shows that the model's predictions are, on average, 37% off from the actual values, which reflects moderate accuracy. The R-squared value of 0.48 reveals that 48% of the variance in the actual HREE values is captured by the model, indicating that the model captures the general pattern but leaves a significant portion of variability unexplained. Some key insights from the plot, most data points cluster around lower values, particularly between 0 and 10 for both predicted and actual values, suggesting that the model predicts these ranges fairly well. However, for higher actual HREE values (above 20), the model tends to underestimate, as indicated by points above the diagonal line. Additionally, there is one outlier, particularly the one near 30, where the model considerably underpredicts. Overall, the model performs well for low to mid-range HREE values but struggles with higher values, leading to underestimation and some degree of error at the upper range.
 
 Similar to other model where they have captured the general trend with some noticeable deviations, the same case observed from LREE plot. The RMSE of 38.44 and MAE of 29.6 indicate moderate errors in the predictions. MAE is slightly lower than RMSE, meaning that large errors (outliers) are not excessively frequent, but the general prediction error is still notable. A MAPE of 31% highlights that the model’s predictions are, on average, 31% away from the actual values, indicating moderate accuracy. The R-squared value of 0.63 suggests that 63% of the variance in the actual data is explained by the model, which shows a fair fit but leaves room for unexplained variance. Key insights from the plot include more accurate predictions in the lower to mid-range values of LREE, with a clustering of points near the diagonal line, while the model tends to underestimate higher actual LREE values, as shown by the increasing spread above 200. This underestimation at higher values signals some challenges in predicting extreme values accurately, which might be resulted from outliers and high range of LREE as describe in Table \ref{tab:descstatsflt}.
 
 ## Enrichment Analysis
 
-Figure \ref{fig:paaslvl} showcases the overall distribution of PAAS levels for all elements in the global project, which can give a holistic view of the enrichment and universality of each element's distribution. The cut-off threshold for element enrichment is represented by the red vertical dashed line, while the enriched and diminished samples are represented by green triangle and black circle, respectively.
+Figure \ref{fig:paaslvlcode} showcases the overall distribution of PAAS levels for all elements in the global project, which can give a holistic view of the enrichment and universality of each element's distribution. The cut-off threshold for element enrichment is represented by the red vertical dashed line, while the enriched and diminished samples are represented by green triangle and black circle, respectively.
 
 Only a few elements, such as `Rhenium (Re)`, `Germanium (Ge)`, and `HREEs`, do not meet the detectable sample sizes due to either being absent or having a subtle presence, while the remaining elements are well-represented, with sufficient sample volumes observed in abundant concentrations.
 
@@ -434,8 +438,8 @@ Notably, elements like `Silver (Ag)` and `Gold (Au)` tend to show elevated enric
 On the other hand, `Bismuth (Bi)` and `Lithium (Li)` present promising prospects for future growth. First and foremost, extraction from coal mines serves as a supplementary solution to ore reserves and is driven by market demand-supply dynamics. With the rising awareness of environmental sustainability and conservation, `Bi`, as a non-toxic alternative to `lead (Pb)`, has gained widespread attention,especially its alloy glasses for radiation protection purposes.[@Buriahi2021]. The global shifts towards EVs has also contributed to a surge in demand for lithium batteries. Additionally, compared with other elements with above-average levels, `Bi` and `Li` show higher levels of enrichment (more than 5 times the PAAS standard), with some specific projects detecting concentrations exceeding 10 times the PAAS standard.
 
 Meanwhile, some instances of the element enrichment may be misleading due to the lab error. Despite a small number of valid samples, `Germanium (Ge)` stands out for its extremely enriched samples, displaying concentrations 30-40 times higher than the PAAS standard. Considering `Ge` is relatively rare in most natural environments and all these abnormal samples come from the same project (`Wandoan`), this seems more like a human error in statistical reporting from the laboratory. `Molybdenum (Mo)` and `Barium (Ba)` are also not typically enriched in coal seams. Their apparent enrichment might be incurred by the contamination of drilling fluids.
-```{r paaslvlcode, warning = FALSE, message=FALSE}
-p1 <- alldata|> 
+```{r paaslvlcode, fig.cap="The distribution of element concentration with reference to PASS levels", out.width="100%", fig.height = 8, out.height="100%", warning = FALSE, message = FALSE, cache = FALSE}
+alldata|> 
     ggplot(aes(y = Element_Symbol, x = PAAS_normalised_value, color = Above_PASS_flag, shape = Above_PASS_flag)) +
   geom_point() +  # 1 for circle, 2 for triangle
   scale_color_manual(values = c("black", "#028A0F")) +  # Black for below background, green for enriched
@@ -444,17 +448,19 @@ p1 <- alldata|>
        color="Above PAAS Standard",
        shape ="Above PAAS Standard") +
   scale_shape(solid = FALSE) +
-  theme(legend.position="bottom")
-ggsave("Final_report_files/figure-latex/PAAS_global_project.png", plot = p1)
-```
-
-
-```{r paaslvl, fig.cap="The distribution of element concentration with reference to PASS levels", out.width="100%", out.height="150%", warning = FALSE, message=FALSE}
-
-knitr::include_graphics("Final_report_files/figure-latex/PAAS_global_project.png")
+  theme(legend.position= "bottom",
+        axis.text.y = element_text(size = 9))
+# ggsave("Final_report_files/figure-latex/PAAS_global_project.png", plot = p1)
 
 ```
-Understanding the spatial variability and geochemical behavior across projects enables the subsequent exploration to focus on project regions with the highest potential yield. Figure \ref{fig:regionalbk1}, Figure \ref{fig:regionalbk2} and Figure \ref{fig:regionalbk2}  provides a project breakdown of the distribution of element concentrations with reference to PASS levels. `Confidential_A` and `Fort Cooper Coal Measure(FCCM)` are the primary potential enrichment areas. All measured elements exhibits a clear and widespread enrichment pattern, consistently maintaining an enrichment range of 1 to 5 times to the PAAS standard. 
+
+
+```{r paaslvl, fig.cap="The distribution of element concentration with reference to PASS levels", out.width="100%", fig.height = 10, out.height="100%", warning = FALSE, message = FALSE, cache = FALSE}
+
+# knitr::include_graphics("Final_report_files/figure-latex/PAAS_global_project.png")
+
+```
+Understanding the spatial variability and geochemical behavior across projects enables the subsequent exploration to focus on project regions with the highest potential yield. Appendix [6]({#appendix-six}) provides a project breakdown of the distribution of element concentrations with reference to PASS levels. `Confidential_A` and `Fort Cooper Coal Measure(FCCM)` are the primary potential enrichment areas. All measured elements exhibits a clear and widespread enrichment pattern, consistently maintaining an enrichment range of 1 to 5 times to the PAAS standard. 
 
 Moreover, `PowerPlant Ash` and `Confidential_B` also show potential for development. Although their element enrichment is not as pronounced as in the two regions mentioned above, a significant number of samples still exhibit higher enrichment levels above the PAAS standard, particularly for critical elements such as `Aluminum (Al)` and `Titanium (Ti)` in `PowerPlant Ash`,  LREEs and MREEs series in `Confidential_B`. The variance among their samples is substantial, suggesting that the enrichment might be localised. 
 
@@ -465,22 +471,24 @@ Finally, some impoverished projects are identified in the project breakdown, inc
 
 ## Predictive Modelling
 
-As all the best models have been thoroughly analysed, it is worth discussing whether these models can be considered 'good models' for predicting REE, HREE, and LREE. Starting with the advantages, all the best models have RMSE and MAE values that are relatively close to the actual values, with some deviations. However, when these figures are compared to the standard deviation of each target variable, they fall significantly below the standard deviation. As shown in Table \ref{tab:descstatsflt}, the standard deviations of REE, HREE, and LREE are 78.9, 4.81, and 71, respectively. This indicates that the model’s prediction errors are smaller than the natural variability in the target variables, meaning the models perform better than a simple mean-based prediction. @Moriasi2007 reported that if RMSE and MAE values are less than half of the standard deviation, the error can be considered low. In this case, the MAE values meet this criterion, while the RMSE values are slightly higher, which might be due to the model's higher sensitivity to outliers. Additionally, it is recommended to use the RMSE to Standard Deviation Ratio (RSR) to assess model performance, categorising models as 'very good' if RSR is below 0.5, 'good' if RSR is between 0.50 and 0.60, 'satisfactory' if RSR is between 0.60 and 0.70, and 'unsatisfactory' if RSR is above 0.70. The RSR of all the best models falls within the 'good' category, which suggests that these models can be considered good based on RMSE performance.
+As all the best models have been thoroughly analysed, it is worth discussing whether these models can be considered 'good models' for predicting REE, HREE, and LREE. Starting with the advantages, all the best models have RMSE and MAE values that are relatively close to the actual values, with some deviations. However, when these figures are compared to the standard deviation of each target variable, they fall significantly below the standard deviation. As shown in Table \ref{tab:descstatsflt}, the standard deviations of REE, HREE, and LREE are 78.9, 4.81, and 71, respectively. This indicates that the model’s prediction errors are smaller than the natural variability in the target variables, meaning the models perform better than a simple mean-based prediction. @Moriasi2007 reported that if RMSE and MAE values are less than half of the standard deviation, the error can be considered low. In this case, the MAE values meet this criterion, while the RMSE values are slightly higher, which might be due to the model's higher sensitivity to outliers. Additionally, it is recommended to use the RMSE to Standard Deviation Ratio (RSR) to assess model performance, categorising models as 'very good' if RSR is below 0.5, 'good' if RSR is between 0.50 and 0.60, 'satisfactory' if RSR is between 0.60 and 0.70, and 'unsatisfactory' if RSR is above 0.70. The RSR of REEs and LREEs best models falls within the 'good' category, however, HREEs best model categorised as 'satisfactory' only. This suggest that all model are reasonably well if looking from RMSE stand point.
 
-On the downside, the R-squared values of 0.62 (REE), 0.55 (HREE), and 0.63 (LREE) indicate that the models are only moderately strong in capturing the variability of the data. Ideally, an R-squared value above 0.8 would be desirable, but an R-squared above 0.5 is still acceptable [@Moriasi2007]. Furthermore, the MAPE values of 26% (REE), 33% (HREE), and 31% (LREE) are relatively high, although they remain below the 50% threshold. 
+On the downside, the R-squared values of 0.62 (REE), 0.48 (HREE), and 0.63 (LREE) indicate that the models are only moderately strong in capturing the variability of the data. Ideally, an R-squared value above 0.8 would be desirable, but an R-squared above 0.5 is still acceptable [@Moriasi2007]. Unfortunately, the HREE model is still below 0.5 level by a very small margin. Furthermore, the MAPE values of 26% (REE), 37% (HREE), and 31% (LREE) are relatively high, although they remain below the 50% threshold. 
 
 There are several key considerations that justify classifying these models as good models. First, none of the elements from the ME-4ACD81 test show a high correlation with the target variables, making it challenging to produce highly accurate models. Second, a cost-benefit trade-off exists. Given that the ME-4ACD81 test is almost four times cheaper than the ME-MS81 test, these models are satisfactory, especially for businesses operating on tight budgets. Third, linked to the second point, the affordability of the ME-4ACD81 test allows for more samples to be tested, resulting in more data. With additional data, the model can be retrained, potentially improving its predictive accuracy. Therefore, it is reasonable to use samples tested via the ME-4ACD81 test. Finally, it should be noted that some errors were reported by the lab when inputting sample concentration values, leading to many outliers in the data. However, due to time constraints, the authors were unable to obtain corrected data. 
 
 ## Enrichment Analysis
 
-With the escalating demand in the Australian market and the presence of enriched concentrations, \ref{fig:paaslvl} suggests `Bi` and `Li` are the most promising elements for economic extraction. However, due to the different measurement protocols applied in element mapping across projects (e.g., ME-4ACD81 and ME-MS81 analyses), a significant amount of missing data for some elements is attributed to insufficient measurement precision and scope, rather than their absence in coal mines. Re-examining these project samples using a consistent testing method could help improve data integrity. Overall, the abnormal findings on enrichment align with recent studies from both local and international research, including [@Sun2010] and [@Hodgkinson2020].
+With the escalating demand in the Australian market and the presence of enriched concentrations, \ref{fig:paaslvlcode} suggests `Bi` and `Li` are the most promising elements for economic extraction. However, due to the different measurement protocols applied in element mapping across projects (e.g., ME-4ACD81 and ME-MS81 analyses), a significant amount of missing data for some elements is attributed to insufficient measurement precision and scope, rather than their absence in coal mines. Re-examining these project samples using a consistent testing method could help improve data integrity. Overall, the abnormal findings on enrichment align with recent studies from both local and international research, including [@Sun2010] and [@Hodgkinson2020].
 
 The project-wise breakdown serves as a valuable guideline for prospective extraction efforts by pinpointing areas of enrichment. A comprehensive and in-depth investigation is necessary to prioritise on `Confidential_A` and `Fort Cooper Coal Measure (FCCM)`, where the distribution of enriched elements is both prevalent and consistently concentrated. To optimise resource input while maintaining high-quality output, a targeted study focusing on specific enriched elements may prove more effective in other potential area, such as `PowerPlant Ash` and `Confidential_B`. Conversely, some projects that yielded underwhelming results should be excluded from future exploration efforts.
 
 # Conclusion
-This study highlights the potential of using predictive modeling and enrichment analysis to evaluate the economic feasibility of extracting critical elements from coal mine waste in Australia. The predictive models, though exhibiting moderate R-squared values and relatively high MAPE, demonstrate reliable performance with RMSE and MAE values lower than the natural variability of the target variables. With additional calculation of RSR, it provides a fundamental reason to decide the models are falling under "good" category, thus making them valuable tools, especially when considering the cost-efficiency of the ME-4ACD81 lab analysis. The models are further justified by the trade-off between cost and prediction accuracy, as well as the potential for improvement with additional data. In terms of enrichment analysis, the discovery of economically feasible elements such as `Bi` and `Li`, along with areas like Fort Cooper and Confidential A, offers encouraging prospects for future extraction. While some areas provides promising further exploration, others with less potential can be deprioritised, enabling more efficient resource allocation. 
+This study highlights the potential of using predictive modeling and enrichment analysis to evaluate the economic feasibility of extracting critical elements from coal mine waste in Australia. The predictive models, though exhibiting moderate R-squared values and relatively high MAPE, demonstrate reliable performance with RMSE and MAE values lower than the natural variability of the target variables. With additional calculation of RSR, it provides a fundamental reason to decide the models are falling under "good" and "satisfactory" category, thus making them valuable tools, especially when considering the cost-efficiency of the ME-4ACD81 lab analysis. The models are further justified by the trade-off between cost and prediction accuracy, as well as the potential for improvement with additional data. In terms of enrichment analysis, the discovery of economically feasible elements such as `Bi` and `Li`, along with areas like Fort Cooper and Confidential A, offers encouraging prospects for future extraction. While some areas provides promising further exploration, others with less potential can be deprioritised, enabling more efficient resource allocation. 
 
 This study encountered a key limitation that may have influenced the results: time constraints prevented authors from getting corrected lab data, which could have reduced outliers and improved model accuracy. Despite this, the findings remain valuable, though they should be interpreted with caution in light of this constraint. Overall, this study provides a good foundation for future research and practical applications in the economic extraction of critical elements from coal mine waste.
+
+\newpage
 
 # Appendix
 
@@ -550,6 +558,8 @@ kbl(CE_list,
 
 ```
 
+\newpage
+
 ## Appendix 2 {#appendix-two}
 ```{r concentration, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width = '100%'}
 table2_c <- tibble("Critical Element" =c("Lithium","REE","Cobalt","Nickel","Tantalum","Vanadium","Zirconium","Gallium",
@@ -612,9 +622,10 @@ kable(table2_bind,
 
 ```
 
+\newpage
 
 ## Appendix 3 {#appendix-three}
-```{r cutoff-grade, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width = '100%'}
+```{r cutoff-grade, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE}
 
 CE_cutoff <- data.frame(
   `Critical elements` = c("U", "Ge", "V", "Se", "Ga", "REE", "Y", "Sc", "Nb", "Zr", "Mo", "Re", "Wi", "Au + Pt + Pd", "Ag", "Be", "Sb", "Cs"),
@@ -622,13 +633,14 @@ CE_cutoff <- data.frame(
 )
 
 kable(CE_cutoff, 
-      booktabs = T,
+      booktabs = TRUE,
       format = "latex",
       align = "c",
       escape = FALSE,
       caption = "\\textbf{Selected critical elements with their suggested cut-off grade (ppm)}",
       col.names = c("Critical Element", "Suggested Cut-off Grade")) %>%
-  kable_classic_2(full_width = F) %>%
+  kable_styling(latex_options = c("repeat_header"), full_width = FALSE,
+                font_size=10) %>%
   footnote(general = "Adapted from Dai and Finkelman, 2018",
            general_title = "Source: ",
            footnote_as_chunk = T)
@@ -691,6 +703,7 @@ grid.arrange(bp1, bp2, ncol = 2)
 ```
 
 \newpage
+
 ## Appendix 6 {#appendix-six}
 ```{r Scatterplot, eval=FALSE}
 
@@ -710,37 +723,57 @@ p3<-alldata |>
        shape ="Above PAAS Standard") +
   theme_bw()+
   scale_shape(solid = FALSE)+
-  theme(legend.position="bottom",
-       axis.text.y = element_text(size = 5))+ggtitle(paste(regions[i] ))
+  theme(legend.position="none",
+       axis.text.y = element_text(size = 10))+ggtitle(paste(regions[i] ))
 scatter_plots[[i]] <- p3
 }
 saveRDS(scatter_plots,"Final_report_files/PAAS_regional_breakdown.rds") 
 ```
 
-```{r regionalbk1, fig.width=12, fig.height=12, fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
+```{r regionalbk1, cache = FALSE, out.width="100%", fig.height = 8, out.height="100%", fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
 scatter_plots<-readRDS("Final_report_files/PAAS_regional_breakdown.rds")
-wrap_plots(scatter_plots[1:3],ncol=1)
+wrap_plots(scatter_plots[1:3],ncol=3)
 
 ```
+
 \newpage
 
+```{r regionalbk2, cache = FALSE, out.width="100%", fig.height = 8, out.height="100%", fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
+wrap_plots(scatter_plots[4:6],ncol=3)
 
-```{r regionalbk2, fig.width=12, fig.height=12, fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
-wrap_plots(scatter_plots[4:6],ncol=1)
-wrap_plots(scatter_plots[7:9],ncol=1)
-wrap_plots(scatter_plots[10:12],ncol=1)
 
-wrap_plots(scatter_plots[13:15],ncol=1)
 ```
 
-```{r regionalbk3, fig.width=12, fig.height=12, fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
+\newpage
 
+```{r regionalbk3, cache = FALSE, out.width="100%", fig.height = 8, out.height="100%", fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
 
-
-
-wrap_plots(scatter_plots[16:17],ncol=1)
+wrap_plots(scatter_plots[7:9],ncol=3)
 ```
 
+\newpage
+
+```{r regionalbk4, cache = FALSE, out.width="100%", fig.height = 8, out.height="100%", fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
+
+wrap_plots(scatter_plots[10:12],ncol=3)
+
+```
+
+\newpage
+
+```{r regionalbk5, cache = FALSE, out.width="100%", fig.height = 8, out.height="100%", fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
+
+wrap_plots(scatter_plots[13:15],ncol=3)
+
+```
+
+\newpage
+
+```{r regionalbk6, cache = FALSE, out.width="100%", fig.height = 8, out.height="100%", fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
+
+wrap_plots(scatter_plots[16:17],ncol=2)
+
+```
 
 \newpage
 

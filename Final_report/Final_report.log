@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  24 OCT 2024 16:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  25 OCT 2024 03:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1116,27 +1116,27 @@ Package mathdesign/mdbch Warning: Package 'amsfonts' shouldn't be used in conjo
 nction with package mdbch, on input line 315.
 
 ABD: EveryShipout initializing macros
-<AACSB.png, id=112, 1204.5pt x 406.51875pt>
+<AACSB.png, id=40, 1204.5pt x 406.51875pt>
 File: AACSB.png Graphic file (type png)
 <use AACSB.png>
 Package pdftex.def Info: AACSB.png  used on input line 316.
 (pdftex.def)             Requested size: 50.57945pt x 17.07056pt.
-<EQUIS.png, id=113, 619.56468pt x 380.92313pt>
+<EQUIS.png, id=41, 619.56468pt x 380.92313pt>
 File: EQUIS.png Graphic file (type png)
 <use EQUIS.png>
 Package pdftex.def Info: EQUIS.png  used on input line 316.
 (pdftex.def)             Requested size: 27.76575pt x 17.07104pt.
-<AMBA.png, id=114, 276.03125pt x 83.31125pt>
+<AMBA.png, id=42, 276.03125pt x 83.31125pt>
 File: AMBA.png Graphic file (type png)
 <use AMBA.png>
 Package pdftex.def Info: AMBA.png  used on input line 316.
 (pdftex.def)             Requested size: 56.5615pt x 17.07127pt.
-<monash2.png, id=116, 2730.2pt x 791.95876pt>
+<monash2.png, id=44, 2730.2pt x 791.95876pt>
 File: monash2.png Graphic file (type png)
 <use monash2.png>
 Package pdftex.def Info: monash2.png  used on input line 316.
 (pdftex.def)             Requested size: 170.67874pt x 49.50938pt.
-<MBSportrait.jpg, id=117, 621.32124pt x 503.8825pt>
+<MBSportrait.jpg, id=45, 621.32124pt x 503.8825pt>
 File: MBSportrait.jpg Graphic file (type jpg)
 <use MBSportrait.jpg>
 Package pdftex.def Info: MBSportrait.jpg  used on input line 316.
@@ -1442,14 +1442,9 @@ Make it at least 24.74995pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2] [3]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 330.
-
-[4] [5] [6] [7]
+[2] [3] [4] [5] [6]
 <Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png, id
-=270, 644.4075pt x 362.85562pt>
+=172, 644.4075pt x 362.85562pt>
 File: Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.pn
 g Graphic file (type png)
 <use Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png
@@ -1466,34 +1461,21 @@ File: ts1mdbch.fd 2013/08/29 Fontinst v1.933 font definitions for TS1/mdbch.
 )
 LaTeX Font Info:    Font shape `TS1/mdbch/m/n' will be
 (Font)              scaled to size 10.51207pt on input line 389.
-[8] [9 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v
-2.png>] [10]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 411.
-
-[11]
+[7] [8 <./Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v
+2.png>] [9] [10]
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
 (Font)              scaled to size 9.24173pt on input line 427.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 7.68005pt on input line 430.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 5.76004pt on input line 430.
-<Final_report_files/figure-latex/visdat-1.pdf, id=304, 562.1pt x 334.24875pt>
+<Final_report_files/figure-latex/visdat-1.pdf, id=208, 562.1pt x 334.24875pt>
 File: Final_report_files/figure-latex/visdat-1.pdf Graphic file (type pdf)
 <use Final_report_files/figure-latex/visdat-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/visdat-1.pdf  used on 
 input line 437.
 (pdftex.def)             Requested size: 455.24706pt x 270.7094pt.
-[12] [13 <./Final_report_files/figure-latex/visdat-1.pdf>]
-
-LaTeX Warning: Reference `tab:desc-stats' on page 14 undefined on input line 45
-8.
-
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 465.
-
+[11] [12 <./Final_report_files/figure-latex/visdat-1.pdf>]
 LaTeX Font Info:    Font shape `T1/mdbch/b/it' will be
 (Font)              scaled to size 10.51207pt on input line 473.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
@@ -1501,14 +1483,14 @@ LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14]
-<./Final_report_files/figure-latex/bp_test_a.png, id=336, 578.16pt x 433.62pt>
+[13]
+<./Final_report_files/figure-latex/bp_test_a.png, id=239, 578.16pt x 433.62pt>
 File: ./Final_report_files/figure-latex/bp_test_a.png Graphic file (type png)
 <use ./Final_report_files/figure-latex/bp_test_a.png>
 Package pdftex.def Info: ./Final_report_files/figure-latex/bp_test_a.png  used 
 on input line 515.
 (pdftex.def)             Requested size: 284.53595pt x 213.40196pt.
-<./Final_report_files/figure-latex/pg_cop_cheaper.png, id=338, 578.16pt x 578.1
+<./Final_report_files/figure-latex/pg_cop_cheaper.png, id=241, 578.16pt x 578.1
 6pt>
 File: ./Final_report_files/figure-latex/pg_cop_cheaper.png Graphic file (type p
 ng)
@@ -1516,28 +1498,20 @@ ng)
 Package pdftex.def Info: ./Final_report_files/figure-latex/pg_cop_cheaper.png  
 used on input line 526.
 (pdftex.def)             Requested size: 248.96565pt x 248.96565pt.
-[15 <./Final_report_files/figure-latex/bp_test_a.png>]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 535.
-
-<./Final_report_files/figure-latex/Methodologyv2.png, id=346, 628.3475pt x 353.
-82187pt>
+[14 <./Final_report_files/figure-latex/bp_test_a.png>]
+<./Final_report_files/figure-latex/Methodologyv2.png, id=248, 477.785pt x 265.4
+9188pt>
 File: ./Final_report_files/figure-latex/Methodologyv2.png Graphic file (type pn
 g)
 <use ./Final_report_files/figure-latex/Methodologyv2.png>
 Package pdftex.def Info: ./Final_report_files/figure-latex/Methodologyv2.png  u
-sed on input line 541.
-(pdftex.def)             Requested size: 432.47682pt x 243.52727pt.
+sed on input line 539.
+(pdftex.def)             Requested size: 432.48126pt x 240.31784pt.
+[15 <./Final_report_files/figure-latex/pg_cop_cheaper.png> <./Final_report_file
+s/figure-latex/Methodologyv2.png>]
 LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
 (Font)              scaled to size 9.24173pt on input line 550.
-[16 <./Final_report_files/figure-latex/pg_cop_cheaper.png>] [17 <./Final_report
-_files/figure-latex/Methodologyv2.png>] [18] [19] [20]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 636.
-
-
+[16] [17] [18] [19] [20]
 Overfull \hbox (3.1489pt too wide) in paragraph at lines 657--657
 []\T1/mdbch/m/n/10 (-20) Method|  
  []
@@ -1603,21 +1577,6 @@ Overfull \hbox (3.1684pt too wide) in paragraph at lines 657--657
  []
 
 
-Overfull \hbox (6.056pt too wide) in paragraph at lines 657--657
-[]\T1/mdbch/m/n/10 (-20) Random 
- []
-
-
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 657--657
- []\T1/mdbch/m/n/10 (-20) 66.45| 
- []
-
-
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 657--657
- []\T1/mdbch/m/n/10 (-20) 38.18| 
- []
-
-
 Overfull \hbox (6.1631pt too wide) in paragraph at lines 657--657
 []\T1/mdbch/m/n/10 (-20) XGBoost|  
  []
@@ -1632,307 +1591,276 @@ Overfull \hbox (3.1684pt too wide) in paragraph at lines 657--657
  []\T1/mdbch/m/n/10 (-20) 37.26| 
  []
 
-[21]
-Overfull \hbox (3.1489pt too wide) in paragraph at lines 679--679
+
+Overfull \hbox (3.1489pt too wide) in paragraph at lines 677--677
 []\T1/mdbch/m/n/10 (-20) Method|  
  []
 
 
-Overfull \hbox (4.77313pt too wide) in paragraph at lines 679--679
+Overfull \hbox (4.77313pt too wide) in paragraph at lines 677--677
  []\T1/mdbch/m/n/10 (-20) RMSE| 
  []
 
 
-Overfull \hbox (4.72609pt too wide) in paragraph at lines 679--679
+Overfull \hbox (4.72609pt too wide) in paragraph at lines 677--677
  []\T1/mdbch/m/n/10 (-20) MAPE| 
  []
 
 
-Overfull \hbox (13.77663pt too wide) in paragraph at lines 679--679
+Overfull \hbox (13.77663pt too wide) in paragraph at lines 677--677
  \T1/mdbch/m/n/10 (-20) Squared| 
  []
 
 
-Overfull \hbox (6.056pt too wide) in paragraph at lines 679--679
+Overfull \hbox (6.056pt too wide) in paragraph at lines 677--677
 []\T1/mdbch/m/n/10 (-20) Random 
  []
 
 
-Overfull \hbox (6.056pt too wide) in paragraph at lines 679--679
+Overfull \hbox (6.056pt too wide) in paragraph at lines 677--677
 []\T1/mdbch/m/n/10 (-20) Random 
  []
 
 
-Overfull \hbox (6.056pt too wide) in paragraph at lines 679--679
-[]\T1/mdbch/m/n/10 (-20) Random 
- []
-
-
-Overfull \hbox (6.1631pt too wide) in paragraph at lines 679--679
+Overfull \hbox (6.1631pt too wide) in paragraph at lines 677--677
 []\T1/mdbch/m/n/10 (-20) XGBoost|  
  []
 
-[22]
-Overfull \hbox (3.1489pt too wide) in paragraph at lines 703--703
+[21]
+Overfull \hbox (3.1489pt too wide) in paragraph at lines 699--699
 []\T1/mdbch/m/n/10 (-20) Method|  
  []
 
 
-Overfull \hbox (4.77313pt too wide) in paragraph at lines 703--703
+Overfull \hbox (4.77313pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) RMSE| 
  []
 
 
-Overfull \hbox (4.72609pt too wide) in paragraph at lines 703--703
+Overfull \hbox (4.72609pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) MAPE| 
  []
 
 
-Overfull \hbox (13.77663pt too wide) in paragraph at lines 703--703
+Overfull \hbox (13.77663pt too wide) in paragraph at lines 699--699
  \T1/mdbch/m/n/10 (-20) Squared| 
  []
 
 
-Overfull \hbox (6.056pt too wide) in paragraph at lines 703--703
+Overfull \hbox (6.056pt too wide) in paragraph at lines 699--699
 []\T1/mdbch/m/n/10 (-20) Random 
  []
 
 
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 703--703
+Overfull \hbox (3.1684pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 39.61| 
  []
 
 
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 703--703
+Overfull \hbox (3.1684pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 26.62| 
  []
 
 
-Overfull \hbox (6.056pt too wide) in paragraph at lines 703--703
+Overfull \hbox (6.056pt too wide) in paragraph at lines 699--699
 []\T1/mdbch/m/n/10 (-20) Random 
  []
 
 
-Overfull \hbox (3.4372pt too wide) in paragraph at lines 703--703
- []\T1/mdbch/m/n/10 (-20) 59.47| 
- []
-
-
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 703--703
- []\T1/mdbch/m/n/10 (-20) 32.45| 
- []
-
-
-Overfull \hbox (6.056pt too wide) in paragraph at lines 703--703
-[]\T1/mdbch/m/n/10 (-20) Random 
- []
-
-
-Overfull \hbox (2.8996pt too wide) in paragraph at lines 703--703
+Overfull \hbox (2.8996pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 40.48| 
  []
 
 
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 703--703
+Overfull \hbox (3.1684pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 27.71| 
  []
 
 
-Overfull \hbox (6.056pt too wide) in paragraph at lines 703--703
+Overfull \hbox (6.056pt too wide) in paragraph at lines 699--699
 []\T1/mdbch/m/n/10 (-20) Random 
  []
 
 
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 703--703
+Overfull \hbox (3.1684pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 38.44| 
  []
 
 
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 703--703
+Overfull \hbox (3.1684pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 29.60| 
  []
 
 
-Overfull \hbox (6.1631pt too wide) in paragraph at lines 703--703
+Overfull \hbox (6.1631pt too wide) in paragraph at lines 699--699
 []\T1/mdbch/m/n/10 (-20) XGBoost|  
  []
 
 
-Overfull \hbox (2.8996pt too wide) in paragraph at lines 703--703
+Overfull \hbox (2.8996pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 41.71| 
  []
 
 
-Overfull \hbox (3.1684pt too wide) in paragraph at lines 703--703
+Overfull \hbox (3.1684pt too wide) in paragraph at lines 699--699
  []\T1/mdbch/m/n/10 (-20) 31.08| 
  []
 
-<./Final_report_files/figure-latex/results_ree_test_best.png, id=415, 578.16pt 
+<./Final_report_files/figure-latex/results_ree_test_best.png, id=318, 578.16pt 
 x 578.16pt>
 File: ./Final_report_files/figure-latex/results_ree_test_best.png Graphic file 
 (type png)
 <use ./Final_report_files/figure-latex/results_ree_test_best.png>
 Package pdftex.def Info: ./Final_report_files/figure-latex/results_ree_test_bes
-t.png  used on input line 712.
+t.png  used on input line 708.
 (pdftex.def)             Requested size: 136.57338pt x 136.57338pt.
-<./Final_report_files/figure-latex/results_hree_test_best.png, id=416, 578.16pt
+<./Final_report_files/figure-latex/results_hree_test_best.png, id=319, 578.16pt
  x 578.16pt>
 File: ./Final_report_files/figure-latex/results_hree_test_best.png Graphic file
  (type png)
 <use ./Final_report_files/figure-latex/results_hree_test_best.png>
 Package pdftex.def Info: ./Final_report_files/figure-latex/results_hree_test_be
-st.png  used on input line 712.
+st.png  used on input line 708.
 (pdftex.def)             Requested size: 136.57338pt x 136.57338pt.
-<./Final_report_files/figure-latex/results_lree_test_best.png, id=417, 578.16pt
+<./Final_report_files/figure-latex/results_lree_test_best.png, id=320, 578.16pt
  x 578.16pt>
 File: ./Final_report_files/figure-latex/results_lree_test_best.png Graphic file
  (type png)
 <use ./Final_report_files/figure-latex/results_lree_test_best.png>
 Package pdftex.def Info: ./Final_report_files/figure-latex/results_lree_test_be
-st.png  used on input line 712.
+st.png  used on input line 708.
 (pdftex.def)             Requested size: 136.57338pt x 136.57338pt.
-[23] [24 <./Final_report_files/figure-latex/results_ree_test_best.png> <./Final
+[22] [23 <./Final_report_files/figure-latex/results_ree_test_best.png> <./Final
 _report_files/figure-latex/results_hree_test_best.png> <./Final_report_files/fi
 gure-latex/results_lree_test_best.png>]
-<Final_report_files/figure-latex/PAAS_global_project.png, id=434, 577.9191pt x 
-361.1091pt>
-File: Final_report_files/figure-latex/PAAS_global_project.png Graphic file (typ
-e png)
-<use Final_report_files/figure-latex/PAAS_global_project.png>
-Package pdftex.def Info: Final_report_files/figure-latex/PAAS_global_project.pn
-g  used on input line 738.
-(pdftex.def)             Requested size: 455.24597pt x 284.45757pt.
-[25]
+<Final_report_files/figure-latex/paaslvlcode-1.pdf, id=338, 572.1375pt x 561.09
+625pt>
+File: Final_report_files/figure-latex/paaslvlcode-1.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `fig:regionalbk' on page 26 undefined on input line 74
-1.
-
-<Final_report_files/figure-latex/regionalbk-1.pdf, id=441, 850.17625pt x 840.13
-875pt>
-File: Final_report_files/figure-latex/regionalbk-1.pdf Graphic file (type pdf)
-<use Final_report_files/figure-latex/regionalbk-1.pdf>
-Package pdftex.def Info: Final_report_files/figure-latex/regionalbk-1.pdf  used
- on input line 747.
-(pdftex.def)             Requested size: 455.24844pt x 449.87361pt.
-<Final_report_files/figure-latex/regionalbk-2.pdf, id=442, 850.17625pt x 840.13
-875pt>
-File: Final_report_files/figure-latex/regionalbk-2.pdf Graphic file (type pdf)
-<use Final_report_files/figure-latex/regionalbk-2.pdf>
-Package pdftex.def Info: Final_report_files/figure-latex/regionalbk-2.pdf  used
- on input line 747.
-(pdftex.def)             Requested size: 455.24844pt x 449.87361pt.
-<Final_report_files/figure-latex/regionalbk-3.pdf, id=443, 850.17625pt x 840.13
-875pt>
-File: Final_report_files/figure-latex/regionalbk-3.pdf Graphic file (type pdf)
-<use Final_report_files/figure-latex/regionalbk-3.pdf>
-Package pdftex.def Info: Final_report_files/figure-latex/regionalbk-3.pdf  used
- on input line 747.
-(pdftex.def)             Requested size: 455.24844pt x 449.87361pt.
-<Final_report_files/figure-latex/regionalbk-4.pdf, id=444, 850.17625pt x 840.13
-875pt>
-File: Final_report_files/figure-latex/regionalbk-4.pdf Graphic file (type pdf)
-<use Final_report_files/figure-latex/regionalbk-4.pdf>
-Package pdftex.def Info: Final_report_files/figure-latex/regionalbk-4.pdf  used
- on input line 747.
-(pdftex.def)             Requested size: 455.24844pt x 449.87361pt.
-<Final_report_files/figure-latex/regionalbk-5.pdf, id=445, 850.17625pt x 840.13
-875pt>
-File: Final_report_files/figure-latex/regionalbk-5.pdf Graphic file (type pdf)
-<use Final_report_files/figure-latex/regionalbk-5.pdf>
-Package pdftex.def Info: Final_report_files/figure-latex/regionalbk-5.pdf  used
- on input line 747.
-(pdftex.def)             Requested size: 455.24844pt x 449.87361pt.
-<Final_report_files/figure-latex/regionalbk-6.pdf, id=446, 850.17625pt x 840.13
-875pt>
-File: Final_report_files/figure-latex/regionalbk-6.pdf Graphic file (type pdf)
-<use Final_report_files/figure-latex/regionalbk-6.pdf>
-Package pdftex.def Info: Final_report_files/figure-latex/regionalbk-6.pdf  used
- on input line 747.
-(pdftex.def)             Requested size: 455.24844pt x 449.87361pt.
-[26 <./Final_report_files/figure-latex/PAAS_global_project.png>]
-Overfull \vbox (189.42833pt too high) has occurred while \output is active []
-
-[27 <./Final_report_files/figure-latex/regionalbk-1.pdf> <./Final_report_files/
-figure-latex/regionalbk-2.pdf>] [28 <./Final_report_files/figure-latex/regional
-bk-3.pdf>] [29 <./Final_report_files/figure-latex/regionalbk-4.pdf>]
-Overfull \vbox (189.42833pt too high) has occurred while \output is active []
-
-[30 <./Final_report_files/figure-latex/regionalbk-5.pdf> <./Final_report_files/
-figure-latex/regionalbk-6.pdf>]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 751.
-
-[31] [32]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 773.
-
+<use Final_report_files/figure-latex/paaslvlcode-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/paaslvlcode-1.pdf  use
+d on input line 734.
+(pdftex.def)             Requested size: 455.24872pt x 446.46323pt.
+[24] [25 <./Final_report_files/figure-latex/paaslvlcode-1.pdf>] [26] [27] [28]
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 8.64006pt on input line 775.
+(Font)              scaled to size 8.64006pt on input line 771.
 
-Overfull \hbox (13.3608pt too wide) in paragraph at lines 837--837
+Overfull \hbox (13.3608pt too wide) in paragraph at lines 833--833
  []\T1/mdbch/m/n/9 (-20) Magnesium(Mg)| 
  []
 
 
-Overfull \hbox (12.67499pt too wide) in paragraph at lines 837--837
+Overfull \hbox (12.67499pt too wide) in paragraph at lines 833--833
  []\T1/mdbch/m/n/9 (-20) Manganese(Mn)| 
  []
 
 
-Overfull \hbox (0.54988pt too wide) in paragraph at lines 837--837
+Overfull \hbox (0.54988pt too wide) in paragraph at lines 833--833
  []\T1/mdbch/m/n/9 (-20) Molybdenum 
  []
 
 
-Overfull \hbox (2.27718pt too wide) in paragraph at lines 837--837
+Overfull \hbox (2.27718pt too wide) in paragraph at lines 833--833
  []\T1/mdbch/m/n/9 (-20) Selenium(Se)| 
  []
 
-[33] [34] [35] [36] [37]
-<Final_report_files/figure-latex/element-dist-1.pdf, id=549, 716.6775pt x 496.8
+[29] [30] [31] [32]
+LaTeX Font Info:    Font shape `T1/mdbch/m/it' will be
+(Font)              scaled to size 9.60007pt on input line 938.
+[33] [34]
+<Final_report_files/figure-latex/element-dist-1.pdf, id=406, 716.6775pt x 496.8
 5625pt>
 File: Final_report_files/figure-latex/element-dist-1.pdf Graphic file (type pdf
 )
 <use Final_report_files/figure-latex/element-dist-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/element-dist-1.pdf  us
-ed on input line 1030.
+ed on input line 1031.
 (pdftex.def)             Requested size: 455.2492pt x 315.61392pt.
-[38 <./Final_report_files/figure-latex/element-dist-1.pdf>]
-Underfull \hbox (badness 1127) in paragraph at lines 1039--1039
+[35 <./Final_report_files/figure-latex/element-dist-1.pdf>]
+<Final_report_files/figure-latex/regionalbk1-1.pdf, id=419, 569.12625pt x 558.0
+85pt>
+File: Final_report_files/figure-latex/regionalbk1-1.pdf Graphic file (type pdf)
+
+<use Final_report_files/figure-latex/regionalbk1-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/regionalbk1-1.pdf  use
+d on input line 1043.
+(pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
+[36 <./Final_report_files/figure-latex/regionalbk1-1.pdf>]
+<Final_report_files/figure-latex/regionalbk2-1.pdf, id=432, 569.12625pt x 558.0
+85pt>
+File: Final_report_files/figure-latex/regionalbk2-1.pdf Graphic file (type pdf)
+
+<use Final_report_files/figure-latex/regionalbk2-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/regionalbk2-1.pdf  use
+d on input line 1049.
+(pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
+[37 <./Final_report_files/figure-latex/regionalbk2-1.pdf>]
+<Final_report_files/figure-latex/regionalbk3-1.pdf, id=446, 569.12625pt x 558.0
+85pt>
+File: Final_report_files/figure-latex/regionalbk3-1.pdf Graphic file (type pdf)
+
+<use Final_report_files/figure-latex/regionalbk3-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/regionalbk3-1.pdf  use
+d on input line 1055.
+(pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
+[38 <./Final_report_files/figure-latex/regionalbk3-1.pdf>]
+<Final_report_files/figure-latex/regionalbk4-1.pdf, id=460, 569.12625pt x 558.0
+85pt>
+File: Final_report_files/figure-latex/regionalbk4-1.pdf Graphic file (type pdf)
+
+<use Final_report_files/figure-latex/regionalbk4-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/regionalbk4-1.pdf  use
+d on input line 1061.
+(pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
+[39 <./Final_report_files/figure-latex/regionalbk4-1.pdf>]
+<Final_report_files/figure-latex/regionalbk5-1.pdf, id=473, 569.12625pt x 558.0
+85pt>
+File: Final_report_files/figure-latex/regionalbk5-1.pdf Graphic file (type pdf)
+
+<use Final_report_files/figure-latex/regionalbk5-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/regionalbk5-1.pdf  use
+d on input line 1067.
+(pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
+[40 <./Final_report_files/figure-latex/regionalbk5-1.pdf>]
+<Final_report_files/figure-latex/regionalbk6-1.pdf, id=486, 561.09625pt x 558.0
+85pt>
+File: Final_report_files/figure-latex/regionalbk6-1.pdf Graphic file (type pdf)
+
+<use Final_report_files/figure-latex/regionalbk6-1.pdf>
+Package pdftex.def Info: Final_report_files/figure-latex/regionalbk6-1.pdf  use
+d on input line 1073.
+(pdftex.def)             Requested size: 455.23889pt x 452.79576pt.
+[41 <./Final_report_files/figure-latex/regionalbk6-1.pdf>]
+Underfull \hbox (badness 1127) in paragraph at lines 1078--1078
 [][]\T1/mdbch/m/n/10.95 (+20) DISR (2023). \T1/mdbch/m/it/10.95 (+20) Crit-i-ca
 l Min-er-als Strat-egy 2023^^U2030\T1/mdbch/m/n/10.95 (+20) . [][]$\T1/fvm/m/n/
 10.95 https : / / www . industry . gov . au /
  []
 
-[39] [40]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1041.
-[41]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1041.
+[42] [43]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1080.
+[44]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1080.
 (./Final_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1041.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1041.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1080.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1080.
 
 Package rerunfilecheck Info: File `Final_report.out' has not changed.
-(rerunfilecheck)             Checksum: C6721464C06940886A57DBE9F01E7593;4417.
-
-LaTeX Warning: There were undefined references.
-
+(rerunfilecheck)             Checksum: 119AC6D425974CAE896309DFAE7A0057;1178.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'Final_report.run.xml'.
 \openout1 = `Final_report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1041.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1080.
  ) 
 Here is how much of TeX's memory you used:
- 27644 strings out of 481239
- 453436 string characters out of 5920377
- 1173141 words of memory out of 5000000
- 41937 multiletter control sequences out of 15000+600000
- 680690 words of font info for 432 fonts, out of 8000000 for 9000
+ 27660 strings out of 481239
+ 453769 string characters out of 5920377
+ 1170880 words of memory out of 5000000
+ 41934 multiletter control sequences out of 15000+600000
+ 684558 words of font info for 444 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,16n,113p,2441b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/ly1/texnansi.enc}{/usr/share/t
@@ -1950,10 +1878,10 @@ f-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
-Output written on Final_report.pdf (41 pages, 2395424 bytes).
+Output written on Final_report.pdf (44 pages, 2232343 bytes).
 PDF statistics:
- 668 PDF objects out of 1000 (max. 8388607)
- 557 compressed objects within 6 object streams
- 107 named destinations out of 1000 (max. 500000)
- 55642 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 604 PDF objects out of 1000 (max. 8388607)
+ 490 compressed objects within 5 object streams
+ 108 named destinations out of 1000 (max. 500000)
+ 61626 words of extra memory for PDF output out of 61914 (max. 10000000)
 

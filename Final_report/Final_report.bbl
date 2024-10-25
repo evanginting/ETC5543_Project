@@ -1055,37 +1055,6 @@
       \verb https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2000GC000109
       \endverb
     \endentry
-    \entry{Menon2020}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=54a76f42bfeb74f9d4bdffb0273e308c}{%
-           family={Menon},
-           familyi={M\bibinitperiod},
-           given={Saaransh},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{54a76f42bfeb74f9d4bdffb0273e308c}
-      \strng{fullhash}{54a76f42bfeb74f9d4bdffb0273e308c}
-      \strng{bibnamehash}{54a76f42bfeb74f9d4bdffb0273e308c}
-      \strng{authorbibnamehash}{54a76f42bfeb74f9d4bdffb0273e308c}
-      \strng{authornamehash}{54a76f42bfeb74f9d4bdffb0273e308c}
-      \strng{authorfullhash}{54a76f42bfeb74f9d4bdffb0273e308c}
-      \field{sortinit}{M}
-      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{year}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{month}{12}
-      \field{note}{Medium}
-      \field{title}{Stratified sampling in Machine Learning}
-      \field{year}{2020}
-      \verb{urlraw}
-      \verb https://medium.com/analytics-vidhya/stratified-sampling-in-machine-learning-f5112b5b9cfe
-      \endverb
-      \verb{url}
-      \verb https://medium.com/analytics-vidhya/stratified-sampling-in-machine-learning-f5112b5b9cfe
-      \endverb
-    \endentry
     \entry{Moriasi2007}{article}{}
       \name{author}{6}{}{%
         {{hash=82fed86c903647577ca4909a18f78986}{%
