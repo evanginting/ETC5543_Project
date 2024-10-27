@@ -2,20 +2,7 @@
 
 ## Objective
 As global demand for critical minerals rises, this study investigates the economic potential of ex-
-tracting critical elements from coal mine waste in Australia. Using data from the largest element
-
-mapping project by ACARP, combined with recent private sector research, this research employs
-exploratory data analysis (EDA) and machine learning to achieve two key objectives: (1) leveraging
-low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs
-(Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element)
-through numerical regression, and (2) identifying enriched elements and project areas with significant
-economic potential for future extraction. The study found that elements from lower cost lab test can
-predict the REEs, HREEs, and LREEs with reasonably good performance. This was achieved even
-with the challenge of low correlation coefficient between the independent and dependent variables.
-This study also found that Fort Cooper possess a significant amount of critical elements, making it
-economically feasible to pursue extraction efforts with confidence that the investment in Fort Cooper
-will yield substantial returns and contribute meaningfully to meeting the global demand for critical
-minerals.
+tracting critical elements from coal mine waste in Australia. Using data from the largest element mapping project by ACARP, combined with recent private sector research, this research employs exploratory data analysis (EDA) and machine learning to achieve two key objectives: (1) leveraging low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element) through numerical regression, and (2) identifying enriched elements and project areas with significant economic potential for future extraction. The study found that elements from lower cost lab test can predict the REEs, HREEs, and LREEs with reasonably good performance. This was achieved even with the challenge of low correlation coefficient between the independent and dependent variables. This study also found that Fort Cooper possess a significant amount of critical elements, making it economically feasible to pursue extraction efforts with confidence that the investment in Fort Cooper will yield substantial returns and contribute meaningfully to meeting the global demand for critical minerals.
 
 ## Structure
 The ETC554_Project repository is the record for data analysis process and the integration of final report:
