@@ -99,7 +99,7 @@ knitr::kable(desc_stats,
 
 The most important statistics from this table is kurtosis. Kurtosis measures the combined weight of the tails of a distribution relative to its centre. In this way, we can use kurtosis as an indicator of the presence of outliers. A high kurtosis values is indicative of outliers. Validating the outliers will be easier with data visualisation, which will be presented in the next section.
 
-
+The table below represents the descriptive statistics of elements from ME-4ACD81 test that will be used for predictive modelling.
 ```{r}
 # Populate descriptive stats table
 desc_stats_flt <- alldata %>%
@@ -121,15 +121,6 @@ desc_stats_flt <- alldata %>%
 
 # Saving the data into .RDS format for final report purpose
 saveRDS(desc_stats_flt, './Final_report/Final_report_files/desc_stats_flt.rds')
-```
-
-
-```{r}
-alldata_wide <- dcast(alldata,Project_Name+Sample_ID~Element_Symbol, value.var = c("Element_Value_ppm"), fun=mean, fill=NA)
-
-sum(is.na(alldata_wide$Co))
-
-print(desc_stats_2)
 ```
 
 <br />
@@ -190,6 +181,7 @@ knitr::kable(med_above_one,
 - **Symmetry and Skewness**: Some elements like **Ge**, **Bi**, and **Ag** appear to have a right skew, with longer whiskers or outliers extending to the right, indicating that the distribution of their normalised values has a tail on the higher end. Elements like **Ga** and **Sm** show a more symmetrical distribution with whiskers extending fairly equally on both sides of the box.
 - **Comparison Accross Elements**: **Ge** stands out with a particularly large spread and median, making it an outlier among the elements. Conversely, many rare earth elements (**REE**, **REEY**, **MREE**, **LREE**, **HREE**) have relatively low medians and a small spread, indicating that their normalised values are generally low and clustered.
 
+The plot below represents the distribution of elements from ME-4ACD81 test that will be used for predictive modelling.
 ```{r element-dist2, fig.cap = "Distribution of Selected Critical Elements (Box-Plot)", out.width = "100%", fig.width = 8, fig.height = 10, fig.align = "center"}
 bp_alt <- alldata %>%
   filter(Element_Symbol %in% c("REE", "HREE", "LREE", "Ag", "Cd", "Co", "Cu", 
@@ -258,7 +250,7 @@ alldata %>%
   geom_col(position = "dodge") +
   xlab(NULL) +
   ylab("Count") +
-  scale_fill_brewer(palette = "Set1") +
+  scale_fill_manual(values = c("black", "#028A0F")) +
   theme(legend.position = "none") +
   labs(fill = "Above Pass Flag")
 ```
@@ -268,12 +260,13 @@ Moving on to the element's level, we will assess how each critical element's PAA
 
 ```{r figelementcons, fig.cap = "Distribution of elements with reference to PASS levels' Concentration", out.width = "100%", fig.width = 10, fig.height = 8, fig.align = "center"}
 alldata %>%
-  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag, shape = Above_PASS_flag)) +
   geom_point() +
   geom_vline(xintercept = 1, linetype = 2) +
   xlab("PAAS Normalised Value") +
   ylab("Element Symbol") +
-  scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values = c("black", "#028A0F")) +
+  scale_shape(solid = FALSE) +
   theme(legend.position = "bottom") +
   labs(color = "Above Pass Flag")
 ```
@@ -285,7 +278,7 @@ As can be seen, the majority of normalised value fall within 0 to 10. Some highl
 - All "below background" samples are actually just fall close to the threshold (between 0 and 1), indicating that coal and coal byproducts are highly potential as sources of these critical elements.
 
 Furthermore, we also analyse how the distribution of the PAAS levels across various Project Area. The **Figure \@ref(fig:figprojectcons)** shows how many elements that was recorded in each project area fall into two categories.
-```{r figprojectcons, fig.cap = "The Profile of Project Area with reference to PASS levels' Concentration", out.width = "80%", fig.width = 10, fig.height = 8, fig.align = "center"}
+```{r figprojectcons, fig.cap = "The Profile of Project Area with reference to PASS levels' Concentration", out.width = "80%", fig.width = 10, fig.height = 8, fig.align = "center", message = FALSE, error = FALSE}
 alldata %>%
   group_by(Project_Name, Above_PASS_flag) %>%
   summarise(count = n()) %>%
@@ -298,7 +291,7 @@ alldata %>%
   theme(axis.text.x = element_blank()) +
   xlab("Count") +
   ylab("Project Name") +
-  scale_fill_brewer(palette = "Set1") +
+  scale_fill_manual(values = c("black", "#028A0F")) +
   theme(legend.position = "bottom") +
   labs(fill = "Above Pass Flag")
 ```
@@ -310,38 +303,17 @@ Some key observations from the plot are:
 - In contrast, several projects, such as **"Wandoan"**, **"Copabella"**, **"Lake Vermont"**, **"Collinsville"**, **"Moorvalle"**, **"Newlands"**, **"Metropolitan"**, **"Rolleston"** exhibit a higher count of elements classified as **"Below Background"**. This implies that these projects have a significant proportion of elements that do not reach the enrichment threshold.
 - A few projects, including **"Oaky Creek"**, and **"Unnamed"**, contribute minimally to the overall dataset, with very few elements categorised in either categories.
 
-
-```{r figprojectcons2, fig.cap = "The Profile of Project Area with above Background Level", out.width = "80%", fig.width = 10, fig.height = 8, fig.align = "center"}
-alldata %>%
-  group_by(Project_Name, Above_PASS_flag) %>%
-  filter(Above_PASS_flag == "Enriched above background") %>%
-  summarise(count = n()) %>%
-  #mutate(Project_Name = reorder(Project_Name, count, sum)) %>%  # Reorder based on the sum of counts
-  ggplot(aes(x = count, y = reorder(Project_Name, count), fill = Above_PASS_flag)) +
-  geom_text(aes(label = count), size = 3, vjust = 0.5, hjust = -0.1, color = "black", position = position_dodge(0.9)) +
-  geom_col(position = "dodge") +
-  #facet_wrap(~ Project_Name) +
-  theme(axis.text.x = element_blank()) +
-  xlab("Count") +
-  ylab("Project Name") +
-  scale_fill_manual(values = "deepskyblue3") +
-  # scale_fill_brewer(palette = "Set1") +
-  theme(legend.position = "bottom") +
-  labs(fill = "Above Pass Flag")
-```
-
-
-
 Lastly, let's see how is the distribution of each critical element on every project area. The **Figure \@ref(fig:element-pro-dist)** below provide this information. As the continuation of the previous analysis, in this part we will focus more on the concentration of each element in each project area. For instance, such insights that we are going to look for are elements that have wide range of concentrations in one project, elements that have above/below background in the same project area.
 
 ```{r element-pro-dist, fig.cap = "Distribution of Critical Elements by Each Project Area", out.width = "100%", fig.width = 10, fig.height = 25, fig.align = "center"}
 alldata %>%
-  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag)) +
+  ggplot(aes(x = PAAS_normalised_value, y = Element_Symbol, color = Above_PASS_flag, shape = Above_PASS_flag)) +
   geom_point() +
   geom_vline(xintercept = 1, linetype = 2) +
   xlab("PAAS Normalised Value") +
   ylab("Element Symbol") +
-  scale_color_brewer(palette = "Set1") +
+  scale_color_manual(values = c("black", "#028A0F")) +
+  scale_shape(solid = FALSE) +
   facet_wrap(~ Project_Name) +
   theme(legend.position = "bottom") +
   labs(color = "Above Pass Flag")
@@ -383,7 +355,7 @@ The figure \@ref(fig:corplot) shows the relationships between various elements. 
 - Moderate correlations: Many elements fall between 0.6-0.8, which indicate fairly strong relationships.
 - Weaker Correlations: Elements such as **Ba** show weaker correlations with most other elements, indicating less consistent co-occurrence or independent behavior within the dataset.This also the case for **Sr**.
 
-
+The correlation matrix plot below represents the matrix of elements from ME-4ACD81 test to REE, HREE, and LREE. This is to understand the correlation between all elements to the target variable as part of the predictive modelling.
 ```{r corplot2, fig.cap = "Correlation Matrix Plot of Selected Critical Elements", out.width = "100%", fig.width = 8, fig.height = 8, fig.align = "center"}
 
 corr_cop_cheaper <- cor(res_cor_cop[,c("Ag", "Cd", "Co", "Cu", "Li", "Mo", "Ni", "Pb", "Sc", "Tl", "Zn", "REE", "HREE", "LREE")],
@@ -403,16 +375,6 @@ ggsave("./Final_report/Final_report_files/figure-latex/pg_cop_cheaper.png", plot
 
 print(pg_cop_cheaper)
 ```
-
-```{r}
-corr_cop_cheaper_df <- data.frame(corr_cop_cheaper) %>%
-  select(REE, HREE, LREE) %>%
-  filter(!row_number() %in% c(12, 13, 14)) %>%
-  mutate_if(is.numeric, round, 2) %>%
-  arrange(-REE)
-
-```
-
 
 <br />
 
