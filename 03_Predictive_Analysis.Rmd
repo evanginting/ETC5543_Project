@@ -1089,10 +1089,10 @@ results_test_best <- results_test %>%
   theme(axis.title.x = element_text(size = 24),            # Increase X-axis title size
         axis.title.y = element_text(size = 24)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
-  annotate("text", x = 390, y = 60, label = paste("RMSE: ", round(ree_rmse_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 390, y = 40, label = paste("MAE: ", round(ree_mae_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 390, y = 20, label = paste("MAPE: ", round(ree_mape_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 390, y = 0, label = paste("R-squared: ", round(ree_rsq_value, 2)), size = 9, hjust = 1)
+  annotate("text", x = 390, y = 76, label = paste("RMSE: ", round(ree_rmse_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 390, y = 51, label = paste("MAE: ", round(ree_mae_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 390, y = 26, label = paste("MAPE: ", round(ree_mape_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 390, y = 1, label = paste("R-squared: ", round(ree_rsq_value, 2)), size = 9, hjust = 1)
   
   
 print(results_test_best)
@@ -2321,10 +2321,10 @@ results_lree_test_best <- results_lree_test %>%
   theme(axis.title.x = element_text(size = 24),            # Increase X-axis title size
         axis.title.y = element_text(size = 24)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
-  annotate("text", x = 290, y = 45, label = paste("RMSE: ", round(lree_rmse_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 290, y = 30, label = paste("MAE: ", round(lree_mae_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 290, y = 15, label = paste("MAPE: ", round(lree_mape_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 290, y = 0, label = paste("R-squared: ", round(lree_rsq_value, 2)), size = 9, hjust = 1)
+  annotate("text", x = 290, y = 61, label = paste("RMSE: ", round(lree_rmse_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 290, y = 41, label = paste("MAE: ", round(lree_mae_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 290, y = 21, label = paste("MAPE: ", round(lree_mape_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 290, y = 1, label = paste("R-squared: ", round(lree_rsq_value, 2)), size = 9, hjust = 1)
 
 print(results_lree_test_best)
 

@@ -1113,6 +1113,46 @@
       \verb https://api.semanticscholar.org/CorpusID:11186951
       \endverb
     \endentry
+    \entry{Barnett1995}{article}{}
+      \name{author}{1}{}{%
+        {{hash=702a9da5e1abdfeae9eec864f44ac8b6}{%
+           family={Pincus},
+           familyi={P\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{702a9da5e1abdfeae9eec864f44ac8b6}
+      \strng{fullhash}{702a9da5e1abdfeae9eec864f44ac8b6}
+      \strng{bibnamehash}{702a9da5e1abdfeae9eec864f44ac8b6}
+      \strng{authorbibnamehash}{702a9da5e1abdfeae9eec864f44ac8b6}
+      \strng{authornamehash}{702a9da5e1abdfeae9eec864f44ac8b6}
+      \strng{authorfullhash}{702a9da5e1abdfeae9eec864f44ac8b6}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrical Journal}
+      \field{number}{2}
+      \field{title}{Barnett, V., and Lewis T.: Outliers in Statistical Data. 3rd edition. J. Wiley \& Sons 1994, XVII. 582 pp., £49.95}
+      \field{volume}{37}
+      \field{year}{1995}
+      \field{pages}{256\bibrangedash 256}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1002/bimj.4710370219
+      \endverb
+      \verb{eprint}
+      \verb https://onlinelibrary.wiley.com/doi/pdf/10.1002/bimj.4710370219
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/bimj.4710370219
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/abs/10.1002/bimj.4710370219
+      \endverb
+    \endentry
     \entry{Qin2015b}{article}{}
       \name{author}{6}{}{%
         {{hash=6ee548bfd63a167112dbc2244668d845}{%

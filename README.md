@@ -1,8 +1,7 @@
 # Predicting Critical Elements in Coal Mine Waste: A Machine Learning Approach for a Low-Emission Future
 
 ## Objective
-As global demand for critical minerals rises, this study investigates the economic potential of ex-
-tracting critical elements from coal mine waste in Australia. Using data from the largest element mapping project by ACARP, combined with recent private sector research, this research employs exploratory data analysis (EDA) and machine learning to achieve two key objectives: (1) leveraging low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element) through numerical regression, and (2) identifying enriched elements and project areas with significant economic potential for future extraction. The study found that elements from lower cost lab test can predict the REEs, HREEs, and LREEs with reasonably good performance. This was achieved even with the challenge of low correlation coefficient between the independent and dependent variables. This study also found that Fort Cooper possess a significant amount of critical elements, making it economically feasible to pursue extraction efforts with confidence that the investment in Fort Cooper will yield substantial returns and contribute meaningfully to meeting the global demand for critical minerals.
+As global demand for critical minerals rises, this study investigates the economic potential of extracting critical elements from coal mine waste in Australia. Using data from the largest element mapping project by ACARP, combined with recent private sector research, this research employs exploratory data analysis (EDA) and machine learning to achieve two key objectives: (1) leveraging low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element) through numerical regression, and (2) identifying enriched elements and project areas with significant economic potential for future extraction. The study found that elements from lower cost lab test can predict the REEs, HREEs, and LREEs with reasonably good performance. This was achieved even with the challenge of low correlation coefficient between the independent and dependent variables. This study also found that Fort Cooper possess a significant amount of critical elements, making it economically feasible to pursue extraction efforts with confidence that the investment in Fort Cooper will yield substantial returns and contribute meaningfully to meeting the global demand for critical minerals.
 
 ## Structure
 The ETC554_Project repository is the record for data analysis process and the integration of final report:
@@ -13,16 +12,15 @@ The ETC554_Project repository is the record for data analysis process and the in
 
 3. results folder: The collections of RDS output= yielded from the wrangling process in data preparation.
 
-4. 02_Exploratory_Data_Analysis.Rmd: The exploratory data analysis(EDA) working file to summarize their main patterns and elemental correlation via visualization techniques, which is used to identify enrichment elements and project areas with siginificant potential and build up the foundation for preditive analysis stage.
+4. 02_Exploratory_Data_Analysis.Rmd: The exploratory data analysis(EDA) working file to summarise their main patterns and elemental correlation via data visualisation techniques, which is used to identify enrichment elements and project areas with significant potential and build up the foundation for predictive analysis stage.
 
 5. 02_Exploratory_Data_Analysis.html: The html report rendered from 02_Exploratory_Data_Analysis.Rmd.
 
-6. 03_Predictive_Analysis.Rmd:  Under machine learning method, the predictive analysis work file to use element list in low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs
-(Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element).
+6. 03_Predictive_Analysis.Rmd:  Under machine learning method, the predictive analysis work file to use element list in low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element).
 
 7. Presentation folder:
 
-8. "Final_report"" folder: The integration process for the final academic report in Monash report format.
+8. "Final_report"" folder: The integration process for the final academic report in Monash University report format.
 
 ## Usage
 To replicate the analysis:
@@ -34,7 +32,7 @@ To replicate the analysis:
 5. Execute 03_Predictive_Analysis.Rmd for machine learning-based predictive modeling.
 
 ## Session information
-This repository is built and managed by Posit Cloud with R version 4.4.1. The prerequsite of the package include:
+This repository is built and managed by Posit Cloud with R version 4.4.1. The prerequisite of the package include:
 
 **Data Preparation stage:**
 
