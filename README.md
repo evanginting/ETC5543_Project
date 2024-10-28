@@ -14,9 +14,10 @@ The ETC554_Project repository is the record for data analysis process and the in
 
 4. 02_Exploratory_Data_Analysis.Rmd: The exploratory data analysis(EDA) working file to summarise their main patterns and elemental correlation via data visualisation techniques, which is used to identify enrichment elements and project areas with significant potential and build up the foundation for predictive analysis stage.
 
-5. 02_Exploratory_Data_Analysis.html: The html report rendered from 02_Exploratory_Data_Analysis.Rmd.
 
-6. 03_Predictive_Analysis.Rmd: Under machine learning method, the predictive analysis work file to use element list in low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element).
+5. 03_Predictive_Analysis.Rmd: Under machine learning method, the predictive analysis work file to use element list in low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element).
+
+6. Html files: The html reports are rendered from  the Rmd file from each main session of the project respectively, including 01_Data_Preparation.html, 02_Exploratory_Data_Analysis,html and 03_Predictive_Analysis.html.
 
 7. "Presentation" folder: This includes all codes that generated all figures in the presentation. Make sure to run 01_Data_Preparation.Rmd, 02_Exploratory_Data_Analysis.Rmd, 03_Predictive_Analysis.Rmd files before working on this file.
 
