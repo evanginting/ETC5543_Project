@@ -1812,6 +1812,36 @@
       \verb https://www.sciencedirect.com/science/article/pii/S1383586621014647
       \endverb
     \endentry
+    \entry{MLmetrics}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=bb54dab7d06add8dd6c849582ca1f97b}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Yachen},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{bb54dab7d06add8dd6c849582ca1f97b}
+      \strng{fullhash}{bb54dab7d06add8dd6c849582ca1f97b}
+      \strng{bibnamehash}{bb54dab7d06add8dd6c849582ca1f97b}
+      \strng{authorbibnamehash}{bb54dab7d06add8dd6c849582ca1f97b}
+      \strng{authornamehash}{bb54dab7d06add8dd6c849582ca1f97b}
+      \strng{authorfullhash}{bb54dab7d06add8dd6c849582ca1f97b}
+      \field{sortinit}{Y}
+      \field{sortinithash}{6ae2ff5458ff901249c2745238c951b7}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{R package version 1.1.3}
+      \field{title}{MLmetrics: Machine Learning Evaluation Metrics}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://github.com/yanyachen/mlmetrics
+      \endverb
+      \verb{url}
+      \verb https://github.com/yanyachen/mlmetrics
+      \endverb
+    \endentry
     \entry{YANG2020295}{article}{}
       \name{author}{2}{}{%
         {{hash=7f8a6256a19361714c6f6a011671f17d}{%

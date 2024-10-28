@@ -2264,22 +2264,23 @@
     <bcf:citekey order="60">tidymodels</bcf:citekey>
     <bcf:citekey order="61">ISLR</bcf:citekey>
     <bcf:citekey order="61">Hastie09</bcf:citekey>
-    <bcf:citekey order="62">ISLR</bcf:citekey>
-    <bcf:citekey order="62">Hastie09</bcf:citekey>
+    <bcf:citekey order="62">MLmetrics</bcf:citekey>
     <bcf:citekey order="63">ISLR</bcf:citekey>
     <bcf:citekey order="63">Hastie09</bcf:citekey>
     <bcf:citekey order="64">ISLR</bcf:citekey>
     <bcf:citekey order="64">Hastie09</bcf:citekey>
     <bcf:citekey order="65">ISLR</bcf:citekey>
     <bcf:citekey order="65">Hastie09</bcf:citekey>
-    <bcf:citekey order="66">McLennan1989</bcf:citekey>
+    <bcf:citekey order="66">ISLR</bcf:citekey>
+    <bcf:citekey order="66">Hastie09</bcf:citekey>
     <bcf:citekey order="67">McLennan1989</bcf:citekey>
-    <bcf:citekey order="68">Buriahi2021</bcf:citekey>
-    <bcf:citekey order="69">Moriasi2007</bcf:citekey>
+    <bcf:citekey order="68">McLennan1989</bcf:citekey>
+    <bcf:citekey order="69">Buriahi2021</bcf:citekey>
     <bcf:citekey order="70">Moriasi2007</bcf:citekey>
     <bcf:citekey order="71">Moriasi2007</bcf:citekey>
-    <bcf:citekey order="72">Sun2010</bcf:citekey>
-    <bcf:citekey order="73">Hodgkinson2020</bcf:citekey>
+    <bcf:citekey order="72">Moriasi2007</bcf:citekey>
+    <bcf:citekey order="73">Sun2010</bcf:citekey>
+    <bcf:citekey order="74">Hodgkinson2020</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  28 OCT 2024 11:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.5.29)  28 OCT 2024 12:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1114,27 +1114,27 @@ Package mathdesign/mdbch Warning: Package 'amsfonts' shouldn't be used in conjo
 nction with package mdbch, on input line 316.
 
 ABD: EveryShipout initializing macros
-<AACSB.png, id=44, 1204.5pt x 406.51875pt>
+<AACSB.png, id=48, 1204.5pt x 406.51875pt>
 File: AACSB.png Graphic file (type png)
 <use AACSB.png>
 Package pdftex.def Info: AACSB.png  used on input line 317.
 (pdftex.def)             Requested size: 50.57945pt x 17.07056pt.
-<EQUIS.png, id=45, 619.56468pt x 380.92313pt>
+<EQUIS.png, id=49, 619.56468pt x 380.92313pt>
 File: EQUIS.png Graphic file (type png)
 <use EQUIS.png>
 Package pdftex.def Info: EQUIS.png  used on input line 317.
 (pdftex.def)             Requested size: 27.76575pt x 17.07104pt.
-<AMBA.png, id=46, 276.03125pt x 83.31125pt>
+<AMBA.png, id=50, 276.03125pt x 83.31125pt>
 File: AMBA.png Graphic file (type png)
 <use AMBA.png>
 Package pdftex.def Info: AMBA.png  used on input line 317.
 (pdftex.def)             Requested size: 56.5615pt x 17.07127pt.
-<monash2.png, id=48, 2730.2pt x 791.95876pt>
+<monash2.png, id=52, 2730.2pt x 791.95876pt>
 File: monash2.png Graphic file (type png)
 <use monash2.png>
 Package pdftex.def Info: monash2.png  used on input line 317.
 (pdftex.def)             Requested size: 170.67874pt x 49.50938pt.
-<MBSportrait.jpg, id=49, 621.32124pt x 503.8825pt>
+<MBSportrait.jpg, id=53, 621.32124pt x 503.8825pt>
 File: MBSportrait.jpg Graphic file (type jpg)
 <use MBSportrait.jpg>
 Package pdftex.def Info: MBSportrait.jpg  used on input line 317.
@@ -1442,7 +1442,7 @@ This may cause the page layout to be inconsistent, however.
 
 [2] [3] [4] [5] [6]
 <Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png, id
-=185, 644.4075pt x 362.85562pt>
+=190, 644.4075pt x 362.85562pt>
 File: Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.pn
 g Graphic file (type png)
 <use Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png
@@ -1468,7 +1468,7 @@ LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 7.68005pt on input line 430.
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 5.76004pt on input line 430.
-<Final_report_files/figure-latex/visdat-1.pdf, id=224, 562.1pt x 334.24875pt>
+<Final_report_files/figure-latex/visdat-1.pdf, id=229, 562.1pt x 334.24875pt>
 File: Final_report_files/figure-latex/visdat-1.pdf Graphic file (type pdf)
 <use Final_report_files/figure-latex/visdat-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/visdat-1.pdf  used on 
@@ -1480,14 +1480,14 @@ LaTeX Font Info:    Font shape `T1/mdbch/b/it' will be
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
 (Font)              scaled to size 9.60007pt on input line 474.
 [13]
-<Final_report_files/figure-latex/bp_test_a.png, id=258, 578.16pt x 433.62pt>
+<Final_report_files/figure-latex/bp_test_a.png, id=263, 578.16pt x 433.62pt>
 File: Final_report_files/figure-latex/bp_test_a.png Graphic file (type png)
 <use Final_report_files/figure-latex/bp_test_a.png>
 Package pdftex.def Info: Final_report_files/figure-latex/bp_test_a.png  used on
  input line 514.
 (pdftex.def)             Requested size: 284.53595pt x 213.40196pt.
 [14 <./Final_report_files/figure-latex/bp_test_a.png>]
-<Final_report_files/figure-latex/pg_cop_cheaper.png, id=268, 578.16pt x 578.16p
+<Final_report_files/figure-latex/pg_cop_cheaper.png, id=273, 578.16pt x 578.16p
 t>
 File: Final_report_files/figure-latex/pg_cop_cheaper.png Graphic file (type png
 )
@@ -1496,7 +1496,7 @@ Package pdftex.def Info: Final_report_files/figure-latex/pg_cop_cheaper.png  us
 ed on input line 525.
 (pdftex.def)             Requested size: 320.08861pt x 320.08861pt.
 [15 <./Final_report_files/figure-latex/pg_cop_cheaper.png>]
-<Final_report_files/figure-latex/Methodologyv2.png, id=275, 477.785pt x 265.491
+<Final_report_files/figure-latex/Methodologyv2.png, id=280, 477.785pt x 265.491
 88pt>
 File: Final_report_files/figure-latex/Methodologyv2.png Graphic file (type png)
 
@@ -1702,7 +1702,7 @@ Overfull \hbox (3.1684pt too wide) in paragraph at lines 706--706
  []\T1/mdbch/m/n/10 (-20) 31.08| 
  []
 
-<Final_report_files/figure-latex/results_ree_test_best.png, id=360, 578.16pt x 
+<Final_report_files/figure-latex/results_ree_test_best.png, id=367, 578.16pt x 
 578.16pt>
 File: Final_report_files/figure-latex/results_ree_test_best.png Graphic file (t
 ype png)
@@ -1710,7 +1710,7 @@ ype png)
 Package pdftex.def Info: Final_report_files/figure-latex/results_ree_test_best.
 png  used on input line 715.
 (pdftex.def)             Requested size: 136.57338pt x 136.57338pt.
-<Final_report_files/figure-latex/results_hree_test_best.png, id=361, 578.16pt x
+<Final_report_files/figure-latex/results_hree_test_best.png, id=368, 578.16pt x
  578.16pt>
 File: Final_report_files/figure-latex/results_hree_test_best.png Graphic file (
 type png)
@@ -1718,7 +1718,7 @@ type png)
 Package pdftex.def Info: Final_report_files/figure-latex/results_hree_test_best
 .png  used on input line 715.
 (pdftex.def)             Requested size: 136.57338pt x 136.57338pt.
-<Final_report_files/figure-latex/results_lree_test_best.png, id=362, 578.16pt x
+<Final_report_files/figure-latex/results_lree_test_best.png, id=369, 578.16pt x
  578.16pt>
 File: Final_report_files/figure-latex/results_lree_test_best.png Graphic file (
 type png)
@@ -1729,7 +1729,7 @@ Package pdftex.def Info: Final_report_files/figure-latex/results_lree_test_best
 [23 <./Final_report_files/figure-latex/results_ree_test_best.png> <./Final_repo
 rt_files/figure-latex/results_hree_test_best.png> <./Final_report_files/figure-
 latex/results_lree_test_best.png>] [24]
-<Final_report_files/figure-latex/paaslvlcode-1.pdf, id=380, 572.1375pt x 561.09
+<Final_report_files/figure-latex/paaslvlcode-1.pdf, id=387, 572.1375pt x 561.09
 625pt>
 File: Final_report_files/figure-latex/paaslvlcode-1.pdf Graphic file (type pdf)
 
@@ -1739,120 +1739,120 @@ d on input line 741.
 (pdftex.def)             Requested size: 455.24872pt x 446.46323pt.
 [25] [26 <./Final_report_files/figure-latex/paaslvlcode-1.pdf>] [27] [28] [29]
 LaTeX Font Info:    Font shape `T1/mdbch/m/n' will be
-(Font)              scaled to size 8.64006pt on input line 778.
+(Font)              scaled to size 8.64006pt on input line 782.
 
-Overfull \hbox (13.3608pt too wide) in paragraph at lines 840--840
+Overfull \hbox (13.3608pt too wide) in paragraph at lines 844--844
  []\T1/mdbch/m/n/9 (-20) Magnesium(Mg)| 
  []
 
 
-Overfull \hbox (12.67499pt too wide) in paragraph at lines 840--840
+Overfull \hbox (12.67499pt too wide) in paragraph at lines 844--844
  []\T1/mdbch/m/n/9 (-20) Manganese(Mn)| 
  []
 
 
-Overfull \hbox (0.54988pt too wide) in paragraph at lines 840--840
+Overfull \hbox (0.54988pt too wide) in paragraph at lines 844--844
  []\T1/mdbch/m/n/9 (-20) Molybdenum 
  []
 
 
-Overfull \hbox (2.27718pt too wide) in paragraph at lines 840--840
+Overfull \hbox (2.27718pt too wide) in paragraph at lines 844--844
  []\T1/mdbch/m/n/9 (-20) Selenium(Se)| 
  []
 
 [30] [31] [32] [33] [34] [35]
-<Final_report_files/figure-latex/element-dist-1.pdf, id=454, 716.6775pt x 496.8
+<Final_report_files/figure-latex/element-dist-1.pdf, id=464, 716.6775pt x 496.8
 5625pt>
 File: Final_report_files/figure-latex/element-dist-1.pdf Graphic file (type pdf
 )
 <use Final_report_files/figure-latex/element-dist-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/element-dist-1.pdf  us
-ed on input line 1044.
+ed on input line 1048.
 (pdftex.def)             Requested size: 455.2492pt x 315.61392pt.
 [36 <./Final_report_files/figure-latex/element-dist-1.pdf>]
-<Final_report_files/figure-latex/regionalbk1-1.pdf, id=467, 569.12625pt x 558.0
+<Final_report_files/figure-latex/regionalbk1-1.pdf, id=477, 569.12625pt x 558.0
 85pt>
 File: Final_report_files/figure-latex/regionalbk1-1.pdf Graphic file (type pdf)
 
 <use Final_report_files/figure-latex/regionalbk1-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/regionalbk1-1.pdf  use
-d on input line 1056.
+d on input line 1060.
 (pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
 [37 <./Final_report_files/figure-latex/regionalbk1-1.pdf>]
-<Final_report_files/figure-latex/regionalbk2-1.pdf, id=481, 569.12625pt x 558.0
+<Final_report_files/figure-latex/regionalbk2-1.pdf, id=491, 569.12625pt x 558.0
 85pt>
 File: Final_report_files/figure-latex/regionalbk2-1.pdf Graphic file (type pdf)
 
 <use Final_report_files/figure-latex/regionalbk2-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/regionalbk2-1.pdf  use
-d on input line 1062.
+d on input line 1066.
 (pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
 [38 <./Final_report_files/figure-latex/regionalbk2-1.pdf>]
-<Final_report_files/figure-latex/regionalbk3-1.pdf, id=494, 569.12625pt x 558.0
+<Final_report_files/figure-latex/regionalbk3-1.pdf, id=504, 569.12625pt x 558.0
 85pt>
 File: Final_report_files/figure-latex/regionalbk3-1.pdf Graphic file (type pdf)
 
 <use Final_report_files/figure-latex/regionalbk3-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/regionalbk3-1.pdf  use
-d on input line 1068.
+d on input line 1072.
 (pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
 [39 <./Final_report_files/figure-latex/regionalbk3-1.pdf>]
-<Final_report_files/figure-latex/regionalbk4-1.pdf, id=507, 569.12625pt x 558.0
+<Final_report_files/figure-latex/regionalbk4-1.pdf, id=517, 569.12625pt x 558.0
 85pt>
 File: Final_report_files/figure-latex/regionalbk4-1.pdf Graphic file (type pdf)
 
 <use Final_report_files/figure-latex/regionalbk4-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/regionalbk4-1.pdf  use
-d on input line 1074.
+d on input line 1078.
 (pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
 [40 <./Final_report_files/figure-latex/regionalbk4-1.pdf>]
-<Final_report_files/figure-latex/regionalbk5-1.pdf, id=520, 569.12625pt x 558.0
+<Final_report_files/figure-latex/regionalbk5-1.pdf, id=530, 569.12625pt x 558.0
 85pt>
 File: Final_report_files/figure-latex/regionalbk5-1.pdf Graphic file (type pdf)
 
 <use Final_report_files/figure-latex/regionalbk5-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/regionalbk5-1.pdf  use
-d on input line 1080.
+d on input line 1084.
 (pdftex.def)             Requested size: 455.26688pt x 446.43456pt.
 [41 <./Final_report_files/figure-latex/regionalbk5-1.pdf>]
-<Final_report_files/figure-latex/regionalbk6-1.pdf, id=533, 561.09625pt x 558.0
+<Final_report_files/figure-latex/regionalbk6-1.pdf, id=543, 561.09625pt x 558.0
 85pt>
 File: Final_report_files/figure-latex/regionalbk6-1.pdf Graphic file (type pdf)
 
 <use Final_report_files/figure-latex/regionalbk6-1.pdf>
 Package pdftex.def Info: Final_report_files/figure-latex/regionalbk6-1.pdf  use
-d on input line 1086.
+d on input line 1090.
 (pdftex.def)             Requested size: 455.23889pt x 452.79576pt.
 [42 <./Final_report_files/figure-latex/regionalbk6-1.pdf>]
-Underfull \hbox (badness 1127) in paragraph at lines 1091--1091
+Underfull \hbox (badness 1127) in paragraph at lines 1095--1095
 [][]\T1/mdbch/m/n/10.95 (+20) DISR (2023). \T1/mdbch/m/it/10.95 (+20) Crit-i-ca
 l Min-er-als Strat-egy 2023^^U2030\T1/mdbch/m/n/10.95 (+20) . [][]$\T1/fvm/m/n/
 10.95 https : / / www . industry . gov . au /
  []
 
 [43] [44]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1093.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1097.
 [45]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1093.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1097.
 (./Final_report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1093.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1093.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1097.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1097.
 
 Package rerunfilecheck Info: File `Final_report.out' has not changed.
-(rerunfilecheck)             Checksum: C9D2D579FEF0ACC5E41C4472AC49D54E;1255.
+(rerunfilecheck)             Checksum: 8BC8194B56E2EB828061D0731DE72A99;1392.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'Final_report.run.xml'.
 \openout1 = `Final_report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1093.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1097.
  ) 
 Here is how much of TeX's memory you used:
- 27715 strings out of 481239
- 454464 string characters out of 5920377
- 1168086 words of memory out of 5000000
- 41948 multiletter control sequences out of 15000+600000
+ 27723 strings out of 481239
+ 454626 string characters out of 5920377
+ 1168184 words of memory out of 5000000
+ 41954 multiletter control sequences out of 15000+600000
  683286 words of font info for 442 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,16n,113p,2441b,1933s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1871,10 +1871,10 @@ f-dist/fonts/type1/public/mathdesign/mdbch/md-chr7v.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/mathdesign/mdbch/md-chr7y.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/mathdesign/mdbch/md-chr8t.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/mathdesign/mdbch/md-chri7m.pfb>
-Output written on Final_report.pdf (45 pages, 2241452 bytes).
+Output written on Final_report.pdf (45 pages, 2242906 bytes).
 PDF statistics:
- 664 PDF objects out of 1000 (max. 8388607)
- 548 compressed objects within 6 object streams
- 151 named destinations out of 1000 (max. 500000)
- 61626 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 676 PDF objects out of 1000 (max. 8388607)
+ 560 compressed objects within 6 object streams
+ 153 named destinations out of 1000 (max. 500000)
+ 61634 words of extra memory for PDF output out of 61914 (max. 10000000)
 
