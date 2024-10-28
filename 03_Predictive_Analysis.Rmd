@@ -6,11 +6,10 @@ date: "2024-10-02"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
 
-
-```{r}
+# List of libraries
 library(tidymodels)
+library(tidyverse)
 library(ranger)
 library(randomForestSRC)
 library(randomForest)
@@ -775,11 +774,11 @@ results_test %>%
   facet_wrap(~train)
 ```
 
-### Random Forest Model: Option 5 (All elements from ME-4ACD81)
+### Random Forest Model: Option 5 (All elements from ME-4ACD81) - NO LONGER USED
 Combination of All elements from ME-4ACD81 in predicting REE, with modification of the strata when splitting the training and test data.
 
 #### Data Preparation
-```{r}
+```{r, include = FALSE, eval = FALSE}
 DT_alt_2 <- DT_alt %>%
   mutate(Corr_type = case_when(Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
                              Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
@@ -802,8 +801,8 @@ DT_fltr_folds_5 <- vfold_cv(DT_train_fltr_alt_5, v = 5, repeats = 2)
 
 ```
 
-#### Build the Model
-```{r}
+#### Build the Model - NO LONGER USED
+```{r, include = FALSE, eval = FALSE}
 # Create a recipe for preprocessing
 rf_recipe_5 <- recipe(REE ~ ., data = DT_train_fltr_alt_5)
 
@@ -846,7 +845,7 @@ rf_tr_rdm_tuned_5_pred <- predict(rf_random_tuned_fit_5, new_data = DT_train_flt
 rf_ts_rdm_tuned_5_pred <- predict(rf_random_tuned_fit_5, new_data = DT_test_fltr_alt_5_prep)
 ```
 
-```{r}
+```{r, include = FALSE, eval = FALSE}
 # Plot variable importance
 rf_random_tuned_fit_5 %>%
   extract_fit_parsnip() %>%
@@ -854,8 +853,8 @@ rf_random_tuned_fit_5 %>%
 ```
 
 
-#### Evaluate the Model
-```{r}
+#### Evaluate the Model - NO LONGER USED
+```{r, include = FALSE, eval = FALSE}
 # RF Tuned Results for all elements from ME-4ACD81
 ## Training set evaluation
 results_train_rf_rdm_tuned_5 <- rf_tr_rdm_tuned_5_pred %>%
@@ -896,8 +895,8 @@ results_test %>%
             MAPE = MAPE(.pred, truth))
 ```
 
-#### Prediction vs Actual Comparison
-```{r viz_comparison3, warning = FALSE, error = FALSE}
+#### Prediction vs Actual Comparison - NO LONGER USED
+```{r viz_comparison5, warning = FALSE, error = FALSE, include = FALSE, eval = FALSE}
 results_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_train %>%
@@ -1215,7 +1214,7 @@ results_hree_test %>%
 ```
 
 #### Prediction vs Actual Comparison
-```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+```{r viz_comparison1_hree, warning = FALSE, error = FALSE}
 results_hree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_hree_train %>%
@@ -1226,8 +1225,8 @@ results_hree_test %>%
   facet_wrap(~train)
 ```
 
-----POSSIBLY SCRAPPED----
-### Random Forest Model: Option 2 (All elements from ME-4ACD81)
+
+### Random Forest Model: Option 2 (All elements from ME-4ACD81) - NO LONGER USED
 Combination of All elements from ME-4ACD81 in predicting HREE, but using different strata method.
 
 #### Data Preparation
@@ -1255,7 +1254,7 @@ DT_hree_fltr_folds_2 <- vfold_cv(DT_hree_train_fltr_2, v = 5, repeats = 2)
 
 ```
 
-#### Build the Model
+#### Build the Model - NO LONGER USED
 ```{r, eval = FALSE, include = FALSE}
 # Create a recipe for preprocessing
 rf_hree_recipe_2 <- recipe(HREE ~ ., data = DT_hree_train_fltr_2)
@@ -1307,7 +1306,7 @@ rf_hree_random_tuned_fit_2 %>%
 ```
 
 
-#### Evaluate the Model
+#### Evaluate the Model - NO LONGER USED
 ```{r, eval = FALSE, include = FALSE}
 # RF Tuned Results for all elements from ME-4ACD81
 ## Training set evaluation
@@ -1349,8 +1348,8 @@ results_hree_test %>%
             MAPE = MAPE(.pred, truth))
 ```
 
-#### Prediction vs Actual Comparison
-```{r viz_comparison3_hree, eval = FALSE, include = FALSE, warning = FALSE, error = FALSE}
+#### Prediction vs Actual Comparison - NO LONGER USED
+```{r viz_comparison2_hree, eval = FALSE, include = FALSE, warning = FALSE, error = FALSE}
 results_hree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_hree_train %>%
@@ -1361,7 +1360,6 @@ results_hree_test %>%
   facet_wrap(~train)
 ```
 
-----
 
 ### Random Forest Model: Option 3 (All elements which has high variable importance)
 Combination of elements that have high variable importance in from the model in option 2, which are Pb and Sc.
@@ -1369,8 +1367,8 @@ Combination of elements that have high variable importance in from the model in 
 #### Data Preparation
 ```{r}
 # Filter the training and test datasets to include predictors and target variables only
-DT_hree_train_fltr_3 <- DT_hree_train_2[,c("HREE","Pb", "Sc")] 
-DT_hree_test_fltr_3 <- DT_hree_test_2[,c("HREE","Pb", "Sc")]
+DT_hree_train_fltr_3 <- DT_hree_train[,c("HREE","Pb", "Sc")] 
+DT_hree_test_fltr_3 <- DT_hree_test[,c("HREE","Pb", "Sc")]
 
 # Create a cross-validation data for resampling purposes during hyperparameter tuning
 set.seed(2022)
@@ -1485,7 +1483,7 @@ Data preparation is not needed for this model, because this model use the same d
 #### Build the Model
 ```{r}
 # Define the recipe for XGBoost
-xgb_recipe_hree <- recipe(HREE ~ ., data = DT_hree_train_fltr_3) 
+xgb_recipe_hree <- recipe(HREE ~ ., data = DT_hree_train_fltr) 
 
 # XGB tune workflow
 xgb_tuned_workflow_hree <- workflow() %>%
@@ -1500,7 +1498,7 @@ xgboost_params_hree <- parameters(
   loss_reduction(),
   min_n(),
   sample_size = sample_prop(),
-  finalize(mtry(), DT_hree_train_fltr_3))
+  finalize(mtry(), DT_hree_train_fltr))
 
 xgboost_grid_hree <- 
   dials::grid_space_filling(
@@ -1512,7 +1510,7 @@ xgboost_grid_hree <-
 # Tune the model
 set.seed(2022)
 xgb_tune_hree <- xgb_tuned_workflow_hree %>% 
-  tune_grid(resamples = DT_hree_fltr_folds_3, 
+  tune_grid(resamples = DT_hree_fltr_folds, 
             grid = xgboost_grid_hree,
             metrics = metric_set(rmse, rsq, mae),
             control = control_grid(save_pred = TRUE))
@@ -1523,13 +1521,13 @@ show_best(xgb_tune_hree, n = 5, metric = "rmse")
 # Fit the best model into the training set
 set.seed(2022)
 xgb_tuned_fit_hree <- finalize_workflow(xgb_tuned_workflow_hree, select_best(xgb_tune_hree, metric = "rmse")) %>%
-    fit(DT_hree_train_fltr_3)
+    fit(DT_hree_train_fltr)
 
 # Make predictions on the test set
-xgb_hree_train_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_train_fltr_3)
+xgb_hree_train_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_train_fltr)
 
 # Make predictions on the test set
-xgb_hree_test_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_test_fltr_3)
+xgb_hree_test_predictions <- predict(xgb_tuned_fit_hree, new_data = DT_hree_test_fltr)
 ```
 
 
@@ -1578,7 +1576,7 @@ results_hree_test %>%
 ```
 
 #### Prediction vs Actual Comparison
-```{r viz_comparison_xgb2, warning = FALSE, error = FALSE}
+```{r viz_comparison_xgb_hree, warning = FALSE, error = FALSE}
 results_hree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_hree_train %>%
@@ -1624,18 +1622,18 @@ Random Forest with "Project-stratified" Model is the best model, beating every m
 ```{r hree_pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
 
 # Getting metrics values
-hree_rmse_value <- results_hree_test_df[2,5]
-hree_rsq_value <- results_hree_test_df[2,8]
-hree_mae_value <- results_hree_test_df[2,6]
-hree_mape_value <- results_hree_test_df[2,7]
+hree_rmse_value <- results_hree_test_df[1,5]
+hree_rsq_value <- results_hree_test_df[1,8]
+hree_mae_value <- results_hree_test_df[1,6]
+hree_mape_value <- results_hree_test_df[1,7]
 
 results_hree_test_best <- results_hree_test %>%
-  filter(model %in% c("RF_Rdm_Tuned_HREE_3")) %>%
+  filter(model %in% c("RF_Rdm_Tuned_HREE")) %>%
   ggplot(aes(.pred, truth)) +
   geom_abline(lty = 2, linewidth = 0.75, linetype = "dashed", colour='red') +
   geom_point(alpha = 0.7, colour = "black", size = 5) +
-  xlim(c(0,35)) +
-  ylim(c(0,35)) +
+  xlim(c(0,30)) +
+  ylim(c(0,30)) +
   xlab("Predicted") +
   ylab("Actual") +
   # facet_wrap(~train) +
@@ -1643,10 +1641,10 @@ results_hree_test_best <- results_hree_test %>%
   theme(axis.title.x = element_text(size = 24),            # Increase X-axis title size
         axis.title.y = element_text(size = 24)) +          # Increase Y-axis title size
   # Annotate the plot with the metrics
-  annotate("text", x = 32, y = 7, label = paste("RMSE: ", round(hree_rmse_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 32, y = 5, label = paste("MAE: ", round(hree_mae_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 32, y = 3, label = paste("MAPE: ", round(hree_mape_value, 2)), size = 9, hjust = 1) +
-  annotate("text", x = 32, y = 1, label = paste("R-squared: ", round(hree_rsq_value, 2)), size = 9, hjust = 1)
+  annotate("text", x = 29, y = 7, label = paste("RMSE: ", round(hree_rmse_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 29, y = 5, label = paste("MAE: ", round(hree_mae_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 29, y = 3, label = paste("MAPE: ", round(hree_mape_value, 2)), size = 9, hjust = 1) +
+  annotate("text", x = 29, y = 1, label = paste("R-squared: ", round(hree_rsq_value, 2)), size = 9, hjust = 1)
 
 print(results_hree_test_best)
 
@@ -1767,7 +1765,7 @@ results_lree_test %>%
 ```
 
 #### Prediction vs Actual Comparison
-```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+```{r viz_comparison_lree, warning = FALSE, error = FALSE}
 results_lree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_lree_train %>%
@@ -1778,17 +1776,16 @@ results_lree_test %>%
   facet_wrap(~train)
 ```
 
-### Random Forest Model: Option 2 (All elements from ME-4ACD81)
+### Random Forest Model: Option 2 (All elements from ME-4ACD81) - NO LONGER USED
 Combination of All elements from ME-4ACD81 in predicting HREE, but using different strata method.
 
 #### Data Preparation
-```{r}
+```{r, include = FALSE, eval = FALSE}
 DT_lree_alt_2 <- DT_lree_alt %>%
   mutate(Corr_type = case_when(Project_Name %in% c("Collinsville", "Newlands", "Coppabella") ~ "Type A",
                              Project_Name %in% c("Rolleston", "Collingwood Park", "Unamed") ~ "Type B",
                              Project_Name == "Fort Cooper" ~ "Type C",
-                             TRUE ~ "Type D")) %>%
-  filter(Co <= 250 & Zn <= 250 & Ni <= 250 & Li <= 250)
+                             TRUE ~ "Type D"))
 
 # Splitting the data (HREE)
 set.seed(2022)
@@ -1806,8 +1803,8 @@ DT_lree_fltr_folds_2 <- vfold_cv(DT_lree_train_fltr_2, v = 5, repeats = 2)
 
 ```
 
-#### Build the Model
-```{r}
+#### Build the Model - NO LONGER USED
+```{r, include = FALSE, eval = FALSE}
 # Create a recipe for preprocessing
 rf_lree_recipe_2 <- recipe(LREE ~ ., data = DT_lree_train_fltr_2)
 
@@ -1850,16 +1847,16 @@ rf_lree_tr_rdm_tuned_pred_2 <- predict(rf_lree_random_tuned_fit_2, new_data = DT
 rf_lree_ts_rdm_tuned_pred_2 <- predict(rf_lree_random_tuned_fit_2, new_data = DT_lree_test_fltr_2)
 ```
 
-```{r}
+```{r, include = FALSE, eval = FALSE}
 # Plot variable importance
 rf_lree_random_tuned_fit %>%
   extract_fit_parsnip() %>%
   vip::vip()
 ```
 
-
-#### Evaluate the Model
-```{r}
+ 
+#### Evaluate the Model - NO LONGER USED
+```{r, include = FALSE, eval = FALSE}
 # RF Tuned Results for all elements from ME-4ACD81
 ## Training set evaluation
 results_train_rf_lree_rdm_tuned_2 <- rf_lree_tr_rdm_tuned_pred_2 %>%
@@ -1900,9 +1897,9 @@ results_lree_test %>%
             MAPE = MAPE(.pred, truth))
 ```
 
-#### Prediction vs Actual Comparison
-```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
-results_hree_test %>%
+#### Prediction vs Actual Comparison - NO LONGER USED
+```{r viz_comparison2_lree, warning = FALSE, error = FALSE, include = FALSE, eval = FALSE}
+results_lree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_hree_train %>%
               mutate(train = "training")) %>%
@@ -2022,7 +2019,7 @@ results_lree_test %>%
 ```
 
 #### Prediction vs Actual Comparison
-```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+```{r viz_comparison3_lree, warning = FALSE, error = FALSE}
 results_lree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_lree_train %>%
@@ -2136,7 +2133,7 @@ results_lree_test %>%
 ```
 
 #### Prediction vs Actual Comparison
-```{r viz_comparison3_hree, warning = FALSE, error = FALSE}
+```{r viz_comparison4_lree, warning = FALSE, error = FALSE}
 results_lree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_lree_train %>%
@@ -2249,7 +2246,7 @@ results_lree_test %>%
 ```
 
 #### Prediction vs Actual Comparison
-```{r viz_comparison_xgb2, warning = FALSE, error = FALSE}
+```{r viz_comparison_xgb_lree, warning = FALSE, error = FALSE}
 results_lree_test %>%
   mutate(train = "testing") %>%
   bind_rows(results_lree_train %>%

@@ -17,7 +17,6 @@ library(ggcorrplot)
 library(gridExtra)
 library(bookdown)
 library(moments)
-library(MASS)
 library(here)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 theme_set(theme_minimal())
@@ -209,7 +208,7 @@ ggsave("./Final_report/Final_report_files/figure-latex/bp_test_a.png", plot = bp
 ```
 
 
-```{r element-dist2, fig.cap = "Distribution of Critical Elements (Histogram)", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center", include = FALSE, eval = FALSE}
+```{r element-dist3, fig.cap = "Distribution of Critical Elements (Histogram)", out.width = "100%", fig.width = 10, fig.height = 6, fig.align = "center", include = FALSE, eval = FALSE}
 
 # TRIAL & NOT TO BE INCLUDED
 
