@@ -1,5 +1,7 @@
 # Predicting Critical Elements in Coal Mine Waste: A Machine Learning Approach for a Low-Emission Future
 
+::: {style="text-align: justify;"}
+
 ## Objective
 As global demand for critical minerals rises, this study investigates the economic potential of extracting critical elements from coal mine waste in Australia. Using data from the largest element mapping project by ACARP, combined with recent private sector research, this research employs exploratory data analysis (EDA) and machine learning to achieve two key objectives: (1) leveraging low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element) through numerical regression, and (2) identifying enriched elements and project areas with significant economic potential for future extraction. The study found that elements from lower cost lab test can predict the REEs, HREEs, and LREEs with reasonably good performance. This was achieved even with the challenge of low correlation coefficient between the independent and dependent variables. This study also found that Fort Cooper possess a significant amount of critical elements, making it economically feasible to pursue extraction efforts with confidence that the investment in Fort Cooper will yield substantial returns and contribute meaningfully to meeting the global demand for critical minerals.
 
@@ -75,3 +77,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgement
 This repository is managed by Evan Ginting (evanginting - egin0003@student.monash.edu) & Yuhao Long (Alberlong44 - ylon0012@studeb.monash.edu), with the collaboration with Matrix Geoscience team, Kane Maxwell(kane.maxwell@matrixgeoscience.com) and Limin Xu (limin.xu@matrixgeoscience.com).
+
+:::
