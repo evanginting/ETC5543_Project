@@ -16,11 +16,11 @@ The ETC554_Project repository is the record for data analysis process and the in
 
 5. 02_Exploratory_Data_Analysis.html: The html report rendered from 02_Exploratory_Data_Analysis.Rmd.
 
-6. 03_Predictive_Analysis.Rmd:  Under machine learning method, the predictive analysis work file to use element list in low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element).
+6. 03_Predictive_Analysis.Rmd: Under machine learning method, the predictive analysis work file to use element list in low-cost element analysis (ME-4ACD81) to predict concentrations of valuable elements such as REEs (Rare Earth Element), HREEs (Heavy Rare Earth Element), and LREEs (Light Rare Earth Element).
 
-7. Presentation folder:
+7. "Presentation" folder: This includes all codes that generated all figures in the presentation. Make sure to run 01_Data_Preparation.Rmd, 02_Exploratory_Data_Analysis.Rmd, 03_Predictive_Analysis.Rmd files before working on this file.
 
-8. "Final_report"" folder: The integration process for the final academic report in Monash University report format.
+8. "Final_report" folder: The integration process for the final academic report in Monash University report format. Make sure to run 01_Data_Preparation.Rmd, 02_Exploratory_Data_Analysis.Rmd, 03_Predictive_Analysis.Rmd files before working on this file.
 
 ## Usage
 To replicate the analysis:
