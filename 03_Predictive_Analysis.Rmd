@@ -359,6 +359,8 @@ set.seed(2022)
 rf_random_tuned_fit_2 <- finalize_workflow(rf_tuned_workflow_2, select_best(rf_random_tune_2)) %>%
     fit(DT_train_fltr_alt_2)
 
+saveRDS(rf_random_tuned_fit_2, file = "./Final_report/Final_report_files/REE_fit1.rds")
+
 # Apply the trained recipe to the testing data
 # 'bake()' will apply all recipe steps (e.g., imputation, normalization) to the testing dataset
 DT_train_fltr_alt_2_prep <- bake(prep(rf_recipe_2), new_data = DT_train_fltr_alt_2)
@@ -996,6 +998,8 @@ results_train <- bind_rows(results_train, xgb_train_results)
 ## Test set
 results_test <- bind_rows(results_test, xgb_test_results)
 
+# Saving the data into .RDS format for final report & presentation purpose
+saveRDS(results_test, './Final_report/Final_report_files/ree_results_test.rds')
 
 # Show the evaluation metrics for every model
 ## Training set
@@ -1063,13 +1067,9 @@ saveRDS(results_ree_test_df, './Final_report/Final_report_files/results_ree_test
 Random Forest "Default tuned" model is the best model, beating every model on RMSE, R-square, and MAPE.
 
 #### Prediction vs Actual Comparison of Best Model
-```{r pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
-# results_test_best <- results_test %>%
-#   filter(model %in% c("RF_Rdm_Tuned_3")) %>%
-#   mutate(train = "Testing") %>%
-#   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
-#               mutate(train = "Training")) 
+```{r ree_pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
 
+# Getting metrics values
 ree_rmse_value <- results_ree_test_df[2,5]
 ree_rsq_value <- results_ree_test_df[2,8]
 ree_mae_value <- results_ree_test_df[2,6]
@@ -1555,6 +1555,8 @@ results_hree_train <- bind_rows(results_hree_train, xgb_train_results_hree)
 ## Test set
 results_hree_test <- bind_rows(results_hree_test, xgb_test_results_hree)
 
+# Saving the data into .RDS format for final report & presentation purpose
+saveRDS(results_hree_test, './Final_report/Final_report_files/hree_results_test.rds')
 
 # Show the evaluation metrics for every model
 ## Training set
@@ -1618,13 +1620,9 @@ saveRDS(results_hree_test_df, './Final_report/Final_report_files/results_hree_te
 Random Forest with "Project-stratified" Model is the best model, beating every model on RMSE, R-square, and MAPE.
 
 #### Prediction vs Actual Comparison of Best Model
-```{r pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
-# results_test_best <- results_test %>%
-#   filter(model %in% c("RF_Rdm_Tuned_3")) %>%
-#   mutate(train = "Testing") %>%
-#   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
-#               mutate(train = "Training")) 
+```{r hree_pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
 
+# Getting metrics values
 hree_rmse_value <- results_hree_test_df[2,5]
 hree_rsq_value <- results_hree_test_df[2,8]
 hree_mae_value <- results_hree_test_df[2,6]
@@ -2228,6 +2226,8 @@ results_lree_train <- bind_rows(results_lree_train, xgb_train_results_lree)
 ## Test set
 results_lree_test <- bind_rows(results_lree_test, xgb_test_results_lree)
 
+# Saving the data into .RDS format for final report & presentation purpose
+saveRDS(results_lree_test, './Final_report/Final_report_files/lree_results_test.rds')
 
 # Show the evaluation metrics for every model
 ## Training set
@@ -2279,12 +2279,12 @@ results_lree_test_df <- results_lree_test %>%
                                     # model == "RF_Rdm_Tuned_LREE_2" ~ "Project-stratified",
                                     model == "RF_Rdm_Tuned_LREE_3" ~ "Elements with high variable importance",
                                     model == "RF_Rdm_Tuned_LREE_4" ~ "Elements with correlation coefficient above 0.5",
-                                    model == "XGBoost_Tuned_LREE" ~ "Default tuned")) %>%
+                                    model == "XGBoost_Tuned_LREE" ~ "Elements with correlation coefficient above 0.5")) %>%
   mutate(elements = case_when(model == "RF_Rdm_Tuned_LREE" ~ "All elements",
                                     # model == "RF_Rdm_Tuned_LREE_2" ~ "All elements",
                                     model == "RF_Rdm_Tuned_LREE_3" ~ "Tl, Pb, Sc, Cd, Zn, Cu",
                                     model == "RF_Rdm_Tuned_LREE_4" ~ "Pb, Sc, Zn",
-                                    model == "XGBoost_Tuned_LREE" ~ "All elements")) %>%
+                                    model == "XGBoost_Tuned_LREE" ~ "Pb, Sc, Zn")) %>%
   mutate(target_var = "LREE") %>%
   select(target_var, method, model_scenarios, elements, RMSE, MAE, MAPE, R_Square)
 
@@ -2295,17 +2295,13 @@ saveRDS(results_lree_test_df, './Final_report/Final_report_files/results_lree_te
 Random Forest "Elements with correlation coefficient above 0.5" model is the best model, beating every model on RMSE, R-square, and MAPE.
 
 #### Prediction vs Actual Comparison of Best Model
-```{r pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
-# results_test_best <- results_test %>%
-#   filter(model %in% c("RF_Rdm_Tuned_3")) %>%
-#   mutate(train = "Testing") %>%
-#   bind_rows((results_train %>% filter(model %in% c("RF_Rdm_Tuned_3"))) %>%
-#               mutate(train = "Training")) 
+```{r lree_pred_res, fig.cap = "Actual vs Prediction Results", fig.width = 8, fig.height = 8, fig.align = "center", warning = FALSE, error = FALSE}
 
-lree_rmse_value <- results_lree_test_df[2,5]
-lree_rsq_value <- results_lree_test_df[2,8]
-lree_mae_value <- results_lree_test_df[2,6]
-lree_mape_value <- results_lree_test_df[2,7]
+# Getting metrics values
+lree_rmse_value <- results_lree_test_df[3,5]
+lree_rsq_value <- results_lree_test_df[3,8]
+lree_mae_value <- results_lree_test_df[3,6]
+lree_mape_value <- results_lree_test_df[3,7]
 
 results_lree_test_best <- results_lree_test %>%
   filter(model %in% c("RF_Rdm_Tuned_LREE_4")) %>%
