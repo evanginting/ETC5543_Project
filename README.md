@@ -27,7 +27,7 @@ The ETC554_Project repository is the record for data analysis process and the in
 To replicate the analysis:
 
 1. Download or clone the repository.
-2. Navigate to the data folder and place your raw data files.
+2. Navigate to the raw data file in data folder.
 3. Open 01_Data_Preparation.Rmd to preprocess the data and generate the necessary RDS files.
 4. Run 02_Exploratory_Data_Analysis.Rmd for data exploration and visualization.
 5. Execute 03_Predictive_Analysis.Rmd for machine learning-based predictive modeling.
