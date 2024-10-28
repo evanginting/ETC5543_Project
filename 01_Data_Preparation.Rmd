@@ -6,6 +6,11 @@ date: "2024-07-15"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(data.table)
+library(openxlsx)
+library(stringr)
+library(here)
 ```
 
 ## Aim
@@ -65,10 +70,6 @@ In this example we will:
 5. Rename columns to a consistent format
 
 ```{r}
-library(tidyverse)
-library(data.table)
-library(openxlsx)
-library(stringr)
 
 #1. Load the data (read in the "Collinsville" tab)
 d <- openxlsx::read.xlsx("./data/C29030 Appendix A.xlsx",sheet=c("Collinsville"), startRow =1,colNames=TRUE, cols=c(1:8), rows = 1:50)

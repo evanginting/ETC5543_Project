@@ -18,6 +18,7 @@ library(gridExtra)
 library(bookdown)
 library(moments)
 library(MASS)
+library(here)
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 theme_set(theme_minimal())
 ```
@@ -32,7 +33,7 @@ This document presents an exploratory data analysis of critical elements concent
 ## Data General Characteristics
 ```{r}
 # Loading all data
-alldata <- readRDS('./results/all_data.rds')
+alldata <- readRDS(here('results/all_data.rds'))
 
 # Exclude observations that element value below -800.00 data
 # alldata_eda <- alldata[alldata$Element_Value_ppm >= -800.00, ]

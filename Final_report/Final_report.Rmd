@@ -60,6 +60,7 @@ library(png)
 library(moments)
 library(visdat)
 library(patchwork)
+library(here)
 theme_set(theme_minimal())
 ```
 
@@ -122,7 +123,7 @@ We can conclude that significant research and development efforts have been made
 There are several stages required for critical elements to be extracted from coal and coal byproducts. First, Coal and coal byproducts are prepared by crushing and milling to separate the organic from inorganic elements, to generate fine concentrates. These concentrates then undergo further separation techniques, such as physical (froth flotation, electrostatic, magnetic, gravity) and chemical (leaching) methods. Subsequently, they are further processed into purification to extract the REE into pure oxide form (e.g. REO). While REOs can be standalone products, market demand often dictates their conversion into metals. Thus, in the refining stage, REOs are converted into high-purity rare earth metals using electrolysis or metallothermic reduction processes. These metals may then be alloyed with other elements to enhance their hardness and strength for the end-use market [@Eterigho2021; @usde2017; @TALAN2022107897]. Figure \ref{fig:ree-vc} visualise this process.
 
 ```{r ree-vc, fig.align = "center", out.width = '100%', fig.cap="REE Value Chain (Source: US Department of Energy, 2017)"}
-knitr::include_graphics("/cloud/project/Final_report/Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png")
+knitr::include_graphics(here("Final_report/Final_report_files/figure-latex/Critical_Mineral_Extraction_Process_v2.png"))
 ```
 
 Recently, water-leaching is a prevailing approach since it mitigate the flaw from traditional techniques. Water leaching can be considered as less environmentally detrimental compared to strong acid/alkaline leaching, as well as cost effective for solvent selection. The crucial stages on this preparation workflow are low temperature activation and water leaching. During the stage of low temperature activation, the chemical reaction within coal fly ash (CFA) will be facilitated by complexation agents (ammonium salts or weak acids) in covered alumina crucibles, which help liberate critical elements from the matrix of the CFA. After the activation and cool down to ambient temperature, the tablets are placed in water for the leaching and dissolve process. Water acts as the leaching solvent, extracting these soluble elements into the leachate.The configuration in temperature and mass ratio of solvent will be the vital determinant for optimized recovery. Take Lithium example, it can achieve a stable leaching efficiency of 90% through ammonium fluoride leaching at 150°C with a $SiO_2/NH_4F$ mass ratio of 1:1.35 @Xu2021.
@@ -171,7 +172,7 @@ Additional variable was created to identify whether the normalised value is abov
 
 ```{r}
 # Loading all data
-alldata <- readRDS('/cloud/project//results/all_data.rds')
+alldata <- readRDS(here('results/all_data.rds'))
 ```
 
 For a brief information, the clean data include total `r ncol(alldata)` variables and `r nrow(alldata)` observations, including `r n_distinct(alldata$Project_Name)` project area, `r n_distinct(alldata$Sample_ID)` samples, and `r n_distinct(alldata$Element_Symbol)` elements. Figure \ref{fig:visdat} shows the correct data type for all variables, with no missing value left.
@@ -202,7 +203,8 @@ While some general EDA has been conducted, a more in-depth analysis specific to 
 
 Table \ref{tab:descstatsflt} shows the descriptive statistics of the dependent variables (REEs, HREEs, and LREEs) and independent variables (all elements from ME-4ACD1 test). 
 ```{r descstatsflt, align = 'center'}
-desc_stats_flt <- readRDS('./Final_report_files/desc_stats_flt.rds')
+# Load the data that was saved from "02_Exploratory_Data_Analysis.Rmd" file
+desc_stats_flt <- readRDS(here('Final_report/Final_report_files/desc_stats_flt.rds'))
 
 # Populate a formal table
 kable(desc_stats_flt, 
@@ -225,13 +227,13 @@ kable(desc_stats_flt,
 Figure \ref{fig:bpflt} shows the distribution of all 11 elements. The analysis has been conducted in the previous section. However, to emphasise the point, it is clear that the distribution of all elements are not balance (do not follow normal distribution), with many outliers that might affect the model performance later. A further data processing might be needed to reduce the effect of these outliers value in the model construction.
 
 ```{r bpflt, fig.cap = "The Box Plot of Dependent and Independent Variables for Predictive Modelling", fig.align = 'center', out.width="100%", out.height="30%", fig.show = 'hold'}
-knitr::include_graphics("./Final_report_files/figure-latex/bp_test_a.png")
+knitr::include_graphics(here("Final_report/Final_report_files/figure-latex/bp_test_a.png"))
 ```
 
 
 Figure \ref{fig:corrmat} shows the correlation matrix of all elements, the main interesting information from this matrix is to understand the correlation coefficient of the dependent and independent variables. As can be seen, in overall there is no significant correlation coefficient between the dependent variables and independent variables, with the highest is only moderately strong (0.68 between Pb and LREEs). This poses a potential challenge in predicting the dependent variable later in the predictive modelling. 
 ```{r corrmat, fig.cap = "Correlation Matrix of All Variables", fig.align = 'center', out.width="100%", out.height="35%", fig.show = 'hold'}
-knitr::include_graphics("./Final_report_files/figure-latex/pg_cop_cheaper.png") 
+knitr::include_graphics(here("Final_report/Final_report_files/figure-latex/pg_cop_cheaper.png"))
 ```
 
 \newpage
@@ -241,7 +243,7 @@ knitr::include_graphics("./Final_report_files/figure-latex/pg_cop_cheaper.png")
 ## Predictive Modelling
 
 ```{r modelbuilding, fig.cap = "The Methodology of This Study", fig.align = 'center', fig.show = 'hold', out.width="95%"}
-knitr::include_graphics("./Final_report_files/figure-latex/Methodologyv2.png")
+knitr::include_graphics(here("Final_report/Final_report_files/figure-latex/Methodologyv2.png"))
 ```
 
 The predictive modeling process in this study follows a structured methodology, consisting of key steps aimed at selecting the most accurate and robust model for predicting the target variable. Each step contributes to refining the model’s performance, from data pre-processing and feature selection to model training and evaluation. The framework of this methodology is shown in the figure \ref{fig:modelbuilding}.
@@ -345,8 +347,8 @@ The visualisation technique adopts the distribution scatter plot for two scenari
 ## Predictive Modelling
 
 ```{r testres1, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, cache=FALSE, out.width = "80%"}
-# Load data
-results_ree_test_rpt <- readRDS('./Final_report_files/results_ree_test_df.rds')
+# Load ree results data that was generated in the 03_Predictive_Analysis.Rmd file
+results_ree_test_rpt <- readRDS(here('Final_report/Final_report_files/results_ree_test_df.rds'))
 
 # Populate a formal table
 kable(results_ree_test_rpt, 
@@ -371,8 +373,8 @@ kable(results_ree_test_rpt,
 Table \ref{tab:testres1} shows the model performance evaluation for predicting REE, HREE, and LREE across different scenarios. For REE prediction, the predictive model was built under four different scenarios. From the error evaluation metrics, the RMSE value is ranging from 47.57 to 66.45, MAE value is ranging from 33.85 to 38.18, and MAPE value is ranging from 26.40% to 29.44%. A model with the lowest value indicates the least error, which turn out the random forest default tuned model where all elements are included is the lowest of all. Additionally, from the variability metric, the R-Square value is ranging from 0.37 to 0.62. A model with the highest value indicates a better model in capturing variability of the data, in this case the same model also score the the highest of all. This results concludes the best model in predicting REE is the random forest default tuned model where all elements are included. 
 
 ```{r testres2, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, cache=FALSE, out.width = "80%"}
-# Load hree test result
-results_hree_test_rpt <- readRDS('./Final_report_files/results_hree_test_df.rds')
+# Load hree test result that was generated in the 03_Predictive_Analysis.Rmd file
+results_hree_test_rpt <- readRDS(here('Final_report/Final_report_files/results_hree_test_df.rds'))
 
 # Populate a formal table
 kable(results_hree_test_rpt, 
@@ -396,8 +398,8 @@ kable(results_hree_test_rpt,
 For HREE prediction, the predictive model was built under three different scenarios, shown in Table \ref{tab:testres2}. A scenario where we construct the model with elements which has correlation coefficient above 0.5 is absent because there is only one element that fall under this category (Sc). It was decided not to perform this scenario for HREE for the reason that Sc correlation coefficient to HREE is only 0.57, with just moderately strong coefficient, authors thought predicting HREE with one element will: first, oversimplified the model; second, ignore the fact that HREE is less abundant in the nature which further reduces the likelihood that a single moderately correlated element could serve as a reliable predictor. Next, From the error evaluation metrics, the RMSE value is ranging from 3.1 to 3.38, MAE value is ranging from 2.13 to 2.45, and MAPE value is ranging from 29%% to 37%. The model with high variable importance has the lowest value of RMSE, but the random forest default tuned model is the lowest of RMSE and MAPE. Moreover, R-Square value is ranging from 0.46 to 0.55. In this case, the model with high variable importance has the highest score. In Overall, the latter model has better metrics in three evaluation metrics, making it the best model in predicting HREE.
 
 ```{r testres3, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, cache=FALSE, out.width = "80%"}
-# Load lree test result
-results_lree_test_rpt <- readRDS('./Final_report_files/results_lree_test_df.rds')
+# Load lree test result that was generated in the 03_Predictive_Analysis.Rmd file
+results_lree_test_rpt <- readRDS(here('Final_report/Final_report_files/results_lree_test_df.rds'))
 
 # Populate a formal table
 kable(results_lree_test_rpt, 
@@ -424,9 +426,9 @@ With the best model identified, figure \ref{fig:bestplot} shows the predicted vs
 
 ```{r bestplot, include=TRUE, message = FALSE, warning = FALSE, eval = TRUE, echo = FALSE, out.width="30%", out.height="40%", fig.cap = "Predicted vs Actual Values of the Best Models. From left to right: REE, HREE, LREE.", fig.show = 'hold', fig.align = 'center'}
 
-knitr::include_graphics(c("./Final_report_files/figure-latex/results_ree_test_best.png",
-                          "./Final_report_files/figure-latex/results_hree_test_best.png",
-                          "./Final_report_files/figure-latex/results_lree_test_best.png"))
+knitr::include_graphics(c(here("Final_report/Final_report_files/figure-latex/results_ree_test_best.png"),
+                          here("Final_report/Final_report_files/figure-latex/results_hree_test_best.png"),
+                          here("Final_report/Final_report_files/figure-latex/results_lree_test_best.png")))
 ```
 
 The plot that compares predicted vs. actual values of REE reveals moderate prediction performance by the model. With an RMSE of 47.57 and MAE of 33.85, the model demonstrates an average prediction error of roughly 47 units and an average absolute error of about 34 units, indicating that predictions are fairly close to the actual values but still have notable deviations. A MAPE of 26% suggests that, on average, the model's predictions deviate by 26% from the actual REE values, which is a slight improvement in accuracy compared to other similar models. The R-squared value of 0.62 indicates that 62% of the variance in the actual values is captured by the model, showing a reasonable fit but still leaving significant room for error. In terms of key insights, the model performs relatively well for mid-range REE values, as the points are closely aligned along the diagonal line. However, the scatter becomes more pronounced at higher REE values (beyond 300), where the model underestimates the actual values, as observed by the upward spread of points above the line. This suggests that while the model captures general patterns, it faces challenges in predicting high REE values with precision, due to outliers and high range (max - min) value of REE as describe in Table \ref{tab:descstatsflt}.
@@ -447,18 +449,18 @@ On the other hand, `Bismuth (Bi)` and `Lithium (Li)` present promising prospects
 
 Meanwhile, some instances of the element enrichment may be misleading due to the lab error. Despite a small number of valid samples, `Germanium (Ge)` stands out for its extremely enriched samples, displaying concentrations 30-40 times higher than the PAAS standard. Considering `Ge` is relatively rare in most natural environments and all these abnormal samples come from the same project (`Wandoan`), this seems more like a human error in statistical reporting from the laboratory. `Molybdenum (Mo)` and `Barium (Ba)` are also not typically enriched in coal seams. Their apparent enrichment might be incurred by the contamination of drilling fluids.
 ```{r paaslvlcode, fig.cap="The distribution of element concentration with reference to PASS levels", out.width="100%", fig.height = 8, out.height="100%", warning = FALSE, message = FALSE, cache = FALSE}
-alldata|> 
+
+alldata |> 
     ggplot(aes(y = Element_Symbol, x = PAAS_normalised_value, color = Above_PASS_flag, shape = Above_PASS_flag)) +
-  geom_point() +  # 1 for circle, 2 for triangle
-  scale_color_manual(values = c("black", "#028A0F")) +  # Black for below background, green for enriched
-  geom_vline(xintercept = 1, linetype = "dashed", color ="red") +  # Dashed vertical line at x = 1
-  labs(x = "PAAS Normalised Value (ppm)", y = "Element Symbol",
-       color="Above PAAS Standard",
-       shape ="Above PAAS Standard") +
-  scale_shape(solid = FALSE) +
-  theme(legend.position= "bottom",
+    geom_point() +  # 1 for circle, 2 for triangle
+    scale_color_manual(values = c("black", "#028A0F")) +  # Black for below background, green for enriched
+    geom_vline(xintercept = 1, linetype = "dashed", color ="red") +  # Dashed vertical line at x = 1
+    labs(x = "PAAS Normalised Value (ppm)", y = "Element Symbol",
+         color="Above PAAS Standard",
+         shape ="Above PAAS Standard") +
+    scale_shape(solid = FALSE) +
+    theme(legend.position= "bottom",
         axis.text.y = element_text(size = 9))
-# ggsave("Final_report_files/figure-latex/PAAS_global_project.png", plot = p1)
 
 ```
 
@@ -737,7 +739,8 @@ saveRDS(scatter_plots,"Final_report_files/PAAS_regional_breakdown.rds")
 ```
 
 ```{r regionalbk1, cache = FALSE, out.width="100%", fig.height = 8, out.height="100%", fig.cap="Project breakdown for the distribution of element concentration with reference to PASS levels"}
-scatter_plots<-readRDS("./Final_report_files/PAAS_regional_breakdown.rds")
+scatter_plots <- readRDS(here("Final_report/Final_report_files/PAAS_regional_breakdown.rds"))
+
 wrap_plots(scatter_plots[1:3],ncol=3)
 
 ```

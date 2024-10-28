@@ -20,6 +20,7 @@ library(vip)
 library(rpart)
 library(MLmetrics)
 library(doParallel)
+library(here)
 ```
 
 
@@ -30,7 +31,7 @@ Before predictive modelling, the tidy data will undergo further process to ensur
 The process starts from loading the tidy data and convert it from long table to wide table.
 ```{r}
 # Load data
-alldata <- readRDS('./results/all_data.rds')
+alldata <- readRDS(here('results/all_data.rds'))
 
 DT <- setDT(alldata)
 
